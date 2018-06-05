@@ -41,19 +41,16 @@ class LabeledSet:
         return(self.y[i])
     
 
-def plot2DSet(labeled_set):
+def plot2DSet(set):
     """ LabeledSet -> NoneType
         Hypothèse: set est de dimension 2
         affiche une représentation graphique du LabeledSet
         remarque: l'ordre des labels dans set peut être quelconque
     """
-    labels = list(set([item for sublist in labeled_set.y.tolist() for item in sublist]))
-    markers = ['o', 'x', '*', 'v']
-    S = []
-    for label in labels:
-        S.append(labeled_set.x[np.where(labeled_set.y == label),:][0])
-    for i in range(len(labels)):
-        plt.scatter(S[i][:,0],S[i][:,1],marker='x')
+    S_pos = set.x[np.where(set.y == 1),:][0]      # tous les exemples de label +1
+    S_neg = set.x[np.where(set.y == -1),:][0]     # tous les exemples de label -1
+    plt.scatter(S_pos[:,0],S_pos[:,1],marker='o')
+    plt.scatter(S_neg[:,0],S_neg[:,1],marker='x')
     
 ##################################
 
