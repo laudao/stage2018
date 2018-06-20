@@ -84,7 +84,7 @@ class F_layer:
         equal_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()]
+            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()].astype(int)
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -103,7 +103,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            equal = values[values[:,0] == v][:,1]
+            equal = values[values[:,0] == v][:,1].astype(int)
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -122,7 +122,7 @@ class F_layer:
         dominant_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()]
+            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()].astype(int)
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -141,7 +141,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            dominant = values[values[:,0] >= v][:,1]
+            dominant = values[values[:,0] >= v][:,1].astype(int)
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -350,6 +350,14 @@ class One_minus(G_layer):
             return 1 - f_value
         '''
         return 1 - f_value
+    
+class Frac(G_layer):
+    def value(self, f_value):
+        '''
+            f_value : value computed by f_layer
+            return -log(f_value) / f_value
+        '''
+        return -log(f_value, 2) / (1.0 * f_value)
     
 ########## H-LAYERS ##########
 
