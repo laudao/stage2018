@@ -28,9 +28,11 @@ class LabeledSet:
         if (self.nb_examples == 0):
             self.x = np.array([vector])
             self.y = np.array([label])
+            self.df = pd.DataFrame(np.array([vector + [label]]))
         else:
             self.x = np.vstack((self.x, vector))
             self.y = np.vstack((self.y, label))
+            self.df.loc[len(self.df)] = np.array(vector + [label])
         
         self.nb_examples = self.nb_examples + 1
         
@@ -42,10 +44,14 @@ class LabeledSet:
         '''
         if (self.nb_examples == 0):
             self.x = np.array(vectors)
-            self.y = np.array(label)
+            self.y = np.array([[label]] * vectors.shape[0])
+            self.df = pd.DataFrame(np.hstack((vectors, np.array([[label]] * vectors.shape[0]))))
         else:
             self.x = np.vstack((self.x, vectors))
-            self.y = np.vstack((self.y, label))
+            self.y = np.vstack((self.y, np.array([[label]] * vectors.shape[0])))
+            new_rows = pd.DataFrame(np.hstack((vectors, np.array([[label]] * vectors.shape[0]))))
+            self.df = self.df.append(new_rows, ignore_index=True)
+        
         self.nb_examples += vectors.shape[0]
     
     def getInputDimension(self):
@@ -59,6 +65,9 @@ class LabeledSet:
         
     def getY(self, i):
         return(self.y[i])
+    
+    def get_df(self):
+        return self.df
 
 ########## F-LAYERS ##########
 
@@ -84,7 +93,7 @@ class F_layer:
         equal_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()].astype(int)
+            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -103,7 +112,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            equal = values[values[:,0] == v][:,1].astype(int)
+            equal = values[values[:,0] == v][:,1]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -122,7 +131,7 @@ class F_layer:
         dominant_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()].astype(int)
+            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -141,7 +150,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            dominant = values[values[:,0] >= v][:,1].astype(int)
+            dominant = values[values[:,0] >= v][:,1]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -327,6 +336,7 @@ class Avgdsr(F_layer_rank):
         return ((1.0/equal_set.size) * s) / (dominant_set.size * 1.0)
     
 ########## G-LAYERS ##########
+
 class G_layer:
     '''
         object-wise local non-monotonicity measure
@@ -395,7 +405,9 @@ class Gdm:
     
     def value(self, labeled_set, a_j, dsa, dsl, esa, esl):
         g_f = []
-
+        #print(isinstance(self.f, Dsr))
+        #print(type(self.f))
+        #print(issubclass(type(self.f), F_layer_rank))
         if (isinstance(self.f, F_layer_rank)):
             for i in range(0, labeled_set.size()):
                 g_f.append(self.g.value(self.f.value(i, labeled_set, dsa, dsl, esa)))
@@ -416,14 +428,13 @@ def discretize(H, labeled_set, a_j):
     '''
     
     n = labeled_set.size()
-    ind = np.argsort(labeled_set.x,axis=0)[:,a_j] # sort values according to attribute a_j
+    ind = np.argsort(labeled_set.x[:,a_j],axis=0) # sort values according to attribute a_j
     
-    # binary set : for each object w_i sorted in ascending order of a_j values
+    # binary set : for each object w_i taken in ascending order of a_j value,
     # a_j(w_h) = 0 if a_j(w_h) <= a_j(w_i), 1 otherwise
     binary_set = LabeledSet(labeled_set.getInputDimension())
     binary_set.nb_examples = labeled_set.size()
-    binary_set.x = labeled_set.x.copy()
-    binary_set.x[:,a_j] = np.ones(labeled_set.size())
+    binary_set.x = np.ones(labeled_set.size())
     binary_set.y = labeled_set.y
     
     thresholds = []
@@ -434,19 +445,21 @@ def discretize(H, labeled_set, a_j):
     esa = np.ones((n, n))
     esl = H.f.equal_sets_label(binary_set)
     
+    last = 0
+    
     for i in range(n-1):
         current = labeled_set.getX(ind[i])[a_j]
         current_label = labeled_set.getY(ind[i])
         lookahead = labeled_set.getX(ind[i+1])[a_j]
         lookahead_label = labeled_set.getY(ind[i+1])
-        binary_set.x[ind[i]][a_j] = 0
+        binary_set.x[ind[i]] = 0
         
         if current == lookahead or current_label == lookahead_label:
             continue
         else:
             a = np.zeros((n,))
             a[ind[:i+1]] = 1
-            dsa[ind[:i+1]] = np.ones((n,))
+            dsa[ind[last:i+1]] = np.ones((n,))
             esa[ind[:i+1]] = a
             
             a = np.zeros((n,))
@@ -457,6 +470,7 @@ def discretize(H, labeled_set, a_j):
 
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
+        last = ind[i+1]
       
     min_entropy = min(H_values)
     min_threshold = thresholds[np.argmin(H_values)]
@@ -535,9 +549,12 @@ class BinaryTree:
     '''
     def __init__(self):
         self.attribute = None
-        self.label = None
         
-        # binary tree
+        # leaf
+        self.label = None
+        self.labeled_set = None
+        
+        # internal node
         self.threshold = None
         self.inf = None
         self.sup = None
@@ -560,11 +577,12 @@ class BinaryTree:
         self.inf = inf
         self.sup = sup
     
-    def addLeaf(self,label):
+    def addLeaf(self,label, labeled_set):
         """ 
             add leaf corresponding to label
         """
         self.label = label
+        self.labeled_set = labeled_set
         
     def classify(self,example):
         """ 
@@ -627,6 +645,37 @@ class BinaryTree:
         else:
             return self.inf.is_rule_monotone() and self.sup.is_rule_monotone()
         
+    def get_ratio_non_monotone_pairs(self):
+        if (self.inf.isLeaf()) and (self.sup.isLeaf()):
+            
+            inf_set = self.inf.labeled_set
+            sup_set = self.sup.labeled_set
+            
+            n_inf = inf_set.size()
+            n_sup = sup_set.size()
+            
+            c = 0
+            for i in range(n_inf):
+                for j in range(n_sup):
+                    if inf_set.getY(i) >= sup_set.getY(j):
+                        c += 1
+            return [((n_inf + n_sup) * (c * 1.0) / (n_inf * n_sup), n_inf +n_sup)]
+            
+            
+        elif self.inf.isLeaf():
+            return self.sup.get_ratio_non_monotone_pairs()
+            
+        elif self.sup.isLeaf():
+            return self.inf.get_ratio_non_monotone_pairs()
+            
+        else:
+            t_inf = self.inf.get_ratio_non_monotone_pairs()
+            t_sup = self.sup.get_ratio_non_monotone_pairs()
+            
+            
+            t_inf.extend(t_sup)
+            return t_inf
+        
 def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth):
     '''
         labeled_set : labeled set
@@ -642,7 +691,7 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, la
         
     if (h <= measureThreshold) or (labeled_set.size() <= percMinSize * labeled_set.size()) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):        
         leaf = BinaryTree()
-        leaf.addLeaf(majority_class(labeled_set, labels))
+        leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
         return leaf
     
     m = labeled_set.getInputDimension()
@@ -672,10 +721,10 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, la
     bt = BinaryTree()
     
     if inf_set.size() == 0:
-        bt.addLeaf(majority_class(sup_set, labels))
+        bt.addLeaf(majority_class(sup_set, labels), sup_set)
         return bt
     if sup_set.size() == 0:
-        bt.addLeaf(majority_class(inf_set, labels)) 
+        bt.addLeaf(majority_class(inf_set, labels), inf_set) 
         return bt
     
     inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth+1)
@@ -769,6 +818,23 @@ class RDMT(Classifier):
     def is_rule_monotone(self):
         return self.root.is_rule_monotone()
     
+    def get_ratio_non_monotone_pairs(self):
+        '''
+            return average ratio between number of pairwise non-monotone label comparisons and number of pairs
+        '''
+        t = np.array(self.root.get_ratio_non_monotone_pairs())
+        r = t[:,0].sum() / t[:, 1].sum()
+        return (t[:,0].sum() / t[:, 1].sum()) / t.shape[0]
+        #n = self.labeled_set.size()
+        #return ((n - t[:,1].sum()) + r * (t[:,1].sum())) / n
+    
+    def get_total_pairs(self):
+        '''
+            return total number of pairs used for ratio computing
+        '''
+        t = np.array(self.root.get_ratio_non_monotone_pairs())
+        return t.shape[0]
+    
     def MAE(self, labeled_set):
         '''
             labeled_set : labeled set for evaluating the performance of the algorithm
@@ -845,7 +911,7 @@ def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges):
             values = np.hstack((random_values, monotone_values))
         
         for i in range(p):
-            labeled_set.addExample(values[i], q+1)
+            labeled_set.addExample(values[i].tolist(), q+1)
             
         current_min = current_max
         r -= p 
@@ -883,7 +949,7 @@ def generate_monotone_consistent_dataset(n, k):
     data = np.hstack((np.array(x), np.reshape(np.array([results]), (-1, 1))))
     
     monotone_set = LabeledSet(2)
-    
+   
     for i in range(k):
         if i == 0:
             examples = data[(data[:,2] <= 1.0/k)][:,:2]
@@ -891,9 +957,148 @@ def generate_monotone_consistent_dataset(n, k):
         else:
             examples = data[(data[:,2] > (i*1.0)/k) & (data[:,2] <= (i+1.0)/k)][:,:2]
             p = examples.shape[0]
-        monotone_set.addExamples(examples, np.array([[i+1]] * p))
+        monotone_set.addExamples(examples, i+1)
 
     return monotone_set
+
+def NMP(i, h, labeled_set):
+    '''
+        labeled_set : labeled set
+        i, h : pair of indices in labeled_set
+        return 1 if 
+            (a1(w_i),...,am(w_i)) <= (a1(w_h),...,am(w_h)) and lambda(w_i) > lambda(w_h)
+            or 
+            (a1(w_i),...,am(w_i)) >= (a1(w_h),...,am(w_h)) and lambda(w_i) < lambda(w_h)
+        0 otherwise
+    '''
+    w_i = labeled_set.getX(i)
+    w_h = labeled_set.getX(h)
+    if (np.sum(w_i - w_h)) <= 0 and (labeled_set.getY(i) > labeled_set.getY(h)):
+        return 1
+    if (np.sum(w_i - w_h)) >= 0 and (labeled_set.getY(i) < labeled_set.getY(h)):
+        return 1
+    return 0
+
+def NMI1(labeled_set):
+    '''
+        labeled_set : labeled set
+        return index of non-monotonicity NMI1
+    '''
+    n = labeled_set.size()
+    
+    s = 0
+    for i in range(n):
+        for j in range(i+1, n):
+            s += NMP(i, j, labeled_set)
+            
+    return s / (n*n - n)
+
+def NClash(x, y, labeled_set):
+    '''
+        labeled_set : labeled set
+        x : example
+        y : label of example
+        return the number of examples that clash with x
+    '''
+    n = labeled_set.size()
+    
+    s = 0
+    for i in range(n):
+        z = labeled_set.getX(i)
+        if (np.less_equal(z, x).all()) and (labeled_set.getY(i) > y):
+            s += 1
+        if (np.greater_equal(z, x).all()) and (labeled_set.getY(i) < y):
+            s += 1
+    return s
+    
+def generate_noisy_monotone_dataset(n, desired_NMI, lower_NMI, m, k, f):
+    '''
+        n : number of examples
+        desired_NMI : desired non-monotonicity index
+        lower_NMI : lower bound of NMI
+        m : number of attributes
+        k : number of ordinal class values
+        f : non-decreasing monotone function
+        return a dataset with the above specifications
+    '''
+    class_num_values = []
+    x = []
+    
+    # step A :
+    #   for each example, assign random values to the attributes
+    #   compute the output as f(attribute values)
+    for i in range(n):
+        vector = np.random.uniform(0,1,m)
+        x.append(vector)
+        c = f(vector)
+        class_num_values.append(c)
+    
+    # step B :
+    #   normalize output values and sort all the examples in increasing order of normalized output values
+    max_v = max(class_num_values)
+    min_v = min(class_num_values)
+    outputs = []
+    
+    for i in range(n):
+        outputs.append(normalize(class_num_values[i], min_v, max_v))
+    
+    x = [x for _, x in sorted(zip(outputs, x))]
+    outputs = np.reshape(np.array([sorted(outputs)]), (-1, 1))
+    
+    # step C : 
+    #   assign ordinal values to the class such that the class values will be balanced
+    data = np.hstack((np.array(x), np.reshape(np.array([outputs]), (-1, 1))))
+    
+    dataset = LabeledSet(m)
+    
+    for i in range(k):
+        if i == 0:
+            examples = data[(data[:,m] <= 1.0/k)][:,:m]
+            p = examples.shape[0]
+        else:
+            examples = data[(data[:,m] > (i*1.0)/k) & (data[:,m] <= (i+1.0)/k)][:,:m]
+            p = examples.shape[0]
+        dataset.addExamples(examples, i+1)
+        
+    current_NMI = NMI1(dataset)
+    
+    # step D
+    while current_NMI < lower_NMI:
+        r = random.sample(range(0, n), 2)
+        x = dataset.getX(r[0])
+        y = dataset.getY(r[0])
+        
+        if y == 1:
+            # randomly select attribute values for xp that are <= relative to those of x
+            xp = np.random.uniform(0, x, m)
+            # class value that is > to y
+            xp_y = random.randint(2, k+1)
+        elif y == k+1:
+            # randomly select attribute values for xp that are >= relative to those of x
+            xp = np.random.uniform(x, 1, m)
+            # class value that is < to y
+            xp_y = random.randint(1, k)
+        else:
+            if random.uniform(0, 1) <= 0.5:
+                xp = np.random.uniform(0, x, m)
+                xp_y = random.randint(y+1, k+1)
+            else:
+                xp = np.random.uniform(x, 1, m)
+                xp_y = random.randint(1, y-1)
+        
+        xs = dataset.getX(r[1])
+        xs_y = dataset.getY(r[1])
+        nclash_xs = NClash(xs, xs_y, dataset)
+        nclash_xp = NClash(xp, xp_y, dataset)
+        
+        updated_NMI = nclash_xp - nclash_xs
+        
+        if updated_NMI < desired_NMI:
+            dataset.x[r[1]] = xp
+            dataset.y[r[1]] = xp_y
+            current_NMI = updated_NMI
+            
+    return dataset
     
 ########## DISPLAY ##########    
     
@@ -1014,6 +1219,8 @@ def split_dataset(labeled_set, percentage):
         train_set.addExamples(examples[:p,:], np.array([[k]] * p))
         test_set.addExamples(examples[p:,:], np.array([[k]] * (examples.shape[0] - p)))
         
+    return train_set,test_set
+
 def get_ten_folds(labeled_set):
     sets = []
     labels = np.unique(labeled_set.y)
@@ -1034,7 +1241,7 @@ def get_ten_folds(labeled_set):
         for q in range(k):
             examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
             p = int(round(examples.shape[0] / 10.0))
-            if (i == 4) and (r[q] != p):
+            if (i == 9) and (r[q] != p):
                 ending_points[q] = examples.shape[0]
                 r[q] = 0 
             else:
