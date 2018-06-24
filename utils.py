@@ -421,7 +421,6 @@ def discretize(H, labeled_set, a_j):
     esl = H.f.equal_sets_label(binary_set)
 
     last = 0
-
     for i in range(n-1):
         current = labeled_set.getX(ind[i])[a_j]
         current_label = labeled_set.getY(ind[i])
@@ -446,9 +445,13 @@ def discretize(H, labeled_set, a_j):
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
         last = ind[i+1]
-
-    min_entropy = min(H_values)
-    min_threshold = thresholds[np.argmin(H_values)]
+    
+    if H_values == []:
+      min_entropy = np.iinfo(np.int32).max
+      min_threshold = None
+    else:
+    	min_entropy = min(H_values)
+    	min_threshold = thresholds[np.argmin(H_values)]
     return (min_threshold, min_entropy)
 
 def majority_class(labeled_set, labels):
@@ -698,10 +701,9 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, la
         threshold, h = discretize(H, labeled_set, a_j)
         thresholds.append(threshold)
         h_values.append(h)
-
+    
     min_threshold = thresholds[np.argmin(h_values)]
     min_attribute = np.argmin(h_values)
-
 
     inf_set, sup_set = divide(labeled_set, min_attribute, min_threshold)
     bt = BinaryTree()
