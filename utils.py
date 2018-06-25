@@ -42,8 +42,8 @@ class LabeledSet:
             add examples to data set
         '''
         if (self.nb_examples == 0):
-            self.x = np.array(vectors)
-            self.y = np.array(labels)
+            self.x = vectors
+            self.y = np.reshape(labels, (vectors.shape[0],1))
         else:
             self.x = np.vstack((self.x, vectors))
             self.y = np.vstack((self.y, labels))
@@ -456,7 +456,7 @@ def discretize(H, labeled_set, a_j):
         esa[visited_ind] = a
 
         notvisited_ind = list(set(total_ind) - set(visited_ind))
-        print(visited_ind)
+        #print(visited_ind)
 
         a = np.zeros((n,))
         a[notvisited_ind] = 1
@@ -467,7 +467,7 @@ def discretize(H, labeled_set, a_j):
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
 
-        print(dsa)
+        #print(dsa)
         #print(esa)
 
     min_entropy = min(H_values)
@@ -528,15 +528,14 @@ def divide(Lset, att, threshold):
         threshold : threshold value
         divide Lset into two sub-sets : one with values for att <= threshold, one with values > threshold
     '''
-    E1 = LabeledSet(Lset.getInputDimension())
-    E2 = LabeledSet(Lset.getInputDimension())
+    m = Lset.getInputDimension()
+    E1 = LabeledSet(m)
+    E2 = LabeledSet(m)
 
-    # Separate data according to threshold
-    for i in range(Lset.size()):
-        if Lset.getX(i)[att] <= threshold:
-            E1.addExample(Lset.getX(i), Lset.getY(i))
-        else:
-            E2.addExample(Lset.getX(i), Lset.getY(i))
+    data = np.hstack((Lset.x, Lset.y))
+
+    E1.addExamples(data[data[:,att] <= threshold][:,:m], data[data[:,att] <= threshold][:,m])
+    E2.addExamples(data[data[:,att] > threshold][:,:m], data[data[:,att] > threshold][:,m])
 
     return E1, E2
 
@@ -711,7 +710,6 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
     thresholds = []
 
     for a_j in range(m):
-
         # all objects share the same value for attribute a_j
         if np.all(labeled_set.x == labeled_set.x[0,:], axis = 0)[a_j]:
             thresholds.append(None)
@@ -730,7 +728,6 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
     min_threshold = thresholds[np.argmin(h_values)]
     min_attribute = np.argmin(h_values)
 
-
     inf_set, sup_set = divide(labeled_set, min_attribute, min_threshold)
     bt = BinaryTree()
 
@@ -741,9 +738,8 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
         bt.addLeaf(majority_class(inf_set, labels), inf_set)
         return bt
 
+    print(min_threshold , np.count_nonzero(inf_set.y == 1), np.count_nonzero(inf_set.y == 2), np.count_nonzero(sup_set.y == 1), np.count_nonzero(sup_set.y == 2))
     inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
-
-    print(np.count_nonzero(labeled_set.y == 1), np.count_nonzero(labeled_set.y == 2))
     sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
     bt.add_children(inf_bt, sup_bt, min_attribute, min_threshold)
     return bt
