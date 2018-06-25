@@ -7,6 +7,7 @@ import numbers
 import random
 import time
 import matplotlib.pyplot as plt
+import sys
 
 ########## LABELED SET ##########
 
@@ -403,7 +404,15 @@ def discretize(H, labeled_set, a_j):
     '''
 
     n = labeled_set.size()
-    ind = np.argsort(labeled_set.x[:,a_j],axis=0) # sort values according to attribute a_j
+
+    unique_values = np.unique(labeled_set.x[:,a_j])
+    values = np.hstack((labeled_set.x[:,[a_j]], labeled_set.y))
+    values = np.hstack((values, np.reshape(np.arange(n), (n,1))))
+    # first column : value of attribute, second column : label, third column: index of element in labeled_set
+    sorted_values = np.sort(values.view([('',values.dtype)]*values.shape[1]),0).view(values.dtype) # sort values according to first column
+
+    df = pd.DataFrame(sorted_values)
+    grouped = df.groupby(df[0], axis=0)
 
     # binary set : for each object w_i taken in ascending order of a_j value,
     # a_j(w_h) = 0 if a_j(w_h) <= a_j(w_i), 1 otherwise
@@ -420,38 +429,50 @@ def discretize(H, labeled_set, a_j):
     esa = np.ones((n, n))
     esl = H.f.equal_sets_label(binary_set)
 
-    last = 0
-    for i in range(n-1):
-        current = labeled_set.getX(ind[i])[a_j]
-        current_label = labeled_set.getY(ind[i])
-        lookahead = labeled_set.getX(ind[i+1])[a_j]
-        lookahead_label = labeled_set.getY(ind[i+1])
-        binary_set.x[ind[i]] = 0
+    visited_ind = []
+    total_ind = np.arange(0, n)
 
-        if current == lookahead or current_label == lookahead_label:
+
+    for k in range(len(unique_values)-1):
+        current = unique_values[k] # current attribute value
+        current_group = grouped.groups[current].values # indices of elements in df sharing this value
+        current_labels = np.unique(sorted_values[current_group, 1]) # labels sharing this value
+
+        lookahead = unique_values[k+1]
+        lookahead_group = grouped.groups[lookahead]
+        lookahead_labels = np.unique(sorted_values[lookahead_group,1])
+
+        visited_ind.extend(sorted_values[current_group, 2].astype(int).tolist())
+
+        binary_set.x[sorted_values[current_group, 2].astype(int)] = 0
+
+        if np.setdiff1d(current_labels, lookahead_labels) == 0 and np.setdiff1d(lookahead_labels, current_labels) == 0:
             continue
-        else:
-            a = np.zeros((n,))
-            a[ind[:i+1]] = 1
-            dsa[ind[last:i+1]] = np.ones((n,))
-            esa[ind[:i+1]] = a
 
-            a = np.zeros((n,))
-            a[ind[i+1:]] = 1
+        a = np.zeros((n,))
 
-            dsa[ind[i+1:]] = a
-            esa[ind[i+1:]] = a
+        a[visited_ind] = 1
+        dsa[visited_ind] = np.ones((n,))
+        esa[visited_ind] = a
+
+        notvisited_ind = list(set(total_ind) - set(visited_ind))
+        print(visited_ind)
+
+        a = np.zeros((n,))
+        a[notvisited_ind] = 1
+
+        dsa[notvisited_ind] = a
+        esa[notvisited_ind] = a
 
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
-        last = ind[i+1]
-    
-    if H_values == []:
-      min_entropy = np.iinfo(np.int32).max
-      min_threshold = None
-    else:
-    	min_entropy = min(H_values)
-    	min_threshold = thresholds[np.argmin(H_values)]
+
+        print(dsa)
+        #print(esa)
+
+    min_entropy = min(H_values)
+    min_threshold = thresholds[np.argmin(H_values)]
+
     return (min_threshold, min_entropy)
 
 def majority_class(labeled_set, labels):
@@ -665,20 +686,19 @@ class BinaryTree:
             t.extend(self.sup.get_leaves())
             return t
 
-def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth):
+def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth):
     '''
         labeled_set : labeled set
         H : rank discrimination measure used for discretization
         H_stop : discrimination measure (shannon, gini ...) used for stopping condition
         measure_threshold : lower bound for H_stop
         max_depth : maximum length of a path from the root to a leaf node
-        percMinSize : sets the minimum size of the current object set labeled_set
+        minSize : sets the minimum size of the current object set labeled_set
         build decision tree recursively
     '''
 
     h = entropy(labeled_set, labels, "shannon")
-
-    if (h <= measureThreshold) or (labeled_set.size() <= percMinSize * labeled_set.size()) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):
+    if (h <= measureThreshold) or (labeled_set.size() <= minSize) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):
         leaf = BinaryTree()
         leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
         return leaf
@@ -701,9 +721,15 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, la
         threshold, h = discretize(H, labeled_set, a_j)
         thresholds.append(threshold)
         h_values.append(h)
-    
+
+    if all(thr is None for thr in thresholds):
+        leaf = BinaryTree()
+        leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
+        return leaf
+
     min_threshold = thresholds[np.argmin(h_values)]
     min_attribute = np.argmin(h_values)
+
 
     inf_set, sup_set = divide(labeled_set, min_attribute, min_threshold)
     bt = BinaryTree()
@@ -715,8 +741,10 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, la
         bt.addLeaf(majority_class(inf_set, labels), inf_set)
         return bt
 
-    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth+1)
-    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth+1)
+    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
+
+    print(np.count_nonzero(labeled_set.y == 1), np.count_nonzero(labeled_set.y == 2))
+    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
     bt.add_children(inf_bt, sup_bt, min_attribute, min_threshold)
     return bt
 
@@ -919,7 +947,7 @@ def I_tree(T):
 ########## DATA SET GENERATION ##########
 
 
-def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges):
+def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges, use_seed = False):
     '''
         a_j : monotone attribute
         k : number of labels
@@ -971,6 +999,10 @@ def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges):
                     monotone_values[e] = val
 
         thresholds.append((current_min,current_max) )
+
+        if use_seed:
+            seed = int(sys.argv[1])
+            np.random.seed(seed)
 
         if (a_j == 0):
             random_values = np.random.uniform(ranges[1][0], ranges[1][1], size=(p, 1))
