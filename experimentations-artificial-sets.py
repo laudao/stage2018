@@ -20,10 +20,10 @@ prdm = Gdm(h, g_p, f_p)
 
 start = time.time()
 
-dataset, t = generate_2Ddataset(0, 2, 100, 0, 0.1, [[-10, 10], [-10, 10]])
+dataset, t = generate_2Ddataset(0, 2, 1000, 0, 0.1, [[-10, 10], [-10, 10]])
 
-print("noise : ", 0.05 * int(sys.argv[2])
-        )
+print("noise : ", 0.05 * int(sys.argv[2]))
+
 for k in range(int(sys.argv[2])):
     dataset = add_noise(dataset, 0.05)
 
@@ -60,6 +60,7 @@ for i in range(10):
     depth1 += tree1.get_depth()
     ratio1 += tree1.get_ratio_non_monotone_pairs()
     pairs1 += tree1.get_total_pairs()
+    print("Iter {} tree1".format(i))
 
     tree2 = RDMT(sdm, "shannon", 0, 100, 0.01, [1, 2])
     tree2.train(train_set)
@@ -69,6 +70,7 @@ for i in range(10):
     ratio2 += tree2.get_ratio_non_monotone_pairs()
     pairs2 += tree2.get_total_pairs()
 
+    print("Iter {} tree2".format(i))
     tree3 = RDMT(prdm, "shannon", 0, 100, 0.01, [1, 2])
     tree3.train(train_set)
     acc3 += tree3.accuracy(test_set)
@@ -76,6 +78,7 @@ for i in range(10):
     depth3 += tree3.get_depth()
     ratio3 += tree3.get_ratio_non_monotone_pairs()
     pairs3 += tree3.get_total_pairs()
+    print("Iter {} tree3".format(i))
 
 acc1 = acc1 * (1.0/10)
 depth1 = depth1 * (1.0/10)
@@ -95,24 +98,24 @@ ratio3 = ratio3 * (1.0/10)
 pairs3 = pairs3 * (1.0/10)
 
 print("Running time (" + sys.argv[2]+ ") : " + str(time.time() - start))
-f_acc1 = open("acc1" + sys.argv[2], "wb")
-f_leaves1 = open("leaves1"+ sys.argv[2], "wb")
-f_depth1 = open("depth1"+ sys.argv[2], "wb")
-f_ratio1 = open("ratio1"+ sys.argv[2], "wb")
-f_pairs1 = open("pairs1"+ sys.argv[2], "wb")
+f_acc1 = open("acc1_" + sys.argv[2], "wb")
+f_leaves1 = open("leaves1_"+ sys.argv[2], "wb")
+f_depth1 = open("depth1_"+ sys.argv[2], "wb")
+f_ratio1 = open("ratio1_"+ sys.argv[2], "wb")
+f_pairs1 = open("pairs1_"+ sys.argv[2], "wb")
 
 
-f_acc2 = open("acc2"+ sys.argv[2], "wb")
-f_leaves2 = open("leaves2"+ sys.argv[2], "wb")
-f_depth2 = open("depth2"+ sys.argv[2], "wb")
-f_ratio2 = open("ratio2"+ sys.argv[2], "wb")
-f_pairs2 = open("pairs2"+ sys.argv[2], "wb")
+f_acc2 = open("acc2_"+ sys.argv[2], "wb")
+f_leaves2 = open("leaves2_"+ sys.argv[2], "wb")
+f_depth2 = open("depth2_"+ sys.argv[2], "wb")
+f_ratio2 = open("ratio2_"+ sys.argv[2], "wb")
+f_pairs2 = open("pairs2_"+ sys.argv[2], "wb")
 
-f_acc3 = open("acc3"+ sys.argv[2], "wb")
-f_leaves3 = open("leaves3"+ sys.argv[2], "wb")
-f_depth3 = open("depth3"+ sys.argv[2], "wb")
-f_ratio3 = open("ratio3"+ sys.argv[2], "wb")
-f_pairs3 = open("pairs3"+ sys.argv[2], "wb")
+f_acc3 = open("acc3_"+ sys.argv[2], "wb")
+f_leaves3 = open("leaves3_"+ sys.argv[2], "wb")
+f_depth3 = open("depth3_"+ sys.argv[2], "wb")
+f_ratio3 = open("ratio3_"+ sys.argv[2], "wb")
+f_pairs3 = open("pairs3_"+ sys.argv[2], "wb")
 
 pickle.dump(acc1, f_acc1)
 pickle.dump(leaves1, f_leaves1)

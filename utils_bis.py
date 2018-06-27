@@ -89,7 +89,7 @@ class F_layer:
         equal_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()].astype(int)
+            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -108,7 +108,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            equal = values[values[:,0] == v][:,1].astype(int)
+            equal = values[values[:,0] == v][:,1]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -127,7 +127,7 @@ class F_layer:
         dominant_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()].astype(int)
+            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -146,7 +146,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            dominant = values[values[:,0] >= v][:,1].astype(int)
+            dominant = values[values[:,0] >= v][:,1]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -341,10 +341,6 @@ class One_minus(G_layer):
         '''
         return 1 - f_value
 
-class One_minus_square(G_layer):
-    def value(self, f_value):
-        return 1 - (f_value * f_value)
-
 class Frac(G_layer):
     def value(self, f_value):
         '''
@@ -369,14 +365,6 @@ class Sum(H_layer):
             return (1/labeled_set.size()) * sum(g_values)
         '''
         return (1.0/labeled_set.size()) * np.sum(g_values)
-
-class Max(H_layer):
-    def value(self, g_values, labeled_set):
-        return np.max(g_values)
-
-class Square_root(H_layer):
-    def value(self, g_values, labeled_set):
-        return sqrt((1.0/labeled_set.size()) * np.sum(np.power(g_values, 2)))
 
 ########## GENERIC DISCRIMINATION MEASURE ##########
 
@@ -445,7 +433,6 @@ def discretize(H, labeled_set, a_j):
     total_ind = np.arange(0, n)
 
 
-
     for k in range(len(unique_values)-1):
         current = unique_values[k] # current attribute value
         current_group = grouped.groups[current].values # indices of elements in df sharing this value
@@ -459,9 +446,9 @@ def discretize(H, labeled_set, a_j):
 
         binary_set.x[sorted_values[current_group, 2].astype(int)] = 0
 
-        if np.array_equal(current_labels,lookahead_labels):
-            if current_labels.size == 1:
-                continue
+        print(np.setdiff1d(current_labels, lookahead_labels))
+        if np.setdiff1d(current_labels, lookahead_labels) == 0 and np.setdiff1d(lookahead_labels, current_labels) == 0:
+            continue
 
         a = np.zeros((n,))
 
@@ -470,6 +457,7 @@ def discretize(H, labeled_set, a_j):
         esa[visited_ind] = a
 
         notvisited_ind = list(set(total_ind) - set(visited_ind))
+        #print(visited_ind)
 
         a = np.zeros((n,))
         a[notvisited_ind] = 1
@@ -480,6 +468,8 @@ def discretize(H, labeled_set, a_j):
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
 
+        #print(dsa)
+        #print(esa)
 
     min_entropy = min(H_values)
     min_threshold = thresholds[np.argmin(H_values)]
@@ -497,9 +487,7 @@ def majority_class(labeled_set, labels):
     for label in labels:
         classes_size.append(len(labeled_set.x[np.where(labeled_set.y == label),:][0]))
 
-    classes_size = np.array(classes_size)
-    return labels[np.random.choice(np.flatnonzero(classes_size == classes_size.max()))]
-    #return labels[np.argmax(np.array(classes_size))]
+    return labels[np.argmax(np.array(classes_size))]
 
 def constant_lambda(labeled_set):
     '''
@@ -738,7 +726,6 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
         leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
         return leaf
 
-
     min_threshold = thresholds[np.argmin(h_values)]
     min_attribute = np.argmin(h_values)
 
@@ -885,26 +872,11 @@ def NMP(x1, y1, x2, y2):
         y1 : label of first example
         x2 : attribute values of second example
         y2 : label of second example
-        return 1 if x1 <= x2 and y1 > y2 or x1 >= x2 and y1 < y2, 0 otherwise
+        return 1 if x1 <= x2 and y1 > y2, 0 otherwise
     '''
-
-    if np.array_equal(x1, x2):
-        if y1 != y2:
-            return 1
-        return 0
-    else:
-        if np.all(np.greater_equal(x2, x1)):
-            if y2 < y1: # x1 <= x2 and y1 > y2
-                return 1
-            else:
-                return 0
-        if np.all(np.greater_equal(x1, x2)):
-            if y1 < y2: # x2 <= x1 and y1 < y2
-                return 1
-            else:
-                return 0
-
-        return 0 # incomparable pair
+    if (np.sum(x1 - x2) <= 0 and y1 > y2) or (np.sum(x1 - x2) >= 0 and y1 < y2):
+        return 1
+    return 0
 
 def NMI1(labeled_set):
     '''
@@ -915,7 +887,7 @@ def NMI1(labeled_set):
 
     s = 0
     for i in range(n):
-        for j in range(n):
+        for j in range(i+1, n):
             x1 = labeled_set.getX(i)
             x2 = labeled_set.getX(j)
             y1 = labeled_set.getY(i)
@@ -1434,45 +1406,6 @@ def get_ten_folds(labeled_set):
             examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
             p = int(round(examples.shape[0] / 10.0))
             if (i == 9) and (r[q] != p):
-                ending_points[q] = examples.shape[0]
-                r[q] = 0
-            else:
-                ending_points[q] = starting_points[q] + p
-                r[q] -= p
-
-            print(np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
-            dataset.addExamples(examples[starting_points[q]:ending_points[q],:], np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
-
-
-            starting_points[q] = ending_points[q]
-        sets.append(dataset)
-    return sets
-
-def get_folds(labeled_set, nb):
-    '''
-        labeled_set : labeled set to split
-        split labeled_set into ten folds
-    '''
-    sets = []
-    labels = np.unique(labeled_set.y)
-    k = labels.shape[0]
-    n = labeled_set.size()
-    starting_points = [0] * k
-    ending_points = [-1] * k
-
-    r = [0] * labels.shape[0] # remaining examples to add in each class
-
-    for q in range(k):
-        examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
-        r[q] = examples.shape[0]
-
-    for i in range(nb):
-        dataset = LabeledSet(labeled_set.getInputDimension())
-
-        for q in range(k):
-            examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
-            p = int(round(examples.shape[0] / nb))
-            if (i == nb-1) and (r[q] != p):
                 ending_points[q] = examples.shape[0]
                 r[q] = 0
             else:

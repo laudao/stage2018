@@ -2,12 +2,11 @@ from math import *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import graphviz as gv
+#import graphviz as gv
 import numbers
 import random
 import time
-import matplotlib.pyplot as plt
-import sys
+#import matplotlib.pyplot as plt
 
 ########## LABELED SET ##########
 
@@ -42,8 +41,8 @@ class LabeledSet:
             add examples to data set
         '''
         if (self.nb_examples == 0):
-            self.x = vectors
-            self.y = np.reshape(labels, (vectors.shape[0],1))
+            self.x = np.array(vectors)
+            self.y = np.array(labels)
         else:
             self.x = np.vstack((self.x, vectors))
             self.y = np.vstack((self.y, labels))
@@ -89,7 +88,7 @@ class F_layer:
         equal_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()].astype(int)
+            equal = values[values[:,a_j] == v][:,labeled_set.getInputDimension()]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -108,7 +107,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            equal = values[values[:,0] == v][:,1].astype(int)
+            equal = values[values[:,0] == v][:,1]
             equal_sets[i][equal] = 1
 
         return equal_sets
@@ -127,7 +126,7 @@ class F_layer:
         dominant_sets = np.zeros((n, n))
         for i in range(0, labeled_set.size()):
             v = labeled_set.getX(i)[a_j]
-            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()].astype(int)
+            dominant = values[values[:,a_j] >= v][:,labeled_set.getInputDimension()]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -146,7 +145,7 @@ class F_layer:
 
         for i in range(0, labeled_set.size()):
             v = labeled_set.getY(i)
-            dominant = values[values[:,0] >= v][:,1].astype(int)
+            dominant = values[values[:,0] >= v][:,1]
             dominant_sets[i][dominant] = 1
 
         return dominant_sets
@@ -341,10 +340,6 @@ class One_minus(G_layer):
         '''
         return 1 - f_value
 
-class One_minus_square(G_layer):
-    def value(self, f_value):
-        return 1 - (f_value * f_value)
-
 class Frac(G_layer):
     def value(self, f_value):
         '''
@@ -369,14 +364,6 @@ class Sum(H_layer):
             return (1/labeled_set.size()) * sum(g_values)
         '''
         return (1.0/labeled_set.size()) * np.sum(g_values)
-
-class Max(H_layer):
-    def value(self, g_values, labeled_set):
-        return np.max(g_values)
-
-class Square_root(H_layer):
-    def value(self, g_values, labeled_set):
-        return sqrt((1.0/labeled_set.size()) * np.sum(np.power(g_values, 2)))
 
 ########## GENERIC DISCRIMINATION MEASURE ##########
 
@@ -414,17 +401,10 @@ def discretize(H, labeled_set, a_j):
         return threshold which minimizes the entropy function H for given feature a_j,
             along with minimum entropy value
     '''
+    print("BEGIN discretize", time.time())
 
     n = labeled_set.size()
-
-    unique_values = np.unique(labeled_set.x[:,a_j])
-    values = np.hstack((labeled_set.x[:,[a_j]], labeled_set.y))
-    values = np.hstack((values, np.reshape(np.arange(n), (n,1))))
-    # first column : value of attribute, second column : label, third column: index of element in labeled_set
-    sorted_values = np.sort(values.view([('',values.dtype)]*values.shape[1]),0).view(values.dtype) # sort values according to first column
-
-    df = pd.DataFrame(sorted_values)
-    grouped = df.groupby(df[0], axis=0)
+    ind = np.argsort(labeled_set.x[:,a_j],axis=0) # sort values according to attribute a_j
 
     # binary set : for each object w_i taken in ascending order of a_j value,
     # a_j(w_h) = 0 if a_j(w_h) <= a_j(w_i), 1 otherwise
@@ -441,49 +421,36 @@ def discretize(H, labeled_set, a_j):
     esa = np.ones((n, n))
     esl = H.f.equal_sets_label(binary_set)
 
-    visited_ind = []
-    total_ind = np.arange(0, n)
+    last = 0
 
+    for i in range(n-1):
+        current = labeled_set.getX(ind[i])[a_j]
+        current_label = labeled_set.getY(ind[i])
+        lookahead = labeled_set.getX(ind[i+1])[a_j]
+        lookahead_label = labeled_set.getY(ind[i+1])
+        binary_set.x[ind[i]] = 0
 
+        if current == lookahead or current_label == lookahead_label:
+            continue
+        else:
+            a = np.zeros((n,))
+            a[ind[:i+1]] = 1
+            dsa[ind[last:i+1]] = np.ones((n,))
+            esa[ind[:i+1]] = a
 
-    for k in range(len(unique_values)-1):
-        current = unique_values[k] # current attribute value
-        current_group = grouped.groups[current].values # indices of elements in df sharing this value
-        current_labels = np.unique(sorted_values[current_group, 1]) # labels sharing this value
+            a = np.zeros((n,))
+            a[ind[i+1:]] = 1
 
-        lookahead = unique_values[k+1]
-        lookahead_group = grouped.groups[lookahead]
-        lookahead_labels = np.unique(sorted_values[lookahead_group,1])
-
-        visited_ind.extend(sorted_values[current_group, 2].astype(int).tolist())
-
-        binary_set.x[sorted_values[current_group, 2].astype(int)] = 0
-
-        if np.array_equal(current_labels,lookahead_labels):
-            if current_labels.size == 1:
-                continue
-
-        a = np.zeros((n,))
-
-        a[visited_ind] = 1
-        dsa[visited_ind] = np.ones((n,))
-        esa[visited_ind] = a
-
-        notvisited_ind = list(set(total_ind) - set(visited_ind))
-
-        a = np.zeros((n,))
-        a[notvisited_ind] = 1
-
-        dsa[notvisited_ind] = a
-        esa[notvisited_ind] = a
+            dsa[ind[i+1:]] = a
+            esa[ind[i+1:]] = a
 
         thresholds.append((current + lookahead) / 2.0)
         H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
-
+        last = ind[i+1]
 
     min_entropy = min(H_values)
     min_threshold = thresholds[np.argmin(H_values)]
-
+    print("END discretize", time.time())
     return (min_threshold, min_entropy)
 
 def majority_class(labeled_set, labels):
@@ -497,9 +464,7 @@ def majority_class(labeled_set, labels):
     for label in labels:
         classes_size.append(len(labeled_set.x[np.where(labeled_set.y == label),:][0]))
 
-    classes_size = np.array(classes_size)
-    return labels[np.random.choice(np.flatnonzero(classes_size == classes_size.max()))]
-    #return labels[np.argmax(np.array(classes_size))]
+    return labels[np.argmax(np.array(classes_size))]
 
 def constant_lambda(labeled_set):
     '''
@@ -541,14 +506,15 @@ def divide(Lset, att, threshold):
         threshold : threshold value
         divide Lset into two sub-sets : one with values for att <= threshold, one with values > threshold
     '''
-    m = Lset.getInputDimension()
-    E1 = LabeledSet(m)
-    E2 = LabeledSet(m)
+    E1 = LabeledSet(Lset.getInputDimension())
+    E2 = LabeledSet(Lset.getInputDimension())
 
-    data = np.hstack((Lset.x, Lset.y))
-
-    E1.addExamples(data[data[:,att] <= threshold][:,:m], data[data[:,att] <= threshold][:,m])
-    E2.addExamples(data[data[:,att] > threshold][:,:m], data[data[:,att] > threshold][:,m])
+    # Separate data according to threshold
+    for i in range(Lset.size()):
+        if Lset.getX(i)[att] <= threshold:
+            E1.addExample(Lset.getX(i), Lset.getY(i))
+        else:
+            E2.addExample(Lset.getX(i), Lset.getY(i))
 
     return E1, E2
 
@@ -698,19 +664,20 @@ class BinaryTree:
             t.extend(self.sup.get_leaves())
             return t
 
-def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth):
+def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth):
     '''
         labeled_set : labeled set
         H : rank discrimination measure used for discretization
         H_stop : discrimination measure (shannon, gini ...) used for stopping condition
         measure_threshold : lower bound for H_stop
         max_depth : maximum length of a path from the root to a leaf node
-        minSize : sets the minimum size of the current object set labeled_set
+        percMinSize : sets the minimum size of the current object set labeled_set
         build decision tree recursively
     '''
 
     h = entropy(labeled_set, labels, "shannon")
-    if (h <= measureThreshold) or (labeled_set.size() <= minSize) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):
+
+    if (h <= measureThreshold) or (labeled_set.size() <= percMinSize * labeled_set.size()) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):
         leaf = BinaryTree()
         leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
         return leaf
@@ -723,6 +690,7 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
     thresholds = []
 
     for a_j in range(m):
+
         # all objects share the same value for attribute a_j
         if np.all(labeled_set.x == labeled_set.x[0,:], axis = 0)[a_j]:
             thresholds.append(None)
@@ -733,14 +701,9 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
         thresholds.append(threshold)
         h_values.append(h)
 
-    if all(thr is None for thr in thresholds):
-        leaf = BinaryTree()
-        leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
-        return leaf
-
-
     min_threshold = thresholds[np.argmin(h_values)]
     min_attribute = np.argmin(h_values)
+
 
     inf_set, sup_set = divide(labeled_set, min_attribute, min_threshold)
     bt = BinaryTree()
@@ -752,8 +715,8 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
         bt.addLeaf(majority_class(inf_set, labels), inf_set)
         return bt
 
-    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
-    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
+    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth+1)
+    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, percMinSize, labels, current_depth+1)
     bt.add_children(inf_bt, sup_bt, min_attribute, min_threshold)
     return bt
 
@@ -885,26 +848,11 @@ def NMP(x1, y1, x2, y2):
         y1 : label of first example
         x2 : attribute values of second example
         y2 : label of second example
-        return 1 if x1 <= x2 and y1 > y2 or x1 >= x2 and y1 < y2, 0 otherwise
+        return 1 if x1 <= x2 and y1 > y2, 0 otherwise
     '''
-
-    if np.array_equal(x1, x2):
-        if y1 != y2:
-            return 1
-        return 0
-    else:
-        if np.all(np.greater_equal(x2, x1)):
-            if y2 < y1: # x1 <= x2 and y1 > y2
-                return 1
-            else:
-                return 0
-        if np.all(np.greater_equal(x1, x2)):
-            if y1 < y2: # x2 <= x1 and y1 < y2
-                return 1
-            else:
-                return 0
-
-        return 0 # incomparable pair
+    if (np.sum(x1 - x2) <= 0 and y1 > y2) or (np.sum(x1 - x2) >= 0 and y1 < y2):
+        return 1
+    return 0
 
 def NMI1(labeled_set):
     '''
@@ -915,7 +863,7 @@ def NMI1(labeled_set):
 
     s = 0
     for i in range(n):
-        for j in range(n):
+        for j in range(i+1, n):
             x1 = labeled_set.getX(i)
             x2 = labeled_set.getX(j)
             y1 = labeled_set.getY(i)
@@ -971,7 +919,7 @@ def I_tree(T):
 ########## DATA SET GENERATION ##########
 
 
-def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges, use_seed = False):
+def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges):
     '''
         a_j : monotone attribute
         k : number of labels
@@ -1023,10 +971,6 @@ def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges, use_seed = False):
                     monotone_values[e] = val
 
         thresholds.append((current_min,current_max) )
-
-        if use_seed:
-            seed = int(sys.argv[1])
-            np.random.seed(seed)
 
         if (a_j == 0):
             random_values = np.random.uniform(ranges[1][0], ranges[1][1], size=(p, 1))
@@ -1434,45 +1378,6 @@ def get_ten_folds(labeled_set):
             examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
             p = int(round(examples.shape[0] / 10.0))
             if (i == 9) and (r[q] != p):
-                ending_points[q] = examples.shape[0]
-                r[q] = 0
-            else:
-                ending_points[q] = starting_points[q] + p
-                r[q] -= p
-
-            print(np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
-            dataset.addExamples(examples[starting_points[q]:ending_points[q],:], np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
-
-
-            starting_points[q] = ending_points[q]
-        sets.append(dataset)
-    return sets
-
-def get_folds(labeled_set, nb):
-    '''
-        labeled_set : labeled set to split
-        split labeled_set into ten folds
-    '''
-    sets = []
-    labels = np.unique(labeled_set.y)
-    k = labels.shape[0]
-    n = labeled_set.size()
-    starting_points = [0] * k
-    ending_points = [-1] * k
-
-    r = [0] * labels.shape[0] # remaining examples to add in each class
-
-    for q in range(k):
-        examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
-        r[q] = examples.shape[0]
-
-    for i in range(nb):
-        dataset = LabeledSet(labeled_set.getInputDimension())
-
-        for q in range(k):
-            examples = labeled_set.x[np.where(labeled_set.y == labels[q]),:][0]
-            p = int(round(examples.shape[0] / nb))
-            if (i == nb-1) and (r[q] != p):
                 ending_points[q] = examples.shape[0]
                 r[q] = 0
             else:
