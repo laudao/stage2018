@@ -970,6 +970,26 @@ def I_tree(T):
 
 ########## DATA SET GENERATION ##########
 
+def generate_1D_monotone_dataset(k):
+  '''
+    k : number of labels
+    return 1D dataset with 100 examples and k classes
+  '''
+
+  data = np.reshape(np.random.random_sample(100), (-1, 1))
+
+  monotone_set = LabeledSet(1)
+
+  for i in range(k):
+    if i == 0:
+        examples = data[(data <= 1.0/k)]
+    else:
+        examples = data[(data > (i*1.0)/k) & (data <= (i+1.0)/k)]
+    examples = np.reshape(examples, (-1, 1))
+    monotone_set.addExamples(examples, np.array([[i+1]] * examples.shape[0]))
+  
+  return monotone_set
+
 
 def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges, use_seed = False):
     '''
@@ -1109,10 +1129,10 @@ def generate_monotone_consistent_dataset(n, k):
     for i in range(k):
         if i == 0:
             examples = data[(data[:,2] <= 1.0/k)][:,:2]
-            p = examples.shape[0]
+            #p = examples.shape[0]
         else:
             examples = data[(data[:,2] > (i*1.0)/k) & (data[:,2] <= (i+1.0)/k)][:,:2]
-            p = examples.shape[0]
+            #p = examples.shape[0]
         monotone_set.addExamples(examples, i+1)
 
     return monotone_set
