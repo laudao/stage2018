@@ -6,7 +6,6 @@ import graphviz as gv
 import numbers
 import random
 import time
-import matplotlib.pyplot as plt
 import sys
 
 ########## LABELED SET ##########
@@ -486,6 +485,84 @@ def discretize(H, labeled_set, a_j):
 
     return (min_threshold, min_entropy)
 
+def discretize_steps(H, labeled_set, a_j):
+    '''
+        H : discrimation measure
+        labeled_set : labeled set
+        a_j : attribute to discretize
+        return discretization steps
+    '''
+
+    n = labeled_set.size()
+
+    unique_values = np.unique(labeled_set.x[:,a_j])
+    values = np.hstack((labeled_set.x[:,[a_j]], labeled_set.y))
+    values = np.hstack((values, np.reshape(np.arange(n), (n,1))))
+    # first column : value of attribute, second column : label, third column: index of element in labeled_set
+    sorted_values = np.sort(values.view([('',values.dtype)]*values.shape[1]),0).view(values.dtype) # sort values according to first column
+
+    df = pd.DataFrame(sorted_values)
+    grouped = df.groupby(df[0], axis=0)
+
+    # binary set : for each object w_i taken in ascending order of a_j value,
+    # a_j(w_h) = 0 if a_j(w_h) <= a_j(w_i), 1 otherwise
+    binary_set = LabeledSet(labeled_set.getInputDimension())
+    binary_set.nb_examples = labeled_set.size()
+    binary_set.x = np.ones(labeled_set.size())
+    binary_set.y = labeled_set.y
+
+    thresholds = []
+    H_values = []
+
+    dsa = np.ones((n, n))
+    dsl = H.f.dominant_sets_label(binary_set)
+    esa = np.ones((n, n))
+    esl = H.f.equal_sets_label(binary_set)
+
+    visited_ind = []
+    total_ind = np.arange(0, n)
+
+
+
+    for k in range(len(unique_values)-1):
+        current = unique_values[k] # current attribute value
+        current_group = grouped.groups[current].values # indices of elements in df sharing this value
+        current_labels = np.unique(sorted_values[current_group, 1]) # labels sharing this value
+
+        lookahead = unique_values[k+1]
+        lookahead_group = grouped.groups[lookahead]
+        lookahead_labels = np.unique(sorted_values[lookahead_group,1])
+
+        visited_ind.extend(sorted_values[current_group, 2].astype(int).tolist())
+
+        binary_set.x[sorted_values[current_group, 2].astype(int)] = 0
+
+        if np.array_equal(current_labels,lookahead_labels):
+            if current_labels.size == 1:
+                continue
+
+        a = np.zeros((n,))
+
+        a[visited_ind] = 1
+        dsa[visited_ind] = np.ones((n,))
+        esa[visited_ind] = a
+
+        notvisited_ind = list(set(total_ind) - set(visited_ind))
+
+        a = np.zeros((n,))
+        a[notvisited_ind] = 1
+
+        dsa[notvisited_ind] = a
+        esa[notvisited_ind] = a
+
+        thresholds.append((current + lookahead) / 2.0)
+        H_values.append(H.value(binary_set, a_j, dsa, dsl, esa, esl))
+
+
+    return (thresholds, H_values)
+
+
+
 def majority_class(labeled_set, labels):
     '''
         labeled_set : labeled set
@@ -641,6 +718,27 @@ class BinaryTree:
         else:
             return self.inf.get_nb_leaves() + self.sup.get_nb_leaves()
 
+    def get_nb_nodes(self):
+        '''
+            return total number of nodes
+        '''
+        if self.isLeaf():
+            return 0
+        return self.inf.get_nb_nodes() + self.sup.get_nb_nodes() + 1
+
+    def get_total_pairs(self):
+        '''
+            return number of pairs of leaves
+        '''
+        if (self.inf.isLeaf()) and (self.sup.isLeaf()):
+            return 1
+        elif self.inf.isLeaf():
+            return self.sup.get_total_pairs()
+        elif self.sup.isLeaf():
+            return self.inf.get_total_pairs()
+        else:
+            return self.inf.get_total_pairs() + self.sup.get_total_pairs()
+
     def is_rule_monotone(self):
         '''
             return true if tree is rule monotone, false otherwise
@@ -657,6 +755,14 @@ class BinaryTree:
             return self.inf.is_rule_monotone() and self.sup.is_rule_monotone()
 
     def get_ratio_non_monotone_pairs(self):
+        '''
+            if both children of current node are leaves,
+            compute tuple of :
+            - ratio between number of non-monotone pairs
+            (e.g (w_i, w_h) in (left node, right node) where lambda(w_i) > lambda(w_h))
+            and total number of pairs of examles, multiplied by total number of examples
+            - total number of examples in both leaves
+        '''
         if (self.inf.isLeaf()) and (self.sup.isLeaf()):
 
             inf_set = self.inf.labeled_set
@@ -668,7 +774,7 @@ class BinaryTree:
             c = 0
             for i in range(n_inf):
                 for j in range(n_sup):
-                    if inf_set.getY(i) >= sup_set.getY(j):
+                    if inf_set.getY(i) > sup_set.getY(j):
                         c += 1
             return [((n_inf + n_sup) * (c * 1.0) / (n_inf * n_sup), n_inf +n_sup)]
 
@@ -686,6 +792,49 @@ class BinaryTree:
 
             t_inf.extend(t_sup)
             return t_inf
+
+    def evaluate_monotonicity(self):
+        '''
+            if both children of current node are leaves,
+            compute rank shannon discrimination measure value of node
+        '''
+        if (self.inf.isLeaf()) and (self.sup.isLeaf()):
+            g = Log()
+            h = Sum()
+            f = Dsr()
+            rsdm = Gdm(h, g, f) # rank Shannon discrimination measure
+
+            a_j = self.attribute
+            inf_set = self.inf.labeled_set
+            sup_set = self.sup.labeled_set
+
+            n_inf = inf_set.size()
+            n_sup = sup_set.size()
+
+            total_set = LabeledSet(inf_set.getInputDimension())
+            total_set.addExamples(inf_set.x, inf_set.y)
+            total_set.addExamples(sup_set.x, sup_set.y)
+
+            dsa = rsdm.f.dominant_sets_attribute(total_set, a_j)
+            dsl = rsdm.f.dominant_sets_label(total_set)
+            esa = rsdm.f.equal_sets_attribute(total_set, a_j)
+            esl = rsdm.f.equal_sets_label(total_set)
+
+            h = rsdm.value(total_set, a_j, dsa, dsl, esa, esl)
+
+            return [(h * (n_inf + n_sup), n_inf + n_sup)]
+
+        elif self.inf.isLeaf():
+            return self.sup.evaluate_monotonicity()
+        elif self.sup.isLeaf():
+            return self.inf.evaluate_monotonicity()
+        else:
+            h_inf = self.inf.evaluate_monotonicity()
+            h_sup = self.sup.evaluate_monotonicity()
+
+            h_inf.extend(h_sup)
+            return h_inf
+
 
     def get_leaves(self):
         if self.isLeaf():
@@ -850,18 +999,46 @@ class RDMT(Classifier):
         '''
             return average ratio between number of pairwise non-monotone label comparisons and number of pairs
         '''
+
+        # first column : ratio computed for each pair
+        # second column : number of examples involved in each pair
         t = np.array(self.root.get_ratio_non_monotone_pairs())
         r = t[:,0].sum() / t[:, 1].sum()
         #return (t[:,0].sum() / t[:, 1].sum()) / t.shape[0]
         n = self.labeled_set.size()
         return ((n - t[:,1].sum()) + r * (t[:,1].sum())) / n
 
+    def evaluate_monotonicity(self):
+        '''
+            return average monotonicity evaluation (computed by rank shannon discrimination measure) of RDMT
+        '''
+        evaluations = np.array(self.root.evaluate_monotonicity())
+        n_evaluation = evaluations[:,1].sum()
+        return np.mean(evaluations[:,0]) / n_evaluation
+
     def get_total_pairs(self):
         '''
-            return total number of pairs used for ratio computing
+            return total number of pairs of leaves used for ratio computing
+        '''
+        #t = np.array(self.root.get_ratio_non_monotone_pairs())
+        #return t.shape[0]
+        return self.root.get_total_pairs()
+
+    def get_nb_nodes(self):
+        return self.root.get_nb_nodes()
+
+    def pairs_ratio(self):
+        '''
+            return ratio between number of pair of leaves and total number of nodes
+        '''
+        return self.get_total_pairs() / self.get_nb_nodes()
+
+    def get_total_examples_ratio(self):
+        '''
+            return total number of examples used for ratio computing
         '''
         t = np.array(self.root.get_ratio_non_monotone_pairs())
-        return t.shape[0]
+        return t[:,1].sum()
 
     def MAE(self, labeled_set):
         '''
@@ -970,6 +1147,26 @@ def I_tree(T):
 
 ########## DATA SET GENERATION ##########
 
+def generate_1Ddataset(k, n):
+    '''
+        k : number of classes
+        n : number of examples to generate
+        return a monotone dataset with k classes and n examples
+    '''
+    data = np.reshape(np.random.random_sample(n), (-1, 1))
+
+    dataset = LabeledSet(1)
+
+    for i in range(k):
+        if i == 0:
+            examples = data[(data <= 1.0/k)]
+        else:
+            examples = data[(data > (i*1.0)/k) & (data <= (i+1.0)/k)]
+
+        examples = np.reshape(examples, (-1, 1))
+        dataset.addExamples(examples, np.array([[i+1]] * examples.shape[0]))
+
+    return dataset
 
 def generate_2Ddataset(a_j, k, n, noise, amplitude, ranges, use_seed = False):
     '''
@@ -1440,7 +1637,6 @@ def get_ten_folds(labeled_set):
                 ending_points[q] = starting_points[q] + p
                 r[q] -= p
 
-            print(np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
             dataset.addExamples(examples[starting_points[q]:ending_points[q],:], np.array([[labels[q]]] * (ending_points[q] - starting_points[q])))
 
 
