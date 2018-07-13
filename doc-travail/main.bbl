@@ -1,0 +1,177 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{greco-new-bankruptcy}{incollection}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Operational tools in the management of financial risks}
+      \field{title}{A new rough set approach to evaluation of bankruptcy risk}
+      \field{year}{1998}
+      \field{pages}{121\bibrangedash 136}
+      \range{pages}{16}
+    \endentry
+    \entry{greco-customer}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Zeitschrift f{ü}r Betriebswirtschaft}
+      \field{number}{3}
+      \field{title}{Customer satisfaction analysis based on rough set approach}
+      \field{volume}{77}
+      \field{year}{2007}
+      \field{pages}{325\bibrangedash 339}
+      \range{pages}{15}
+    \endentry
+    \entry{marsala-gradual}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2d935afed279c0266264bada38f3e720}{%
+           family={Marsala},
+           familyi={M\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{2d935afed279c0266264bada38f3e720}
+      \strng{fullhash}{2d935afed279c0266264bada38f3e720}
+      \strng{bibnamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authorbibnamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authornamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authorfullhash}{2d935afed279c0266264bada38f3e720}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Fuzzy Systems (FUZZ-IEEE), 2012 IEEE International Conference on}
+      \field{title}{Gradual fuzzy decision trees to help medical diagnosis}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+    \endentry
+    \entry{pazzani-acceptance}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e43fc7d262dbe171020fddef5b86862d}{%
+           family={Pazzani},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e8de3266bb9c62ce6a88cbe2b71bce37}{%
+           family={Mani},
+           familyi={M\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=643585a65a62416b4719005f4371d7de}{%
+           family={Shankle},
+           familyi={S\bibinitperiod},
+           given={William\bibnamedelima R},
+           giveni={W\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Schattauer GmbH}%
+      }
+      \strng{namehash}{386870c4d4acfb82c1f50491b26c3b98}
+      \strng{fullhash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{bibnamehash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{authorbibnamehash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{authornamehash}{386870c4d4acfb82c1f50491b26c3b98}
+      \strng{authorfullhash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Methods of information in medicine}
+      \field{number}{05}
+      \field{title}{Acceptance of rules generated by machine learning among medical experts}
+      \field{volume}{40}
+      \field{year}{2001}
+      \field{pages}{380\bibrangedash 385}
+      \range{pages}{6}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
