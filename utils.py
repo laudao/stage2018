@@ -578,6 +578,23 @@ def majority_class(labeled_set, labels):
     return labels[np.random.choice(np.flatnonzero(classes_size == classes_size.max()))]
     #return labels[np.argmax(np.array(classes_size))]
 
+def assign_label(labeled_set, take_majority, position):
+    labels = np.sort(np.unique(labeled_set.y)).astype(int).tolist()
+    k = len(labels)
+
+    if take_majority:
+        return majority_class(labeled_set, labels)
+    else:
+        if k == 1:
+            return labels[0]
+        elif k % 2 == 0:
+            if position == 'left':
+                return labels[int(k/2)-1]
+            else:
+                return labels[int(k/2)]
+        else:
+            return labels[int(k/2)]
+
 def constant_lambda(labeled_set):
     '''
         labeled_set : labeled set
@@ -696,8 +713,8 @@ class BinaryTree:
             g.node(prefix, str(self.attribute))
             self.inf.to_graph(g,prefix+"l")
             self.sup.to_graph(g,prefix+"r")
-            g.edge(prefix,prefix+"l", '<='+ str(self.threshold))
-            g.edge(prefix,prefix+"r", '>'+ str(self.threshold))
+            g.edge(prefix,prefix+"l", '<='+ str(round(self.threshold,2)))
+            g.edge(prefix,prefix+"r", '>'+ str(round(self.threshold, 2)))
         return g
 
     def get_depth(self):
@@ -847,7 +864,7 @@ class BinaryTree:
             t.extend(self.sup.get_leaves())
             return t
 
-def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth):
+def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth, position, take_majority=False):
     '''
         labeled_set : labeled set
         H : rank discrimination measure used for discretization
@@ -855,13 +872,14 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
         measure_threshold : lower bound for H_stop
         max_depth : maximum length of a path from the root to a leaf node
         minSize : sets the minimum size of the current object set labeled_set
+        position : left or right (child of parent node)
         build decision tree recursively
     '''
-
     h = entropy(labeled_set, labels, "shannon")
     if (h <= measureThreshold) or (labeled_set.size() <= minSize) or (constant_lambda(labeled_set)) or (current_depth > maxDepth):
         leaf = BinaryTree()
-        leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
+        #leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
+        leaf.addLeaf(assign_label(labeled_set, take_majority, position), labeled_set)
         return leaf
 
     m = labeled_set.getInputDimension()
@@ -884,7 +902,8 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
 
     if all(thr is None for thr in thresholds):
         leaf = BinaryTree()
-        leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
+        #leaf.addLeaf(majority_class(labeled_set, labels), labeled_set)
+        leaf.addLeaf(assign_label(labeled_set, take_majority, position), labeled_set)
         return leaf
 
 
@@ -895,14 +914,16 @@ def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels
     bt = BinaryTree()
 
     if inf_set.size() == 0:
-        bt.addLeaf(majority_class(sup_set, labels), sup_set)
+        #bt.addLeaf(majority_class(sup_set, labels), sup_set)
+        bt.addLeaf(assign_label(labeled_set, take_majority, position), sup_set)
         return bt
     if sup_set.size() == 0:
-        bt.addLeaf(majority_class(inf_set, labels), inf_set)
+        #bt.addLeaf(majority_class(inf_set, labels), inf_set)
+        bt.addLeaf(assign_label(labeled_set, take_majority, position), inf_set)
         return bt
 
-    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
-    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1)
+    inf_bt = build_DT(inf_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1, "left", take_majority)
+    sup_bt = build_DT(sup_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth+1, "right", take_majority)
     bt.add_children(inf_bt, sup_bt, min_attribute, min_threshold)
     return bt
 
@@ -974,7 +995,7 @@ class RDMT(Classifier):
             builds RDMT using set
         '''
         self.labeled_set = labeled_set
-        self.root = build_DT(labeled_set,self.H, self.H_stop, self.measureThreshold, self.maxDepth, self.percMinSize, self.labels, 0)
+        self.root = build_DT(labeled_set,self.H, self.H_stop, self.measureThreshold, self.maxDepth, self.percMinSize, self.labels, 0, None)
 
     def plot(self):
         '''
