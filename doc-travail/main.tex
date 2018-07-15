@@ -40,10 +40,21 @@
 \maketitle
 
 \section{Introduction}
-    Dans beaucoup de problèmes de classification, les valeurs des attributs et de la classe sont ordinaux. De plus, il peut exister une contrainte de monotonie: la classe d'un objet doit croître/décroître en fonction de la valeur de tout ou partie de ses attributs. A savoir, étant donné deux objets $x, x'$, si $x \leq x'$ alors $f(x) \leq f(x')$. On parle alors de problèmes de classification monotone, ou problèmes de classification avec contraintes de monotonie. \\
+    Dans beaucoup de problèmes de classification, les valeurs des attributs et de la classe sont ordinaux. De plus, il peut exister une contrainte de monotonie: la classe d'un objet doit croître/décroître en fonction de la valeur de tout ou partie de ses attributs. 
+A savoir, étant donné deux objets $x, x'$, si $x \leq x'$ alors $f(x) \leq f(x')$: $f(x)$ et $f(x')$, les variables dépendantes, sont des fonctions monotones de $x$ et $x'$, les variables indépendantes.
+On parle alors de problèmes de classification monotone, ou problèmes de classification avec contrainte de monotonie. Cette contrainte indique que les objets ayant de meilleures valeurs d'attributs ne doivent pas être assignés à de moins bonnes valeurs de classe.\\
 Il existe de nombreux domaines se prêtant à ce type de tâches, tels la prédiction du risque de faillite \cite{greco-new-bankruptcy}, l'analyse de la satisfaction des clients \cite{greco-customer}, le diagnostic médical \cite{marsala-gradual}. 
-L'importance de la prise en compte d'une relation graduelle entre les valeurs d'attributs et la classe a été démontrée \cite{pazzani-acceptance}: les classifieurs auxquels sont imposés la contrainte de monotonie sont au moins aussi performants que leurs homologues classiques, et les experts sont plus enclins à utiliser les règles générés par les modèles monotones.
-Afin d'extraire des règles à partir de données monotones, on utilise, pour modèle d'apprentissage, les arbres de décision. Cependant, les algorithmes de construction d'arbres de décision classiques ne produisent pas de classifieurs sensibles à la monotonie, même si le jeu de données utilisé est complètement monotone. De plus, la plupart des vrais ensemble de données ne sont pas monotones, ce qui limite la performance des classifieurs purement monotones, trop sensibles au bruit. \\
+L'importance de la prise en compte d'une relation graduelle entre les valeurs d'attributs et la classe a été démontrée \cite{pazzani-acceptance}: les classifieurs auxquels sont imposés la contrainte de monotonie sont au moins aussi performants que leurs homologues classiques, et les experts sont plus enclins à utiliser les règles générés par les modèles monotones.\\
+Afin d'extraire des règles à partir de données monotones, on utilise, pour modèle d'apprentissage, les arbres de décision, dont l'efficacité et l'interprétabilité en classification a été prouvée \cite{quinlan-induction}.
+Cependant, les algorithmes de construction d'arbres de décision standards (générés par CART \cite{leo-classification}) ne produisent pas de classifieurs sensibles à la monotonie, même si le jeu de données utilisé est complètement monotone. 
+En revanche, il est montré dans \cite{ben-adding} que les classifieurs purement monotones (\cite{ben-learning}, \cite{ben-monotonicity}, \cite{cao-consistent}) sont, en terme de taux de bonne classification, statistiquement indiscernables de leurs homologues non-monotones. 
+Il est expliqué, dans le même article, que ce phénomène est dû à la sensibilité de ces classifieurs au bruit non-monotone présent dans les vrais ensembles de données. \\
+Ce stage a pour but d'étudier la construction d'arbres de décision prenant en compte une relation graduelle susceptible d'exister entre les valeurs d'attributs et la classe, tout en étant suffisamment robuste au bruit non-monotone. On reprend, en particulier, \cite{marsala-rank} pour la construction d'arbres de décision monotones paramétrés par une mesure de discrimination à rang. Une étude théorique des propriétés des mesures présentées dans le même article est également effectuée.\\
+
+\section{Etat de l'art}
+
+\section{Implémentation et expérimentation de l'algorithme de construction d'arbres monotones}
+Dans cette partie, on reprend (à quelques variantes près) RDMT(H), l'algorithme de construction d'arbres monotones donné dans \cite{marsala-rank}. \\
 
 \printbibliography
 \end{document}
