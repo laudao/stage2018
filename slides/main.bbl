@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{marsala-rank}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=2d935afed279c0266264bada38f3e720}{%
+           family={Marsala},
+           familyi={M\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f9e6b1d48b78e7b6c3d6206b653d97db}{%
+           family={Petturiti},
+           familyi={P\bibinitperiod},
+           given={Davide},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{fullhash}{419eda1a03d75159d3e23bc395307706}
+      \strng{bibnamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authorbibnamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authornamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authorfullhash}{419eda1a03d75159d3e23bc395307706}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Rank discrimination measures for enforcing monotonicity in decision tree induction}
+      \field{volume}{291}
+      \field{year}{2015}
+      \field{pages}{143\bibrangedash 171}
+      \range{pages}{29}
+    \endentry
     \entry{pazzani-acceptance}{article}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=e43fc7d262dbe171020fddef5b86862d}{%
@@ -102,7 +139,6 @@
       \range{pages}{10}
     \endentry
   \enddatalist
-  \missing{marsala-rank}
 \endrefsection
 \endinput
 

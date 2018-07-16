@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[usenames,dvipsnames]{beamer}
 %
 % Choose how your presentation looks.
 %
@@ -58,7 +58,9 @@
   \newunit}
 
 \newcommand{\beamcite}[1]{\hfill {\footnotesize \textcite{#1}}}
-
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -88,7 +90,11 @@
 
 \begin{frame}{Classification monotone}
 \begin{itemize}
-\item Garantie d'une monotonie de la classe par rapport aux valeurs d'attributs
+\item Classifieur monotone :
+    \begin{itemize}
+        \item Exploiter au mieux l'éventuelle monotonie de la classe par rapport aux valeurs d'attributs
+        \item Classifieur aussi monotone que possible et maintenant de bonnes performances
+    \end{itemize}
 \item Concepts sémantiques : préférence, priorité, importance...
 \item Applications : 
     \begin{itemize}
@@ -96,16 +102,21 @@
         \item Evaluation du prix de biens immobiliers
         \item Cote de crédit 
     \end{itemize}
-\item Gain en interprétabilité (y compris auprès des experts) et en taux de bonne classification quand le domaine s'y prête\beamcite{pazzani-acceptance}
+\item \textcite{pazzani-acceptance} :
+    \begin{itemize}
+        \item Etude auprès des experts (médecins)
+        \item Gain d'interprétabilité
+        \item Performances équivalentes 
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Exemple de problème de classification monotone}
-\beamcite{potharst-classification-bank}
+\textcite{potharst-classification-bank}
 
 \begin{table}
 \resizebox{\textwidth}{!}{
-\begin{tabular}{|*{5}{c|}}
+\begin{tabular}{|*{4}{c|} | c |}
     \hline
         client & revenu & éducation & casier judiciaire & prêt \\
     \hline 
@@ -168,19 +179,20 @@ $\forall \omega_i, \omega_h \in \Omega, a_j(\omega_i) \leq a_j(\omega_h) \Righta
 \end{frame}
 
 \begin{frame}{Mesures de discrimination à rang}
-\begin{itemize}
-\item Problème : incapacité des mesures de discrimination classiques à détecter la monotonie 
-\item Chercher des mesures de discrimination sensibles à la monotonie et robustes au bruit non-monotone
-\begin{itemize}
-\item Généralisation à rang de mesures classiques (Shannon, Gini)
-\item Modèle de construction hiérarchique 
-\end{itemize}
+    \begin{itemize}
+    \item Problème : incapacité des mesures de discrimination classiques à détecter la monotonie 
+    \item Chercher des mesures de discrimination sensibles à la monotonie et robustes au bruit non-monotone
+    \begin{itemize}
+        \item Généralisation à rang de mesures classiques (Shannon, Gini)
+        \item Modèle de construction hiérarchique :
+            $$H^*(\lambda | a_j) = \blue{h^*(}\magenta{g^*(}\red{f^*(}\omega_1\red{)}\magenta{)},...,\magenta{g^*(}\red{f^*(}\omega_n\red{)}\magenta{)}\blue{)}$$
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Ensembles dominants}
 \begin{itemize}
-\item Classes d'équivalence générés par, : 
+\item Classes d'équivalence générées par, : 
 \begin{itemize}
 \item un attribut $a_j$ : $[\omega_i]_{a_j} = \{\omega_h \in \Omega : a_j(\omega_i) = a_j(\omega_h)\}$
 \item la classe $\lambda$ : $[\omega_i]_{\lambda} = \{\omega_h \in \Omega : \lambda(\omega_i) = \lambda(\omega_h)\}$
@@ -195,15 +207,48 @@ $\forall \omega_i, \omega_h \in \Omega, a_j(\omega_i) \leq a_j(\omega_h) \Righta
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Ensembles dominants : exemple}
+Soit le dataset suivant :
+
+\begin{table}
+\begin{tabular}{|*{3}{c|} | c |}
+    \hline
+        $\omega_i$ & $a_1$ & $a_2$ & $\lambda$ \\
+    \hline 
+        $\omega_1$ & 1 & 5 & 1 \\ 
+        $\omega_2$ & 1 & 7 & 1 \\
+        $\omega_3$ & 2 & 8 & 1\\
+        $\omega_4$ & 5 & 9 & 2 \\
+        $\omega_5$ & 5 & 7 & 2 \\ 
+        $\omega_6$ & 4  & 6 & 2\\
+    \hline
+\end{tabular}
+
+\begin{itemize}
+    \item L'ensemble dominant généré par $a_1$ pour $\omega_3$ est : 
+        $$[\omega_3]^{\leq}_{a_1} = \{\omega_3, \omega_4, \omega_5, \omega_6\}$$
+    \item L'ensemble dominant généré par $\lambda$ pour $\omega_3$ est :
+        $$[\omega_3]^{\leq}_{\lambda} = \{\omega_1, \omega_2, \omega_3, \omega_4, \omega_5, \omega_6\}$$
+\end{itemize}
+
+\label{tab:dsa-dataset}
+
+
+
+\end{table}
+
+
+\end{frame}
+
 \begin{frame}{Généralisation à rang de l'entropie de Shannon}
 \begin{itemize}
 \item Entropie conditionnelle de Shannon: 
 
-$H_s(\lambda | a_j) = \sum_{i=1}^{|\Omega|} \frac{1}{|\Omega|}(\log (\frac{|[\omega_i]_{\lambda} \cap [\omega_i]_{a_j}|}{|[\omega_i]_{a_j}|}))$
+$$H_s\left(\lambda | a_j\right) = \sum_{i=1}^{|\Omega|} \frac{1}{|\Omega|}\left(\log \left(\frac{|[\omega_i]_{\lambda} \cap [\omega_i]_{a_j}|}{|[\omega_i]_{a_j}|}\right)\right)$$
 
 \item Entropie de Shannon à rang: 
 
-$H^*_s(\lambda | a_j) = \sum_{i=1}^{|\Omega|} \frac{1}{|\Omega|}(\log (\frac{|[\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|}))$
+$$H^*_s\left(\lambda | a_j\right) = \sum_{i=1}^{|\Omega|} \frac{1}{|\Omega|}\left(\log \left(\frac{|[\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|}\right)\right)$$
 
 \end{itemize}
 
@@ -221,7 +266,7 @@ Pour $a_j$ fixé :
 \item $h^*$ : agrégation de mesures de non-monotonie locale
 \end{itemize}
 Ecriture générique : \\~\
-$H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$
+            $$H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
 \end{itemize}
 \end{frame}
 
@@ -244,7 +289,7 @@ $H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$
             \item $g^*_S = -\log(f^*_S(\omega_i))$
             \item $h^*_S = \sum_{i=1}^{n} \myfrac{1}{n} g^*_S(f^*_S(\omega_i))$
         \end{itemize}
-        \item $H^*_P(\lambda|a_j) = \displaystyle\sum_{i=1}^{n}\myfrac{1}{n} (-\myfrac{\log(mindsr(\omega_i))}{mindsr(\omega_i)})$
+    \item $H^*_P(\lambda|a_j) = \displaystyle\sum_{i=1}^{n}\myfrac{1}{n} (-\myfrac{\log(mindsr(\omega_i))}{mindsr(\omega_i)}$
         \begin{itemize}
             \item $f^*_P = mindsr(\omega_i)$
             \item $g^*_P = -\myfrac{\log f^*_P(\omega_i)}{f^*_P(\omega_i)}$
@@ -290,10 +335,19 @@ $H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$
 \end{frame}
 
 \begin{frame}{Arbres de décision générés}
-    \begin{figure}
-	    \includegraphics[width=.4\textwidth]{rsdm-tree-artificial.png}
-	    \includegraphics[width=.4\textwidth]{sdm-tree-artificial.png}
-    \end{figure}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \centering
+            Arbre généré par $H^*_S$\\
+            \includegraphics[width=0.7\textwidth]{rsdm-tree-artificial.png}
+            \vspace*{2.5cm}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \centering
+            Arbre généré par $H_S$
+	    \includegraphics[width=0.7\textwidth]{sdm-tree-artificial.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{RDMT(H) sur des datasets artificiels}

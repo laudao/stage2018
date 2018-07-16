@@ -1020,14 +1020,14 @@ class RDMT(Classifier):
         '''
             return average ratio between number of pairwise non-monotone label comparisons and number of pairs
         '''
-
         # first column : ratio computed for each pair
         # second column : number of examples involved in each pair
+        n = self.labeled_set.size()
         t = np.array(self.root.get_ratio_non_monotone_pairs())
+        n_eval = t[:,1].sum()
         r = t[:,0].sum() / t[:, 1].sum()
         #return (t[:,0].sum() / t[:, 1].sum()) / t.shape[0]
-        n = self.labeled_set.size()
-        return ((n - t[:,1].sum()) + r * (t[:,1].sum())) / n
+        return ((n - n_eval) + r * n_eval) / n
 
     def evaluate_monotonicity(self):
         '''

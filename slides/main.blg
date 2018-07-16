@@ -1,17 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
-[0] Config.pm:305> INFO - Logfile is 'main.blg'
-[28] biber:313> INFO - === ven. juil. 13, 2018, 12:09:47
-[70] Biber.pm:371> INFO - Reading 'main.bcf'
-[147] Biber.pm:857> INFO - Found 3 citekeys in bib section 0
-[164] Biber.pm:3976> INFO - Processing section 0
-[175] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
-[178] bibtex.pm:1489> INFO - LaTeX decoding ...
-[183] bibtex.pm:1305> INFO - Found BibTeX data source 'references.bib'
-[203] Utils.pm:193> WARN - I didn't find a database entry for 'marsala-rank' (section 0)
-[215] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[215] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[215] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
-[215] Biber.pm:3810> INFO - No sort tailoring available for locale 'fr-FR'
-[219] bbl.pm:617> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[221] bbl.pm:720> INFO - Output to main.bbl
-[223] Biber.pm:110> INFO - WARNINGS: 1
+[1] Config.pm:305> INFO - Logfile is 'main.blg'
+[34] biber:313> INFO - === lun. juil. 16, 2018, 11:13:44
+[72] Biber.pm:371> INFO - Reading 'main.bcf'
+[139] Biber.pm:857> INFO - Found 3 citekeys in bib section 0
+[155] Biber.pm:3976> INFO - Processing section 0
+[165] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[169] bibtex.pm:1489> INFO - LaTeX decoding ...
+[175] bibtex.pm:1305> INFO - Found BibTeX data source 'references.bib'
+[205] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[205] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[205] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
+[205] Biber.pm:3810> INFO - No sort tailoring available for locale 'fr-FR'
+[209] bbl.pm:617> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[211] bbl.pm:720> INFO - Output to main.bbl
