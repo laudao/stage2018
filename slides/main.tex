@@ -92,7 +92,7 @@
 \begin{itemize}
 \item Classifieur monotone :
     \begin{itemize}
-        \item Exploiter au mieux l'éventuelle monotonie de la classe par rapport aux valeurs d'attributs
+        \item Exploiter la monotonie de la classe par rapport aux attributs
         \item Classifieur aussi monotone que possible et maintenant de bonnes performances
     \end{itemize}
 \item Concepts sémantiques : préférence, priorité, importance...
@@ -164,7 +164,7 @@
 \begin{frame}{Classification par arbres de décision}
 \begin{itemize}
 \item Pas d'hypothèse sur les données
-\item Exploiter au mieux l'éventuelle gradualité entre les valeurs d'attributs et la classe
+%\item Exploiter au mieux l'éventuelle gradualité entre les valeurs d'attributs et la classe
 \item Construction :
 \begin{itemize}
 \item Choisir $a_j$ respectant le plus la contrainte de monotonie locale: \\~\
@@ -303,7 +303,7 @@ Ecriture générique : \\~\
         \item Classifieur RDMT(H) paramétré par : 
             \begin{itemize}
                 \item Une mesure de discrimination H
-                \item 3 critères de pré-élagage : partitionnement, arrêt, étiquetage
+                \item 3 critères : partitionnement, arrêt, étiquetage
             \end{itemize}
         \item Critère de partitionnement (splitting rule)
             \begin{itemize}
@@ -420,7 +420,7 @@ Ecriture générique : \\~\
 
 \end{frame}
 
-\begin{frame}{Expérimentations sur des datasets réels}
+\begin{frame}{Expérimentations sur des datasets artificiels}
 
     \begin{itemize}
         \item CPU (classification) : 8 classes, 9 attributs, 209 instances

@@ -1,0 +1,81 @@
+Slide 2 :
+- La monotonie est-elle vraiment garantie (i.e. toutes les feuilles sont
+  monotones) ?
+  Quelle définition exactement ? Si A est l'arbre appris, F(A) la liste des
+  étiquettes des feuilles, alors F(A) est croissante ou décroissante (évidemment
+  c'est faux sur les exemples que tu m'as montrés) ?
+- La dernière ligne est un peu vague à cause du "quand le domaine s'y prête". Tu
+  pourrais changer ça en
+
+    \textcite{pazzani-machin} :
+    \begin{itemize}
+      \item étude auprès d'experts : médecins
+      \item gain d'interprétabilité
+      \item performances équivalentes
+    \end{itemize}
+
+Slide 3 :
+- Ici non plus tu n'es pas obligée de \beamcite, tu peux le mettre en \textcite.
+- Peut-être mettre la colonne "prêt" en avant pour montrer que c'est la
+  prédiction ?
+
+Slide 4 :
+Ça m'a l'air bien et lisible comme formalisation, au "monotone" près (cf.
+remarque slide 2)
+
+Slide 5 :
+Donc la monotonie peut être fonction d'un seul attribut et pas nécessairement de
+tous ? Par opposition à l'exemple suivant :
+
+       ^
+       |  x    o   a
+       |    x   o     a
+       |  x    o   a    a
+     y |  x  x   o   a
+       |    x  o   a      a
+       |  x   x o  o  o o
+       |  x  x   o  o  o  o
+       |     x   x      x
+       |     x    x   x
+       -------------------->
+               z
+où x < o < a sont trois labels ordonnés tq.
+    λ(ω₁) > λ(ω₂) ⇒ y(ω₁) > y(ω₂) ∨ z(ω₁) > z(ω₂)
+
+ou à un exemple similaire en remplaçant le ∨ par un ∧
+
+Slide 6 :
+Ok ça répond à la question "monotonie globale". Du coup il faudrait idéalement
+préciser l'idée derrière le "monotone" du début : c'est plutôt un "aussi monotone
+que possible tout en maintenant des bonnes performances" ?
+
+Slide 7 :
+- Plutôt clair
+- Un petit schéma pour le "construction hiérarchique" ? Juste une formule
+  générique avec des couleurs + un exemple avec le même code couleur ?
+  Ou alors tu en parles juste plus tard (mais il faut le dire)
+
+Slide 8 :
+- générées*
+- Raisonnablement clair aussi, il faut juste bien les lire en mode "l'ensemble
+  des points tels que" à l'oral
+- pourrait bénéficier d'un schéma si tu trouves le temps mais ça n'est pas
+  prioritaire
+
+Slide 9 :
+- Utilise $$ ou \begin{equation} plutôt que $
+- Utilise \left( ... \right)   plutôt que ( ... ) pour un dimensionnement
+  correct des parenthèses
+
+Slide 10 :
+- Le problème de citation semble venir du fait que ton .bib ne contient pas
+  marsala-rank
+- Cf. remarque slide 7
+- Mesure de non-monotonie locale ? C'est-à-dire ?
+
+Slide 15 :
+Qui est qui ? Le deuxième est celui pour Shannon normale, i.e. sdm ?
+
+
+Ça me semble être un très bon début. Comme dernier slide tu peux remettre une
+frame avec le \maketitle, c'est généralement suffisant.
