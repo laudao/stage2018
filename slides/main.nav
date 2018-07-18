@@ -77,17 +77,33 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {18}{18}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {2}{18}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {2}{18}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {2}{R\'ef\'erences}{19}{R\'ef\'erences}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {2}{0}{0}{19/19}{}{0}}
+\headcommand {\slideentry {1}{0}{18}{19/19}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {2}{19}}
-\headcommand {\beamer@sectionpages {2}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\gdef \inserttotalframenumber {19}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {1}{0}{19}{20/20}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {20}{20}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {2}{20}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {2}{20}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {2}{R\'ef\'erences}{21}{R\'ef\'erences}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{0}{21/21}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {21}{21}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{1}{22/22}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {22}{22}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{2}{23/23}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@partpages {1}{23}}
+\headcommand {\beamer@subsectionpages {2}{23}}
+\headcommand {\beamer@sectionpages {2}{23}}
+\headcommand {\beamer@documentpages {23}}
+\headcommand {\gdef \inserttotalframenumber {23}}

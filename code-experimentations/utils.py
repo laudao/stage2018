@@ -793,8 +793,9 @@ class BinaryTree:
                 for j in range(n_sup):
                     if inf_set.getY(i) > sup_set.getY(j):
                         c += 1
-            return [((n_inf + n_sup) * (c * 1.0) / (n_inf * n_sup), n_inf +n_sup)]
-
+            #return [((n_inf + n_sup) * (c * 1.0) / (n_inf * n_sup), n_inf +n_sup, c, (n_inf + n_sup)/(n_inf * n_sup))]
+            #return [((n_inf + n_sup) * (c * 1.0) / (n_inf * n_sup), n_inf + n_sup)]
+            return [(c / (n_inf * n_sup), n_inf + n_sup, (n_inf + n_sup)/(n_inf * n_sup))]
 
         elif self.inf.isLeaf():
             return self.sup.get_ratio_non_monotone_pairs()
@@ -809,6 +810,38 @@ class BinaryTree:
 
             t_inf.extend(t_sup)
             return t_inf
+
+
+    def evaluate_NMI1(self):
+        if (self.inf.isLeaf()) and (self.sup.isLeaf()):
+            inf_set = self.inf.labeled_set
+            sup_set = self.sup.labeled_set
+
+            dataset = LabeledSet(inf_set.getInputDimension())
+            dataset.addExamples(inf_set.x, inf_set.y)
+            dataset.addExamples(sup_set.x, sup_set.y)
+
+            n_inf = inf_set.size()
+            n_sup = sup_set.size()
+
+            nmi = NMI1(dataset)
+            return [((n_inf + n_sup) * (nmi * 1.0) / (n_inf * n_sup), n_inf + n_sup)]
+
+        elif self.inf.isLeaf():
+            return self.sup.evaluate_NMI1()
+
+        elif self.sup.isLeaf():
+            return self.inf.evaluate_NMI1()
+
+        else:
+            t_inf = self.inf.evaluate_NMI1()
+            t_sup = self.sup.evaluate_NMI1()
+
+
+            t_inf.extend(t_sup)
+            return t_inf
+
+
 
     def evaluate_monotonicity(self):
         '''
@@ -1022,12 +1055,24 @@ class RDMT(Classifier):
         '''
         # first column : ratio computed for each pair
         # second column : number of examples involved in each pair
-        n = self.labeled_set.size()
-        t = np.array(self.root.get_ratio_non_monotone_pairs())
-        n_eval = t[:,1].sum()
-        r = t[:,0].sum() / t[:, 1].sum()
+        #n = self.labeled_set.size()
+        #t = np.array(self.root.get_ratio_non_monotone_pairs())
+        #n_eval = t[:,1].sum()
+        #r = t[:,0].sum() / t[:, 1].sum()
         #return (t[:,0].sum() / t[:, 1].sum()) / t.shape[0]
-        return ((n - n_eval) + r * n_eval) / n
+        #return ((n - n_eval) + r * n_eval) / n, t[:,2], t[:,3]
+        #return ((n - n_eval) + r * n_eval) / n
+
+        t = np.array(self.root.get_ratio_non_monotone_pairs())
+        r_i = t[:,0]
+        n_i = t[:,1]
+        return ((n_i * r_i).sum()) / (n_i.sum()), t[:,2]
+
+    def evaluate_NMI1(self):
+        t = np.array(self.root.evaluate_NMI1())
+        n_eval = t[:,1].sum()
+        r = t[:,0].sum() / n_eval
+        return r
 
     def evaluate_monotonicity(self):
         '''
@@ -1275,17 +1320,18 @@ def add_noise(labeled_set, noise):
     noisy_set.x = labeled_set.x.copy()
     noisy_set.y = labeled_set.y.copy()
 
+
     for i in range(len(random_order)):
         q1 = random_order[i]
         ind_q1 = np.where(noisy_set.y == q1)[0]
         sample = np.random.choice(ind_q1, p) # randomly pick p examples from class
 
         if i == k-1:
-            q2 = 1
+            q2 = random_order[0]
         else:
             q2 = random_order[i+1]
 
-        noisy_set.y[sample] = np.array([[q2]] * p) # change labels )
+        noisy_set.y[sample] = np.array([[q2]] * p) # change labels
 
     return noisy_set
 

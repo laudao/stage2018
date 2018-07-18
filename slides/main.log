@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Debian) (preloaded format=pdflatex 2018.7.11)  16 JUL 2018 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Debian) (preloaded format=pdflatex 2018.7.11)  18 JUL 2018 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1539,22 +1539,20 @@ LaTeX Font Warning: Font shape `T1/cmss/m/sc' undefined
 ] [4
 
 ]
-<Capture_d__cran_de_2018-07-11_20-06-25.png, id=72, 468.75125pt x 274.02374pt>
-File: Capture_d__cran_de_2018-07-11_20-06-25.png Graphic file (type png)
-<use Capture_d__cran_de_2018-07-11_20-06-25.png>
-Package pdftex.def Info: Capture_d__cran_de_2018-07-11_20-06-25.png  used on in
-put line 162.
-(pdftex.def)             Requested size: 239.70367pt x 140.12657pt.
+<artificial-dataset.png, id=72, 406.51875pt x 275.0275pt>
+File: artificial-dataset.png Graphic file (type png)
+<use artificial-dataset.png>
+Package pdftex.def Info: artificial-dataset.png  used on input line 162.
+(pdftex.def)             Requested size: 239.70367pt x 162.16829pt.
  [5
 
- <./Capture_d__cran_de_2018-07-11_20-06-25.png>] [6
+ <./artificial-dataset.png>] [6
 
 ] [7
 
 ] [8
 
-]
-[9
+] [9
 
 ] [10
 
@@ -1562,38 +1560,116 @@ put line 162.
 
 ] [12
 
-] [13
-
-] [14
+]
+[13
 
 ]
-<split.png, id=150, 530.98375pt x 259.97125pt>
-File: split.png Graphic file (type png)
-<use split.png>
-Package pdftex.def Info: split.png  used on input line 335.
-(pdftex.def)             Requested size: 239.70367pt x 117.35886pt.
- [15
+<threshold_rsdm.png, id=144, 408.52625pt x 270.00874pt>
+File: threshold_rsdm.png Graphic file (type png)
+<use threshold_rsdm.png>
+Package pdftex.def Info: threshold_rsdm.png  used on input line 346.
+(pdftex.def)             Requested size: 136.97464pt x 90.53279pt.
+<threshold_sdm.png, id=145, 403.5075pt x 265.99374pt>
+File: threshold_sdm.png Graphic file (type png)
+<use threshold_sdm.png>
+Package pdftex.def Info: threshold_sdm.png  used on input line 346.
+(pdftex.def)             Requested size: 136.97464pt x 90.29462pt.
+ [14
 
- <./split.png>]
-<rsdm-tree-artificial.png, id=158, 394.47375pt x 426.59375pt>
+ <./threshold_rsdm.png> <./threshold_sdm.png>]
+<Capture_d__cran_de_2018-07-11_20-06-25.png, id=154, 468.75125pt x 274.02374pt>
+
+File: Capture_d__cran_de_2018-07-11_20-06-25.png Graphic file (type png)
+<use Capture_d__cran_de_2018-07-11_20-06-25.png>
+Package pdftex.def Info: Capture_d__cran_de_2018-07-11_20-06-25.png  used on in
+put line 365.
+(pdftex.def)             Requested size: 119.85445pt x 70.06119pt.
+<rsdm-tree-artificial.png, id=156, 394.47375pt x 426.59375pt>
 File: rsdm-tree-artificial.png Graphic file (type png)
 <use rsdm-tree-artificial.png>
-Package pdftex.def Info: rsdm-tree-artificial.png  used on input line 351.
-(pdftex.def)             Requested size: 119.85182pt x 129.60643pt.
-<sdm-tree-artificial.png, id=159, 325.215pt x 532.99126pt>
+Package pdftex.def Info: rsdm-tree-artificial.png  used on input line 365.
+(pdftex.def)             Requested size: 77.04741pt x 83.31888pt.
+<sdm-tree-artificial.png, id=157, 325.215pt x 532.99126pt>
 File: sdm-tree-artificial.png Graphic file (type png)
 <use sdm-tree-artificial.png>
-Package pdftex.def Info: sdm-tree-artificial.png  used on input line 351.
-(pdftex.def)             Requested size: 119.85182pt x 196.42293pt.
+Package pdftex.def Info: sdm-tree-artificial.png  used on input line 365.
+(pdftex.def)             Requested size: 77.04741pt x 126.26956pt.
+
+Overfull \vbox (13.53725pt too high) detected at line 365
+ []
+
+[15
+
+ <./Capture_d__cran_de_2018-07-11_20-06-25.png> <./rsdm-tree-artificial.png> <.
+/sdm-tree-artificial.png>]
+<acc_2.png, id=167, 668.4975pt x 485.815pt>
+File: acc_2.png Graphic file (type png)
+<use acc_2.png>
+Package pdftex.def Info: acc_2.png  used on input line 388.
+(pdftex.def)             Requested size: 154.09483pt x 111.97972pt.
+<shannon_eval_2.png, id=168, 646.415pt x 483.8075pt>
+File: shannon_eval_2.png Graphic file (type png)
+<use shannon_eval_2.png>
+Package pdftex.def Info: shannon_eval_2.png  used on input line 388.
+(pdftex.def)             Requested size: 154.09483pt x 115.32626pt.
+<acc_3.png, id=169, 670.505pt x 482.80376pt>
+File: acc_3.png Graphic file (type png)
+<use acc_3.png>
+Package pdftex.def Info: acc_3.png  used on input line 388.
+(pdftex.def)             Requested size: 154.09483pt x 110.95412pt.
+<shannon_eval_3.png, id=170, 662.475pt x 482.80376pt>
+File: shannon_eval_3.png Graphic file (type png)
+<use shannon_eval_3.png>
+Package pdftex.def Info: shannon_eval_3.png  used on input line 388.
+(pdftex.def)             Requested size: 154.09483pt x 112.30228pt.
  [16
 
- <./rsdm-tree-artificial.png> <./sdm-tree-artificial.png>] [17
+ <./acc_2.png> <./shannon_eval_2.png> <./acc_3.png> <./shannon_eval_3.png>]
+<acc_5.png, id=177, 685.56125pt x 479.7925pt>
+File: acc_5.png Graphic file (type png)
+<use acc_5.png>
+Package pdftex.def Info: acc_5.png  used on input line 401.
+(pdftex.def)             Requested size: 171.21765pt x 119.82336pt.
+<shannon_eval_5.png, id=178, 667.49374pt x 486.81876pt>
+File: shannon_eval_5.png Graphic file (type png)
+<use shannon_eval_5.png>
+Package pdftex.def Info: shannon_eval_5.png  used on input line 401.
+(pdftex.def)             Requested size: 171.21765pt x 124.86882pt.
+ [17
 
-] [18
+ <./acc_5.png> <./shannon_eval_5.png>]
+<ratio_2.png, id=185, 675.52374pt x 473.77pt>
+File: ratio_2.png Graphic file (type png)
+<use ratio_2.png>
+Package pdftex.def Info: ratio_2.png  used on input line 421.
+(pdftex.def)             Requested size: 154.09483pt x 108.06839pt.
+<ratio_3.png, id=186, 708.6475pt x 475.7775pt>
+File: ratio_3.png Graphic file (type png)
+<use ratio_3.png>
+Package pdftex.def Info: ratio_3.png  used on input line 421.
+(pdftex.def)             Requested size: 154.09483pt x 103.45172pt.
+<ratio_5.png, id=187, 680.5425pt x 484.81125pt>
+File: ratio_5.png Graphic file (type png)
+<use ratio_5.png>
+Package pdftex.def Info: ratio_5.png  used on input line 421.
+(pdftex.def)             Requested size: 154.09483pt x 109.7732pt.
 
-] [19
+Overfull \vbox (0.54175pt too high) detected at line 421
+ []
 
- </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+[18
+
+ <./ratio_2.png> <./ratio_3.png> <./ratio_5.png>] [19
+
+] [20
+
+] [21
+
+ </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>] [22
+
+] [23
+
+]
 \tf@nav=\write8
 \openout8 = `main.nav'.
 
@@ -1603,11 +1679,12 @@ Package pdftex.def Info: sdm-tree-artificial.png  used on input line 351.
 \tf@snm=\write10
 \openout10 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
- (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 503.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
+
+(./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7B75E609E9C277365E66EBE8EF83D8B2;98.
 
@@ -1619,10 +1696,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33425 strings out of 492648
- 645619 string characters out of 6132023
- 1070984 words of memory out of 5000000
- 36744 multiletter control sequences out of 15000+600000
+ 33502 strings out of 492648
+ 646920 string characters out of 6132023
+ 1076067 words of memory out of 5000000
+ 36800 multiletter control sequences out of 15000+600000
  551872 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,57p,10401b,1911s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1651,10 +1728,10 @@ m-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0900.pfb
 ></usr/share/texmf/fonts/type1/public/cm-super/sfss1000.pfb></usr/share/texmf/f
 onts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf/fonts/type1/public/cm
 -super/sfss1440.pfb>
-Output written on main.pdf (19 pages, 315930 bytes).
+Output written on main.pdf (23 pages, 733799 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

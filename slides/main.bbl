@@ -19,6 +19,56 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{hu-information}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Qinghua},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e6c38a8e52ab483adb814ed2555f1eca}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Maozu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3225b4c384602bfd669d6323ac07bc99}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Daren},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d27ddb1988b3ad601c0c5e091347306}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jinfu},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{fullhash}{bed77a7c740f815f12ebc5cb50e9382e}
+      \strng{bibnamehash}{bed77a7c740f815f12ebc5cb50e9382e}
+      \strng{authorbibnamehash}{bed77a7c740f815f12ebc5cb50e9382e}
+      \strng{authornamehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{authorfullhash}{bed77a7c740f815f12ebc5cb50e9382e}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science China Information Sciences}
+      \field{number}{6}
+      \field{title}{Information entropy for ordinal classification}
+      \field{volume}{53}
+      \field{year}{2010}
+      \field{pages}{1188\bibrangedash 1200}
+      \range{pages}{13}
+    \endentry
     \entry{marsala-rank}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=2d935afed279c0266264bada38f3e720}{%
