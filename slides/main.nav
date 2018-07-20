@@ -102,8 +102,12 @@
 \headcommand {\slideentry {2}{0}{2}{23/23}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\beamer@partpages {1}{23}}
-\headcommand {\beamer@subsectionpages {2}{23}}
-\headcommand {\beamer@sectionpages {2}{23}}
-\headcommand {\beamer@documentpages {23}}
-\headcommand {\gdef \inserttotalframenumber {23}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{3}{24/24}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@partpages {1}{24}}
+\headcommand {\beamer@subsectionpages {2}{24}}
+\headcommand {\beamer@sectionpages {2}{24}}
+\headcommand {\beamer@documentpages {24}}
+\headcommand {\gdef \inserttotalframenumber {24}}

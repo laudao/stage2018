@@ -1978,6 +1978,15 @@
     <bcf:citekey order="2">greco-customer</bcf:citekey>
     <bcf:citekey order="3">marsala-gradual</bcf:citekey>
     <bcf:citekey order="4">pazzani-acceptance</bcf:citekey>
+    <bcf:citekey order="5">quinlan-induction</bcf:citekey>
+    <bcf:citekey order="6">leo-classification</bcf:citekey>
+    <bcf:citekey order="7">ben-adding</bcf:citekey>
+    <bcf:citekey order="8">ben-learning</bcf:citekey>
+    <bcf:citekey order="9">ben-monotonicity</bcf:citekey>
+    <bcf:citekey order="10">cao-consistent</bcf:citekey>
+    <bcf:citekey order="11">marsala-rank</bcf:citekey>
+    <bcf:citekey order="12">marsala-rank</bcf:citekey>
+    <bcf:citekey order="13">marsala-rank</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

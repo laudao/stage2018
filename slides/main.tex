@@ -93,7 +93,7 @@
 \item Classifieur monotone :
     \begin{itemize}
         \item Exploiter la monotonie de la classe par rapport aux attributs
-        \item Classifieur aussi monotone que possible et maintenant de bonnes performances
+        \item Classifieur aussi monotone que possible et qui maintiennent de bonnes performances
     \end{itemize}
 \item Concepts sémantiques : préférence, priorité, importance...
 \item Applications : 
@@ -181,7 +181,7 @@ $$\forall \omega_i, \omega_h \in \Omega, a_j(\omega_i) \leq a_j(\omega_h) \Right
 \begin{frame}{Mesures de discrimination monotone}
     \begin{itemize}
     \item Problème : incapacité des mesures de discrimination classiques à détecter la monotonie 
-    \item Chercher des mesures de discrimination sensibles à la monotonie et robustes au bruit non-monotone
+    \item Chercher des mesures de discrimination sensibles à la monotonie et robustes au bruit non-monotone \beamcite{marsala-rank}
     \begin{itemize}
         \item Généralisation à rang de mesures classiques (Shannon, Gini)
         \item Modèle de construction hiérarchique
@@ -196,13 +196,13 @@ Pour $\omega_i \in \Omega,$
 \item Classes d'équivalence générées par : 
 \begin{itemize}
 \item un attribut $a_j$ : $$[\omega_i]_{a_j} = \{\omega_h \in \Omega : a_j(\omega_i) = a_j(\omega_h)\}$$
-\item la classe $\lambda$ : $$[\omega_i]_{\lambda} = \{\omega_h \in \Omega : \lambda(\omega_i) = \lambda(\omega_h)\}$$
+\item la classe : $$[\omega_i]_{\lambda} = \{\omega_h \in \Omega : \lambda(\omega_i) = \lambda(\omega_h)\}$$
 \end{itemize}
 
 \item Ensembles dominants générés par :
 \begin{itemize}
 \item un attribut $a_j$ : $$[\omega_i]^{\leq}_{a_j} = \{\omega_h \in \Omega : a_j(\omega_i) \leq a_j(\omega_h)\}$$
-\item la classe $\lambda$ : $$[\omega_i]^{\leq}_{\lambda} = \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$$
+\item la classe : $$[\omega_i]^{\leq}_{\lambda} = \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$$
 \end{itemize}
 
 \end{itemize}
@@ -261,7 +261,6 @@ Pour $\omega_i \in \Omega,$
 \item Isoler les propriétés d'une telle mesure
 \item Créer de nouvelles mesures
 \item Structure fonctionnelle commune avec 3 fonctions \\
-Pour $a_j$ fixé :
 \begin{itemize}
 \item $f^*$ : mesure de monotonie locale de l'objet
 \item $g^*$ : mesure d'agrégation de $f^*$
@@ -334,13 +333,13 @@ Ecriture générique : \\~\
             \centering
             Seuil de coupure généré par $H^*_S$ : \\
             \includegraphics[width=0.8\textwidth]{threshold_rsdm.png}
-            $$H^*_S(\lambda | x) =  0.19 \leq H^*_S(\lambda | y) =  0.53$$
+            $$H^*_S(\lambda | \mathbf{x}) =  0.19 \leq H^*_S(\lambda | \mathbf{y}) =  0.53$$
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
             Seuil de coupure généré par $H_S$ :
 	    \includegraphics[width=0.8\textwidth]{threshold_sdm.png}
-        $$H_S(\lambda | x) = H_S(\lambda | y) =  0.67$$
+            $$H_S(\lambda | \mathbf{x}) = H_S(\lambda | \mathbf{y}) =  0.67$$
         \end{column}
     \end{columns}
 \end{frame}
@@ -364,7 +363,7 @@ Ecriture générique : \\~\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Expérimentations sur des datasets jouets}
+\begin{frame}{Expérimentations sur des datasets artificiels}
     \begin{columns}
         \begin{column}{0.45\textwidth}
             \centering
@@ -387,7 +386,7 @@ Ecriture générique : \\~\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Expérimentations sur des datasets jouets}
+\begin{frame}{Expérimentations sur des datasets artificiels}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \centering
@@ -400,7 +399,7 @@ Ecriture générique : \\~\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Expérimentations sur des datasets jouets : ratio du nombre de paires d'éléments non monotones}
+\begin{frame}{Expérimentations sur des datasets artificiels : ratio du nombre de paires d'éléments non monotones}
     \begin{columns}
         \begin{column}{0.45\textwidth}
             \centering
@@ -420,8 +419,7 @@ Ecriture générique : \\~\
 
 \end{frame}
 
-\begin{frame}{Expérimentations sur des datasets artificiels}
-
+\begin{frame}{Expérimentations sur des datasets réels}
     \begin{itemize}
         \item CPU (classification) : 8 classes, 9 attributs, 209 instances
         \begin{table}
@@ -430,14 +428,14 @@ Ecriture générique : \\~\
                 \hline
                    & $H^{*}_S$  & $H_S$ & $H^{*}_Q$ \\
                 \hline
-                CCI  & 68.40 \% $\pm$ 0.04 \% & 65.06 \% $\pm$ 0.03 \%  & 67.93 \% $\pm$ 0.03 \%  \\
-                avgDepth  & 10.50 $\pm$ 0.50& 9.00 $\pm$ 0.00& 11.00 $\pm$ 1.00 \\
-                avgLeaves  & 35.00 $\pm$ 2.00& 27.50 $\pm$ 3.50& 40.50 $\pm$ 3.50 \\
-                avgRatio  & 77.99 \% $\pm$ 0.11 \%& 86.00 \% $\pm$ 2.83 \%& 50.64 \% $\pm$ 16.03 \% \\
-                avgNbPairs  & 9.50 $\pm$ 0.50& 7.50 $\pm$ 1.50&  12.50 $\pm$ 1.50 \\
-                avgEval  & 0.02 $\pm$ 0.00& 0.04 $\pm$ 0.02& 0.01 $\pm$ 0.00\\
-                avgPairRatio  & 0.28 $\pm$ 0.00& 0.28 $\pm$ 0.02&0.32 $\pm$ 0.01\\
-                avgNbExamples  & 27.00 $\pm$ 0.00& 28.00 $\pm$ 3.00& 55.50 $\pm$ 16.50\\
+                Accuracy  & 68.40 \% $\pm$ 0.04 \% & 65.06 \% $\pm$ 0.03 \%  & 67.93 \% $\pm$ 0.03 \%  \\
+                %Depth  & 10.50 $\pm$ 0.50& 9.00 $\pm$ 0.00& 11.00 $\pm$ 1.00 \\
+                Leaves  & 35.00 $\pm$ 2.00& 27.50 $\pm$ 3.50& 40.50 $\pm$ 3.50 \\
+                Ratio  & 77.99 \% $\pm$ 0.11 \%& 86.00 \% $\pm$ 2.83 \%& 50.64 \% $\pm$ 16.03 \% \\
+                %NbPairs  & 9.50 $\pm$ 0.50& 7.50 $\pm$ 1.50&  12.50 $\pm$ 1.50 \\
+                $H^*_S$ Eval  & 0.02 $\pm$ 0.00& 0.04 $\pm$ 0.02& 0.01 $\pm$ 0.00\\
+                PairRatio  & 0.28 $\pm$ 0.00& 0.28 $\pm$ 0.02&0.32 $\pm$ 0.01\\
+                NbExamples  & 27.00 $\pm$ 0.00& 28.00 $\pm$ 3.00& 55.50 $\pm$ 16.50\\
                 \hline
             \end{tabular}}
             \end{table}
@@ -448,20 +446,29 @@ Ecriture générique : \\~\
                     \hline
                        & $H^{*}_S$  & $H_S$  & $H^{*}_G$  & $H_G$ \\
                     \hline
-                     CCI  & 39.25\%  $\pm$ 0.10 \%& 33.00\% $\pm$ 0.12\% & 35.14 \% $\pm$ 0.07\% & 32.33 \% $\pm$ 0.11\\
-                     avgDepth  &  20.5 $\pm$ 1.66&  14.75$\pm$1.09& 18.25$\pm$1.48&  15.5 $\pm$2.69\\
-                     avgLeaves  & 158.75 $\pm$ 5.12 & 140.5 $\pm$ 1.66 & 164.25 $\pm$ 3.83 & 143.75 $\pm$ 5.72\\
-                     avgRatio  & 74.82 \% $\pm$ 0.03\%& 80.74 \% $\pm$ 0.04\%& 75.60 \% $\pm$ 0.04\%& 79.11 \% $\pm$ 0.04\%\\
-                     avgNbPairs  & 44.5 $\pm$ 2.60& 48.25 $\pm$ 1.92& 45.75 $\pm$ 3.03& 47.25 $\pm$ 3.63\\
+                     Accuracy  & 39.25\%  $\pm$ 0.10 \%& 33.00\% $\pm$ 0.12\% & 35.14 \% $\pm$ 0.07\% & 32.33 \% $\pm$ 0.11\\
+                     %Depth  &  20.5 $\pm$ 1.66&  14.75$\pm$1.09& 18.25$\pm$1.48&  15.5 $\pm$2.69\\
+                     Leaves  & 158.75 $\pm$ 5.12 & 140.5 $\pm$ 1.66 & 164.25 $\pm$ 3.83 & 143.75 $\pm$ 5.72\\
+                     Ratio  & 74.82 \% $\pm$ 0.03\%& 80.74 \% $\pm$ 0.04\%& 75.60 \% $\pm$ 0.04\%& 79.11 \% $\pm$ 0.04\%\\
+                     %avgNbPairs  & 44.5 $\pm$ 2.60& 48.25 $\pm$ 1.92& 45.75 $\pm$ 3.03& 47.25 $\pm$ 3.63\\
                     \hline
                 \end{tabular}}
             \end{table}
     \end{itemize}
-
 \end{frame}
 
 \begin{frame}{Conclusion}
-
+    \begin {itemize}
+        \item Implémentation d'une bibliothèque pour les arbres monotones
+        \item Expérimentations sur des datasets artificiels et réels
+        \item Difficulté d'évaluation de la monotonie
+        \item Perspectives
+            \begin{itemize}
+                \item Meilleure mesure de monotonie
+                \item Comparaison avec l'état de l'art
+                \item Calcul efficace des mesures
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]
@@ -498,6 +505,18 @@ Soit le dataset suivant :
 \end{itemize}
 \label{tab:dsa-dataset}
 \end{table}
+\end{frame}
+
+\begin{frame}{Calcul du ratio}
+        Ratio moyen entre le nombre de paires d'exemples non-monotones et le nombre de paires d'exemples :
+            \begin{itemize}
+            \item Pour une paire de feuilles, ratio entre le nombre de paires d'exemples non-monotones et le nombre de paires d'exemples
+                $$ r_i = \myfrac{m_i}{n_{i1} \times n_{i2}}$$
+            avec $m_i$ le nombre de paires non-monotones
+            \item Pour l'arbre,
+                $$ r = \myfrac{1}{\sum_{i=1}^{p} n_i} \sum{n_i}{r_i}$$
+            \end{itemize}
+    
 \end{frame}
 
 \end{document}
