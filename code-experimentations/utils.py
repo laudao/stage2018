@@ -771,6 +771,36 @@ class BinaryTree:
         else:
             return self.inf.is_rule_monotone() and self.sup.is_rule_monotone()
 
+#    def nb_examples_per_path(self):
+#        '''
+#            return a list containing the number of examples in each path
+#        '''
+#        if (self.isLeaf()):
+#            return [self.labeled_set.size()]
+#        else:
+
+
+    def nb_examples_per_pair(self):
+        '''
+            return a list containing the number of examples in each pair of leaves
+        '''
+        if (self.inf.isLeaf()) and (self.sup.isLeaf()):
+            inf_set = self.inf.labeled_set
+            sup_set = self.sup.labeled_set
+
+            return [inf_set.size() + sup_set.size()]
+
+        elif self.inf.isLeaf():
+            return self.sup.nb_examples_per_pair()
+        elif self.sup.isLeaf():
+            return self.inf.nb_examples_per_pair()
+        else:
+            l_inf = self.inf.nb_examples_per_pair()
+            l_sup = self.sup.nb_examples_per_pair()
+
+            l_inf.extend(l_sup)
+            return l_inf
+
     def get_ratio_non_monotone_pairs(self):
         '''
             if both children of current node are leaves,
@@ -897,7 +927,8 @@ class BinaryTree:
             t.extend(self.sup.get_leaves())
             return t
 
-def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize, labels, current_depth, position, take_majority=False):
+def build_DT(labeled_set, H, H_stop, measureThreshold, maxDepth, minSize,
+        labels, current_depth, position, take_majority=True):
     '''
         labeled_set : labeled set
         H : rank discrimination measure used for discretization
@@ -1066,7 +1097,7 @@ class RDMT(Classifier):
         t = np.array(self.root.get_ratio_non_monotone_pairs())
         r_i = t[:,0]
         n_i = t[:,1]
-        return ((n_i * r_i).sum()) / (n_i.sum()), t[:,2]
+        return ((n_i * r_i).sum()) / (n_i.sum()) #, t[:,2]
 
     def evaluate_NMI1(self):
         t = np.array(self.root.evaluate_NMI1())
@@ -1106,18 +1137,36 @@ class RDMT(Classifier):
         t = np.array(self.root.get_ratio_non_monotone_pairs())
         return t[:,1].sum()
 
-    def MAE(self, labeled_set):
+    def avg_nb_examples_per_pair(self):
         '''
-            labeled_set : labeled set for evaluating the performance of the algorithm
-            return mean absolute error
+            return average number of examples in a pair of leaves
         '''
-        s = 0
-        n = labeled_set.size()
-        for i in range(n):
-            x = labeled_set.getX(i)
-            y = labeled_set.getY(i)
-            s += fabs(self.predict(x) - y)
-        return (1.0/n) * s
+        return np.mean(np.array(self.root.nb_examples_per_pair()))
+
+    def min_nb_examples_per_pair(self):
+        '''
+            return min number of examples in a pair of leaves
+        '''
+        return np.min(np.array(self.root.nb_examples_per_pair()))
+
+    def max_nb_examples_per_pair(self):
+        '''
+            return min number of examples in a pair of leaves
+        '''
+        return np.max(np.array(self.root.nb_examples_per_pair()))
+
+#    def MAE(self, labeled_set):
+#        '''
+#            labeled_set : labeled set for evaluating the performance of the algorithm
+#            return mean absolute error
+#        '''
+#        s = 0
+#        n = labeled_set.size()
+#        for i in range(n):
+#            x = labeled_set.getX(i)
+#            y = labeled_set.getY(i)
+#            s += fabs(self.predict(x) - y)
+#        return (1.0/n) * s
 
 
 ########## QUANTIFICATION OF NON-MONOTONICITY ##########
@@ -1377,7 +1426,7 @@ def generate_monotone_consistent_dataset(n, k):
         else:
             examples = data[(data[:,2] > (i*1.0)/k) & (data[:,2] <= (i+1.0)/k)][:,:2]
             p = examples.shape[0]
-        monotone_set.addExamples(examples, i+1)
+        monotone_set.addExamples(examples, np.array([[i+1]] * examples.shape[0]))
 
     return monotone_set
 
