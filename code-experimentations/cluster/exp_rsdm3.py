@@ -12,7 +12,7 @@ rsdm = Gdm(h, g, f)
 
 start = time.time()
 
-dataset, t = generate_2Ddataset(0, 3, 1000, 0, 0.1, [[-10, 10], [-10, 10]])
+dataset = generate_monotone_consistent_dataset(500, 3)
 
 print("noise (rsdm): ", 0.05 * int(sys.argv[2]))
 
@@ -26,9 +26,9 @@ acc = 0
 leaves = 0
 depth = 0
 ratio = 0
+nb_examples = 0
 pairs = 0
 evaluation = 0
-p_ratio = 0
 
 for i in range(10):
     test_set = sets[i]
@@ -36,7 +36,7 @@ for i in range(10):
     for j in range(10):
         if i != j:
             train_set.addExamples(sets[j].x, sets[j].y)
-    tree = RDMT(rsdm, "shannon", 0, 100, 0.01, [1, 2, 3])
+    tree = RDMT(rsdm, "shannon", 0, 100, 0.1 * train_set.size(), [1, 2, 3])
     tree.train(train_set)
     acc += tree.accuracy(test_set)
 
@@ -52,6 +52,10 @@ for i in range(10):
     ratio += tree.get_ratio_non_monotone_pairs()
     print("(rsdm) END get_ratio_non_monotone_pairs : ", time.time())
 
+    print("(rsdm) BEGIN avg_nb_examples_per_pair : ", time.time())
+    nb_examples += tree.avg_nb_examples_per_pair()
+    print("(rsdm) END avg_nb_examples_per_pair : ", time.time())
+
     print("(rsdm) BEGIN get_total_pairs : ", time.time())
     pairs += tree.get_total_pairs()
     print("(rsdm) END get_total_pairs : ", time.time())
@@ -60,42 +64,38 @@ for i in range(10):
     evaluation += tree.evaluate_monotonicity()
     print("(rsdm) END evaluate_monotonicity : ", time.time())
 
-    print("(rsdm) BEGIN pairs_ratio : ", time.time())
-    p_ratio += tree.pairs_ratio()
-    print("(rsdm) END pairs_ratio : ", time.time())
-
     print("Iter {} tree (rsdm)".format(i))
 
 
 acc = acc * (1.0/10)
+leaves = leaves * (1.0/10)
 depth = depth * (1.0/10)
 ratio = ratio * (1.0/10)
+nb_examples = nb_examples * (1.0/10)
 pairs = pairs * (1.0/10)
 evaluation = evaluation * (1.0/10)
-p_ratio = p_ratio * (1.0/10)
-
 
 print("Running time (rsdm) (" + sys.argv[2]+ ") : " + str(time.time() - start))
-f_acc = open("acc3_1_" + sys.argv[2], "wb")
-f_leaves = open("leaves3_1_"+ sys.argv[2], "wb")
-f_depth = open("depth3_1_"+ sys.argv[2], "wb")
-f_ratio = open("ratio3_1_"+ sys.argv[2], "wb")
-f_pairs = open("pairs3_1_"+ sys.argv[2], "wb")
-f_eval = open("eval3_1_"+ sys.argv[2], "wb")
-f_pratio = open("p_ratio3_1_"+sys.argv[2], "wb")
+f_acc = open("k3acc1_" + sys.argv[2], "wb")
+f_leaves = open("k3leaves1_"+ sys.argv[2], "wb")
+f_depth = open("k3depth1_"+ sys.argv[2], "wb")
+f_ratio = open("k3ratio1_"+ sys.argv[2], "wb")
+f_examples = open("k3examples1_"+ sys.argv[2], "wb")
+f_pairs = open("k3pairs1_"+ sys.argv[2], "wb")
+f_eval = open("k3eval1_" + sys.argv[2], "wb")
 
 pickle.dump(acc, f_acc)
 pickle.dump(leaves, f_leaves)
 pickle.dump(depth, f_depth)
 pickle.dump(ratio, f_ratio)
+pickle.dump(nb_examples, f_examples)
 pickle.dump(pairs, f_pairs)
 pickle.dump(evaluation, f_eval)
-pickle.dump(p_ratio, f_pratio)
 
 f_acc.close()
 f_leaves.close()
 f_depth.close()
 f_ratio.close()
+f_examples.close()
 f_pairs.close()
 f_eval.close()
-f_pratio.close()
