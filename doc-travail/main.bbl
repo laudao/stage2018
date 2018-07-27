@@ -133,6 +133,32 @@
       \field{pages}{6627\bibrangedash 6634}
       \range{pages}{8}
     \endentry
+    \entry{cao-supervised}{thesis}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f05038cd32f3d8ac10a9e73ac445c2b3}{%
+           family={Cao-Van},
+           familyi={C\bibinithyphendelim V\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Ghent University}%
+      }
+      \strng{namehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{fullhash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{bibnamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authorbibnamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authornamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authorfullhash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Supervised ranking: from semantics to algorithms}
+      \field{type}{phdthesis}
+      \field{year}{2003}
+    \endentry
     \entry{cao-consistent}{incollection}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=f05038cd32f3d8ac10a9e73ac445c2b3}{%
@@ -248,6 +274,66 @@
       \field{year}{2007}
       \field{pages}{325\bibrangedash 339}
       \range{pages}{15}
+    \endentry
+    \entry{hu-rank}{article}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Qinghua},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=210d1702d5d9312184976208db28897b}{%
+           family={Che},
+           familyi={C\bibinitperiod},
+           given={Xunjian},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f4a4cbf770add19c206827116c68732e}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=94d314d7b645e07423926dfb8d939dc0}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e6c38a8e52ab483adb814ed2555f1eca}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Maozu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3225b4c384602bfd669d6323ac07bc99}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Daren},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{fullhash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{bibnamehash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{authorbibnamehash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{authornamehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{authorfullhash}{a73a94d833fb825e0e51a3c97fec2395}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Knowledge and Data Engineering}
+      \field{number}{11}
+      \field{title}{Rank entropy-based decision trees for monotonic classification}
+      \field{volume}{24}
+      \field{year}{2012}
+      \field{pages}{2052\bibrangedash 2064}
+      \range{pages}{13}
     \endentry
     \entry{leo-classification}{article}{}
       \name{author}{4}{}{%
@@ -395,6 +481,95 @@
       \field{pages}{380\bibrangedash 385}
       \range{pages}{6}
     \endentry
+    \entry{pei-partially}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c179d743bac88c6177a6c87f558a831e}{%
+           family={Pei},
+           familyi={P\bibinitperiod},
+           given={Shenglei},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Qinghua},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{fullhash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{bibnamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authorbibnamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authornamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authorfullhash}{e005828081e4d38395bb37ed2ec2e987}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Partially monotonic decision trees}
+      \field{volume}{424}
+      \field{year}{2018}
+      \field{pages}{104\bibrangedash 117}
+      \range{pages}{14}
+    \endentry
+    \entry{qian-fusing}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=dc416cc91c20a989cd36b6bd1d8cad51}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Yuhua},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=00913dcfab784527b5492487e1556e57}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Hang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e9a481fed54cf323419c98934f1383a4}{%
+           family={Liang},
+           familyi={L\bibinitperiod},
+           given={Jiye},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9c6fb2af2964f3126cfd4e505a38daca}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Bing},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c3cbfd3e6dad6aa2faf4f6c54dff82d1}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jieting},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3a28d51329377e7e5940be8cf4eecc39}
+      \strng{fullhash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{bibnamehash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{authorbibnamehash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{authornamehash}{3a28d51329377e7e5940be8cf4eecc39}
+      \strng{authorfullhash}{1e10597005ff70c40dfe9eeede27fce9}
+      \field{sortinit}{Q}
+      \field{sortinithash}{d257e420984a3a5c57a3330114cd646a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Knowledge and Data Engineering}
+      \field{number}{10}
+      \field{title}{Fusing monotonic decision trees}
+      \field{volume}{27}
+      \field{year}{2015}
+      \field{pages}{2717\bibrangedash 2728}
+      \range{pages}{12}
+    \endentry
     \entry{quinlan-induction}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=047cc039275c7e0ff59113a594a8db4d}{%
@@ -425,7 +600,56 @@
       \field{pages}{81\bibrangedash 106}
       \range{pages}{26}
     \endentry
+    \entry{xia-ranking}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=3ccfc5de175d248e82e2a1ad84fb6d0a}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Fen},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6ff9a910039660c1ee31f65c2d671509}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Wensheng},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7be2e9c4693c87c67e142d20b53f3b29}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Fuxin},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=57658d6dc718ecf1e8ae58ce0a588e72}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yanwu},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{bbb3f0d2d80fef522571839e9b9d956c}
+      \strng{fullhash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{bibnamehash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{authorbibnamehash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{authornamehash}{bbb3f0d2d80fef522571839e9b9d956c}
+      \strng{authorfullhash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \field{sortinit}{X}
+      \field{sortinithash}{b0b62a29ee4a21a0e618fed53a0313cc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Knowledge and information systems}
+      \field{number}{3}
+      \field{title}{Ranking with decision tree}
+      \field{volume}{17}
+      \field{year}{2008}
+      \field{pages}{381\bibrangedash 395}
+      \range{pages}{15}
+    \endentry
   \enddatalist
+  \missing{Marsala-rank}
 \endrefsection
 \endinput
 

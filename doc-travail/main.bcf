@@ -1985,8 +1985,21 @@
     <bcf:citekey order="9">ben-monotonicity</bcf:citekey>
     <bcf:citekey order="10">cao-consistent</bcf:citekey>
     <bcf:citekey order="11">marsala-rank</bcf:citekey>
-    <bcf:citekey order="12">marsala-rank</bcf:citekey>
+    <bcf:citekey order="12">hu-rank</bcf:citekey>
     <bcf:citekey order="13">marsala-rank</bcf:citekey>
+    <bcf:citekey order="14">qian-fusing</bcf:citekey>
+    <bcf:citekey order="15">pei-partially</bcf:citekey>
+    <bcf:citekey order="16">ben-adding</bcf:citekey>
+    <bcf:citekey order="17">hu-rank</bcf:citekey>
+    <bcf:citekey order="18">xia-ranking</bcf:citekey>
+    <bcf:citekey order="19">ben-learning</bcf:citekey>
+    <bcf:citekey order="20">cao-supervised</bcf:citekey>
+    <bcf:citekey order="21">xia-ranking</bcf:citekey>
+    <bcf:citekey order="22">marsala-rank</bcf:citekey>
+    <bcf:citekey order="23">qian-fusing</bcf:citekey>
+    <bcf:citekey order="24">marsala-rank</bcf:citekey>
+    <bcf:citekey order="25">marsala-rank</bcf:citekey>
+    <bcf:citekey order="26">marsala-rank</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

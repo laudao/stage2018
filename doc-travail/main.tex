@@ -82,22 +82,317 @@ construction d'arbres de décision monotones paramétrés par une mesure de
 discrimination à rang. Une étude théorique des propriétés des mesures présentées
 dans le même article est également effectuée.\\
 
-%\section{Etat de l'art}
+\section{Etat de l'art} 
+Dans cette partie, on étudie et compare les méthodes proposées par Hu et al.
+\cite{hu-rank}, Marsala et Petturiti \cite{marsala-rank}, Qian et al.
+\cite{qian-fusing} et Pei et Hu \cite{pei-partially}.
+
+\subsection*{Notations}
+On considère un ensemble $\Omega = \{\omega_1,...,\omega_n\}$ d'éléments définis
+par un ensemble d'attributs $A = \{a_1,...,a_m\}$, où pour tout $j=1,...,m, a_j$
+est une fonction de $\Omega$ vers $X_j = \{x_{j_1},...,x_{t_j}\}$. On note aussi
+$\lambda: \Omega \rightarrow C$ la fonction d'étiquetage, où $C =
+\{c_1,...,c_k\}$ est un ensemble de classes totalement ordonné.
+
+Pour $\omega_i \in \Omega$, l'ensemble dominant de $\omega_i$ généré par $a_j$
+est défini de la façon suivante :
+
+$$[\omega_i]^{\leq}_{a_j} = \{w_h \in \Omega : a_j(\omega_i) \leq a_j(\omega_h)\}$$
+
+De même, l'ensemble dominant de $\omega_i$ généré par $\lambda$ s'écrit :
+
+$$[\omega_i]^{\leq}_{\lambda} = \{w_h \in \Omega : \lambda(\omega_i) \leq
+\lambda(\omega_h)\}$$ \\
+
+Les notions de \textit{dominance rough sets} sont également utilisées. On
+cherche à approximer l'ensemble $c^{\geq}_q$, ie l'ensemble des éléments de
+$\Omega$ dont la valeur de classe est inférieure à $c_q$.
+
+\noindent Soit $B \subseteq A$ et $c_q$ une valeur de classe. Les approximations
+inférieure et supérieure de $c^{\geq}_q$ sont définis de la façon suivante:
+
+$$ \underline{R^{\geq}_B}(c^{\geq}_q) = \{\omega \in \Omega :
+[\omega]^{\geq}_B \subseteq c^{\geq}_q\}$$
+
+$$ \overline{R^{\geq}_B}(c^{\geq}_q) = \{\omega \in \Omega :
+[\omega]^{\leq}_B \cap c^{\geq}_q \neq \varnothing\}$$
+
+
+\subsection{Arbre de décision basé sur l'entropie d'ordre}
+Il est montré dans \cite{ben-adding} que les classifieurs purement monotones ne
+procurent pas de meilleurs résultats que leurs homologues classiques lorsque les
+données contiennent un taux élevé de bruit non-monotone. 
+
+Afin de résoudre ce problème, les auteurs de \cite{hu-rank} proposent un algorithme robuste pour la
+classification monotone.
+
+Pour cela, ils définissent une mesure de degré de monotonie entre deux
+attributs, qu'ils nomment information mutuelle d'ordre, ou
+\textit{rank mutual information} (RMI): \\
+$$ RMI^{\leq}(a_j, a_{j'}) = -\frac{1}{n} \sum_{i=1}^{n} \log
+\frac{|[\omega_i]^{\leq}_{a_j}]| \times |[\omega_i]^{\leq}_{a_{j'}}]|}{n \times
+|[\omega_i]^{\leq}_{a_j}]\cap [\omega_i]^{\leq}_{a_{j'}}]|}$$
+
+RMI, sensible à la monotonie et robuste face aux données bruitées, est utilisé
+comme mesure de sélection d'attribut dans leur algorithme de construction
+d'arbres de décision monotones, REMT (\textit{Rank Entropy Based Decision
+Tree}).
+
+Dans cet article, on considère seulement les arbres binaires dans lesquels
+est affecté à chaque noeud un seul attribut. Concernant les données, les
+attributs doivent être numériques et la classe, ordinale.
+
+
+\noindent A chaque étape de l'induction :
+\begin{itemize}
+    \item si $|\Omega_{\alpha}| = 1$ ou tous les éléments
+de $\Omega_{\alpha}$ partagent la même classe, une feuille est créée. 
+    \item Sinon, pour chaque attribut $a_j$, pour chaque valeur d'attribut $x_{j_s}$, l'ensemble
+des éléments est divisé en deux sous-ensembles à partir desquels on calcule
+$RMI_{x_{j_s}} = RMI(a^{x_{j_s}}_j, \lambda)$. On récupère, pour chaque $a_j$,
+le seuil de coupure $x^*_j$ maximisant l'information mutuelle d'ordre :
+$x^*_{j_s} = arg\,max RMI_{x_{j_s}}.$ L'attribut $a^*$ utilisé pour le
+partitionnement est celui dont le seuil $x^*$ maximise
+$RMI(a^{x_{j_s}}_j,\lambda)$, pour $j=1,...,m, s=1,...t_j-1.$ 
+    \item Si $RMI(a^*,
+\lambda) < \epsilon$, une feuille est créée. 
+    \item Sinon, un noeud est construit et la
+procédure est répétée sur les sous-ensembles induits par $a^*$ et $x^*$. \\
+\end{itemize}
+
+Concernant le critère d'étiquetage, si tous les exemples de la feuille possèdent
+la même classe, on lui assigne cette dernière. Sinon, si les exemples
+proviennent de classes différentes, on assigne la classe médiane. Dans le cas où
+deux classes possèdent le même nombre d'exemples et la feuille courante provient
+de la branche gauche de son noeud parent, on lui assigne la pire classe. Sinon,
+on lui affecte la meilleure.  \\
+
+L'approche de construction gloutonne du classifieur ne permet pas d'obtenir un
+arbre globalement monotone, même si les données utilisées sont monotones. En
+revanche, cette méthode garantit une monotonie plus faible : il est montré que
+si la base de données utilisée lors de la construction de l'arbre est
+monotone-consistente, alors les règles générées par REMT sont monotones. \\
+
+Afin d'évaluer la performance de leur algorithme, Hu et al. utilisent l'erreur absolue moyenne, ou
+\textit{Mean Absolute Error} (MAE) :
+$$ MAE = \frac{1}{n} \sum_{i=1}^{n}|f(\omega_i) - \lambda(\omega_i)| $$
+où $f(\omega_i)$ est la classe prédite par REMT. \\
+
+L'algorithme est testé sur des bases de données artificielles et réelles. 
+
+\noindent Les bases de données artificielles générées sont monotones. Elles contiennent
+1000 exemples à deux attributs, et un nombre de classes variant de 2 à 30. 
+
+\noindent REMT est ici comparé à CART, Rank Tree \cite{xia-ranking}, OLM
+\cite{ben-learning} et OSDL \cite{cao-supervised}. Les expériences montrent que
+REMT produit le moins d'erreurs parmi ces algorithmes, hormis dans le cas à deux
+classes.  Les auteurs soulignent aussi que REMT est le plus précis des quatre
+algorithmes, peu importe le nombre d'éléments utilisés lors de la construction
+de l'arbre.
+
+
+Sur des bases de données réelles, Hu et al. comparent leur modèle à CART et Rank
+Tree \cite{xia-ranking}. Les expériences menées montrent que REMT donne de
+meilleurs résultats en termes de MAE sur 10 bases sur les 12 collectées. De
+plus, les auteurs montrent également que plus la taille de la base
+d'apprentissage diminue, plus l'écart de performance se creuse entre REMT et les
+autres modèles. 
+\noindent Enfin, dans le but de comparer les performances des algorithmes
+lorsque les données sont monotones, les mêmes bases sont modifiées à l'aide d'un
+algorithme de monotonization . Les résultats des expérimentations montrent que
+REMT est plus performant que les autres modèles. De plus, les valeurs de
+MAE produites par tous les modèles diminuent lorsque les données sont
+monotisées.
+
+\subsection{Arbre de décision paramétré par une mesure de discrimination
+d'ordre} 
+Dans \cite{marsala-rank}, Marsala et Petturiti étudient l'influence de
+la mesure de discrimination utilisée lors de la construction du classifieur, en
+termes de taux de bonne prédiction et de monotonie. 
+
+Comme les mesures étudiées dans l'article partagent toutes la même structure
+fonctionnelle, les auteurs définissent un modèle de construction hiérarchique
+permettant d'isoler les propriétés d'une mesure de discrimination d'ordre et
+d'en créer de nouvelles. \\
+Soit $H^*$ une mesure de discrimination d'ordre. Le pouvoir de discrimination de
+l'attribut $a_j$ envers $\lambda$ selon $H^*$ peut donc s'écrire de la façon suivante :
+$$ H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
+
+Marsala et Petturiti proposent un algorithme de construction d'arbre de décision
+nommé RDMT (\textit{Rank Discrimination Measure Tree}) essentiellement basé sur
+REMT mais qui utilise, à la place de RMI, une mesure de discrimination passée en paramètre.
+
+\noindent Comme précédemment, seuls les arbres binaires à un attribut par noeud
+sont considérés. Ce classifieur gère à la fois les attributs numériques et ordinaux, mais la classe
+doit être ordinale. \\
+
+Notons H la mesure de discrimination utilisée, $\epsilon$ le seuil minimal pour
+H, $\Omega_{\alpha}$ l'ensemble des exemples considérés à l'étape courante de
+construction, $\alpha$ la taille minimale pour $\Omega_{\alpha}$, $\delta$ la
+profondeur courante de la branche, et $\Delta$ la profondeur maximale que peut
+avoir une branche de l'arbre. \\
+
+\noindent A chaque étape de l'induction :
+\begin{itemize}
+    \item si $|\Omega_{\alpha}| < \alpha$ ou tous les éléments
+de $\Omega_{\alpha}$ partagent la même classe ou $\delta > \Delta$, une feuille est créée. 
+    \item Sinon, pour chaque attribut $a_j$, pour chaque valeur d'attribut $x_{j_s}$, l'ensemble
+des éléments est divisé en deux sous-ensembles à partir desquels on calcule
+        $H(\lambda|a^{x_{j_s}}_j)$. On récupère, pour chaque $a_j$,
+le seuil de coupure $x^*_j$ maximisant la valeur de H:
+$x^*_{j_s} = arg\,min H(\lambda|a^{x_{j_s}}_j)$. L'attribut $a^*$ utilisé pour le
+partitionnement est celui dont le seuil $x^*$ minimise
+$H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m, s=1,...t_j-1.$ 
+    \item Si $H(\lambda|a^*) < \epsilon$, une feuille est créée. 
+    \item Sinon, un noeud est construit et la
+procédure est répétée sur les sous-ensembles induits par $a^*$ et $x^*$. \\
+\end{itemize}
+
+\noindent Comme REMT, RDMT ne garantit pas un classifieur globalement monotone, mais
+un arbre générant des règles monotones.  \\
+
+Les auteurs évaluent les modèles construits sur trois critères: le taux de bonne
+classification (mesuré par le pourcentage d'exemples correctement étiquetés, le
+test du K, et MAE), la monotonie et la taille des arbres (en termes de nombre de
+feuilles). 
+\noindent La monotonie d'un arbre est évaluée par deux mesures :
+\begin{itemize}
+    \item L'index I de non-monotonie d'un arbre $\mathcal{T}$:  
+        $$ I(\mathcal{T}) = \frac{\sum_{u=1}^q \sum_{v=1}^{q} m_{u,v}}{q^2 - q}$$
+        où q est le nombre de feuilles de $\Gamma$ et $m_{u,v}$ vaut 1 si les
+        feuilles $l_u, l_v$ ne sont pas monotones, 0 sinon.
+    \item L'index NMI1 des exemples dans chaque base de test $\mathcal{D}$:
+        $$ NMI1(\mathcal{D}) = \frac{\sum_{i=1}^n \sum_{h=1}^{n} NMP(\omega_i,
+        \omega_h)}{n^2 - n}$$
+        où $NMP(\omega_i, \omega_h)$ vaut 1 si la paire $\omega_i, \omega_h$
+        n'est pas monotone, 0 sinon. \\
+\end{itemize}
+
+Les expérimentations menées dans l'article visent à comparer les arbres obtenus
+par différentes mesures ($H^*_S, H_S, H^*_G, H_G, H^*_P, H^{10}_{MID}, H_{ICT}$).
+
+11 bases artificielles sont générées, dont le taux de NMI augmente de 0 à 10\%
+avec un pas de 1\%. Chaque base contient 500 exemples à 5 attributs et 5
+classes. \\
+\noindent Les tests menés sur ces bases montrent qu'il n'existe aucune
+différence significative entre les mesures en ce qui concerne les indices de
+taux de bonne classification. De plus, les mesures de discrimination d'ordre
+produisent des arbres plus monotones, en particulier lorsque le taux de bruit
+non-monotone de la base augmente. Enfin, il est également montré que ces mesures
+de discrimination produisent des arbres contenant plus de feuilles que les
+mesures classiques.
+
+15 bases de données réelles sont séléctionnées pour évaluer les mesures sur des
+cas d'applications concrets. Comme précédemment, il n'y a pas de différence
+de taux de bonne classification significative entre les mesures. Cependant,
+$H^*_S, H^*_G,$ et $H^*_P$ génèrent des arbres plus monotones et comportant
+davantage de feuilles. \\
+
+Les arbres produits par des mesures de discrimination d'ordre ne sont pas
+destinés à être directement utilisés pour la classification monotone. En
+revanche, étant donné leur degré de monotonie plus élevé, il est avantageux de
+les passer en entrée d'algorithmes de post-traitement afin renforcer la
+monotonie globale.
+
+\subsection{Fusion d'arbres de décision monotones} Afin d'améliorer la capacité
+de généralisation du modèle de classification, Qian et al. dans
+\cite{qian-fusing} proposent une méthode d'ensemble par fusion d'arbres de décision
+monotones.
+
+Les auteurs couplent une méthode de réduction d'attributs préservant l'ordre
+avec REMT, utilisé pour générer les classifieurs de base.
+
+Pour réduire l'ensemble des attributs, ils se basent sur les \textit{dominant
+rough sets} et mettent à jour leur définition. Ils introduisent un paramètre
+$\beta$ qui permet de paramétrer la sensibilité du \textit{rough set} au bruit
+non-monotone. L'ensemble à approximer est : 
+$$c^{\geq}_q = \bigcup_{u \leq q} C_u$$
+où $C_u \in \Omega / \lambda = \{C_1, C_2,...,C_r\}$ tel que, pour tout $q, u \leq r$, si $q
+\geq u$ alors les éléments de $C_q$ sont préférés à ceux de $C_u$.
+
+\noindent Soit $B \subseteq A$ et $c_q$ une valeur de classe. Les approximations
+inférieure et supérieure de $c^{\geq}_q$ sont définis de la façon suivante:
+
+$$ \underline{R^{\geq}_B}(c^{\geq}_q) = \{\omega \in \Omega :
+\frac{|[\omega]^{\geq}_B \cap c^{\geq}_q|}{|[\omega]^{\geq}_B|} \geq 1 -
+\beta\}$$
+
+$$ \overline{R^{\geq}_B}(c^{\geq}_q) = \{\omega \in \Omega :
+\frac{|[\omega]^{\geq}_B \cap c^{\geq}_q|}{|[\omega]^{\geq}_B|} \geq \beta\}$$
+
+\noindent où $0 \leq \beta \leq 0.5$
+
+\noindent La frontière ascendante de $c_q$ liée à l'ensemble d'attributs B s'écrit :
+
+$$ BND^{\beta}_B(c^{\geq}_q) = \overline{R^{\geq}_B}(c^{\geq}_q) - \underline{R^{\geq}_B}(c^{\geq}_q)$$
+
+\noindent La dépendance monotone de $\lambda$ selon B est donc exprimée de la façon
+suivante :
+
+$$ \gamma^{\beta}_B(\lambda) = \frac{|\Omega - \bigcup_{q=1}^k
+BND^{\beta}_B(c^{\geq}_q)|}{|\Omega|}$$
+
+\noindent A partir de cette définition, il est possible d'établir un coefficient de
+pertinence d'un attribut a dans B, relativement à $\lambda$. La pertinence
+interne de a dans B relativement à $\lambda$ est définie de la manière suivante
+:
+
+$$ Sig^{\beta}_{inner}(a, B, \lambda) = \gamma^{\beta}_B(\lambda) -
+\gamma^{\beta}_{B-\{a\}}(\lambda)$$
+
+\noindent De la même façon, $\forall a \in A-B$, la pertinence externe de a selon B
+correspond à :
+
+$$ Sig^{\beta}_{outer}(a, B, \lambda) = \gamma^{\beta}_{B \cup \{a\}}(\lambda) -
+\gamma^{\beta}_B(\lambda)$$
+
+A l'aide de ces mesures de pertinence d'attributs, Qian et al. proposent un
+algorithme de réduction d'attributs, paramétré par $\beta$, qui génère des
+\textit{reducts} d'attributs monotones. Cette méthode sert à produire des arbres
+les plus diversifiés possibles: plusieurs sous-ensembles d'attributs sont
+sélectionnés, et chaque sous-ensemble est une réduction d'attributs qui préserve
+la monotonie des données originelles. Les auteurs définissent une méthode de
+recherche de multiples \textit{reducts} d'attributs monotones, paramétrée par
+$\beta$. Chaque sous-ensemble d'attributs produit sert de base d'apprentissage
+pour un arbre construit par REMT. 
+
+\section{Etude théorique des propriétés des mesures de discrimination d'ordre}
+Marsala et Petturiti définissent dans \cite{marsala-rank} un modèle de
+construction hiérarchique de mesures de discrimination d'ordre. Ce modèle a pour
+but d'isoler les propriétés qu'une fonction doit avoir pour être une telle
+mesure. Il sert aussi de base pour en créer de nouvelles. \\
+
+Soit $H^*$ une mesure de discrimination d'ordre. On rappelle que le pouvoir de
+discrimination de l'attribut $a_j$ envers la classe $\lambda$ peut se décomposer
+de la façon suivante :
+
+$$ H^*(\lambda|a_j) = h^*(g^*(f^*(\omega_1),...,g^*(f^*(\omega_n))))$$
+
+où $f^*$ est une mesure de la monotonie locale de l'objet, $g^*$ une mesure
+de non-monotonie de l'objet, et $h^*$ une agrégation des mesures $g^*$.
+
+Pour que $H^*$ soit une mesure de discrimination d'ordre, chaque couche doit
+satisfaire certaines conditions.
+
+Soient $\omega_i \in \Omega$ et $f^*, g^*, h^*$ les trois couches de $H^*$. Les propriétés suivantes sont
+démontrées en annexe :
+
 
 \section{Implémentation et expérimentation de l'algorithme de construction
 d'arbres monotones} 
-Dans cette partie, on implémente (à quelques variantes près)
-RDMT(H), l'algorithme de construction d'arbres monotones donné dans
-\cite{marsala-rank} et on l'évalue sur des données artificielles et réelles. 
+Dans cette partie, on se base essentiellement sur RDMT(H),
+l'algorithme de construction d'arbres monotones donné dans \cite{marsala-rank},
+pour construire des arbres de décision monotones, que l'on évalue sur des
+données artificielles et réelles. 
 
-\subsection{Implémentation des mesures de discrimination à rang} 
+\subsection{Mesures de discrimination d'ordre} 
 D'après
-\cite{marsala-rank}, les mesures de discrimination à rang possèdent la même
-structure fonctionnelle: elles se décomposent en trois fonctions.  Dans le même
+\cite{marsala-rank}, les mesures de discrimination d'ordre possèdent la même
+structure fonctionnelle: elles se décomposent en trois fonctions $f^*$, $g^*$,
+et $h^*$.  Dans le même
 article, un modèle de construction hiérarchique de mesures de discrimination à
 rang est proposé. Il permet d'isoler leurs propriétés et d'en créer de
 nouvelles. 
-
 
 
 \printbibliography

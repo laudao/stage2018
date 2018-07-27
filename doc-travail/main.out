@@ -1,3 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Impl\351mentation des mesures de discrimination \340 rang}{section.2}% 3
+\BOOKMARK [1][-]{section.2}{Etat de l'art}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Arbre de d\351cision bas\351 sur l'entropie d'ordre}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Arbre de d\351cision param\351tr\351 par une mesure de discrimination d'ordre}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Fusion d'arbres de d\351cision monotones}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 6
+\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 8

@@ -1,15 +1,18 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'main.blg'
-[32] biber:313> INFO - === ven. juil. 20, 2018, 15:05:41
-[79] Biber.pm:371> INFO - Reading 'main.bcf'
-[153] Biber.pm:857> INFO - Found 11 citekeys in bib section 0
-[170] Biber.pm:3976> INFO - Processing section 0
-[182] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
-[189] bibtex.pm:1489> INFO - LaTeX decoding ...
-[212] bibtex.pm:1305> INFO - Found BibTeX data source 'references.bib'
-[297] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[297] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[297] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
-[297] Biber.pm:3810> INFO - No sort tailoring available for locale 'fr-FR'
-[311] bbl.pm:617> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[318] bbl.pm:720> INFO - Output to main.bbl
+[27] biber:313> INFO - === ven. juil. 27, 2018, 17:20:45
+[134] Biber.pm:371> INFO - Reading 'main.bcf'
+[283] Biber.pm:857> INFO - Found 17 citekeys in bib section 0
+[298] Biber.pm:3976> INFO - Processing section 0
+[308] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[364] bibtex.pm:1489> INFO - LaTeX decoding ...
+[391] bibtex.pm:1305> INFO - Found BibTeX data source 'references.bib'
+[493] Utils.pm:193> WARN - Possible typo (case mismatch) between citation and datasource keys: 'Marsala-rank' and 'marsala-rank' in file 'references.bib'
+[494] Utils.pm:193> WARN - I didn't find a database entry for 'Marsala-rank' (section 0)
+[524] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[524] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[525] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[525] Biber.pm:3810> INFO - No sort tailoring available for locale 'fr-FR'
+[547] bbl.pm:617> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[558] bbl.pm:720> INFO - Output to main.bbl
+[563] Biber.pm:110> INFO - WARNINGS: 2
