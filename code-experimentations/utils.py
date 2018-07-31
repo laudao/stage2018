@@ -444,7 +444,6 @@ def discretize(H, labeled_set, a_j):
     total_ind = np.arange(0, n)
 
 
-
     for k in range(len(unique_values)-1):
         current = unique_values[k] # current attribute value
         current_group = grouped.groups[current].values # indices of elements in df sharing this value
@@ -1377,7 +1376,7 @@ def add_noise(labeled_set, noise):
     noisy_set = LabeledSet(k)
     noisy_set.x = labeled_set.x.copy()
     noisy_set.y = labeled_set.y.copy()
-
+    noisy_set.nb_examples = labeled_set.nb_examples
 
     for i in range(len(random_order)):
         q1 = random_order[i]
