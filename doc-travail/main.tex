@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{float}
+
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \algnewcommand{\algorithmicand}{\textbf{ and }}
@@ -79,7 +81,7 @@ décision prenant en compte une relation graduelle susceptible d'exister entre
 les valeurs d'attributs et la classe, tout en étant suffisamment robuste au
 bruit non-monotone. On reprend, en particulier, \cite{marsala-rank} pour la
 construction d'arbres de décision monotones paramétrés par une mesure de
-discrimination à rang. Une étude théorique des propriétés des mesures présentées
+discrimination d'ordre. Une étude théorique des propriétés des mesures présentées
 dans le même article est également effectuée.\\
 
 \section{Etat de l'art} 
@@ -87,7 +89,7 @@ Dans cette partie, on étudie et compare les méthodes proposées par Hu et al.
 \cite{hu-rank}, Marsala et Petturiti \cite{marsala-rank}, Qian et al.
 \cite{qian-fusing} et Pei et Hu \cite{pei-partially}.
 
-\subsection*{Notations}
+\subsection{Notations}
 On considère un ensemble $\Omega = \{\omega_1,...,\omega_n\}$ d'éléments définis
 par un ensemble d'attributs $A = \{a_1,...,a_m\}$, où pour tout $j=1,...,m, a_j$
 est une fonction de $\Omega$ vers $X_j = \{x_{j_1},...,x_{t_j}\}$. On note aussi
@@ -380,19 +382,322 @@ démontrées en annexe :
 
 \section{Implémentation et expérimentation de l'algorithme de construction
 d'arbres monotones} 
-Dans cette partie, on se base essentiellement sur RDMT(H),
-l'algorithme de construction d'arbres monotones donné dans \cite{marsala-rank},
-pour construire des arbres de décision monotones, que l'on évalue sur des
-données artificielles et réelles. 
+On implémente une librarie de fonctions permettant la
+construction ainsi que l'étude expérimentale d'arbres de décision.  On se base
+essentiellement sur RDMT(H), donné dans \cite{marsala-rank}, pour construire des
+arbres de décision monotones, que l'on évalue sur des données artificielles et
+réelles. Le code est implémenté en Python 3.6 et les librairies numpy,
+matplotlib et scikit-learn sont utilisées.
 
-\subsection{Mesures de discrimination d'ordre} 
-D'après
-\cite{marsala-rank}, les mesures de discrimination d'ordre possèdent la même
-structure fonctionnelle: elles se décomposent en trois fonctions $f^*$, $g^*$,
-et $h^*$.  Dans le même
-article, un modèle de construction hiérarchique de mesures de discrimination à
-rang est proposé. Il permet d'isoler leurs propriétés et d'en créer de
-nouvelles. 
+\subsection{Aspects calculatoires}
+Dans cette partie, on cherche à évaluer les complexités temporelle et spatiale
+du critère de partitionnement en fonction de la mesure de discrimination
+utilisée. Les mesures de discrimination d'ordre proposées sont basées sur les
+ensembles dominants, et, celles ne tenant pas compte de la monotonie des données,
+sur les classes d'équivalence. Le stockage des ces structures joue donc un rôle
+important dans la complexité du critère de partitionnement.
+
+Etant donnés $\Omega = \{\omega_i, ... , \omega_n\}, \mathcal{A} = \{a_1, ...,
+a_m\}, \lambda$, et $j \in \{1, ..., m\}$ fixé, on stocke l'ensemble dominant
+généré par l'attribut $a_j$ (respectivement la fonction d'étiquetage $\lambda$)
+dans une matrice notée A (respectivement D) de taille $n \times n$. Pour tout $i,
+h \in \{1, ..., n\}, A[i][h] = 1$ si et seulement si $a_j(\omega_i) \leq
+a_j(\omega_h)$ et $D[i][h] = 1$ si et seulement si $\lambda(\omega_i)
+\leq \lambda(\omega_h)$. En ce qui concerne les classes d'équivalence, $A[i][h]
+= 1$ si et seulement si $a_j(\omega_i) =
+a_j(\omega_h)$ et $D[i][h] = 1$ si et seulement si $\lambda(\omega_i)
+= \lambda(\omega_h)$.
+
+\subsection{Mesures de discrimination d'ordre} On implémente le modèle de
+construction hiérarchique proposé par Marsala et Petturiti.\\ Toutes les
+fonctions $f^*$, $g^*$, $h^*$ présentées dans l'article sont codées.  Pour
+chaque fonction $f^*$, on distingue le cas où la mesure construite détecte la
+monotonie (i.e. elle considère les ensembles dominants) du cas contraire (i.e.
+elle considère les classes d'équivalences). De plus, on désignera désormais par
+*-dsr les mesures dsr, mindsr, maxdsr ou avgdsr.
+
+Afin d'observer le comportement des *-dsr sur un attribut monotone, on génère
+une base de 100 points à deux classes, deux dimensions dont une seule est
+monotone par rapport à la classe.  Ici, la valeur de l'attribut et celle de la
+classe croissent en fonction de l'indice de l'élément. On duplique et bruite la
+même base de sorte à obtenir des bases bruitées à 0\%, 25\%, 50\%, 75\% et 90\%.
+Les courbes \ref{img:dsr0}, \ref{img:dsr25}, \ref{img:dsr50}, \ref{img:dsr75},
+et \ref{img:dsr90} tracent la valeur de $dsr(\omega_i)$ en fonction de i pour
+chaque base. \\
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/dsr_0.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    non-bruitée}
+    \label{img:dsr0}
+\end{figure}
+
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/dsr_25.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 25\%}
+    \label{img:dsr25}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/dsr_50.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 50\%}
+    \label{img:dsr50}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/dsr_75.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 75\%}
+    \label{img:dsr75}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/dsr_90.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 90\%}
+    \label{img:dsr90}
+\end{figure}
+
+Dans la base non bruitée, dsr($\omega_i$) = 1 pour chaque $\omega_i \in \Omega$.
+En effet, on a $a_j(\omega_i) \leq a_j(\omega_h) \Rightarrow \lambda(\omega_i)
+\leq \lambda(\omega_h)$ si et seulement si $\{\omega_h \in \Omega :
+\lambda(\omega_i) \leq \lambda(\omega_h) \land a_j(\omega_i) \leq
+a_j(\omega_h)\} = \{\omega_h \in \Omega : a_j(\omega_i) \leq a_j(\omega_h)\}$ si
+et seulement si $\frac{| [\omega_i]^{\leq}_{\lambda} \cap
+[\omega_i]^{\leq}_{a_j}|}{| [\omega_i]^{\leq}_{a_j} |} = 1 $.
+
+En revanche, plus le taux de bruit dans la base augmente, plus on observe de
+"pics". En effet, on observe davantage de $\omega_i$ tels que $ \{\omega_h \in
+\Omega : a_j(\omega_i) \leq a_j(\omega_h)\} $ est modifié, et donc  $|
+\{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h) \land
+a_j(\omega_i) \leq a_j(\omega_h)\} | \leq | \{\omega_h \in \Omega :
+a_j(\omega_i) \leq a_j(\omega_h)\} |$. \\
+
+Les courbes des autres *-dsr sont données en annexe.\\
+
+Une fois toutes les mesures de \cite{marsala-rank} implémentées, on étudie, pour
+chaque couple de mesures de discrimination (H, H'), l'évolution de H' en
+fonction de H pour 2, 3 et 5 classes. \\
+Pour cela, on génère aléatoirement, pour chaque nombre de classes, 100 bases de
+100 exemples. Pour chaque base, on récupère les seuils de coupure engendrés par
+la discrétisation et, pour chaque mesure, on enregistre les valeurs obtenues
+pour chaque seuil.\\
+Les figures \ref{img:H_2}, \ref{img:H_3}, \ref{img:H_5} tracent les corrélations
+entre chaque mesure de discrimination. \\
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/H_2.png}
+    \caption{H' en fonction de H (2 classes)}
+    \label{img:H_2}
+\end{figure}
+
+\begin{figure}[H]
+
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/H_3.png}
+    \caption{H' en fonction de H (3 classes)}
+    \label{img:H_3}
+\end{figure}
+
+\begin{figure}[H]
+
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/H_5.png}
+    \caption{H' en fonction de H (5 classes)}
+    \label{img:H_5}
+\end{figure}
+
+Pour chaque cas, on remarque que les mesures suivantes sont corrélées
+linéairement :
+\begin{itemize}
+    \item $H^*_S$ et $H^*_G$
+    \item $H_G$ et $H_S$
+\end{itemize}
+
+Et les mesures suivantes sont corrélées quadratiquement :
+\begin{itemize}
+    \item $H_P$ et $H_M$
+    \item $H_Q$ et $H^*_S$
+\end{itemize}
+
+\subsection{Algorithme de construction d'arbres de décision paramétré par une
+mesure de discrimination}
+
+
+En reprenant essentiellement RDMT, l'algorithme~\ref{alg:build-tree} est un
+classifieur paramétré par une mesure de discrimination H (d'ordre ou non) et par
+3 critères d'arrêt. Comme RDMT, cet algorithme ne produit pas un arbre
+globalement monotone. Néanmoins, si les données sont monotone-consistentes et si
+H tient compte de la relation graduelle entre les valeurs d'attributs et les
+valeurs de classe, alors cette méthode garantit une forme plus faible de
+monotonie (\textit{rule monotonicity}). 
+
+RDMT et cet algorithme diffèrent sur deux points. Ici, lorsqu'une feuille est
+créée, on lui assigne la classe majoritaire parmi les exemples ayant servi à sa
+construction. De plus, on distingue deux mesures de discrimination: l'une doit
+être minimisée pour le partitionnement et l'autre permet de déterminer l'arrêt.
+Dans la suite, la deuxième mesure utilisée sera toujours $H_S$.
+
+\begin{algorithm}[H]
+\caption{Construction de l'arbre}
+\label{alg:build-tree}
+\begin{algorithmic}
+\Procedure{build\_dt}{$\Omega_{\alpha}$, $H^*$, H, $\epsilon$, $\Delta$, $\mu$, $\lambda$, $\delta$}
+\State \Comment{$\Omega_{\alpha}$ : base de données étiquetées}
+\State \Comment{$H^*$ : mesure de discrimination utilisée pour le
+    partitionnement}
+\State \Comment{$H$ : mesure de discrimination utilisée pour déterminer l'arrêt }
+\State \Comment{$\epsilon$ : limite inférieure pour H}
+\State \Comment{$\Delta$ : longueur maximale d'un chemin de la racine à une feuille}
+\State \Comment{$\mu$ : taille minimale pour $\Omega_{\alpha}$}
+\State \Comment{$\lambda$ : fonction d'étiquetage}
+\State \Comment{$\delta$ : longueur du chemin de la racine au noeud courant}
+
+\State $h \gets H(\Omega_{\alpha}, \lambda)$
+
+\If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < \mu$ \OR $\forall \omega_i,
+    \omega_h \in \Omega_{\alpha}, \lambda(\omega_i) = \lambda(\omega_h)$ \OR $\delta > \Delta$}
+	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) \neq y\}|$
+\EndIf
+
+\State $m\gets$ nombre d'attributs dans $\Omega$
+\State $entropies\gets$ \{\}
+\State $seuils\gets$ \{\}
+
+\For{$a_j$=0 to m-1}
+	\If{$a_j(\omega_i) = a_j(\omega_h) \forall \omega_i, \omega_h \in \Omega_{\alpha}$}
+    	\State $seuils \gets$ seuils.\{$\infty$\}
+    	\State $entropies \gets$ entropies.\{$\infty$\}
+    \Else
+        \State $seuil, h \gets discretize(H^*, \Omega_{\alpha}, a_j) $
+        \State $seuils \gets$ seuils.\{seuil\}
+        \State $entropies \gets$ entropies.\{h\}
+    \EndIf
+\EndFor
+
+\State $\theta \gets$ seuils[argmin(entropies)]
+\State $a\gets$ argmin(entropies)
+
+\State $\Omega_{\leq}, \Omega_{\geq}\gets$ divide($\Omega_{\alpha}, a, \theta$) 
+
+\If{$| \Omega_{\leq} | = 0$}
+	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\geq}: \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\geq}: \lambda(\omega_i) \neq y\}|$
+\EndIf
+
+\If{$| \Omega_{\geq} | = 0$}
+	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\leq} \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\leq}: \lambda(\omega_i) \neq y\}|$
+\EndIf
+
+\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta, \mu, \lambda, \delta +1$)
+\State $\Gamma_{\geq}\gets$ BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, \mu, \lambda, \delta +1$)
+\State $\Gamma\gets$ \{a\} $\cup \Gamma_{\leq} \cup \Gamma{\geq}$
+\State \textbf{return $\Gamma$} 
+
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Le critère de partitionnement \textit{DISCRETIZE} est donné par l'algorithme~\ref{alg:discretize}.
+Pour un attribut $a_j$, il consiste à parcourir tous les seuils de coupure
+$x_{j_s}$ de $a_j$ pour trouver $x$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
+
+$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
+
+\begin{algorithm}[H]
+\caption{Discrétisation}
+\label{alg:discretize}
+\begin{algorithmic}
+\Procedure{discretize}{$H, \Omega$}
+\State \Comment{H : mesure de discrimination construite de façon hiérarchique}
+\State \Comment{$\Omega$ : base de données étiquetées}
+\State \Comment{$a_j$: attribut à discrétiser}
+
+\State $n\gets$ $| \Omega |$
+\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
+\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
+\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
+\State $U\gets \{a_j(w_i) | \forall w_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i) \forall \omega_i \in \Omega$} \\
+
+\State $a^{b}_j\gets 1, \forall w_i \in \Omega$ \Comment{attribut $a_j$ binarisé i.e $a^{b}_j = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
+\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
+\State $[\omega_i]_{\lambda} \gets \{\omega_h \in \Omega | \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
+
+\State $seuils\gets$ \{\}
+\State $entropies\gets$ \{\}
+\State V $\gets$ \{\} \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
+
+\For{$v \in U$}
+	\State $G \gets \{\omega_i \in \Omega | a_j(\omega_i) = v\}$
+	\State $\lambda_G \gets \{\lambda_i | \exists \omega_i \in G, \lambda(\omega_i) = \lambda_i\}$
+    \State $v' \gets$ valeur suivante dans U
+	\State $G' \gets \{\omega_i' \in \Omega | a_j(\omega_i') = v'\}$
+    \State $\lambda_G' \gets \{\lambda_i' | \exists \omega_i' \in G', \lambda(\omega_i) = \lambda_i\}$
+    \State $V \gets$ V.\{$G$\}    
+    \State $a^{b}_j\gets$ 0 
+    \State $x_{j_s}\gets \frac{v + v'}{2}$\\
+    
+    \If{$|\lambda_G| \neq |\lambda_G'| \OR \lambda_G' \neq \lambda_G$}
+    	\State $\forall \omega_i \in$ V, $[\omega_i]_{a^{b}_j} \gets \Omega$
+        \State $\bar{V} \gets \Omega - V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
+        \State $\forall \omega_i \in \bar{V}, [\omega_i]_{a^{b}_j} \gets \bar{V}$
+        \State $seuils \gets$ seuils.\{$x_{j_s}$\}
+        \State $entropies \gets$ entropies.\{$H(\lambda | a^{b}_j)$\}
+    \EndIf
+\EndFor
+
+\State \textbf{return} $min(entropies), seuils[argmin(entropies)]$
+
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Considérons la base de la figure \ref{img:artificial-dataset} contenant 60
+points à deux dimensions x et y et à 3 classes. x est l'attribut dont les valeurs sont
+monotones par rapport aux valeurs de la classe. Chaque classe est représentée
+par le même nombre de points. La classe 1 est
+représentée par les points bleus, la 2 par les points oranges, et la 3 par les
+points verts. 
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/artificial-dataset.png}
+    \caption{Base de données jouet}
+    \label{img:artificial-dataset}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/threshold_rsdm.png}
+    $$H^*_S(\lambda | \mathbf{x}) =  0.19 \leq H^*_S(\lambda | \mathbf{y}) =  0.53$$
+    \caption{Seuil de coupure généré par $H^*_S$}
+    \label{img:threshold_rsdm}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/threshold_sdm.png}
+    $$H_S(\lambda | \mathbf{x}) = H_S(\lambda | \mathbf{y}) =  0.67$$
+    \caption{Seuil de coupure généré par $H_S$}
+    \label{img:threshold_sdm}
+\end{figure}
+
+On observe sur les figures \ref{img:threshold_rsdm} et \ref{img:threshold_sdm}
+les seuils de coupures générés respectivement par $H^*_S$ et $H_S$ sur cette
+base jouet. On remarque que $H^*_S$ tient compte de la monotonie des valeurs de
+la classe par rapport aux valeurs de l'attribut x : la valeur d'entropie
+minimale calculée pour l'attribut x est inférieure à celle calculée pour
+l'attribut y. Ce n'est cependant pas le cas pour $H_S$ qui est insensible à la
+monotonie : la coupure optimale sur l'axe x génère la même valeur d'entropie que
+celle faite sur l'axe y.
 
 
 \printbibliography
