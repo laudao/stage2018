@@ -397,16 +397,49 @@ ensembles dominants, et, celles ne tenant pas compte de la monotonie des donnée
 sur les classes d'équivalence. Le stockage des ces structures joue donc un rôle
 important dans la complexité du critère de partitionnement.
 
-Etant donnés $\Omega = \{\omega_i, ... , \omega_n\}, \mathcal{A} = \{a_1, ...,
+Étant donnés $\Omega = \{\omega_i, ... , \omega_n\}, \mathcal{A} = \{a_1, ...,
 a_m\}, \lambda$, et $j \in \{1, ..., m\}$ fixé, on stocke l'ensemble dominant
 généré par l'attribut $a_j$ (respectivement la fonction d'étiquetage $\lambda$)
-dans une matrice notée A (respectivement D) de taille $n \times n$. Pour tout $i,
-h \in \{1, ..., n\}, A[i][h] = 1$ si et seulement si $a_j(\omega_i) \leq
-a_j(\omega_h)$ et $D[i][h] = 1$ si et seulement si $\lambda(\omega_i)
-\leq \lambda(\omega_h)$. En ce qui concerne les classes d'équivalence, $A[i][h]
+dans une matrice notée~$A$ (respectivement~$D$) de taille $n \times n$. Pour tout $i,
+h \in \{1, ..., n\}$,
+\begin{itemize} \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) \leq
+a_j(\omega_h)$ ;
+        \item $D_{ih}= 1$ si et seulement si~$\lambda(\omega_i)
+\leq \lambda(\omega_h)$.
+\end{itemize}
+
+A (respectivement D) est donc rempli en itérant sur chaque $\omega_i \in \Omega$
+et en assignant à chaque ligne $A_i$ (respectivement $D_i$) l'ensemble
+$\{\omega_h : a_j(\omega_i) \leq a_j(\omega_h)\}$ (respectivement $\{\omega_h :
+\lambda(\omega_i) \leq \lambda(\omega_h)\}$). La récupération de ce dernier se
+fait en temps $\mathcal{O}(n)$. On construit donc A et D en temps
+$\mathcal{O}(n^2)$. Comme les valeurs sont stockées dans une matrice de taille
+$n \times n$, la complexité spatiale est aussi en $\mathcal{0}{n^2}$.\\
+
+En ce qui concerne les classes d'équivalence, $A[i][h]
 = 1$ si et seulement si $a_j(\omega_i) =
 a_j(\omega_h)$ et $D[i][h] = 1$ si et seulement si $\lambda(\omega_i)
-= \lambda(\omega_h)$.
+= \lambda(\omega_h)$. La procédure de construction est la même que celle donnée
+précédemment en remplaçant l'inégalité par l'égalité. On obtient les mêmes
+complexités temporelle et spatiale. Comme les procédures maniant les ensembles
+dominants et celles utilisant les classes d'équivalence partagent les mêmes
+complexités, on ne précisera plus les cas où interviennent les classes
+d'équivalence. \\
+
+Pour $a_j$ donné,~$A$ et~$D$ ne sont calculés qu'une seule fois. \\
+
+Pour calculer $dsr(\omega_i)$, on récupère $[\omega_i]^{\leq}_{a_j}$ et
+$[\omega_i]^{\leq}_{\lambda}$ en temps $\mathcal{O}(n)$. Le calcul de
+$[\omega_i]_{a_j} \cap [\omega_i]_{\lambda}$ étant aussi en $\mathcal{O}(n)$,
+calculer $dsr(\omega_i)$ se fait en temps $\mathcal{O}(n)$. L'espace occupé est
+en $\mathcal{O}(n)$.  En revanche, le calcul de $maxdsr(\omega_i), mindsr(\omega_i)$ et
+$avgdsr(\omega_i)$ nécessite d'itérer sur chaque $\omega_h \in
+[\omega_i]_{a_j}$. Les complexités temporelle et spatiale de ces fonctions sont
+donc en $\mathcal{O}(n^2).$
+
+Toutes les fonctions $g^*$ implémentées sont en $\mathcal{O}(1)$.
+
+
 
 \subsection{Mesures de discrimination d'ordre} On implémente le modèle de
 construction hiérarchique proposé par Marsala et Petturiti.\\ Toutes les
