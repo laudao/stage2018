@@ -453,7 +453,7 @@ $$ H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
 \noindent Toutes les fonctions $f^*$, $g^*$, $h^*$ présentées dans l'article
 sont codées.  Pour chaque fonction $f^*$, on distingue le cas où la mesure
 construite détecte la monotonie (i.e. elle considère les ensembles dominants) du
-cas contraire (i.e.  elle considère les classes d'équivalences). 
+cas contraire (i.e.  elle considère les classes d'équivalences). \\
 
 Les ensembles dominants et classes d'équivalence servant de base pour le calcul
 de $f^*(\omega_i)$, pour tout $\omega_i \in \Omega$, le stockage de ces
@@ -469,7 +469,6 @@ h \in \{1,...,n\}$,
 a_j(\omega_h)$ ;
     \item $D_{ih}= 1$ si et seulement si~$\lambda(\omega_i) \leq \lambda(\omega_h)$.
 \end{itemize}
-
 A (respectivement D) est donc rempli en itérant sur chaque $\omega_i \in \Omega$
 et en assignant à chaque ligne $A_i$ (respectivement $D_i$) l'ensemble
 $\{\omega_h : a_j(\omega_i) \leq a_j(\omega_h)\}$ (respectivement $\{\omega_h :
@@ -495,17 +494,16 @@ $[\omega_i]^{\leq}_{a_j}$ et $[\omega_i]^{\leq}_{\lambda}$ restent constants,
 pour tout $\omega_i \in \Omega$. \\
 
 On s'intéresse maintenant au calcul de $f^*(\omega_i)$, qu'on appelera également
-$*-dsr(\omega_i)$.
-
+*-$dsr(\omega_i)$.
 Afin de calculer $dsr(\omega_i)$, on récupère $[\omega_i]^{\leq}_{a_j}$ et
 $[\omega_i]^{\leq}_{\lambda}$ à l'aide de~$A$ et~$D$ en temps $\mathcal{O}(n)$. Le calcul de
 $[\omega_i]_{a_j} \cap [\omega_i]_{\lambda}$ se faisant aussi en $\mathcal{O}(n)$,
 calculer $dsr(\omega_i)$ se fait en temps $\mathcal{O}(n)$. L'espace occupé est
-en $\mathcal{O}(n)$. 
+en $\mathcal{O}(n)$.
 En revanche, le calcul de $maxdsr(\omega_i), mindsr(\omega_i)$ et
 $avgdsr(\omega_i)$ nécessite d'itérer sur chaque $\omega_h \in
 [\omega_i]_{a_j}$. Les complexités temporelle et spatiale de ces fonctions sont
-donc en $\mathcal{O}(n^2).$
+donc en $\mathcal{O}(n^2).$ \\
 
 Afin d'observer le comportement des *-dsr sur un attribut monotone, on génère
 une base de 100 points à deux classes, deux dimensions dont une seule est
@@ -569,7 +567,7 @@ et seulement si $\frac{| [\omega_i]^{\leq}_{\lambda} \cap
 \Omega : a_j(\omega_i) \leq a_j(\omega_h)\} $ est modifié, et donc  $|
 \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h) \land
 a_j(\omega_i) \leq a_j(\omega_h)\} | \leq | \{\omega_h \in \Omega :
-a_j(\omega_i) \leq a_j(\omega_h)\} |$. \\
+a_j(\omega_i) \leq a_j(\omega_h)\} |$.
 
 \noindent Les courbes des autres *-dsr sont données en annexe.\\
 
@@ -581,8 +579,8 @@ elles sont toutes en $\mathcal{O}(n)$.
 Le calcul de $H^*(\lambda | a_j)$ se fait donc en :
 \begin{itemize}
     \item $\mathcal{O}(n^2)$ lorsque $f^* = dsr$ 
-    \item $\mathcal{O}(n^3)$ lorsque $f^* \in \{mindsr, maxdsr, avgdsr\}$ 
-\end{itemize}
+    \item $\mathcal{O}(n^3)$ lorsque $f^* \in \{mindsr, maxdsr, avgdsr\}$  \\
+\end{itemize} 
 
 On étudie, pour chaque couple de mesures de discrimination (H, H') données dans
 \cite{marsala-rank}, l'évolution de H' en fonction de H pour 2, 3 et 5 classes.
