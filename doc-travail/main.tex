@@ -631,20 +631,21 @@ Et les mesures suivantes sont corrélées quadratiquement :
 \subsection{Algorithme de construction d'arbres de décision paramétré par une
 mesure de discrimination}
 
-
 En reprenant essentiellement RDMT, l'algorithme~\ref{alg:build-tree} est un
 classifieur paramétré par une mesure de discrimination H (d'ordre ou non) et par
 3 critères d'arrêt. Comme RDMT, cet algorithme ne produit pas un arbre
 globalement monotone. Néanmoins, si les données sont monotone-consistentes et si
 H tient compte de la relation graduelle entre les valeurs d'attributs et les
 valeurs de classe, alors cette méthode garantit une forme plus faible de
-monotonie (\textit{rule monotonicity}). 
+monotonie (appelée \textit{rule monotonicity}). 
 
-RDMT et cet algorithme diffèrent sur deux points. Ici, lorsqu'une feuille est
-créée, on lui assigne la classe majoritaire parmi les exemples ayant servi à sa
-construction. De plus, on distingue deux mesures de discrimination: l'une doit
-être minimisée pour le partitionnement et l'autre permet de déterminer l'arrêt.
-Dans la suite, la deuxième mesure utilisée sera toujours $H_S$.
+RDMT et notre algorithme diffèrent sur deux points :
+\begin{itemize}
+    \item Lorsqu'une feuille est créée, on lui assigne la classe majoritaire parmi les exemples ayant servi à sa
+construction
+    \item On distingue deux mesures de discrimination: l'une doit
+être minimisée pour le partitionnement et l'autre permet de déterminer l'arrêt. Dans la suite, la deuxième mesure utilisée sera toujours $H_S$.
+\end{itemize}
 
 \begin{algorithm}[H]
 \caption{Construction de l'arbre}
@@ -715,46 +716,46 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
 \caption{Discrétisation}
 \label{alg:discretize}
 \begin{algorithmic}
-\Procedure{discretize}{$H, \Omega$}
-\State \Comment{H : mesure de discrimination construite de façon hiérarchique}
+\Procedure{discretize}{$H^*, \Omega$}
+\State \Comment{$H^*$ : mesure de discrimination construite de façon hiérarchique}
 \State \Comment{$\Omega$ : base de données étiquetées}
 \State \Comment{$a_j$: attribut à discrétiser}
 
-\State $n\gets$ $| \Omega |$
-\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
-\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
-\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
-\State $U\gets \{a_j(w_i) | \forall w_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i) \forall \omega_i \in \Omega$} \\
+\State $n\gets$ $| \Omega |$ 
+\State $T \gets $ matrice dont la première colonne contient les valeurs de $a_j(\omega_i)$ triées par ordre croissant, la deuxième, les valeurs de $\lambda(\omega_i)$ triées selon $a_j(\omega_i)$, et la troisième, les $i=1,...,n$ triés selon $a_j(\omega_i)$, pour tout $\omega_i \in \Omega$.
+%\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
+%\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
+%\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
+\State $U\gets \{a_j(w_i) : \forall \omega_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i)$ pour tout $\omega_i \in \Omega$} \\
 
-\State $a^{b}_j\gets 1, \forall w_i \in \Omega$ \Comment{attribut $a_j$ binarisé i.e $a^{b}_j = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
-\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
-\State $[\omega_i]_{\lambda} \gets \{\omega_h \in \Omega | \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
+\State $a^{b}_j(\omega_i) \gets 1, \forall w_i \in \Omega$ \Comment{valeur de l'attribut $a_j$ binarisée i.e $a^{b}_j(\omega_i) = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
+\State $[\omega_i]^{\leq}_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
+\State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
 
 \State $seuils\gets$ \{\}
-\State $entropies\gets$ \{\}
+\State $h\gets$ \{\}
 \State V $\gets$ \{\} \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
 
 \For{$v \in U$}
-	\State $G \gets \{\omega_i \in \Omega | a_j(\omega_i) = v\}$
-	\State $\lambda_G \gets \{\lambda_i | \exists \omega_i \in G, \lambda(\omega_i) = \lambda_i\}$
+    \State $\Omega_{v} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v\}$
+    \State $\lambda_{v} \gets \{\lambda_i : \exists \omega_h \in G, \lambda(\omega_h) = \lambda_i\}$
     \State $v' \gets$ valeur suivante dans U
-	\State $G' \gets \{\omega_i' \in \Omega | a_j(\omega_i') = v'\}$
-    \State $\lambda_G' \gets \{\lambda_i' | \exists \omega_i' \in G', \lambda(\omega_i) = \lambda_i\}$
-    \State $V \gets$ V.\{$G$\}    
-    \State $a^{b}_j\gets$ 0 
+    \State $\Omega_{v'} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v'\}$
+    \State $\lambda_{v'} \gets \{\lambda_i : \exists \omega_h \in G', \lambda(\omega_h) = \lambda_i\}$
+    \State $V \gets V \cup \{G\}$    
+    \State $a^{b}_j(\omega_i) \gets 0$ pour tout $\omega_i \in \Omega_{v}$ 
     \State $x_{j_s}\gets \frac{v + v'}{2}$\\
     
-    \If{$|\lambda_G| \neq |\lambda_G'| \OR \lambda_G' \neq \lambda_G$}
-    	\State $\forall \omega_i \in$ V, $[\omega_i]_{a^{b}_j} \gets \Omega$
-        \State $\bar{V} \gets \Omega - V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
-        \State $\forall \omega_i \in \bar{V}, [\omega_i]_{a^{b}_j} \gets \bar{V}$
-        \State $seuils \gets$ seuils.\{$x_{j_s}$\}
-        \State $entropies \gets$ entropies.\{$H(\lambda | a^{b}_j)$\}
+    \If{$\lambda_{G'} \neq \lambda_G$}
+    	\State $[\omega_i]_{a^{b}_j} \gets \Omega \forall \omega_i \in V$
+        \State $\bar{V} \gets \Omega V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
+        \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V} \forall \omega_i \in \bar{V}$
+        \State $seuils \gets$ seuils $\cup \{x_{j_s}\}$
+        \State $h \gets$ h $\cup \{H^*(\lambda | a^{b}_j)\}$
     \EndIf
 \EndFor
 
-\State \textbf{return} $min(entropies), seuils[argmin(entropies)]$
-
+\State \textbf{return} $\min h, arg\,min_{s \in seuils} h$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
