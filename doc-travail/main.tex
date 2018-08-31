@@ -733,7 +733,7 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
 \State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
 
 \State $seuils\gets$ \{\}
-\State $h\gets$ \{\}
+\State $E\gets$ \{\}
 \State V $\gets$ \{\} \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
 
 \For{$v \in U$}
@@ -747,15 +747,15 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
     \State $x_{j_s}\gets \frac{v + v'}{2}$\\
     
     \If{$\lambda_{G'} \neq \lambda_G$}
-    	\State $[\omega_i]_{a^{b}_j} \gets \Omega \forall \omega_i \in V$
-        \State $\bar{V} \gets \Omega V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
-        \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V} \forall \omega_i \in \bar{V}$
+    	\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall \omega_i \in V$
+        \State $\bar{V} \gets \Omega \setminus V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
+        \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V}, \forall \omega_i \in \bar{V}$
         \State $seuils \gets$ seuils $\cup \{x_{j_s}\}$
-        \State $h \gets$ h $\cup \{H^*(\lambda | a^{b}_j)\}$
+        \State $E \gets$ E $\cup \{H^*(\lambda | a^{b}_j)\}$
     \EndIf
 \EndFor
 
-\State \textbf{return} $\min h, arg\,min_{s \in seuils} h$
+\State \textbf{return} $\min E, arg\,min_{s \in seuils} E$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
