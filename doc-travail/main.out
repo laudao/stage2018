@@ -6,6 +6,5 @@
 \BOOKMARK [2][-]{subsection.2.4}{Fusion d'arbres de d\351cision monotones}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 7
 \BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Aspects calculatoires}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Mesures de discrimination d'ordre}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.3}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 10

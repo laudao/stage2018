@@ -389,73 +389,131 @@ arbres de décision monotones, que l'on évalue sur des données artificielles e
 réelles. Le code est implémenté en Python 3.6 et les librairies numpy,
 matplotlib et scikit-learn sont utilisées.
 
-\subsection{Aspects calculatoires}
-Dans cette partie, on cherche à évaluer les complexités temporelle et spatiale
-du critère de partitionnement en fonction de la mesure de discrimination
-utilisée. Les mesures de discrimination d'ordre proposées sont basées sur les
-ensembles dominants, et, celles ne tenant pas compte de la monotonie des données,
-sur les classes d'équivalence. Le stockage des ces structures joue donc un rôle
-important dans la complexité du critère de partitionnement.
+%\subsection{Aspects calculatoires}
+%Dans cette partie, on cherche à évaluer les complexités temporelle et spatiale
+%du critère de partitionnement en fonction de la mesure de discrimination
+%utilisée. Les mesures de discrimination d'ordre proposées sont basées sur les
+%ensembles dominants, et, celles ne tenant pas compte de la monotonie des données,
+%sur les classes d'équivalence. Le stockage des ces structures joue donc un rôle
+%important dans la complexité du critère de partitionnement. \\
+%
+%Étant donnés $\Omega = \{\omega_i, ... , \omega_n\}, \mathcal{A} = \{a_1, ...,
+%a_m\}, \lambda$, et $j \in \{1, ..., m\}$ fixé, on stocke l'ensemble dominant
+%généré par l'attribut $a_j$ (respectivement la fonction d'étiquetage $\lambda$)
+%dans une matrice notée~$A$ (respectivement~$D$) de taille $n \times n$. Pour tout $i,
+%h \in \{1,...,n\}$,
+%\begin{itemize} 
+%    \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) \leq
+%a_j(\omega_h)$ ;
+%    \item $D_{ih}= 1$ si et seulement si~$\lambda(\omega_i) \leq \lambda(\omega_h)$.
+%\end{itemize}
+%
+%A (respectivement D) est donc rempli en itérant sur chaque $\omega_i \in \Omega$
+%et en assignant à chaque ligne $A_i$ (respectivement $D_i$) l'ensemble
+%$\{\omega_h : a_j(\omega_i) \leq a_j(\omega_h)\}$ (respectivement $\{\omega_h :
+%\lambda(\omega_i) \leq \lambda(\omega_h)\}$). Récupérer ce dernier se fait en
+%temps $\mathcal{O}(n)$. On construit donc A et D en temps $\mathcal{O}(n^2)$.
+%Comme les valeurs sont stockées dans une matrice de taille $n \times n$, la
+%complexité spatiale est aussi en $\mathcal{O}{n^2}$.
+%
+%En ce qui concerne les classes d'équivalence, pour tout $i, h \in \{1,...,n\}$,
+%\begin{itemize}
+%    \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) = a_j(\omega_h)$
+%    \item $D_{ih} = 1$ si et seulement si $\lambda(\omega_i) = \lambda(\omega_h)$. 
+%\end{itemize}
+%La procédure de construction est la même que celle donnée
+%précédemment, en remplaçant l'inégalité par l'égalité. On obtient les mêmes
+%complexités temporelle et spatiale. Comme les algorithmes maniant les ensembles
+%dominants et ceux utilisant les classes d'équivalence partagent les mêmes
+%complexités, on étudiera uniquement les fonctions faisant intervenir les
+%ensembles dominants. 
+%
+%Pour $a_j$ donné,~$A$ et~$D$ ne sont calculés qu'une seule fois. \\
+%
+%Pour calculer $dsr(\omega_i)$, on récupère $[\omega_i]^{\leq}_{a_j}$ et
+%$[\omega_i]^{\leq}_{\lambda}$ en temps $\mathcal{O}(n)$. Le calcul de
+%$[\omega_i]_{a_j} \cap [\omega_i]_{\lambda}$ étant aussi en $\mathcal{O}(n)$,
+%calculer $dsr(\omega_i)$ se fait en temps $\mathcal{O}(n)$. L'espace occupé est
+%en $\mathcal{O}(n)$.  En revanche, le calcul de $maxdsr(\omega_i), mindsr(\omega_i)$ et
+%$avgdsr(\omega_i)$ nécessite d'itérer sur chaque $\omega_h \in
+%[\omega_i]_{a_j}$. Les complexités temporelle et spatiale de ces fonctions sont
+%donc en $\mathcal{O}(n^2).$
+%
+%Toutes les fonctions $g^*$ implémentées sont en $\mathcal{O}(1)$.
+%
+
+\subsection{Mesures de discrimination d'ordre} 
+On implémente le modèle de
+construction hiérarchique proposé par Marsala et Petturiti. On rappelle que le
+pouvoir de discrimination de l'attribut $a_j$ envers la classe $\lambda$ selon
+une mesure de discrimination $H^*$ peut s'écrire de la façon suivante :
+
+$$ H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
+
+\noindent Toutes les fonctions $f^*$, $g^*$, $h^*$ présentées dans l'article
+sont codées.  Pour chaque fonction $f^*$, on distingue le cas où la mesure
+construite détecte la monotonie (i.e. elle considère les ensembles dominants) du
+cas contraire (i.e.  elle considère les classes d'équivalences). 
+
+Les ensembles dominants et classes d'équivalence servant de base pour le calcul
+de $f^*(\omega_i)$, pour tout $\omega_i \in \Omega$, le stockage de ces
+structures joue un rôle important dans la complexité du critère de
+partitionnement.
 
 Étant donnés $\Omega = \{\omega_i, ... , \omega_n\}, \mathcal{A} = \{a_1, ...,
-a_m\}, \lambda$, et $j \in \{1, ..., m\}$ fixé, on stocke l'ensemble dominant
-généré par l'attribut $a_j$ (respectivement la fonction d'étiquetage $\lambda$)
-dans une matrice notée~$A$ (respectivement~$D$) de taille $n \times n$. Pour tout $i,
-h \in \{1, ..., n\}$,
-\begin{itemize} \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) \leq
+a_m\}, \lambda$, et $j \in \{1, ..., m\}$ fixé, on stocke les ensembles
+dominants générés par l'attribut $a_j$ (respectivement la fonction d'étiquetage $\lambda$) dans une matrice notée~$A$ (respectivement~$D$) de taille $n \times n$. Pour tout $i,
+h \in \{1,...,n\}$,
+\begin{itemize} 
+    \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) \leq
 a_j(\omega_h)$ ;
-        \item $D_{ih}= 1$ si et seulement si~$\lambda(\omega_i)
-\leq \lambda(\omega_h)$.
+    \item $D_{ih}= 1$ si et seulement si~$\lambda(\omega_i) \leq \lambda(\omega_h)$.
 \end{itemize}
 
 A (respectivement D) est donc rempli en itérant sur chaque $\omega_i \in \Omega$
 et en assignant à chaque ligne $A_i$ (respectivement $D_i$) l'ensemble
 $\{\omega_h : a_j(\omega_i) \leq a_j(\omega_h)\}$ (respectivement $\{\omega_h :
-\lambda(\omega_i) \leq \lambda(\omega_h)\}$). La récupération de ce dernier se
-fait en temps $\mathcal{O}(n)$. On construit donc A et D en temps
-$\mathcal{O}(n^2)$. Comme les valeurs sont stockées dans une matrice de taille
-$n \times n$, la complexité spatiale est aussi en $\mathcal{0}{n^2}$.\\
+\lambda(\omega_i) \leq \lambda(\omega_h)\}$). Récupérer ce dernier se fait en
+temps $\mathcal{O}(n)$. On construit donc A et D en temps $\mathcal{O}(n^2)$.
+Comme les valeurs sont stockées dans une matrice de taille $n \times n$, la
+complexité spatiale est aussi en $\mathcal{O}{n^2}$.
 
-En ce qui concerne les classes d'équivalence, $A[i][h]
-= 1$ si et seulement si $a_j(\omega_i) =
-a_j(\omega_h)$ et $D[i][h] = 1$ si et seulement si $\lambda(\omega_i)
-= \lambda(\omega_h)$. La procédure de construction est la même que celle donnée
-précédemment en remplaçant l'inégalité par l'égalité. On obtient les mêmes
-complexités temporelle et spatiale. Comme les procédures maniant les ensembles
-dominants et celles utilisant les classes d'équivalence partagent les mêmes
-complexités, on ne précisera plus les cas où interviennent les classes
-d'équivalence. \\
+En ce qui concerne les classes d'équivalence, pour tout $i, h \in \{1,...,n\}$,
+\begin{itemize}
+    \item $A_{ih} = 1$ si et seulement si $a_j(\omega_i) = a_j(\omega_h)$
+    \item $D_{ih} = 1$ si et seulement si $\lambda(\omega_i) = \lambda(\omega_h)$. 
+\end{itemize}
+La procédure de construction est la même que celle donnée
+précédemment, en remplaçant l'inégalité par l'égalité. On obtient les mêmes
+complexités temporelle et spatiale. Comme les algorithmes maniant les ensembles
+dominants et ceux utilisant les classes d'équivalence partagent les mêmes
+complexités, on étudiera uniquement les fonctions faisant intervenir les
+ensembles dominants. 
 
-Pour $a_j$ donné,~$A$ et~$D$ ne sont calculés qu'une seule fois. \\
+Pour $a_j$ et $\lambda$ fixés, ~$A$ et~$D$ ne sont calculés qu'une seule fois car
+$[\omega_i]^{\leq}_{a_j}$ et $[\omega_i]^{\leq}_{\lambda}$ restent constants,
+pour tout $\omega_i \in \Omega$. \\
 
-Pour calculer $dsr(\omega_i)$, on récupère $[\omega_i]^{\leq}_{a_j}$ et
-$[\omega_i]^{\leq}_{\lambda}$ en temps $\mathcal{O}(n)$. Le calcul de
-$[\omega_i]_{a_j} \cap [\omega_i]_{\lambda}$ étant aussi en $\mathcal{O}(n)$,
+On s'intéresse maintenant au calcul de $f^*(\omega_i)$, qu'on appelera également
+$*-dsr(\omega_i)$.
+
+Afin de calculer $dsr(\omega_i)$, on récupère $[\omega_i]^{\leq}_{a_j}$ et
+$[\omega_i]^{\leq}_{\lambda}$ à l'aide de~$A$ et~$D$ en temps $\mathcal{O}(n)$. Le calcul de
+$[\omega_i]_{a_j} \cap [\omega_i]_{\lambda}$ se faisant aussi en $\mathcal{O}(n)$,
 calculer $dsr(\omega_i)$ se fait en temps $\mathcal{O}(n)$. L'espace occupé est
-en $\mathcal{O}(n)$.  En revanche, le calcul de $maxdsr(\omega_i), mindsr(\omega_i)$ et
+en $\mathcal{O}(n)$. 
+En revanche, le calcul de $maxdsr(\omega_i), mindsr(\omega_i)$ et
 $avgdsr(\omega_i)$ nécessite d'itérer sur chaque $\omega_h \in
 [\omega_i]_{a_j}$. Les complexités temporelle et spatiale de ces fonctions sont
 donc en $\mathcal{O}(n^2).$
 
-Toutes les fonctions $g^*$ implémentées sont en $\mathcal{O}(1)$.
-
-
-
-\subsection{Mesures de discrimination d'ordre} On implémente le modèle de
-construction hiérarchique proposé par Marsala et Petturiti.\\ Toutes les
-fonctions $f^*$, $g^*$, $h^*$ présentées dans l'article sont codées.  Pour
-chaque fonction $f^*$, on distingue le cas où la mesure construite détecte la
-monotonie (i.e. elle considère les ensembles dominants) du cas contraire (i.e.
-elle considère les classes d'équivalences). De plus, on désignera désormais par
-*-dsr les mesures dsr, mindsr, maxdsr ou avgdsr.
-
 Afin d'observer le comportement des *-dsr sur un attribut monotone, on génère
 une base de 100 points à deux classes, deux dimensions dont une seule est
-monotone par rapport à la classe.  Ici, la valeur de l'attribut et celle de la
-classe croissent en fonction de l'indice de l'élément. On duplique et bruite la
-même base de sorte à obtenir des bases bruitées à 0\%, 25\%, 50\%, 75\% et 90\%.
-Les courbes \ref{img:dsr0}, \ref{img:dsr25}, \ref{img:dsr50}, \ref{img:dsr75},
-et \ref{img:dsr90} tracent la valeur de $dsr(\omega_i)$ en fonction de i pour
+monotone par rapport à la classe.  Ici, la valeur de l'attribut monotone et
+celle de la classe croissent en fonction de l'indice de l'élément. On duplique
+et bruite la même base de sorte à obtenir des bases bruitées à 0\%, 25\%, 50\%,
+75\%.  Les courbes \ref{img:dsr0}, \ref{img:dsr25}, \ref{img:dsr50}, et
+\ref{img:dsr75} tracent la valeur de $dsr(\omega_i)$ en fonction de i pour
 chaque base. \\
 
 \begin{figure}[H]
@@ -465,7 +523,6 @@ chaque base. \\
     non-bruitée}
     \label{img:dsr0}
 \end{figure}
-
 
 \begin{figure}[H]
 	\center 
@@ -491,13 +548,13 @@ chaque base. \\
     \label{img:dsr75}
 \end{figure}
 
-\begin{figure}[H]
-	\center 
-	\includegraphics[width=0.6\textwidth]{images/dsr_90.png}
-    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
-    bruitée à 90\%}
-    \label{img:dsr90}
-\end{figure}
+%\begin{figure}[H]
+%	\center 
+%	\includegraphics[width=0.6\textwidth]{images/dsr_90.png}
+%    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+%    bruitée à 90\%}
+%    \label{img:dsr90}
+%\end{figure}
 
 Dans la base non bruitée, dsr($\omega_i$) = 1 pour chaque $\omega_i \in \Omega$.
 En effet, on a $a_j(\omega_i) \leq a_j(\omega_h) \Rightarrow \lambda(\omega_i)
@@ -507,23 +564,34 @@ a_j(\omega_h)\} = \{\omega_h \in \Omega : a_j(\omega_i) \leq a_j(\omega_h)\}$ si
 et seulement si $\frac{| [\omega_i]^{\leq}_{\lambda} \cap
 [\omega_i]^{\leq}_{a_j}|}{| [\omega_i]^{\leq}_{a_j} |} = 1 $.
 
-En revanche, plus le taux de bruit dans la base augmente, plus on observe de
+\noindent En revanche, plus le taux de bruit dans la base augmente, plus on observe de
 "pics". En effet, on observe davantage de $\omega_i$ tels que $ \{\omega_h \in
 \Omega : a_j(\omega_i) \leq a_j(\omega_h)\} $ est modifié, et donc  $|
 \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h) \land
 a_j(\omega_i) \leq a_j(\omega_h)\} | \leq | \{\omega_h \in \Omega :
 a_j(\omega_i) \leq a_j(\omega_h)\} |$. \\
 
-Les courbes des autres *-dsr sont données en annexe.\\
+\noindent Les courbes des autres *-dsr sont données en annexe.\\
 
-Une fois toutes les mesures de \cite{marsala-rank} implémentées, on étudie, pour
-chaque couple de mesures de discrimination (H, H'), l'évolution de H' en
-fonction de H pour 2, 3 et 5 classes. \\
-Pour cela, on génère aléatoirement, pour chaque nombre de classes, 100 bases de
-100 exemples. Pour chaque base, on récupère les seuils de coupure engendrés par
-la discrétisation et, pour chaque mesure, on enregistre les valeurs obtenues
-pour chaque seuil.\\
-Les figures \ref{img:H_2}, \ref{img:H_3}, \ref{img:H_5} tracent les corrélations
+Toutes les fonctions $g^*$ présentées dans l'article ont des complexités
+temporelle et spatiale en $\mathcal{O}(1)$. En revanche, comme les fonctions
+$h^*$ agrègent les couches $g^*$ correspondant à chaque élément de $\Omega$,
+elles sont toutes en $\mathcal{O}(n)$.   
+
+Le calcul de $H^*(\lambda | a_j)$ se fait donc en :
+\begin{itemize}
+    \item $\mathcal{O}(n^2)$ lorsque $f^* = dsr$ 
+    \item $\mathcal{O}(n^3)$ lorsque $f^* \in \{mindsr, maxdsr, avgdsr\}$ 
+\end{itemize}
+
+On étudie, pour chaque couple de mesures de discrimination (H, H') données dans
+\cite{marsala-rank}, l'évolution de H' en fonction de H pour 2, 3 et 5 classes.
+\\ Pour cela, on génère aléatoirement, pour chaque nombre de classes, 100 bases
+de 100 exemples à un attribut monotone par rapport à la classe. Pour chaque
+base, on récupère les seuils de coupure engendrés par la discrétisation de
+l'attribut (étape décrite dans la section suivante) et, pour
+chaque mesure, on enregistre les valeurs obtenues pour chaque seuil.\\ Les
+figures \ref{img:H_2}, \ref{img:H_3}, \ref{img:H_5} tracent les corrélations
 entre chaque mesure de discrimination. \\
 
 \begin{figure}[H]
