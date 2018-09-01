@@ -242,7 +242,7 @@ de $\Omega_{\alpha}$ partagent la même classe ou $\delta > \Delta$, une feuille
 des éléments est divisé en deux sous-ensembles à partir desquels on calcule
         $H(\lambda|a^{x_{j_s}}_j)$. On récupère, pour chaque $a_j$,
 le seuil de coupure $x^*_j$ minimisant la valeur de H:
-$x^*_{j_s} = arg\,min H(\lambda|a^{x_{j_s}}_j)$. L'attribut $a^*$ utilisé pour le
+$x^*_{j} = arg\,min H(\lambda|a^{x_{j_s}}_j)$. L'attribut $a^*$ utilisé pour le
 partitionnement est celui dont le seuil $x^*$ minimise
 $H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m, s=1,...t_j-1.$ 
     \item Si $H(\lambda|a^*) < \epsilon$, une feuille est créée. 
@@ -647,81 +647,20 @@ construction
 être minimisée pour le partitionnement et l'autre permet de déterminer l'arrêt. Dans la suite, la deuxième mesure utilisée sera toujours $H_S$.
 \end{itemize}
 
-\begin{algorithm}[H]
-\caption{Construction de l'arbre}
-\label{alg:build-tree}
-\begin{algorithmic}
-\Procedure{build\_dt}{$\Omega_{\alpha}$, $H^*$, H, $\epsilon$, $\Delta$, $n_{min}$, $\lambda$, $\delta$}
-\State \Comment{$\Omega_{\alpha}$ : base de données étiquetées}
-\State \Comment{$H^*$ : mesure de discrimination utilisée pour le
-    partitionnement}
-\State \Comment{$H$ : mesure de discrimination utilisée pour déterminer l'arrêt }
-\State \Comment{$\epsilon$ : limite inférieure pour H}
-\State \Comment{$\Delta$ : longueur maximale d'un chemin de la racine à une feuille}
-\State \Comment{$n_{min}$ : taille minimale pour $\Omega_{\alpha}$}
-\State \Comment{$\lambda$ : fonction d'étiquetage}
-\State \Comment{$\delta$ : longueur du chemin de la racine au noeud courant}
+Comme l'on se restreint à des arbres de décision binaires, les données doivent
+être partitionnées en deux sous-ensembles à chaque étape de l'induction. Cette
+partition se fait en divisant l'ensemble courant $\Omega_{\alpha}$ selon
+l'attribut $a^*$ qui respecte le plus la contrainte de monotonie, i.e. celui
+dont la valeur $x^*_{j_s}$ minimise $H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m,
+s=1,...t_j-1$. 
 
-\State $h \gets H(\Omega_{\alpha}, \lambda)$
+Etant donné une mesure de discrimination $H^*$, \textit{DISCRETIZE}
+(algorithme~\ref{alg:discretize}) permet de récupérer, pour chaque $a_j \in
+\mathcal{A}$, le seuil de coupure minimisant la valeur de H ainsi que cette
+dernière. On parcourt tous les seuils de coupure $x_{j_s}$ de $a_j$
+pour trouver $x^*_{j}$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
 
-\If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < n_{min}$ \OR $\forall \omega_i,
-    \omega_h \in \Omega_{\alpha}, \lambda(\omega_i) = \lambda(\omega_h)$ \OR $\delta > \Delta$}
-    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}:
-    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
-    \lambda(\omega_i) \neq c\}|$ \\ \EndIf
-
-\State $m\gets$ nombre d'attributs dans $\Omega$
-\State $S\gets \varnothing $ {Comment{pour chaque $a_j \in \mathcal{A}$,
-    contient $x_{j_{*}}= arg\,min \{H(\lambda | a^{x_{j_s}}_j), s=1,...,t_{j} - 1$\}}
-\State $E\gets \varnothing $ \Comment{pour chaque $a_j \in \mathcal{A}$,
-    contient $min \{H(\lambda | a^{x_{j_s}}_j, s=1,...,t_j - 1\}$}\\
-
-\For{$a_j$=0 to m-1}
-    \If{$a_j(\omega_i) = a_j(\omega_h), \forall \omega_i, \omega_h \in
-    \Omega_{\alpha}$} \State $S \gets S \cup \{\infty\}$
-    	\State $E \gets E \cup \{\infty\}$
-    \Else
-        \State $x_{j_*}, h \gets$ DISCRETIZE($H^*, \Omega_{\alpha}, a_j$) 
-        \State $S \gets S \cup \{x_{j_*}\}$
-        \State $E \gets E \cup \{h\}$ \\
-    \EndIf
-\EndFor
-
-\State $x_* \gets arg\,min_{s \in S} E$ %seuils[argmin(entropies)]
-\State $a^{x_*}_*\gets arg\,min_{a_j \in \mathcal{A}} E $ \\ %argmin(entropies)
-
-\State $\Omega_{\leq}, \Omega_{\geq}\gets$ DIVIDE($\Omega_{\alpha}, a^{x_*}_*,
-    x_*$) 
-
-\If{$| \Omega_{\leq} | = 0$}
-    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\geq}:
-    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\geq}:
-    \lambda(\omega_i) \neq c\}|$
-\EndIf
-
-\If{$| \Omega_{\geq} | = 0$}
-    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\leq}
-    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\leq}:
-    \lambda(\omega_i) \neq c\}|$
-\EndIf
-
-\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta,
-    n_{min}, \lambda, \delta +1$) 
-\State $\Gamma_{\geq}\gets$
-    BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta
-    +1$)
-\State $\Gamma\gets \{a^{x_*}_*\} \cup \Gamma_{\leq} \cup \Gamma{\geq}$ 
-\State \textbf{return} $\Gamma$}
-
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-Le critère de partitionnement \textit{DISCRETIZE} est donné par l'algorithme~\ref{alg:discretize}.
-Pour un attribut $a_j$, il consiste à parcourir tous les seuils de coupure
-$x_{j_s}$ de $a_j$ pour trouver $x$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
-
-$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
+$$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 
 \begin{algorithm}[H]
 \caption{Discrétisation}
@@ -770,6 +709,136 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{Construction de l'arbre}
+\label{alg:build-tree}
+\begin{algorithmic}
+\Procedure{build\_dt}{$\Omega_{\alpha}$, $H^*$, H, $\epsilon$, $\Delta$, $n_{min}$, $\lambda$, $\delta$}
+\State \Comment{$\Omega_{\alpha}$ : base de données étiquetées}
+\State \Comment{$H^*$ : mesure de discrimination utilisée pour le
+    partitionnement}
+\State \Comment{$H$ : mesure de discrimination utilisée pour déterminer l'arrêt }
+\State \Comment{$\epsilon$ : limite inférieure pour H}
+\State \Comment{$\Delta$ : longueur maximale d'un chemin de la racine à une feuille}
+\State \Comment{$n_{min}$ : taille minimale pour $\Omega_{\alpha}$}
+\State \Comment{$\lambda$ : fonction d'étiquetage}
+\State \Comment{$\delta$ : longueur du chemin de la racine au noeud courant}
+
+\State $h \gets H(\Omega_{\alpha}, \lambda)$
+
+\If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < n_{min}$ \OR $\forall \omega_i,
+    \omega_h \in \Omega_{\alpha}, \lambda(\omega_i) = \lambda(\omega_h)$ \OR $\delta > \Delta$}
+    \State $c_{\alpha} \gets c$ tel que $|\{\omega_i \in \Omega_{\alpha}:
+        \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
+        \lambda(\omega_i) \neq c\}|$
+    \State \textbf{return} LEAF($c_{\alpha}, \Omega$) \\
+    %\State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}:
+    %\lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
+    %\lambda(\omega_i) \neq c\}|$ \\ 
+\EndIf
+
+\State $m\gets$ nombre d'attributs dans $\Omega$
+\State $S\gets \varnothing $ \Comment{pour chaque $a_j \in \mathcal{A}$,
+    contient $x_{j_{*}}= arg\,min \{H(\lambda | a^{x_{j_s}}_j), s=1,...,t_{j} - 1$\}}
+\State $E\gets \varnothing $ \Comment{pour chaque $a_j \in \mathcal{A}$,
+    contient $min \{H(\lambda | a^{x_{j_s}}_j), s=1,...,t_j - 1\}$}\\
+
+\For{$a_j$=0 to m-1}
+    \If{$a_j(\omega_i) = a_j(\omega_h), \forall \omega_i, \omega_h \in
+    \Omega_{\alpha}$} \State $S \gets S \cup \{\infty\}$
+    	\State $E \gets E \cup \{\infty\}$
+    \Else
+        \State $x_{j_*}, h \gets$ DISCRETIZE($H^*, \Omega_{\alpha}, a_j$) 
+        \State $S \gets S \cup \{x_{j_*}\}$
+        \State $E \gets E \cup \{h\}$ \\
+    \EndIf
+\EndFor
+
+\State $x_* \gets arg\,min_{s \in S} E$ %seuils[argmin(entropies)]
+\State $a^{x_*}_*\gets arg\,min_{a_j \in \mathcal{A}} E $ \\ %argmin(entropies)
+
+\State $\Omega_{\leq}, \Omega_{\geq}\gets$ DIVIDE($\Omega_{\alpha}, a^{x_*}_*,
+    x_*$) 
+
+\If{$| \Omega_{\leq} | = 0$}
+    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\geq}:
+    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\geq}:
+    \lambda(\omega_i) \neq c\}|$
+\EndIf
+
+\If{$| \Omega_{\geq} | = 0$}
+    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\leq}
+    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\leq}:
+    \lambda(\omega_i) \neq c\}|$
+\EndIf
+
+\State $\mathcal{T}_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta,
+    n_{min}, \lambda, \delta +1$) 
+\State $\Gamma_{\geq}\gets$
+    BUILD\_DT($\mathcal{T}_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta
+    +1$)
+\State $\mathcal{T} \gets \{a^{x_*}_*\} \times \mathcal{T}_{\leq} \times \mathcal{T}_{\geq}$ 
+\State \textbf{return} $\mathcal{T}$
+
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+%Le critère de partitionnement \textit{DISCRETIZE} est donné par l'algorithme~\ref{alg:discretize}.
+%Pour un attribut $a_j$, il consiste à parcourir tous les seuils de coupure
+%$x_{j_s}$ de $a_j$ pour trouver $x$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
+%
+%$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
+%
+%\begin{algorithm}[H]
+%\caption{Discrétisation}
+%\label{alg:discretize}
+%\begin{algorithmic}
+%\Procedure{discretize}{$H^*, \Omega$}
+%\State \Comment{$H^*$ : mesure de discrimination construite de façon hiérarchique}
+%\State \Comment{$\Omega$ : base de données étiquetées}
+%\State \Comment{$a_j$: attribut à discrétiser}
+%
+%\State $n\gets$ $| \Omega |$ 
+%\State $T \gets $ matrice dont la première colonne contient les valeurs de $a_j(\omega_i)$ triées par ordre croissant, la deuxième, les valeurs de $\lambda(\omega_i)$ triées selon $a_j(\omega_i)$, et la troisième, les $i=1,...,n$ triés selon $a_j(\omega_i)$, pour tout $\omega_i \in \Omega$.
+%%\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
+%%\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
+%%\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
+%\State $U\gets \{a_j(w_i) : \forall \omega_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i)$ pour tout $\omega_i \in \Omega$} \\
+%
+%\State $a^{b}_j(\omega_i) \gets 1, \forall w_i \in \Omega$ \Comment{valeur de l'attribut $a_j$ binarisée i.e $a^{b}_j(\omega_i) = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
+%\State $[\omega_i]^{\leq}_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
+%\State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
+%
+%\State $S \gets \varnothing $ \Comment{seuils de coupure considérés}
+%\State $E \gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure $s \in S$}
+%\State V $\gets \varnothing $ \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
+%
+%\For{$v \in U$}
+%    \State $\Omega_{v} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v\}$
+%    \State $C_{v} \gets \{c \in C : \exists \omega_h \in \Omega_{v}, \lambda(\omega_h) = c\}$
+%    \State $v' \gets$ valeur suivante dans U
+%    \State $\Omega_{v'} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v'\}$
+%    \State $C_{v'} \gets \{c \in C : \exists \omega_h \in \Omega_{v'}, \lambda(\omega_h) = c\}$
+%    \State $V \gets V \cup \{\Omega_{v}\}$    
+%    \State $a^{b}_j(\omega_i) \gets 0$ pour tout $\omega_i \in \Omega_{v}$ 
+%    \State $x_{j_s}\gets \frac{v + v'}{2}$\\
+%    
+%    \If{$C_{v'} \neq C_{v}$}
+%    	\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall \omega_i \in V$
+%        \State $\bar{V} \gets \Omega \setminus V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
+%        \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V}, \forall \omega_i \in \bar{V}$
+%        \State $S \gets S \cup \{x_{j_s}\}$
+%        \State $E \gets E \cup \{H^*(\lambda | a^{b}_j)\}$
+%    \EndIf
+%\EndFor
+%
+%\State \textbf{return} $\min E, arg\,min_{s \in S} E $ \Comment{retourner la valeur d'entropie minimale et le seuil de coupure permettant de l'obtenir}
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
 
 Considérons la base de la figure \ref{img:artificial-dataset} contenant 60
 points à deux dimensions x et y et à 3 classes. x est l'attribut dont les valeurs sont
