@@ -241,7 +241,7 @@ de $\Omega_{\alpha}$ partagent la même classe ou $\delta > \Delta$, une feuille
     \item Sinon, pour chaque attribut $a_j$, pour chaque valeur d'attribut $x_{j_s}$, l'ensemble
 des éléments est divisé en deux sous-ensembles à partir desquels on calcule
         $H(\lambda|a^{x_{j_s}}_j)$. On récupère, pour chaque $a_j$,
-le seuil de coupure $x^*_j$ maximisant la valeur de H:
+le seuil de coupure $x^*_j$ minimisant la valeur de H:
 $x^*_{j_s} = arg\,min H(\lambda|a^{x_{j_s}}_j)$. L'attribut $a^*$ utilisé pour le
 partitionnement est celui dont le seuil $x^*$ minimise
 $H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m, s=1,...t_j-1.$ 
@@ -666,41 +666,52 @@ construction
 
 \If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < n_{min}$ \OR $\forall \omega_i,
     \omega_h \in \Omega_{\alpha}, \lambda(\omega_i) = \lambda(\omega_h)$ \OR $\delta > \Delta$}
-	\State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) \neq c\}|$
-\EndIf
+    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}:
+    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
+    \lambda(\omega_i) \neq c\}|$ \\ \EndIf
 
 \State $m\gets$ nombre d'attributs dans $\Omega$
-\State $E\gets$ \{\}
-\State $S\gets$ \{\}
+\State $S\gets \varnothing $ {Comment{pour chaque $a_j \in \mathcal{A}$,
+    contient $x_{j_{*}}= arg\,min \{H(\lambda | a^{x_{j_s}}_j), s=1,...,t_{j} - 1$\}}
+\State $E\gets \varnothing $ \Comment{pour chaque $a_j \in \mathcal{A}$,
+    contient $min \{H(\lambda | a^{x_{j_s}}_j, s=1,...,t_j - 1\}$}\\
 
 \For{$a_j$=0 to m-1}
-	\If{$a_j(\omega_i) = a_j(\omega_h) \forall \omega_i, \omega_h \in \Omega_{\alpha}$}
-    	\State $seuils \gets$ seuils.\{$\infty$\}
-    	\State $entropies \gets$ entropies.\{$\infty$\}
+    \If{$a_j(\omega_i) = a_j(\omega_h), \forall \omega_i, \omega_h \in
+    \Omega_{\alpha}$} \State $S \gets S \cup \{\infty\}$
+    	\State $E \gets E \cup \{\infty\}$
     \Else
-        \State $seuil, h \gets discretize(H^*, \Omega_{\alpha}, a_j) $
-        \State $seuils \gets$ seuils.\{seuil\}
-        \State $entropies \gets$ entropies.\{h\}
+        \State $x_{j_*}, h \gets$ DISCRETIZE($H^*, \Omega_{\alpha}, a_j$) 
+        \State $S \gets S \cup \{x_{j_*}\}$
+        \State $E \gets E \cup \{h\}$ \\
     \EndIf
 \EndFor
 
-\State $\theta \gets$ seuils[argmin(entropies)]
-\State $a\gets$ argmin(entropies)
+\State $x_* \gets arg\,min_{s \in S} E$ %seuils[argmin(entropies)]
+\State $a^{x_*}_*\gets arg\,min_{a_j \in \mathcal{A}} E $ \\ %argmin(entropies)
 
-\State $\Omega_{\leq}, \Omega_{\geq}\gets$ divide($\Omega_{\alpha}, a, \theta$) 
+\State $\Omega_{\leq}, \Omega_{\geq}\gets$ DIVIDE($\Omega_{\alpha}, a^{x_*}_*,
+    x_*$) 
 
 \If{$| \Omega_{\leq} | = 0$}
-	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\geq}: \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\geq}: \lambda(\omega_i) \neq y\}|$
+    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\geq}:
+    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\geq}:
+    \lambda(\omega_i) \neq c\}|$
 \EndIf
 
 \If{$| \Omega_{\geq} | = 0$}
-	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\leq} \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\leq}: \lambda(\omega_i) \neq y\}|$
+    \State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\leq}
+    \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\leq}:
+    \lambda(\omega_i) \neq c\}|$
 \EndIf
 
-\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta +1$)
-\State $\Gamma_{\geq}\gets$ BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta +1$)
-\State $\Gamma\gets$ \{a\} $\cup \Gamma_{\leq} \cup \Gamma{\geq}$
-\State \textbf{return $\Gamma$} 
+\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta,
+    n_{min}, \lambda, \delta +1$) 
+\State $\Gamma_{\geq}\gets$
+    BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta
+    +1$)
+\State $\Gamma\gets \{a^{x_*}_*\} \cup \Gamma_{\leq} \cup \Gamma{\geq}$ 
+\State \textbf{return} $\Gamma$}
 
 \EndProcedure
 \end{algorithmic}
@@ -710,7 +721,7 @@ Le critère de partitionnement \textit{DISCRETIZE} est donné par l'algorithme~\
 Pour un attribut $a_j$, il consiste à parcourir tous les seuils de coupure
 $x_{j_s}$ de $a_j$ pour trouver $x$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
 
-$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
+$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 
 \begin{algorithm}[H]
 \caption{Discrétisation}
@@ -733,7 +744,7 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
 \State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
 
 \State $S \gets \varnothing $ \Comment{seuils de coupure considérés}
-\State $E \gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure}
+\State $E \gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure $s \in S$}
 \State V $\gets \varnothing $ \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
 
 \For{$v \in U$}
@@ -755,7 +766,7 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
     \EndIf
 \EndFor
 
-\State \textbf{return} $\min E, arg\,min_{\mathcal{s} \in S} E $ \Comment{retourner la valeur d'entropie minimale et le seuil de coupure permettant de l'obtenir}
+\State \textbf{return} $\min E, arg\,min_{s \in S} E $ \Comment{retourner la valeur d'entropie minimale et le seuil de coupure permettant de l'obtenir}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
