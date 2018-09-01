@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Debian) (preloaded format=pdflatex 2018.7.11)  31 AUG 2018 20:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Debian) (preloaded format=pdflatex 2018.7.11)  1 SEP 2018 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1121,23 +1121,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 508--516
 
  []
 
-<images/dsr_0.png, id=130, 466.74374pt x 297.11pt>
+<images/dsr_0.png, id=131, 466.74374pt x 297.11pt>
 File: images/dsr_0.png Graphic file (type png)
 <use images/dsr_0.png>
 Package pdftex.def Info: images/dsr_0.png  used on input line 519.
 (pdftex.def)             Requested size: 256.07741pt x 163.01659pt.
 [6]
-<images/dsr_25.png, id=139, 448.67625pt x 299.1175pt>
+<images/dsr_25.png, id=140, 448.67625pt x 299.1175pt>
 File: images/dsr_25.png Graphic file (type png)
 <use images/dsr_25.png>
 Package pdftex.def Info: images/dsr_25.png  used on input line 527.
 (pdftex.def)             Requested size: 256.07741pt x 170.72238pt.
-<images/dsr_50.png, id=140, 445.665pt x 297.11pt>
+<images/dsr_50.png, id=141, 445.665pt x 297.11pt>
 File: images/dsr_50.png Graphic file (type png)
 <use images/dsr_50.png>
 Package pdftex.def Info: images/dsr_50.png  used on input line 535.
 (pdftex.def)             Requested size: 256.07741pt x 170.71904pt.
-<images/dsr_75.png, id=141, 448.67625pt x 299.1175pt>
+<images/dsr_75.png, id=142, 448.67625pt x 299.1175pt>
 File: images/dsr_75.png Graphic file (type png)
 <use images/dsr_75.png>
 Package pdftex.def Info: images/dsr_75.png  used on input line 543.
@@ -1157,18 +1157,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 585--594
 
  []
 
-<images/H_2.png, id=153, 1258.7025pt x 1256.695pt>
+<images/H_2.png, id=154, 1258.7025pt x 1256.695pt>
 File: images/H_2.png Graphic file (type png)
 <use images/H_2.png>
 Package pdftex.def Info: images/H_2.png  used on input line 597.
 (pdftex.def)             Requested size: 256.07741pt x 255.66823pt.
 [8 <./images/dsr_75.png>]
-<images/H_3.png, id=162, 547.04375pt x 546.04pt>
+<images/H_3.png, id=163, 547.04375pt x 546.04pt>
 File: images/H_3.png Graphic file (type png)
 <use images/H_3.png>
 Package pdftex.def Info: images/H_3.png  used on input line 605.
 (pdftex.def)             Requested size: 256.07741pt x 255.60568pt.
-<images/H_5.png, id=163, 573.14125pt x 573.14125pt>
+<images/H_5.png, id=164, 573.14125pt x 573.14125pt>
 File: images/H_5.png Graphic file (type png)
 <use images/H_5.png>
 Package pdftex.def Info: images/H_5.png  used on input line 613.
@@ -1177,19 +1177,19 @@ Package pdftex.def Info: images/H_5.png  used on input line 613.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 651.
  [10 <./images/H_5.png>] [11]
-<images/artificial-dataset.png, id=184, 406.51875pt x 275.0275pt>
+<images/artificial-dataset.png, id=185, 406.51875pt x 275.0275pt>
 File: images/artificial-dataset.png Graphic file (type png)
 <use images/artificial-dataset.png>
 Package pdftex.def Info: images/artificial-dataset.png  used on input line 772.
 
 (pdftex.def)             Requested size: 256.07741pt x 173.25145pt.
  [12]
-<images/threshold_rsdm.png, id=190, 408.52625pt x 270.00874pt>
+<images/threshold_rsdm.png, id=191, 408.52625pt x 270.00874pt>
 File: images/threshold_rsdm.png Graphic file (type png)
 <use images/threshold_rsdm.png>
 Package pdftex.def Info: images/threshold_rsdm.png  used on input line 779.
 (pdftex.def)             Requested size: 256.07741pt x 169.25768pt.
-<images/threshold_sdm.png, id=191, 403.5075pt x 265.99374pt>
+<images/threshold_sdm.png, id=192, 403.5075pt x 265.99374pt>
 File: images/threshold_sdm.png Graphic file (type png)
 <use images/threshold_sdm.png>
 Package pdftex.def Info: images/threshold_sdm.png  used on input line 787.
@@ -1209,11 +1209,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 804.
  ) 
 Here is how much of TeX's memory you used:
- 25513 strings out of 492648
- 466334 string characters out of 6132023
+ 25517 strings out of 492648
+ 466381 string characters out of 6132023
  910373 words of memory out of 5000000
- 28937 multiletter control sequences out of 15000+600000
- 17660 words of font info for 52 fonts, out of 8000000 for 9000
+ 28939 multiletter control sequences out of 15000+600000
+ 18424 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,6n,56p,936b,1731s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
@@ -1231,13 +1231,14 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/tex
 mf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/publi
 c/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.
 pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public
-/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.p
-fb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on main.pdf (14 pages, 887794 bytes).
+f/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.p
+fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on main.pdf (14 pages, 904597 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
+ 293 PDF objects out of 1000 (max. 8388607)
+ 238 compressed objects within 3 object streams
  54 named destinations out of 1000 (max. 500000)
  143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

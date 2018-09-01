@@ -651,27 +651,27 @@ construction
 \caption{Construction de l'arbre}
 \label{alg:build-tree}
 \begin{algorithmic}
-\Procedure{build\_dt}{$\Omega_{\alpha}$, $H^*$, H, $\epsilon$, $\Delta$, $\mu$, $\lambda$, $\delta$}
+\Procedure{build\_dt}{$\Omega_{\alpha}$, $H^*$, H, $\epsilon$, $\Delta$, $n_min$, $\lambda$, $\delta$}
 \State \Comment{$\Omega_{\alpha}$ : base de données étiquetées}
 \State \Comment{$H^*$ : mesure de discrimination utilisée pour le
     partitionnement}
 \State \Comment{$H$ : mesure de discrimination utilisée pour déterminer l'arrêt }
 \State \Comment{$\epsilon$ : limite inférieure pour H}
 \State \Comment{$\Delta$ : longueur maximale d'un chemin de la racine à une feuille}
-\State \Comment{$\mu$ : taille minimale pour $\Omega_{\alpha}$}
+\State \Comment{$n_min$ : taille minimale pour $\Omega_{\alpha}$}
 \State \Comment{$\lambda$ : fonction d'étiquetage}
 \State \Comment{$\delta$ : longueur du chemin de la racine au noeud courant}
 
 \State $h \gets H(\Omega_{\alpha}, \lambda)$
 
-\If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < \mu$ \OR $\forall \omega_i,
+\If{$h < \epsilon$ \OR $| \Omega_{\alpha} | < n_min$ \OR $\forall \omega_i,
     \omega_h \in \Omega_{\alpha}, \lambda(\omega_i) = \lambda(\omega_h)$ \OR $\delta > \Delta$}
-	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) \neq y\}|$
+	\State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\alpha}: \lambda(\omega_i) \neq y\}|$
 \EndIf
 
 \State $m\gets$ nombre d'attributs dans $\Omega$
-\State $entropies\gets$ \{\}
-\State $seuils\gets$ \{\}
+\State $E\gets$ \{\}
+\State $S\gets$ \{\}
 
 \For{$a_j$=0 to m-1}
 	\If{$a_j(\omega_i) = a_j(\omega_h) \forall \omega_i, \omega_h \in \Omega_{\alpha}$}
@@ -697,8 +697,8 @@ construction
 	\State \textbf{return} $\{y\}$ tel que $|\{\omega_i \in \Omega_{\leq} \lambda(\omega_i) = y\}| \geq |\{\omega_i \in \Omega_{\leq}: \lambda(\omega_i) \neq y\}|$
 \EndIf
 
-\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta, \mu, \lambda, \delta +1$)
-\State $\Gamma_{\geq}\gets$ BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, \mu, \lambda, \delta +1$)
+\State $\Gamma_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta, n_min, \lambda, \delta +1$)
+\State $\Gamma_{\geq}\gets$ BUILD\_DT($\Omega_{\geq}, H^*, H, \epsilon, \Delta, n_min, \lambda, \delta +1$)
 \State $\Gamma\gets$ \{a\} $\cup \Gamma_{\leq} \cup \Gamma{\geq}$
 \State \textbf{return $\Gamma$} 
 
@@ -732,30 +732,30 @@ $$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...t_j -1\}$$
 \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
 \State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
 
-\State $seuils\gets$ \{\}
-\State $E\gets$ \{\}
-\State V $\gets$ \{\} \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
+\State $\mathcal{S}\gets \varnothing $ \Comment{seuils de coupure considérés}
+\State $\mathcal{E}\gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure}
+\State V $\gets \varnothing $ \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
 
 \For{$v \in U$}
     \State $\Omega_{v} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v\}$
-    \State $\lambda_{v} \gets \{\lambda_i : \exists \omega_h \in G, \lambda(\omega_h) = \lambda_i\}$
+    \State $C_{v} \gets \{c \in C : \exists \omega_h \in \Omega_{v}, \lambda(\omega_h) = c\}$
     \State $v' \gets$ valeur suivante dans U
     \State $\Omega_{v'} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v'\}$
-    \State $\lambda_{v'} \gets \{\lambda_i : \exists \omega_h \in G', \lambda(\omega_h) = \lambda_i\}$
-    \State $V \gets V \cup \{G\}$    
+    \State $C_{v'} \gets \{c \in C : \exists \omega_h \in \Omega_{v'}, \lambda(\omega_h) = c\}$
+    \State $V \gets V \cup \{\Omega_{v}\}$    
     \State $a^{b}_j(\omega_i) \gets 0$ pour tout $\omega_i \in \Omega_{v}$ 
     \State $x_{j_s}\gets \frac{v + v'}{2}$\\
     
-    \If{$\lambda_{G'} \neq \lambda_G$}
+    \If{$C_{v'} \neq C_{v}$}
     	\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall \omega_i \in V$
         \State $\bar{V} \gets \Omega \setminus V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
         \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V}, \forall \omega_i \in \bar{V}$
-        \State $seuils \gets$ seuils $\cup \{x_{j_s}\}$
-        \State $E \gets$ E $\cup \{H^*(\lambda | a^{b}_j)\}$
+        \State $\mathcal{S} \gets \mathcal{S} \cup \{x_{j_s}\}$
+        \State $\mathcal{E} \gets \mathcal{E} \cup \{H^*(\lambda | a^{b}_j)\}$
     \EndIf
 \EndFor
 
-\State \textbf{return} $\min E, arg\,min_{s \in seuils} E$
+\State \textbf{return} $\min \mathcal{E}, arg\,min_{\mathcal{s} \in \mathcal{S}} \mathcal{E}$ \Comment{retourner la valeur d'entropie minimale et le seuil de coupure permettant de l'obtenir}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
