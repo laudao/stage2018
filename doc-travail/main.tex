@@ -253,7 +253,7 @@ procédure est répétée sur les sous-ensembles induits par $a^*$ et $x^*$. \\
 \noindent Comme REMT, RDMT ne garantit pas un classifieur globalement monotone, mais
 un arbre générant des règles monotones.  \\
 
-Les auteurs évaluent les modèles construits sur trois critères: le taux de bonne
+Les auteurs évaluent les modèles construits selon trois critères: le taux de bonne
 classification (mesuré par le pourcentage d'exemples correctement étiquetés, le
 test du K, et MAE), la monotonie et la taille des arbres (en termes de nombre de
 feuilles). 
@@ -296,10 +296,11 @@ revanche, étant donné leur degré de monotonie plus élevé, il est avantageux
 les passer en entrée d'algorithmes de post-traitement afin renforcer la
 monotonie globale.
 
-\subsection{Fusion d'arbres de décision monotones} Afin d'améliorer la capacité
-de généralisation du modèle de classification, Qian et al. dans
-\cite{qian-fusing} proposent une méthode d'ensemble par fusion d'arbres de décision
-monotones.
+\subsection{Fusion d'arbres de décision monotones} 
+Afin d'améliorer la capacité de généralisation du modèle de classification, Qian
+et al. dans \cite{qian-fusing} proposent une méthode d'ensemble par fusion
+d'arbres de décision monotones, notée FREMT (\textit{Fusing rank entropy based
+monotonic decision trees}).
 
 Les auteurs couplent une méthode de réduction d'attributs préservant l'ordre
 avec REMT, utilisé pour générer les classifieurs de base.
@@ -346,17 +347,128 @@ $$ Sig^{\beta}_{inner}(a, B, \lambda) = \gamma^{\beta}_B(\lambda) -
 correspond à :
 
 $$ Sig^{\beta}_{outer}(a, B, \lambda) = \gamma^{\beta}_{B \cup \{a\}}(\lambda) -
-\gamma^{\beta}_B(\lambda)$$
+\gamma^{\beta}_B(\lambda)$$ \\
 
-A l'aide de ces mesures de pertinence d'attributs, Qian et al. proposent un
-algorithme de réduction d'attributs, paramétré par $\beta$, qui génère des
-\textit{reducts} d'attributs monotones. Cette méthode sert à produire des arbres
-les plus diversifiés possibles: plusieurs sous-ensembles d'attributs sont
-sélectionnés, et chaque sous-ensemble est une réduction d'attributs qui préserve
-la monotonie des données originelles. Les auteurs définissent une méthode de
-recherche de multiples \textit{reducts} d'attributs monotones, paramétrée par
-$\beta$. Chaque sous-ensemble d'attributs produit sert de base d'apprentissage
-pour un arbre construit par REMT. 
+À l'aide de ces mesures de pertinence d'attributs, Qian et al. proposent un
+algorithme de réduction d'attributs, paramétré par $\beta$, qui, étant donné
+$\Omega$,~$A$ et $\lambda$, génère une réduction (\textit{reduct}) d'attributs
+monotones. Le principe est le suivant :
+
+\begin{itemize}
+    \item On récupère dans~$B$ les attributs noyaux de~$B$ en utilisant
+        $Sig^{\beta}_{inner}$.
+    \item Pour tout attribut $a_j \in A-B$, on calcule $Sig^{\beta}_{outer}(a_j,
+        B, \lambda)$. 
+    \begin{itemize}
+        \item Si la valeur calculée est supérieure ou égale à toutes celles obtenues
+            précédemment, alors on rajoute $a_j$ dans~$B$.
+        \item on réitère le processus jusqu'à ce que, pour tout $a_i \in A-B$,
+            $Sig^{\beta}_{outer}(a_i, B, \lambda) = 0$ (i.e. rajouter $a_i$
+            à~$B$ ne modifie pas $\gamma^{\beta}_{B}(\lambda)$).
+    \end{itemize}
+\end{itemize}
+
+\noindent Comme la taille de l'ensemble des attributs monotones sélectionnés par cette
+méthode est bien moindre que celle de l'ensemble original, l'arbre de décision
+induit par ces attributs sera moins profond et contiendra moins de noeuds, ce
+qui implique une meilleure aptitude à généraliser. Chaque arbre produit par cet
+algorithme sert de classifieur de base pour la méthode d'ensembles.
+
+Afin d'obtenir un classifieur final performant, il est nécessaire de produire
+des arbres les plus diversifiés possibles. Plusieurs sous-ensembles d'attributs
+sont donc sélectionnés, et chacun de ces sous-ensembles est une réduction d'attributs
+qui préserve la monotonie des données. 
+
+\noindent Les auteurs définissent donc une méthode de recherche de multiples réductions
+d'attributs monotones, paramétrée par $\beta$. Étant donné $\Omega$,~$A$ et
+$\lambda$, elle consiste à :
+\begin{itemize}
+    \item Trouver les attributs noyaux de A en utilisant $Sig^{\beta}_{inner}$.
+    \item Trier par ordre croissant les attributs restants $a_j \in B$ en fonction de
+        $\gamma^{\beta}_{B} + \frac{|\Omega / \{a_j\}|}{|\Omega|}$.
+    \item Stocker dans $P^*$ les deux sous-ensembles précédents.
+    \item À partir de $P^*$, trouver une réduction
+d'attributs $RED_0$ avec l'algorithme de réduction d'attributs donné plus haut.
+    \item Pour chacun des attributs $a_j$ se trouvant dans $RED_0$ mais n'étant
+        pas des attributs noyaux,
+    \begin{itemize}
+        \item Enlever $a_j$ de $P^*$.
+        \item Calculer une réduction $RED_j$ à partir de $P^*$ grâce à
+            l'algorithme précédent.
+        \item Si $RED_j$ n'a pas déjà été trouvée précédemment, rajouter $RED_j$
+            à l'ensemble des réductions obtenues.
+        \item Remettre $a_j$ dans $P^*$.
+    \end{itemize}
+\end{itemize}
+
+\noindent Cette méthode permet de générer un ensemble de réductions d'attributs monotones
+aussi diversifié que possible. Ces sous-ensembles d'attributs servent de base pour construire des arbres de
+décision complémentaires, générés par REMT. 
+
+Soit $F = \{T_1,T_2,...,T_N\}$ une forêt d'arbres de décision générés par $RED =
+\{RED_1,RED_2,...,RED_N\}$. Étant donnés $\Omega$, $A$, $\lambda$,
+$\beta = \{\beta_1,\beta_2,\}$, et $\omega$ un objet dont la classe est à
+déterminer, l'algorithme final de fusion d'arbres de décision
+monotones, \textit{Fusing rank entropy based monotonic decision trees (FREMT)},
+est le suivant :
+\begin{itemize}
+    \item Pour $i=1,...,M$, trouver $RED_i = \{RED_0,RED_1,...,RED_{N_i}\}$ avec
+        l'algorithme précédent
+    \item Stocker dans $RED$ l'union de tous les ensembles de réductions $RED_i$ générés
+    \item Pour chaque $RED_j \in RED$, générer un arbre $T_j$ avec REMT.
+    \item Construire F la forêt d'arbres $\{T_1,T_2,...,T_N\}$.
+    \item Déterminer la classe de $\omega$ avec F selon le principe de fusion
+        basé sur la probabilité maximale (\textit{Fusing principle based on
+        maximal probability}). \\
+\end{itemize}
+
+
+Qian et al. évaluent la performance de leur modèle selon le taux de bonne
+classification (mesuré par le pourcentage d'instances correctement classifiées)
+et l'erreur absolue moyenne. 
+
+Les tests sont menés uniquement sur des bases réelles.
+
+\noindent Sur les 10 bases récupérées, 9 nécessitent un pré-traitement afin
+d'être adaptés à l'algorithme de fusion d'arbres (en transformant les problèmes
+de monotonie descendantes en problèmes de monotonie ascendantes). De plus, afin
+de comparer les performances des modèles lorsque les données sont monotones, les
+classes des données sont modifiées à l'aide d'un algorithme de monotonization.
+
+\noindent Les auteurs observent d'abord les performances des arbres constituant
+la forêt (construits à partir des réductions d'attributs des données d'origine)
+puis la performance du modèle final. Ils comparent leurs résultats à ceux
+obtenus par REMT.
+
+\noindent D'après les expériences menées, on observe que les arbres de décision
+générés par les réductions d'attributs offrent de meilleurs résultats en termes
+de taux de bonne classification et d'erreur absolue moyenne dans la plupart des
+cas. De plus, les valeurs générées sont différentes les unes des autres, ce qui
+satisfait la contrainte de diversité nécessaire au modèle d'ensembles.
+Enfin, le classifieur produit par FREMT s'avère être meilleur que
+celui généré par REMT sur toutes les bases considérées, en termes de taux de
+bonne classification et d'erreur absolue moyenne. FREMT permet aussi d'améliorer
+la capacité de généralisation de REMT sur ces tâches de classification.
+
+
+\subsection{Arbres de décision partitiellement monotones} 
+
+Dans cette partie, on distingue deux types d'attributs : ceux  dont les valeurs
+sont linéairement ordonnées selon les valeurs de la classe, qu'on appelle
+critères, et ceux n'ayant pas de relation monotone avec la classe. La plupart
+des tâches de classification monotone comprennent ces deux sortes d'attributs.
+Cependant, les algorithmes étudiés précédemment font l'hypothèse que tous les
+attributs sont monotones par rapport à la classe. On ne peut néanmoins pas
+conserver uniquement les critères car les autres attributs permettent
+d'améliorer la performance du classifieur. Dans \cite{pei-partitially},
+Pei et Hu proposent donc un algorithme de construction d'arbres partiellement
+monotones permettant de gérer les deux types d'attributs à la fois. 
+
+
+Pour cela, ils proposent une mesure d'inconsistence d'ordre, \textit{rank
+inconsistency rate} (RIR), qui permet de distinguer les attributs ordinaires des
+critères et de déterminer les sens des relations graduelles entre les critères
+et la classe.
 
 \section{Etude théorique des propriétés des mesures de discrimination d'ordre}
 Marsala et Petturiti définissent dans \cite{marsala-rank} un modèle de
@@ -779,7 +891,7 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 \State $\Gamma_{\geq}\gets$
     BUILD\_DT($\mathcal{T}_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta
     +1$)
-\State $\mathcal{T} \gets \{a^{x_*}_*\} \times \mathcal{T}_{\leq} \times \mathcal{T}_{\geq}$ 
+\State $\mathcal{T} \gets$ TREE($\{a^{x_*}_*\}, \mathcal{T}_{\leq}, \mathcal{T}_{\geq}$)
 \State \textbf{return} $\mathcal{T}$
 
 \EndProcedure
