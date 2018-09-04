@@ -4,7 +4,8 @@
 \BOOKMARK [2][-]{subsection.2.2}{Arbre de d\351cision bas\351 sur l'entropie d'ordre}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Arbre de d\351cision param\351tr\351 par une mesure de discrimination d'ordre}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{Fusion d'arbres de d\351cision monotones}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 7
-\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Arbres de d\351cision partitiellement monotones}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 8
+\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 11

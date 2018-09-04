@@ -28,6 +28,9 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{graphicx}
 
+\usepackage{enumitem}
+\setitemize{label=\textbullet, font=\small}
+
 \usepackage[backend=biber,uniquename=init,giveninits=true,
              %% "et al" pour > deux auteurs, & pour exactement 2
              uniquelist=false,maxcitenames=2,mincitenames=1,maxbibnames=99,
@@ -145,7 +148,7 @@ est affecté à chaque noeud un seul attribut. Concernant les données, les
 attributs doivent être numériques et la classe, ordinale.
 
 
-\noindent A chaque étape de l'induction :
+\noindent À chaque étape de l'induction :
 \begin{itemize}
     \item si $|\Omega_{\alpha}| = 1$ ou tous les éléments
 de $\Omega_{\alpha}$ partagent la même classe, une feuille est créée. 
@@ -230,13 +233,13 @@ doit être ordinale. \\
 
 Notons H la mesure de discrimination utilisée, $\epsilon$ le seuil minimal pour
 H, $\Omega_{\alpha}$ l'ensemble des exemples considérés à l'étape courante de
-construction, $\alpha$ la taille minimale pour $\Omega_{\alpha}$, $\delta$ la
+construction, $n_{min}$ la taille minimale pour $\Omega_{\alpha}$, $\delta$ la
 profondeur courante de la branche, et $\Delta$ la profondeur maximale que peut
 avoir une branche de l'arbre. \\
 
 \noindent A chaque étape de l'induction :
 \begin{itemize}
-    \item si $|\Omega_{\alpha}| < \alpha$ ou tous les éléments
+    \item si $|\Omega_{\alpha}| < n_{min}$ ou tous les éléments
 de $\Omega_{\alpha}$ partagent la même classe ou $\delta > \Delta$, une feuille est créée. 
     \item Sinon, pour chaque attribut $a_j$, pour chaque valeur d'attribut $x_{j_s}$, l'ensemble
 des éléments est divisé en deux sous-ensembles à partir desquels on calcule
@@ -460,7 +463,7 @@ des tâches de classification monotone comprennent ces deux sortes d'attributs.
 Cependant, les algorithmes étudiés précédemment font l'hypothèse que tous les
 attributs sont monotones par rapport à la classe. On ne peut néanmoins pas
 conserver uniquement les critères car les autres attributs permettent
-d'améliorer la performance du classifieur. Dans \cite{pei-partitially},
+d'améliorer la performance du classifieur. Dans \cite{pei-partially},
 Pei et Hu proposent donc un algorithme de construction d'arbres partiellement
 monotones permettant de gérer les deux types d'attributs à la fois. 
 
@@ -468,7 +471,103 @@ monotones permettant de gérer les deux types d'attributs à la fois.
 Pour cela, ils proposent une mesure d'inconsistence d'ordre, \textit{rank
 inconsistency rate} (RIR), qui permet de distinguer les attributs ordinaires des
 critères et de déterminer les sens des relations graduelles entre les critères
-et la classe.
+et la classe. Étant donnés $a_j \in A$ et $\lambda$, on définit :
+
+\begin{itemize}
+    \item Le RIR ascendant (\textit{upward rank inconstency rate}) selon~$a_j$ :
+        $$ URIR^{\leq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
+        \frac{|[\omega_i]^{\leq}_{a_j}| \times
+        |[\omega_i]^{\geq}_{\lambda}|}{|\Omega| \times |[\omega_i]^{\leq}_{a_j}
+        \cap [\omega_i]^{\geq}_{\lambda}|}$$ 
+    \item Le RIR descendant (\textit{downward rank inconstency rate}) selon~$a_j$ : 
+        $$ DRIR^{\geq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
+        \frac{|[\omega_i]^{\geq}_{a_j}| \times
+        |[\omega_i]^{\leq}_{\lambda}|}{|\Omega| \times |[\omega_i]^{\geq}_{a_j}
+        \cap [\omega_i]^{\leq}_{\lambda}|}$$
+\end{itemize}
+
+$a_j$ croît avec $\lambda$ lorsque
+$URIR^{\leq}(a_j,\lambda) = 0$, et décroît avec $\lambda$
+quand $DRIR^{\geq}(a_j,\lambda) = 0$.
+
+La différence entre $URIR^{\leq}(a_j,\lambda)$ et $DRIR^{\geq}(a_j,\lambda)$
+est représentée par :
+
+$$ diff_{a_j} = URIR^{\leq}(a_j,\lambda) - DRIR^{\geq}(a_j,\lambda)$$
+
+Pei et Hu établissent un seuil $\delta \in [0,1]$ permettant de décider s'il
+existe une relation graduelle entre $a_j$ et $\lambda$. Si $diff_{a_j} \in
+[-\delta, \delta]$, alors $a_j$ n'est pas monotone par rapport à $\lambda$.
+Sinon, si $diff_{a_j} \in [\delta, \infty[$, alors $a_j$ décroît avec $\lambda$.
+Au contraire, si $diff_{a_j} \in ]-\infty, -\delta]$, alors $a_j$ croît avec
+$\lambda$.
+
+Ces mesures permettent de définir un algorithme capable de déterminer s'il
+existe une relation graduelle entre chaque attribut et la classe ainsi que son
+éventuel sens de variation.
+
+Afin de partitionner au mieux les données à chaque étape de construction de
+l'arbre, les mesures de sélection d'attributs RMI et MI sont utilisées. 
+
+\noindent L'information mutuelle MI (\textit{Mutual Information}) correspond au degré de
+consistence entre un attribut et les valeurs de la classe. L'information
+mutuelle entre l'attribut $a_j$ et la classe $\lambda$ est défini par :
+
+$$ MI(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n} \log_{2}
+\frac{|[\omega_i]_{a_j}|
+\times |[\omega_i]_{\lambda}|}{|\Omega| \times |[\omega_i]_{a_j} \cap
+[\omega_i]_{\lambda}|}$$
+
+\noindent De plus, Pei et Hu utilisent le coefficient d'information maximale MIC
+(\textit{Maximal Information Coefficient}) pour enlever les attributs
+impertinents. Soient $X$ et $Y$ deux variables aléatoires, $|X|$ et $|Y|$
+représentent le nombre d'intervalles sur les axes $X$ et $Y$. Le nombre total
+d'intervalles n'excède pas une valeur $T$ spécifiée. MIC est défini par :
+
+$$ MIC(X, Y) = \max_{|X||Y| < T} \frac{MI(X,Y)}{\log_{2}(\min(|X|,|Y|))}$$
+
+À l'aide de ces mesures, les auteurs développent PMDT (\textit{Partially
+Monotonic Decision Trees}), un algorithme de construction d'arbres partiellement
+monotones. Comme les autres méthodes, celle-ci ne considère que les arbres
+binaires où à chaque noeud interne correspond un attribut. Elle ne gère que les
+attributs numériques, et les valeurs de classe doivent être ordonnées. \\
+
+Soit $\Omega_{\alpha}$ l'ensemble des exemples considérés à l'étape actuelle de
+construction, $\epsilon$ le seuil minimal pour MI et RMI, et $n_{min}$ la taille
+minimale pour $\Omega_{\alpha}$.
+À chaque étape de l'induction :
+\begin{itemize}
+    \item Les éléments $\omega_i \in \Omega$ sont normalisés
+    \item Les attributs impertinents sont retirés avec $MIC$ afin d'obtenir $\Omega'$
+    \item Les attributs monotones et les attributs non-monotones sont
+        différenciés en utilisant $RIR$
+    \item Si tous les éléments de $\Omega'$ appartiennent à la même classe~$c$,
+        alors une feuille est créée et on lui assigne la classe ~$c$
+    \item Sinon, si $|\Omega_{\alpha}| < n_{min}$ alors une feuille est créée et
+        on lui assigne la classe majoritaire dans $\Omega_{\alpha}$
+    \item Sinon
+        \begin{itemize}
+            \item si le noeud courant n'est pas plus pur que son noeud parent,
+        alors le seuil générant la meilleure partition selon MI est récupéré
+    \item sinon, le seuil générant la meilleure partition selon RMI est récupéré
+        \end{itemize}
+    \item Si la partition obtenue est vide ou la valeur de MI ou RMI est plus
+        petite que $\epsilon$, alors la construction de l'arbre est arrêtée
+    \item Sinon, la même procédure est répétée sur les sous-ensembles de la
+        partition
+\end{itemize}
+
+L'évaluation des modèles est effectuée avec le taux de bonne classification et
+MAE.
+
+Pei et Hu comparent PMDT à DIR-DOMLEM, VC-DomLEM, REMT, RGMT, OLM et OSDL sur 12
+bases réelles pré-traitées (normalisation des attributs, suppression des données
+incomplètes, transformation des attributs croissants avec la classe en attributs
+décroissants) dans lesquelles le sens de variation des critères n'est pas connu. 
+
+Les expériences menées montrent que PMDT arrive à gérer à la fois les attributs
+non monotones et les critères, et garde les attributs les plus pertinents pour
+la construction de l'arbre.
 
 \section{Etude théorique des propriétés des mesures de discrimination d'ordre}
 Marsala et Petturiti définissent dans \cite{marsala-rank} un modèle de
