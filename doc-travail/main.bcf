@@ -1998,9 +1998,12 @@
     <bcf:citekey order="22">marsala-rank</bcf:citekey>
     <bcf:citekey order="23">qian-fusing</bcf:citekey>
     <bcf:citekey order="24">pei-partially</bcf:citekey>
-    <bcf:citekey order="25">marsala-rank</bcf:citekey>
-    <bcf:citekey order="26">marsala-rank</bcf:citekey>
-    <bcf:citekey order="27">marsala-rank</bcf:citekey>
+    <bcf:citekey order="25">blaszczynski-sequential</bcf:citekey>
+    <bcf:citekey order="26">blaszczynski-induction</bcf:citekey>
+    <bcf:citekey order="27">wang-induction</bcf:citekey>
+    <bcf:citekey order="28">marsala-rank</bcf:citekey>
+    <bcf:citekey order="29">marsala-rank</bcf:citekey>
+    <bcf:citekey order="30">marsala-rank</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

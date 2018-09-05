@@ -456,16 +456,15 @@ la capacité de généralisation de REMT sur ces tâches de classification.
 
 \subsection{Arbres de décision partitiellement monotones} 
 
-Dans cette partie, on distingue deux types d'attributs : ceux  dont les valeurs
-sont linéairement ordonnées selon les valeurs de la classe, qu'on appelle
-critères, et ceux n'ayant pas de relation monotone avec la classe. La plupart
-des tâches de classification monotone comprennent ces deux sortes d'attributs.
-Cependant, les algorithmes étudiés précédemment font l'hypothèse que tous les
-attributs sont monotones par rapport à la classe. On ne peut néanmoins pas
-conserver uniquement les critères car les autres attributs permettent
-d'améliorer la performance du classifieur. Dans \cite{pei-partially},
-Pei et Hu proposent donc un algorithme de construction d'arbres partiellement
-monotones permettant de gérer les deux types d'attributs à la fois. 
+Les algorithmes étudiés précédemment font l'hypothèse que tous les attributs
+sont monotones par rapport à la classe. Néanmoins, la plupart des tâches de
+classification avec contrainte de monotonie comportent deux sortes d'attributs :
+ceux dont les valeurs sont linéairement ordonnées selon les valeurs de la classe
+(les critères), et ceux n'ayant pas de relation monotone avec la classe (mais
+qui permettent tout de même d'améliorer la performance du classifieur). Dans
+\cite{pei-partially}, Pei et Hu proposent donc un algorithme de construction
+d'arbres partiellement monotones permettant de gérer les deux types d'attributs
+à la fois. 
 
 
 Pour cela, ils proposent une mesure d'inconsistence d'ordre, \textit{rank
@@ -474,12 +473,13 @@ critères et de déterminer les sens des relations graduelles entre les critère
 et la classe. Étant donnés $a_j \in A$ et $\lambda$, on définit :
 
 \begin{itemize}
-    \item Le RIR ascendant (\textit{upward rank inconstency rate}) selon~$a_j$ :
+    \item URIR (\textit{upward rank inconstency rate}), le RIR ascendant selon~$a_j$ :
         $$ URIR^{\leq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
         \frac{|[\omega_i]^{\leq}_{a_j}| \times
         |[\omega_i]^{\geq}_{\lambda}|}{|\Omega| \times |[\omega_i]^{\leq}_{a_j}
         \cap [\omega_i]^{\geq}_{\lambda}|}$$ 
-    \item Le RIR descendant (\textit{downward rank inconstency rate}) selon~$a_j$ : 
+    \item DRIR (\textit{downward rank inconstency rate}), le RIR
+        descendant selon~$a_j$ : 
         $$ DRIR^{\geq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
         \frac{|[\omega_i]^{\geq}_{a_j}| \times
         |[\omega_i]^{\leq}_{\lambda}|}{|\Omega| \times |[\omega_i]^{\geq}_{a_j}
@@ -554,20 +554,32 @@ minimale pour $\Omega_{\alpha}$.
     \item Si la partition obtenue est vide ou la valeur de MI ou RMI est plus
         petite que $\epsilon$, alors la construction de l'arbre est arrêtée
     \item Sinon, la même procédure est répétée sur les sous-ensembles de la
-        partition
+        partition \\
 \end{itemize}
 
 L'évaluation des modèles est effectuée avec le taux de bonne classification et
 MAE.
 
-Pei et Hu comparent PMDT à DIR-DOMLEM, VC-DomLEM, REMT, RGMT, OLM et OSDL sur 12
-bases réelles pré-traitées (normalisation des attributs, suppression des données
-incomplètes, transformation des attributs croissants avec la classe en attributs
-décroissants) dans lesquelles le sens de variation des critères n'est pas connu. 
+Pei et Hu comparent PMDT à des méthodes basées sur la structure formelle DRSA
+(\textit{dominance-based rough set approach}) DIR-DOMLEM, VC-DomLEM
+(\cite{blaszczynski-sequential}, \cite{blaszczynski-induction},
+\cite{wang-induction}), ainsi que des algorithmes de construction d'arbres de
+décisions tels REMT, RGMT, OLM et OSDL. Ils récupèrent 12 bases réelles dans
+lesquelles le sens de variation des critères n'est pas connu, et les
+pré-traitent : normalisation des attributs, suppression des données incomplètes,
+et transformation des attributs décroissants avec la classe en attributs
+croissants.
 
 Les expériences menées montrent que PMDT arrive à gérer à la fois les attributs
 non monotones et les critères, et garde les attributs les plus pertinents pour
-la construction de l'arbre.
+la construction de l'arbre. MI et RMI gèrent mieux les critères et attributs
+non-monotones que DomLEM et VC-DomLEM, et permettent d'améliorer
+significativement les performances de classification en termes de taux de bonne
+classification et de MAE. De plus, en considérant le fait que les données
+puissent être totalement monotones ou non, PMDT produit également de meilleurs
+résultats que REMT, RGMT, OLM et OSDL sur la plupart des tâches de
+classification traitées.
+
 
 \section{Etude théorique des propriétés des mesures de discrimination d'ordre}
 Marsala et Petturiti définissent dans \cite{marsala-rank} un modèle de

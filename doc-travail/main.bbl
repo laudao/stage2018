@@ -133,6 +133,88 @@
       \field{pages}{6627\bibrangedash 6634}
       \range{pages}{8}
     \endentry
+    \entry{blaszczynski-induction}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5772c99341d8c8dc069d6b41e316246d}{%
+           family={B{ł}aszczy{ń}ski},
+           familyi={B\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce945402f764017b42c4e79ebfc5fa97}{%
+           family={S{ł}owi{ń}ski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8b0243b24e28381ede9cdb420d7663fa}{%
+           family={Szel{ą}g},
+           familyi={S\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{fullhash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{bibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authorbibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authornamehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{authorfullhash}{b385031a40e8ee397fd713fdf686e412}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Rough Sets and Current Trends in Computing}
+      \field{title}{Induction of ordinal classification rules from incomplete data}
+      \field{year}{2012}
+      \field{pages}{56\bibrangedash 65}
+      \range{pages}{10}
+    \endentry
+    \entry{blaszczynski-sequential}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5772c99341d8c8dc069d6b41e316246d}{%
+           family={B{ł}aszczy{ń}ski},
+           familyi={B\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce945402f764017b42c4e79ebfc5fa97}{%
+           family={S{ł}owi{ń}ski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8b0243b24e28381ede9cdb420d7663fa}{%
+           family={Szel{ą}g},
+           familyi={S\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{fullhash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{bibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authorbibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authornamehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{authorfullhash}{b385031a40e8ee397fd713fdf686e412}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{number}{5}
+      \field{title}{Sequential covering rule induction algorithm for variable consistency rough set approaches}
+      \field{volume}{181}
+      \field{year}{2011}
+      \field{pages}{987\bibrangedash 1002}
+      \range{pages}{16}
+    \endentry
     \entry{cao-supervised}{thesis}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=f05038cd32f3d8ac10a9e73ac445c2b3}{%
@@ -599,6 +681,48 @@
       \field{year}{1986}
       \field{pages}{81\bibrangedash 106}
       \range{pages}{26}
+    \endentry
+    \entry{wang-induction}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=0be8093bbced970054b03ccb042e1d09}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hailiang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a0983737c1e3b331f2f05fa3aaae9315}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Mingtian},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e4151f690a31f37fbe0950c3ad4db9c0}{%
+           family={She},
+           familyi={S\bibinitperiod},
+           given={Kun},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c467cf3b4dd23d1e52eed995307fcdd2}
+      \strng{fullhash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{bibnamehash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{authorbibnamehash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{authornamehash}{c467cf3b4dd23d1e52eed995307fcdd2}
+      \strng{authorfullhash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of Operational Research}
+      \field{number}{1}
+      \field{title}{Induction of ordinal classification rules from decision tables with unknown monotonicity}
+      \field{volume}{242}
+      \field{year}{2015}
+      \field{pages}{172\bibrangedash 181}
+      \range{pages}{10}
     \endentry
     \entry{xia-ranking}{article}{}
       \name{author}{4}{}{%
