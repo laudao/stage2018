@@ -9,3 +9,6 @@
 \BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 9
 \BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 10
 \BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Analyse exp\351rimentale}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Exp\351rimentations sur des bases r\351elles}{subsection.4.3}% 13
+\BOOKMARK [1][-]{section.5}{Conclusion du stage et perspectives}{}% 14

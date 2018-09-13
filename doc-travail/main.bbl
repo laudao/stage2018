@@ -275,6 +275,44 @@
       \field{pages}{107\bibrangedash 123}
       \range{pages}{17}
     \endentry
+    \entry{uci}{misc}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=d89d00bcac5f60080acb9ef87efe4811}{%
+           family={Dheeru},
+           familyi={D\bibinitperiod},
+           given={Dua},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=befdc70303b9f13724e03c251467ebf4}{%
+           family={Karra\bibnamedelima Taniskidou},
+           familyi={K\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Efi},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{2}{%
+        {University of California, Irvine, School of Information}%
+        {Computer Sciences}%
+      }
+      \strng{namehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{fullhash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{bibnamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authorbibnamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authornamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authorfullhash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{UCI} Machine Learning Repository}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+      \verb{url}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+    \endentry
     \entry{greco-new-bankruptcy}{incollection}{}
       \name{author}{3}{}{%
         {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
@@ -357,6 +395,90 @@
       \field{pages}{325\bibrangedash 339}
       \range{pages}{15}
     \endentry
+    \entry{greco-roughappr}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of intelligent systems}
+      \field{number}{2}
+      \field{title}{Rough approximation by dominance relations}
+      \field{volume}{17}
+      \field{year}{2002}
+      \field{pages}{153\bibrangedash 171}
+      \range{pages}{19}
+    \endentry
+    \entry{greco-roughsets}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European journal of operational research}
+      \field{number}{2}
+      \field{title}{Rough sets methodology for sorting problems in presence of multiple attributes and criteria}
+      \field{volume}{138}
+      \field{year}{2002}
+      \field{pages}{247\bibrangedash 259}
+      \range{pages}{13}
+    \endentry
     \entry{hu-rank}{article}{}
       \name{author}{6}{}{%
         {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
@@ -416,6 +538,40 @@
       \field{year}{2012}
       \field{pages}{2052\bibrangedash 2064}
       \range{pages}{13}
+    \endentry
+    \entry{hunter-matplotlib}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=515b7a67462b8750a0711541001538cb}{%
+           family={Hunter},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE COMPUTER SOC}%
+      }
+      \strng{namehash}{515b7a67462b8750a0711541001538cb}
+      \strng{fullhash}{515b7a67462b8750a0711541001538cb}
+      \strng{bibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorbibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authornamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorfullhash}{515b7a67462b8750a0711541001538cb}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Matplotlib is a 2D graphics package used for Python for application development, interactive scripting, and publication-quality image generation across user interfaces and operating systems.}
+      \field{journaltitle}{Computing In Science \& Engineering}
+      \field{number}{3}
+      \field{title}{Matplotlib: A 2D graphics environment}
+      \field{volume}{9}
+      \field{year}{2007}
+      \field{pages}{90\bibrangedash 95}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/MCSE.2007.55
+      \endverb
     \endentry
     \entry{leo-classification}{article}{}
       \name{author}{4}{}{%
@@ -563,6 +719,122 @@
       \field{pages}{380\bibrangedash 385}
       \range{pages}{6}
     \endentry
+    \entry{scikit-learn}{article}{}
+      \name{author}{16}{}{%
+        {{uniquename=0,uniquepart=base,hash=22e2e571cc6356b3cb21d40e212ca6ac}{%
+           family={Pedregosa},
+           familyi={P\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=90a0a2720bfe73efd4029f8a456cdcc3}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=386dd6e7464b390d92ce58cf04ba101c}{%
+           family={Gramfort},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce3bf798cb091d3910827d51160fe0f8}{%
+           family={Michel},
+           familyi={M\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b8fa2de348731073d50b89e07267e159}{%
+           family={Thirion},
+           familyi={T\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c2f66c39a6e2b2ca4d545348028a677}{%
+           family={Grisel},
+           familyi={G\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f5652799b846fbd40ce19b83c70ef1d3}{%
+           family={Blondel},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d2ca4be32fef4d9e848709878fcb757}{%
+           family={Prettenhofer},
+           familyi={P\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=56ac3785f81550a29a28d3abd746ecff}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cb070bdb80f3a6add15c62ca13a4a419}{%
+           family={Dubourg},
+           familyi={D\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f1aa9e81c02f406a26762c8c85fdc1fb}{%
+           family={Vanderplas},
+           familyi={V\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=35a7037441ee9fd7ca45c2216a9cb080}{%
+           family={Passos},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=39b253ebe84b96f6acd07b762d251ca1}{%
+           family={Cournapeau},
+           familyi={C\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3c836162a7c1b02a3454bb2df2c57303}{%
+           family={Brucher},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=980c432be67e1ca5879a0aee315ff2a9}{%
+           family={Perrot},
+           familyi={P\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ad11ee93370bf63bb64684cfdff0836f}{%
+           family={Duchesnay},
+           familyi={D\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7f03c9665977d16cca3f7d744a8a06df}
+      \strng{fullhash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{bibnamehash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{authorbibnamehash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{authornamehash}{7f03c9665977d16cca3f7d744a8a06df}
+      \strng{authorfullhash}{81371d66ce2cfb28d217f955948ace55}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{Scikit-learn: Machine Learning in {P}ython}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2825\bibrangedash 2830}
+      \range{pages}{6}
+    \endentry
     \entry{pei-partially}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=c179d743bac88c6177a6c87f558a831e}{%
@@ -681,6 +953,63 @@
       \field{year}{1986}
       \field{pages}{81\bibrangedash 106}
       \range{pages}{26}
+    \endentry
+    \entry{walt-numpy}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=9b315a4944db8176f1340262654cc9ce}{%
+           family={Walt},
+           familyi={W\bibinitperiod},
+           given={Stefan\bibnamedelimb van\bibnamedelima der},
+           giveni={S\bibinitperiod\bibinitdelim v\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e4a47779c44b3cd7474c52c4875d4d39}{%
+           family={Colbert},
+           familyi={C\bibinitperiod},
+           given={S.\bibnamedelimi Chris},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8dfd6b3615de2946b6e0c1772b3b5827}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={Gael},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Piscataway, NJ, USA}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Educational Activities Department}%
+      }
+      \strng{namehash}{01025d82f5f6e0c5492d7ff322f7f079}
+      \strng{fullhash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{bibnamehash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{authorbibnamehash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{authornamehash}{01025d82f5f6e0c5492d7ff322f7f079}
+      \strng{authorfullhash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1521-9615}
+      \field{journaltitle}{Computing in Science and Engg.}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{The NumPy Array: A Structure for Efficient Numerical Computation}
+      \field{volume}{13}
+      \field{year}{2011}
+      \field{pages}{22\bibrangedash 30}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1109/MCSE.2011.37
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/MCSE.2011.37
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/MCSE.2011.37
+      \endverb
+      \keyw{NumPy,Python,Python,NumPy,scientific programming,numerical computations,programming libraries,numerical computations,programming libraries,scientific programming}
     \endentry
     \entry{wang-induction}{article}{}
       \name{author}{3}{}{%

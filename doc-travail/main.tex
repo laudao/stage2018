@@ -7,6 +7,11 @@
 
 \usepackage{float}
 
+\setlength{\parindent}{1em}
+%\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \algnewcommand{\algorithmicand}{\textbf{ and }}
@@ -15,7 +20,7 @@
 \algnewcommand{\AND}{\algorithmicand}
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
-
+\newcommand{\myfrac}[2]{\frac{\displaystyle {#1}}{\displaystyle {#2}}}
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -31,6 +36,25 @@
 \usepackage{enumitem}
 \setitemize{label=\textbullet, font=\small}
 
+\usepackage{suffix}
+\renewcommand{\eqref}[1]{équation~\ref{#1}}
+\newcommand{\algoref}[1]{algorithme~\ref{#1}}
+\newcommand{\figref}[1]{figure~\ref{#1}}
+\newcommand{\tabref}[1]{tableau~\ref{#1}}
+\newcommand{\secref}[1]{section~\ref{#1}}
+\newcommand{\probref}[1]{problème~\ref{#1}}
+\newcommand{\propref}[1]{proposition~\ref{#1}}
+\newcommand{\theoremref}[1]{théorème~\ref{#1}}
+\newcommand{\chapref}[1]{chapitre~\ref{#1}}
+\WithSuffix\newcommand\algoref*[1]{algorithme~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\figref*[1]{figure~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\eqref*[1]{équation~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\tabref*[1]{tableau~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\secref*[1]{section~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\probref*[1]{problème~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\propref*[1]{proposition~\ref{#1} p.~\pageref{#1}}
+\WithSuffix\newcommand\chapref*[1]{chapitre~\ref{#1} p.~\pageref{#1}}
+
 \usepackage[backend=biber,uniquename=init,giveninits=true,
              %% "et al" pour > deux auteurs, & pour exactement 2
              uniquelist=false,maxcitenames=2,mincitenames=1,maxbibnames=99,
@@ -38,11 +62,66 @@
 ]{biblatex}
 \addbibresource{references.bib}
 
-\title{Document de travail}
-\author{Laura Nguyen}
 
 \begin{document}
-\maketitle
+
+%\title{Rapport de stage : \\ Apprentissage et classification monotone}
+%\author{Kim-Anh Laura Nguyen \\
+%    Licence 3 Informatique \\
+%    Sorbonne Université \\
+%    Équipe LFI, LIP6
+%}
+
+\begin{titlepage}
+  %\begin{sffamily}
+  \begin{center}
+
+      \makebox[0.5\textwidth][l]{%
+        \includegraphics[width=0.2\textwidth]{images/lip6.png}%
+      }%
+      \makebox[0.5\textwidth][r]{%
+        \includegraphics[width=0.33\textwidth]{images/sorbonne.png}%
+    }%
+
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Apprentissage et classification monotone\\[0.4cm] }
+
+      \textsc{\LARGE Rapport de stage}\\[0.4cm]
+
+    \HRule \\[0.4cm]
+    %\HRule \\[2cm]
+    %\includegraphics[scale=0.2]{images/.JPG}
+    %\\[2cm]
+
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Laura \textsc{Nguyen}\\
+        Licence 3 d'Informatique\\
+        Promo 2017-2018 \\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+      \begin{flushright} \large
+        \emph{Encadrant :} Christophe \textsc{Marsala}\\
+        \emph{Équipe : } \textsc{LFI} \\
+        \emph{Laboratoire : } \textsc{LIP6} \\
+
+      \end{flushright}
+    \end{minipage}
+
+      \vspace{2cm}
+
+    % Bottom of the page
+    {\large 4 Juin 2018 — 31 Juillet 2018}
+
+  \end{center}
+  %\end{sffamily}
+\end{titlepage}
+%\maketitle
+
+\newpage
 
 \section{Introduction} Dans beaucoup de problèmes de classification, les valeurs
 des attributs et de la classe sont ordinaux. De plus, il peut exister une
@@ -93,24 +172,24 @@ Dans cette partie, on étudie et compare les méthodes proposées par Hu et al.
 \cite{qian-fusing} et Pei et Hu \cite{pei-partially}.
 
 \subsection{Notations}
-On considère un ensemble $\Omega = \{\omega_1,...,\omega_n\}$ d'éléments définis
-par un ensemble d'attributs $A = \{a_1,...,a_m\}$, où pour tout $j=1,...,m, a_j$
+On considère un ensemble $\Omega = \{\omega_1,...,\omega_n\}$ de~$n$ d'éléments définis
+par un ensemble de~$m$ attributs $A = \{a_1,...,a_m\}$, où pour tout $j=1,...,m, a_j$
 est une fonction de $\Omega$ vers $X_j = \{x_{j_1},...,x_{t_j}\}$. On note aussi
 $\lambda: \Omega \rightarrow C$ la fonction d'étiquetage, où $C =
 \{c_1,...,c_k\}$ est un ensemble de classes totalement ordonné.
 
 Pour $\omega_i \in \Omega$, l'ensemble dominant de $\omega_i$ généré par $a_j$
-est défini de la façon suivante :
+est défini (\cite{greco-roughappr}, \cite{greco-roughsets}) de la façon suivante :
 
 $$[\omega_i]^{\leq}_{a_j} = \{w_h \in \Omega : a_j(\omega_i) \leq a_j(\omega_h)\}$$
 
 De même, l'ensemble dominant de $\omega_i$ généré par $\lambda$ s'écrit :
 
 $$[\omega_i]^{\leq}_{\lambda} = \{w_h \in \Omega : \lambda(\omega_i) \leq
-\lambda(\omega_h)\}$$ \\
+\lambda(\omega_h)\}$$ 
 
 Les notions de \textit{dominance rough sets} sont également utilisées. On
-cherche à approximer l'ensemble $c^{\geq}_q$, ie l'ensemble des éléments de
+cherche à approximer l'ensemble $c^{\geq}_q$, i.e. l'ensemble des éléments de
 $\Omega$ dont la valeur de classe est inférieure à $c_q$.
 
 \noindent Soit $B \subseteq A$ et $c_q$ une valeur de classe. Les approximations
@@ -223,13 +302,18 @@ Soit $H^*$ une mesure de discrimination d'ordre. Le pouvoir de discrimination de
 l'attribut $a_j$ envers $\lambda$ selon $H^*$ peut donc s'écrire de la façon suivante :
 $$ H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
 
+où $f^*$ mesure la monotonie locale d'un objet par rapport à la classe, $g^*$
+est une transformation strictement décroissante de $f^*$, et $h^*$ agrège les
+mesures $g^*$. \\
+
 Marsala et Petturiti proposent un algorithme de construction d'arbre de décision
 nommé RDMT (\textit{Rank Discrimination Measure Tree}) essentiellement basé sur
 REMT mais qui utilise, à la place de RMI, une mesure de discrimination passée en paramètre.
 
 \noindent Comme précédemment, seuls les arbres binaires à un attribut par noeud
-sont considérés. Ce classifieur gère à la fois les attributs numériques et ordinaux, mais la classe
-doit être ordinale. \\
+sont considérés. Ce classifieur gère à la fois les attributs numériques et
+ordinaux, mais la classe doit être ordinale. Les données incomplètes ne sont pas
+acceptées.\\
 
 Notons H la mesure de discrimination utilisée, $\epsilon$ le seuil minimal pour
 H, $\Omega_{\alpha}$ l'ensemble des exemples considérés à l'étape courante de
@@ -604,13 +688,13 @@ démontrées en annexe :
 
 
 \section{Implémentation et expérimentation de l'algorithme de construction
-d'arbres monotones} 
-On implémente une librarie de fonctions permettant la
+d'arbres monotones} On implémente une librarie de fonctions permettant la
 construction ainsi que l'étude expérimentale d'arbres de décision.  On se base
 essentiellement sur RDMT(H), donné dans \cite{marsala-rank}, pour construire des
 arbres de décision monotones, que l'on évalue sur des données artificielles et
-réelles. Le code est implémenté en Python 3.6 et les librairies numpy,
-matplotlib et scikit-learn sont utilisées.
+réelles. Le code est implémenté en Python 3.6 et les librairies numpy
+\cite{walt-numpy}, matplotlib \cite{hunter-matplotlib} et scikit-learn
+\cite{scikit-learn} sont utilisées.
 
 %\subsection{Aspects calculatoires}
 %Dans cette partie, on cherche à évaluer les complexités temporelle et spatiale
@@ -677,6 +761,26 @@ $$ H^*(\lambda | a_j) = h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n)))$$
 sont codées.  Pour chaque fonction $f^*$, on distingue le cas où la mesure
 construite détecte la monotonie (i.e. elle considère les ensembles dominants) du
 cas contraire (i.e.  elle considère les classes d'équivalences). \\
+
+Par exemple, étant donnés $a_j \in \mathcal{A}$ et $\lambda$, l'entropie
+conditionnelle de Shannon se réécrit de la façon suivante :
+
+$$ H_S(\lambda | a_j) = \sum_{i=1}^{n} \frac{1}{n} (-\log_{2} (\frac{|[\omega_i]_{\lambda} \cap
+[\omega_i]_{a_j}|}{|[\omega_i]_{a_j}|}))$$
+
+où $f^*(\omega_i) = \frac{|[\omega_i]_{\lambda} \cap
+[\omega_i]_{a_j}|}{|[\omega_i]_{a_j}|}, g^*(\omega_i) = -\log_{2}
+(f^*(\omega_i))$, et $h^*(\omega_i) = \sum_{i=1}^{n} \frac{1}{n}
+g^*(f^*(\omega_i))$ \\
+
+Sa version qui tient compte la monotonie, l'entropie de Shannon d'ordre, est
+définie de la façon suivante :
+
+$$ H^*_S(\lambda | a_j) = \sum_{i=1}^{n} \frac{1}{n} (-\log_{2} (dsr(\omega_i))$$
+
+où $f^*(\omega_i) = dsr(\omega_i) = \frac{|[\omega_i]^{\leq}_{\lambda} \cap
+[\omega_i]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|}$, et $g^*$ et $h^*$ sont
+les mêmes que précédemment. \\
 
 Les ensembles dominants et classes d'équivalence servant de base pour le calcul
 de $f^*(\omega_i)$, pour tout $\omega_i \in \Omega$, le stockage de ces
@@ -854,7 +958,7 @@ Et les mesures suivantes sont corrélées quadratiquement :
 \subsection{Algorithme de construction d'arbres de décision paramétré par une
 mesure de discrimination}
 
-En reprenant essentiellement RDMT, l'algorithme~\ref{alg:build-tree} est un
+En reprenant essentiellement RDMT, l'\algoref{alg:build-tree} est un
 classifieur paramétré par une mesure de discrimination H (d'ordre ou non) et par
 3 critères d'arrêt. Comme RDMT, cet algorithme ne produit pas un arbre
 globalement monotone. Néanmoins, si les données sont monotone-consistentes et si
@@ -862,8 +966,9 @@ H tient compte de la relation graduelle entre les valeurs d'attributs et les
 valeurs de classe, alors cette méthode garantit une forme plus faible de
 monotonie (appelée \textit{rule monotonicity}). 
 
-RDMT et notre algorithme diffèrent sur deux points :
+RDMT et notre algorithme diffèrent sur plusieurs points :
 \begin{itemize}
+    \item On ne traite pas les attributs non numériques
     \item Lorsqu'une feuille est créée, on lui assigne la classe majoritaire parmi les exemples ayant servi à sa
 construction
     \item On distingue deux mesures de discrimination: l'une doit
@@ -878,7 +983,7 @@ dont la valeur $x^*_{j_s}$ minimise $H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m,
 s=1,...t_j-1$. 
 
 Etant donné une mesure de discrimination $H^*$, \textit{DISCRETIZE}
-(algorithme~\ref{alg:discretize}) permet de récupérer, pour chaque $a_j \in
+(~\algoref{alg:discretize}) permet de récupérer, pour chaque $a_j \in
 \mathcal{A}$, le seuil de coupure minimisant la valeur de H ainsi que cette
 dernière. On parcourt tous les seuils de coupure $x_{j_s}$ de $a_j$
 pour trouver $x^*_{j}$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
@@ -896,9 +1001,6 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 
 \State $n\gets$ $| \Omega |$ 
 \State $T \gets $ matrice dont la première colonne contient les valeurs de $a_j(\omega_i)$ triées par ordre croissant, la deuxième, les valeurs de $\lambda(\omega_i)$ triées selon $a_j(\omega_i)$, et la troisième, les $i=1,...,n$ triés selon $a_j(\omega_i)$, pour tout $\omega_i \in \Omega$.
-%\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
-%\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
-%\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
 \State $U\gets \{a_j(w_i) : \forall \omega_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i)$ pour tout $\omega_i \in \Omega$} \\
 
 \State $a^{b}_j(\omega_i) \gets 1, \forall w_i \in \Omega$ \Comment{valeur de l'attribut $a_j$ binarisée i.e $a^{b}_j(\omega_i) = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
@@ -909,7 +1011,7 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 \State $E \gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure $s \in S$}
 \State V $\gets \varnothing $ \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
 
-\For{$v \in U$}
+\For{$v \in U$} \Comment{on considère chaque valeur unique de $\mathcal{A}$}
     \State $\Omega_{v} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v\}$
     \State $C_{v} \gets \{c \in C : \exists \omega_h \in \Omega_{v}, \lambda(\omega_h) = c\}$
     \State $v' \gets$ valeur suivante dans U
@@ -957,9 +1059,6 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
         \lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
         \lambda(\omega_i) \neq c\}|$
     \State \textbf{return} LEAF($c_{\alpha}, \Omega$) \\
-    %\State \textbf{return} $\{c\}$ tel que $|\{\omega_i \in \Omega_{\alpha}:
-    %\lambda(\omega_i) = c\}| \geq |\{\omega_i \in \Omega_{\alpha}:
-    %\lambda(\omega_i) \neq c\}|$ \\ 
 \EndIf
 
 \State $m\gets$ nombre d'attributs dans $\Omega$
@@ -999,7 +1098,7 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 
 \State $\mathcal{T}_{\leq}\gets$ BUILD\_DT($\Omega_{\leq}, H^*, H, \epsilon, \Delta,
     n_{min}, \lambda, \delta +1$) 
-\State $\Gamma_{\geq}\gets$
+\State $\mathcal{T}_{\geq}\gets$
     BUILD\_DT($\mathcal{T}_{\geq}, H^*, H, \epsilon, \Delta, n_{min}, \lambda, \delta
     +1$)
 \State $\mathcal{T} \gets$ TREE($\{a^{x_*}_*\}, \mathcal{T}_{\leq}, \mathcal{T}_{\geq}$)
@@ -1008,60 +1107,6 @@ $$ x^*_{j} = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-
-%Le critère de partitionnement \textit{DISCRETIZE} est donné par l'algorithme~\ref{alg:discretize}.
-%Pour un attribut $a_j$, il consiste à parcourir tous les seuils de coupure
-%$x_{j_s}$ de $a_j$ pour trouver $x$ minimisant $H(\lambda|a^{x_{j_s}}_j)$, soit :
-%
-%$$ x = arg\,min \{H(\lambda|a^{x_{j_s}}_j), s=1,...,t_j -1\}$$
-%
-%\begin{algorithm}[H]
-%\caption{Discrétisation}
-%\label{alg:discretize}
-%\begin{algorithmic}
-%\Procedure{discretize}{$H^*, \Omega$}
-%\State \Comment{$H^*$ : mesure de discrimination construite de façon hiérarchique}
-%\State \Comment{$\Omega$ : base de données étiquetées}
-%\State \Comment{$a_j$: attribut à discrétiser}
-%
-%\State $n\gets$ $| \Omega |$ 
-%\State $T \gets $ matrice dont la première colonne contient les valeurs de $a_j(\omega_i)$ triées par ordre croissant, la deuxième, les valeurs de $\lambda(\omega_i)$ triées selon $a_j(\omega_i)$, et la troisième, les $i=1,...,n$ triés selon $a_j(\omega_i)$, pour tout $\omega_i \in \Omega$.
-%%\State $T[:,0]\gets$ les valeurs de $a_j(w_i)$ triées par ordre croisant, $\forall w_i \in \Omega$
-%%\State $T[:,1]\gets$ les valeurs de $\lambda(w_i)$ triées selon $T[:,0]$, $\forall w_i \in \Omega$
-%%\State $T[:,2]\gets$ les $w_i \in \Omega$ triés selon $T[:,0]$
-%\State $U\gets \{a_j(w_i) : \forall \omega_i \in \Omega\}$ \Comment{valeurs uniques de $a_j(\omega_i)$ pour tout $\omega_i \in \Omega$} \\
-%
-%\State $a^{b}_j(\omega_i) \gets 1, \forall w_i \in \Omega$ \Comment{valeur de l'attribut $a_j$ binarisée i.e $a^{b}_j(\omega_i) = 0$ si $a_j(\omega_i) \leq x_{j_s}$, 1 sinon, pour $x_{j_s}$ fixé}
-%\State $[\omega_i]^{\leq}_{a^{b}_j} \gets \Omega, \forall w_i \in \Omega$ 
-%\State $[\omega_i]a_i]^{\leq}_{\lambda} \gets \{\omega_h \in \Omega : \lambda(\omega_i) \leq \lambda(\omega_h)\}$ \\
-%
-%\State $S \gets \varnothing $ \Comment{seuils de coupure considérés}
-%\State $E \gets \varnothing $ \Comment{valeurs de $H^*$ obtenues pour chaque seuil de coupure $s \in S$}
-%\State V $\gets \varnothing $ \Comment{ensemble des $\omega \in \Omega$ déjà visités} \\
-%
-%\For{$v \in U$}
-%    \State $\Omega_{v} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v\}$
-%    \State $C_{v} \gets \{c \in C : \exists \omega_h \in \Omega_{v}, \lambda(\omega_h) = c\}$
-%    \State $v' \gets$ valeur suivante dans U
-%    \State $\Omega_{v'} \gets \{\omega_i \in \Omega : a_j(\omega_i) = v'\}$
-%    \State $C_{v'} \gets \{c \in C : \exists \omega_h \in \Omega_{v'}, \lambda(\omega_h) = c\}$
-%    \State $V \gets V \cup \{\Omega_{v}\}$    
-%    \State $a^{b}_j(\omega_i) \gets 0$ pour tout $\omega_i \in \Omega_{v}$ 
-%    \State $x_{j_s}\gets \frac{v + v'}{2}$\\
-%    
-%    \If{$C_{v'} \neq C_{v}$}
-%    	\State $[\omega_i]_{a^{b}_j} \gets \Omega, \forall \omega_i \in V$
-%        \State $\bar{V} \gets \Omega \setminus V$ \Comment{ensemble des $\omega \in \Omega$ non visités}
-%        \State $[\omega_i]^{\leq}_{a^{b}_j} \gets \bar{V}, \forall \omega_i \in \bar{V}$
-%        \State $S \gets S \cup \{x_{j_s}\}$
-%        \State $E \gets E \cup \{H^*(\lambda | a^{b}_j)\}$
-%    \EndIf
-%\EndFor
-%
-%\State \textbf{return} $\min E, arg\,min_{s \in S} E $ \Comment{retourner la valeur d'entropie minimale et le seuil de coupure permettant de l'obtenir}
-%\EndProcedure
-%\end{algorithmic}
-%\end{algorithm}
 
 Considérons la base de la figure \ref{img:artificial-dataset} contenant 60
 points à deux dimensions x et y et à 3 classes. x est l'attribut dont les valeurs sont
@@ -1102,6 +1147,228 @@ l'attribut y. Ce n'est cependant pas le cas pour $H_S$ qui est insensible à la
 monotonie : la coupure optimale sur l'axe x génère la même valeur d'entropie que
 celle faite sur l'axe y.
 
+\subsection{Analyse expérimentale} 
 
-\printbibliography
-\end{document}
+Dans cette section, on cherche à comparer entre eux les arbres obtenus en
+utilisant $H^*_S$, $H_S$, $H^*_G$, et $H_G$ comme mesure de partitionnement.
+L'objectif est d'évaluer l'impact du critère de partitionnement sur les
+performances des classifieurs en termes de taux de bonne classification et de
+monotonie. On étudie également l'évolution de ces performances en fonction du
+taux de bruit non-monotone. 
+
+Dans les expériences menées, les arbres sont construits avec
+l'\algoref{alg:build-tree}, en faisant varier la mesure de discrimination parmi
+$H^*_S$, $H_S$, $H^*_G$, et $H_G$. Ils sont testés sur des bases artificielles
+et réelles.
+
+\subsubsection{Expérimentations sur des bases réelles}
+
+Dans cette partie, nos arbres sont testés sur différentes bases réelles de
+classification et une base de régression récupérées sur UCI \cite{uci}. Pour
+chaque base, une étape de pré-traitement est effectuée, dans laquelle on
+supprime les exemples incomplets ainsi que les attributs non numériques. 
+
+On cherche à déterminer si, pour chaque mesure d'évaluation, les mesures de
+discrimination testées produisent des résultats significativement différents.
+
+\begin{table}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|*{9}{c|}}
+    \hline
+       Dataset & & $H^{*}_S$  & $H_S$  & $H^{*}_G$  & $H_G$ & $H^{*}_P$ & $H^{*}_M$  & $H^{*}_Q$ \\
+    \hline
+
+     CPU & accuracy  & 68.40 \% $\pm$ 0.04 \% & 66.02 \% $\pm$ 0.02 \% & 66.48 \% $\pm$ 0.05 \% & 66.97 \% $\pm$ 0.04 \% & 66.51 \% $\pm$ 0.00 \% & 60.73 \% $\pm$ 0.07 \% & 67.93 \% $\pm$ 0.02 \% \\
+
+& profondeur  & 10.50 $\pm$ 0.50& 9.00 $\pm$ 0.00& 10.00 $\pm$ 1.00& 8.50 $\pm$ 0.50& 11.00 $\pm$ 0.00& 14.50 $\pm$ 0.50& 11.00 $\pm$ 1.00 \\
+
+    & nombre de feuilles  & 35.00 $\pm$ 2.00& 27.50 $\pm$ 3.50& 36.50 $\pm$ 2.50& 28.50 $\pm$ 4.50& 36.50 $\pm$ 0.50& 41.50 $\pm$ 1.50& 40.50 $\pm$ 3.50 \\
+
+    & ratio paires non-monotones  & 77.99 \% $\pm$ 0.11 \%& 86.00 \% $\pm$ 2.83 \%& 80.86 \% $\pm$ 1.05 \%& 81.80 \% $\pm$ 0.41 \%& 73.23 \% $\pm$ 4.66 \%& 70.73 \% $\pm$ 2.35 \%& 50.64 \% $\pm$ 16.03 \% \\
+
+    & nombre de paires de feuilles  & 9.50 $\pm$ 0.50& 7.50 $\pm$ 1.50& 9.50 $\pm$ 0.50& 7.50 $\pm$ 1.50& 9.50 $\pm$ 0.50& 10.50 $\pm$ 0.50& 12.50 $\pm$ 1.50 \\
+
+    & & & & & & & & \\
+
+     Breast Cancer & accuracy  & 59.17 \% $\pm$ 0.13 \% & 63.77 \% $\pm$ 0.11 \% & 56.31 \% $\pm$ 0.14 \% & 62.03 \% $\pm$ 0.08 \% & 61.40 \% $\pm$ 0.13 \% & 59.80 \% $\pm$ 0.11 \% & 54.80 \% $\pm$ 0.13 \% \\
+
+    & profondeur & 20.00 $\pm$ 1.48& 16.60 $\pm$ 1.74& 20.40 $\pm$ 1.36& 15.10 $\pm$ 1.45& 19.70 $\pm$ 2.24& 20.80 $\pm$ 1.60& 20.10 $\pm$ 1.58 \\
+
+    & nombre de feuilles & 129.20 $\pm$ 4.71& 81.60 $\pm$ 5.99& 129.80 $\pm$ 4.64& 80.10 $\pm$ 4.25& 114.90 $\pm$ 5.34& 127.10 $\pm$ 5.45& 134.90 $\pm$ 5.66 \\
+
+    & ratio paires non-monotones & 84.51 \% $\pm$ 2.87 \%& 80.15 \% $\pm$ 4.76 \%& 84.49 \% $\pm$ 3.07 \%& 78.44 \% $\pm$ 3.88 \%& 86.80 \% $\pm$ 2.86 \%& 83.67 \% $\pm$ 1.80 \%& 81.68 \% $\pm$ 2.81 \% \\
+
+    & nombre de paires de feuilles & 31.90 $\pm$ 2.91& 18.90 $\pm$ 1.81& 31.60 $\pm$ 3.10& 20.60 $\pm$ 1.69& 28.30 $\pm$ 2.00& 32.40 $\pm$ 1.69& 36.30 $\pm$ 2.61 \\
+
+    & & & & & & & & \\
+
+    Cars Evaluation & accuracy  & 81.94 \% $\pm$ 0.04 \% & 81.85 \% $\pm$ 0.06 \% & 82.00 \% $\pm$ 0.04 \% & 78.72 \% $\pm$ 0.09 \% & 87.08 \% $\pm$ 0.04 \% & 88.59 \% $\pm$ 0.07 \% & 78.53 \% $\pm$ 0.03 \% \\
+
+    & profondeur  & 10.50 $\pm$ 0.50& 10.75 $\pm$ 0.43& 10.50 $\pm$ 0.50& 10.25 $\pm$ 0.43& 10.00 $\pm$ 0.00& 11.00 $\pm$ 0.00& 11.00 $\pm$ 0.00 \\
+    & nombre de feuilles  & 66.50 $\pm$ 13.16& 37.25 $\pm$ 1.30& 66.50 $\pm$ 13.16& 38.00 $\pm$ 1.58& 52.00 $\pm$ 3.94& 54.00 $\pm$ 3.74& 121.25 $\pm$ 14.04 \\
+    & ratio paires non-monotones & 82.17 \% $\pm$ 5.00 \%& 83.82 \% $\pm$ 1.39 \%& 82.76 \% $\pm$ 5.56 \%& 84.68 \% $\pm$ 1.84 \%& 79.25 \% $\pm$ 2.93 \%& 77.33 \% $\pm$ 2.90 \%& 52.19 \% $\pm$ 4.34 \% \\
+    & nombre de paires de feuilles & 27.75 $\pm$ 7.36& 11.75 $\pm$ 1.09& 27.75 $\pm$ 7.36& 12.00 $\pm$ 1.41& 18.25 $\pm$ 1.92& 18.00 $\pm$ 2.12& 46.75 $\pm$ 8.79 \\
+
+    \hline
+
+\hline
+\end{tabular}}
+\caption{Résultats sur les tâches de classification}
+\label{tab:resultats-classification}
+\end{table}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/breast-cancer.png}
+    \caption{Corrélations entre les attributs de la base \textit{Breast Cancer}
+    et la classe}
+    \label{img:breast-cancer}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/cpu.png}
+    \caption{Corrélations entre les attributs de la base \textit{CPU}
+    et la classe}
+    \label{img:cpu}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/cars.png}
+    \caption{Corrélations entre les attributs de la base \textit{Cars Evaluation}
+    et la classe}
+    \label{img:cars}
+\end{figure}
+
+Le \tabref{tab:resultats-classification} contient les résultats de tests menés
+sur les tâches de classification collectées.
+
+De manière générale, on peut observer que les arbres construits à partir des
+mesures de discrimination à rang sont plus profonds, contiennent plus de
+feuilles et de paires de feuilles que ceux générés par les mesures d'entropie
+classiques. 
+
+Sur la base \textit{Breast Cancer}, les mesures d'entropie classique produisent
+de meilleurs résultats en termes de taux de bonne classification et de monotonie
+que les mesures de discrimination d'ordre. La prise en compte de la monotonie
+des données dans le critère de partitionnement n'offre donc pas d'avantage.
+Néanmoins, cette base ne contient que deux valeurs pour la classe, et plusieurs
+attributs ne comprennent que peu de valeurs. Il n'y a donc pas de réelle
+relation graduelle entre les attributs et la classe. La \figref{img:breast-cancer}
+confirme l'absence de corrélation entre les valeurs d'attributs et de classe :
+il n'existe pas de contrainte de monotonie dans cette base.
+
+En revanche, $H^*_S$, $H^*_G$, et $H^*_Q$ produisent de meilleurs taux de bonne
+classification que les mesures d'entropie classiques sur la base \textit{CPU}.
+De plus, sur les données de \textit{Cars Evaluation}, $H^*_S$, $H^*_G$, $H^*_P$
+et $H^*_M$ génèrent de meilleures prédictions que les mesures classiques. Sur
+ces deux bases, tous les ratio produits par les mesures de discrimination
+d'ordre sont plus faibles que ceux produits par les mesures classiques : cela
+indique que les arbres générés par une mesure qui prend en compte la relation
+graduelle entre les attributs et la classe garantissent une plus forte monotonie
+que les autres.
+
+Dans le but de comprendre pourquoi les mesures de discrimination d'ordre
+présentent de meilleures performances, on examine les corrélations entre chaque
+paire d'attributs, classe incluse. La \figref{img:cpu} montre que, dans la base
+\textit{CPU}, les valeurs des attributs sont très étalées et un certain nombre
+d'attributs apparaissent corrélés (positivement comme ERP et PRP, ou
+négativement comme PRP et MYCT).
+
+Cependant, on peut voir sur la \figref{img:cars} que les attributs de la base
+\textit{Cars Evaluation} comprennent peu de valeurs différentes et sont peu
+corrélées à la classe : on manque encore d'une explication générale.
+
+\begin{table}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|*{6}{c|}}
+    \hline
+         Nombre de classes & & $H^{*}_S$  & $H_S$  & $H^{*}_G$  & $H_G$ \\
+    \hline
+
+     2 classes & accuracy  & 68.93\% $\pm$ 0.11 \% &69.68 \% $\pm$ 0.11 \% & 69.54 \% $\pm$ 0.12 \% & 70.33\% $\pm$ 0.12 \% \\
+
+     & profondeur  & 17.0 $\pm$ 1.22 & 13.5 $\pm$ 0.87 & 17.5 $\pm$ 1.50 & 12.25 $\pm$ 0.43 \\
+
+     & nombre de feuilles & 99.75 $\pm$ 5.07 & 78.25 $\pm$ 5.54 & 102.5 $\pm$ 7.79 & 79.25 $\pm$ 5.67 \\
+
+     & ratio paires non-monotones & 87.82\% $\pm$ 0.01 \% & 87.86\% $\pm$ 0.01
+     \%& 88.36\% $\pm$ 0.01 \% & 87.42\% $\pm$ 0.02 \%\\
+
+     & nombre de paires de feuilles  & 28.5 $\pm$ 2.29 & 24.5 $\pm$ 2.87 & 28.5 $\pm$ 2.60 & 29.0 $\pm$ 1.22\\
+    
+    & & & & & \\
+
+    3 classes & accuracy  & 39.25\%  $\pm$ 0.10 \%& 33.00\% $\pm$ 0.12\% & 35.14 \% $\pm$ 0.07\% & 32.33 \% $\pm$ 0.11\%  \\
+
+     & profondeur  &  20.5 $\pm$ 1.66&  14.75$\pm$1.09& 18.25$\pm$1.48&  15.5 $\pm$2.69 \\
+
+     & nombre de feuilles  & 158.75 $\pm$ 5.12 & 140.5 $\pm$ 1.66 & 164.25 $\pm$
+     3.83 & 143.75 $\pm$ 5.72 \\
+
+     & ratio paires non-monotones  & 74.82 \% $\pm$ 0.03\%& 80.74 \% $\pm$ 0.04\%& 75.60 \% $\pm$ 0.04\%& 79.11 \% $\pm$ 0.04\% \\
+
+     & nombre de paires de feuilles  & 44.5 $\pm$ 2.60& 48.25 $\pm$ 1.92& 45.75 $\pm$ 3.03& 47.25 $\pm$ 3.63 \\
+
+    & & & & & \\
+    
+    7 classes & accuracy  & 31.18 \%$\pm$ 0.08 \%  & 30.37 \%$\pm$ 0.06\%  & 29.37 \%$\pm$ 0.08 \%\% & 29.24\% \%$\pm$ 0.05 \% \\
+
+     & profondeur & 19.0 $\pm$ 1.87 & 15.75 $\pm$ 1.29& 19.5 $\pm$ 1.12& 14.25 $\pm$ 1.30 \\
+
+     & nombre de feuilles  & 171.75 $\pm$ 3.11 & 151.5 $\pm$ 3.77 & 172.5 $\pm$ 3.64 & 157.5 $\pm$ 4.09 \\
+
+     & ratio paires non-monotones  & 53.82 \%$\pm$ 0.05 \%& 56.23 \%$\pm$ 0.02 \%& 51.74\% \%$\pm$ 0.01 \%& 51.89 \% $\pm$ 0.05 \% \\
+
+     & nombre de paires de feuilles & 47.0 $\pm$ 2.23 & 48.25 $\pm$ 1.92 & 47.0 $\pm$ 1.87& 51.25 $\pm$ 3.34\\
+
+    \hline
+
+\end{tabular}}
+\caption{Résultats sur la tâche de régression}
+\label{tab:resultats-regression}
+\end{table}
+
+
+
+\section{Conclusion du stage et perspectives} 
+
+Mon stage a porté sur un framework particulier de classification
+monotone~\cite{marsala-rank}. Après avoir fait l'état de l'art sur les approches
+de classification monotone proposées dans la littérature, je me suis placée dans
+le contexte des arbres de décision monotones paramétrés par une mesure de
+sélection d'attribut.
+
+J'ai effectué une étude théorique des mesures de discrimination d'ordre afin de
+vérifier certaines propriétés clées et d'en extraire d'autres (notamment le sens
+de variation). 
+
+J'ai également implémenté
+une bibliothèque pour les arbres monotones comprenant le modèle de construction
+hiérarchique des mesures~\cite{marsala-rank}, ainsi que l'algorithme de
+construction d'arbres monotones~\cite{marsala-rank} légèrement modifié. 
+
+Des expérimentations sur des bases artificielles et réelles ont été menées afin de
+mettre en avant les avantages des arbres monotones et comparer les différentes
+mesures de discrimination entre elles. Les résultats observés sur les bases
+réelles dans lesquelles il existe une forte gradualité entre les attributs et la
+classe montrent que les arbres produits par des mesures de discrimination
+d'ordre sont plus performants et plus monotones que ceux générés par des mesures
+d'entropie classiques. Cependant, les tests lancés sur des bases générées
+artificiellement ne permettent pas de souligner l'apport des mesures de
+discrimination d'ordre en termes de monotonie des
+arbres. \\
+
+Une perspective possible serait de travailler sur ce problème : il peut venir de la façon de partitionner les données (discrétisation en deux sous-ensembles
+alors qu'il peut y avoir plus de deux classes) ou de la mesure d'évaluation de la
+monotonie utilisée. De plus, notre algorithme considère que tous les attributs
+sont monotones par rapport à la classe, ce qui n'est cependant pas le cas dans
+la plupart des cas d'applications réelles. \\
+
+Sur un plan plus personnel, ce stage m'a initiée et donné goût à la recherche en
+laboratoire. Je tiens à remercier mon maître de stage, Christophe Marsala, ainsi
+qu'Arthur Guillon, doctorant à LFI, pour m'avoir aidée et accompagnée durant ce
+stage.
+
+\printbibliography \end{document}

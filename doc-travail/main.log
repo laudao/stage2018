@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.9.3)  5 SEP 2018 12:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.9.3)  13 SEP 2018 19:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2018-04-01> patch level 5
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -658,6 +658,9 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box41
 \enitdp@description=\count156
 )
+(/usr/share/texlive/texmf-dist/tex/latex/bigfoot/suffix.sty
+Package: suffix 2006/07/15 1.5a Variant command support
+)
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2018/03/04 v3.11 programmable bibliographies (PK/MW)
 
@@ -893,29 +896,29 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Info: Redefining \degres on input line 44.
-LaTeX Info: Redefining \dots on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Info: Redefining \degres on input line 66.
+LaTeX Info: Redefining \dots on input line 66.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 44.
+(french.ldf)             reported on input line 66.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 44.
-LaTeX Info: Redefining \up on input line 44.
+(french.ldf)             reported on input line 66.
+LaTeX Info: Redefining \up on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -986,10 +989,10 @@ ABD: EveryShipout initializing macros
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 44.
+loading the todonotes package. on input line 66.
 
 \AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring ON on input line 44.
+Package hyperref Info: Link coloring ON on input line 66.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -998,9 +1001,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count353
 )
-LaTeX Info: Redefining \ref on input line 44.
-LaTeX Info: Redefining \pageref on input line 44.
-LaTeX Info: Redefining \nameref on input line 44.
+LaTeX Info: Redefining \ref on input line 66.
+LaTeX Info: Redefining \pageref on input line 66.
+LaTeX Info: Redefining \nameref on input line 66.
 
 (./main.out) (./main.out)
 \@outlinefile=\write6
@@ -1014,115 +1017,131 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 44.
-Package biblatex Info: Reference segment=0 on input line 44.
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+Package biblatex Info: Reference section=0 on input line 66.
+Package biblatex Info: Reference segment=0 on input line 66.
+<images/lip6.png, id=63, 156.585pt x 146.949pt>
+File: images/lip6.png Graphic file (type png)
+<use images/lip6.png>
+Package pdftex.def Info: images/lip6.png  used on input line 81.
+(pdftex.def)             Requested size: 85.35696pt x 80.10692pt.
+<images/sorbonne.png, id=65, 390.9807pt x 157.0668pt>
+File: images/sorbonne.png Graphic file (type png)
+<use images/sorbonne.png>
+Package pdftex.def Info: images/sorbonne.png  used on input line 84.
+(pdftex.def)             Requested size: 140.84192pt x 56.57994pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 104.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 104.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (0.58759pt too wide) in paragraph at lines 47--81
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/lip6.png> <./imag
+es/sorbonne.png>]
+Overfull \hbox (0.58759pt too wide) in paragraph at lines 126--160
 \T1/cmr/m/n/10 naux. De plus, il peut exis-ter une contrainte de mo-no-to-nie :
  la classe d'un ob-jet doit croître/décroître
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--81
+Underfull \hbox (badness 10000) in paragraph at lines 126--160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--89
+Underfull \hbox (badness 10000) in paragraph at lines 161--168
 
  []
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 [\omega]^{\geq}_B \subseteq c^{\geq}_q\}$$
+                                                 [1]
+Underfull \hbox (badness 10000) in paragraph at lines 213--216
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 153.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 232.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 153.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 232.
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--174
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+Underfull \hbox (badness 10000) in paragraph at lines 247--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--259
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 183--185
-
- []
-
-
-Overfull \hbox (9.74342pt too wide) in paragraph at lines 213--213
+Overfull \hbox (9.74342pt too wide) in paragraph at lines 292--292
 []\T1/cmr/bx/n/12 Arbre de dé-ci-sion pa-ra-mé-tré par une me-sure de dis-cri-m
 i-na-tion d'ordre 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--233
+Underfull \hbox (badness 10000) in paragraph at lines 305--308
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--239
+Underfull \hbox (badness 10000) in paragraph at lines 313--317
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--254
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--342
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 256--258
+Underfull \hbox (badness 10000) in paragraph at lines 355--358
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--274
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 290--295
+Underfull \hbox (badness 10000) in paragraph at lines 374--379
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
 
  []
 
-[5]
-Overfull \hbox (34.22652pt too wide) in paragraph at lines 411--418
+
+Overfull \hbox (29.22408pt too wide) in paragraph at lines 495--502
 []\T1/cmr/m/n/10 Soit $\OML/cmm/m/it/10 F \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\
 OML/cmm/m/it/10 T[]; T[]; :::; T[]\OMS/cmsy/m/n/10 g$ \T1/cmr/m/n/10 une fo-rêt
  d'arbres de dé-ci-sion gé-né-rés par $\OML/cmm/m/it/10 RED \OT1/cmr/m/n/10 = \
@@ -1130,149 +1149,192 @@ OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 RED[]; RED[]; :::; RED[]\OMS/cmsy/m/n/10 g$\T
 1/cmr/m/n/10 .
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 423--426
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 529--534
+Underfull \hbox (badness 10000) in paragraph at lines 613--618
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--558
+Underfull \hbox (badness 10000) in paragraph at lines 640--642
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 669--673
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 585--589
-
- []
-
-
-Overfull \hbox (32.72603pt too wide) in paragraph at lines 607--607
+Overfull \hbox (32.72603pt too wide) in paragraph at lines 691--691
 []\T1/cmr/bx/n/14.4 Implémentation et ex-pé-ri-men-ta-tion de l'al-go-rithme de
  construc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 676--680
+Underfull \hbox (badness 10000) in paragraph at lines 760--764
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 771--775
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 781--784
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 715--718
+Underfull \hbox (badness 10000) in paragraph at lines 819--822
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 719--730
+Underfull \hbox (badness 10000) in paragraph at lines 823--834
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--739
+Underfull \hbox (badness 10000) in paragraph at lines 835--843
 
  []
 
-<images/dsr_0.png, id=155, 466.74374pt x 297.11pt>
+<images/dsr_0.png, id=189, 466.74374pt x 297.11pt>
 File: images/dsr_0.png Graphic file (type png)
 <use images/dsr_0.png>
-Package pdftex.def Info: images/dsr_0.png  used on input line 742.
+Package pdftex.def Info: images/dsr_0.png  used on input line 846.
 (pdftex.def)             Requested size: 256.07741pt x 163.01659pt.
-<images/dsr_25.png, id=156, 448.67625pt x 299.1175pt>
+<images/dsr_25.png, id=190, 448.67625pt x 299.1175pt>
 File: images/dsr_25.png Graphic file (type png)
 <use images/dsr_25.png>
-Package pdftex.def Info: images/dsr_25.png  used on input line 750.
+Package pdftex.def Info: images/dsr_25.png  used on input line 854.
 (pdftex.def)             Requested size: 256.07741pt x 170.72238pt.
 [9 <./images/dsr_0.png>]
-<images/dsr_50.png, id=167, 445.665pt x 297.11pt>
+<images/dsr_50.png, id=201, 445.665pt x 297.11pt>
 File: images/dsr_50.png Graphic file (type png)
 <use images/dsr_50.png>
-Package pdftex.def Info: images/dsr_50.png  used on input line 758.
+Package pdftex.def Info: images/dsr_50.png  used on input line 862.
 (pdftex.def)             Requested size: 256.07741pt x 170.71904pt.
-<images/dsr_75.png, id=168, 448.67625pt x 299.1175pt>
+<images/dsr_75.png, id=202, 448.67625pt x 299.1175pt>
 File: images/dsr_75.png Graphic file (type png)
 <use images/dsr_75.png>
-Package pdftex.def Info: images/dsr_75.png  used on input line 766.
+Package pdftex.def Info: images/dsr_75.png  used on input line 870.
 (pdftex.def)             Requested size: 256.07741pt x 170.72238pt.
  [10 <./images/dsr_25.png> <./images/dsr_50.png> <./images/dsr_75.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 795--796
+Underfull \hbox (badness 10000) in paragraph at lines 899--900
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--806
+Underfull \hbox (badness 10000) in paragraph at lines 909--910
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--817
+Underfull \hbox (badness 10000) in paragraph at lines 912--921
 
  []
 
-<images/H_2.png, id=178, 1258.7025pt x 1256.695pt>
+<images/H_2.png, id=211, 1258.7025pt x 1256.695pt>
 File: images/H_2.png Graphic file (type png)
 <use images/H_2.png>
-Package pdftex.def Info: images/H_2.png  used on input line 820.
+Package pdftex.def Info: images/H_2.png  used on input line 924.
 (pdftex.def)             Requested size: 256.07741pt x 255.66823pt.
-<images/H_3.png, id=180, 547.04375pt x 546.04pt>
+<images/H_3.png, id=212, 547.04375pt x 546.04pt>
 File: images/H_3.png Graphic file (type png)
 <use images/H_3.png>
-Package pdftex.def Info: images/H_3.png  used on input line 828.
+Package pdftex.def Info: images/H_3.png  used on input line 932.
 (pdftex.def)             Requested size: 256.07741pt x 255.60568pt.
 [11 <./images/H_2.png>]
-<images/H_5.png, id=189, 573.14125pt x 573.14125pt>
+<images/H_5.png, id=221, 573.14125pt x 573.14125pt>
 File: images/H_5.png Graphic file (type png)
 <use images/H_5.png>
-Package pdftex.def Info: images/H_5.png  used on input line 836.
+Package pdftex.def Info: images/H_5.png  used on input line 940.
 (pdftex.def)             Requested size: 256.07741pt x 256.08337pt.
  [12 <./images/H_3.png> <./images/H_5.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 889.
+put line 994.
  [13]
 [14]
-<images/artificial-dataset.png, id=209, 406.51875pt x 275.0275pt>
+<images/artificial-dataset.png, id=241, 406.51875pt x 275.0275pt>
 File: images/artificial-dataset.png Graphic file (type png)
 <use images/artificial-dataset.png>
-Package pdftex.def Info: images/artificial-dataset.png  used on input line 1075
+Package pdftex.def Info: images/artificial-dataset.png  used on input line 1120
 .
 (pdftex.def)             Requested size: 256.07741pt x 173.25145pt.
  [15]
-<images/threshold_rsdm.png, id=215, 408.52625pt x 270.00874pt>
+<images/threshold_rsdm.png, id=247, 408.52625pt x 270.00874pt>
 File: images/threshold_rsdm.png Graphic file (type png)
 <use images/threshold_rsdm.png>
-Package pdftex.def Info: images/threshold_rsdm.png  used on input line 1082.
+Package pdftex.def Info: images/threshold_rsdm.png  used on input line 1127.
 (pdftex.def)             Requested size: 256.07741pt x 169.25768pt.
-<images/threshold_sdm.png, id=216, 403.5075pt x 265.99374pt>
+<images/threshold_sdm.png, id=248, 403.5075pt x 265.99374pt>
 File: images/threshold_sdm.png Graphic file (type png)
 <use images/threshold_sdm.png>
-Package pdftex.def Info: images/threshold_sdm.png  used on input line 1090.
+Package pdftex.def Info: images/threshold_sdm.png  used on input line 1135.
 (pdftex.def)             Requested size: 256.07741pt x 168.80673pt.
  [16 <./images/artificial-dataset.png> <./images/threshold_rsdm.png> <./images/
-threshold_sdm.png>] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1107.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1107.
+threshold_sdm.png>]
+<images/breast-cancer.png, id=263, 1794.705pt x 1798.72pt>
+File: images/breast-cancer.png Graphic file (type png)
+<use images/breast-cancer.png>
+Package pdftex.def Info: images/breast-cancer.png  used on input line 1222.
+(pdftex.def)             Requested size: 256.07741pt x 256.64961pt.
+ [17]
+<images/cpu.png, id=270, 1448.41125pt x 1437.37pt>
+File: images/cpu.png Graphic file (type png)
+<use images/cpu.png>
+Package pdftex.def Info: images/cpu.png  used on input line 1230.
+(pdftex.def)             Requested size: 256.07741pt x 254.10962pt.
+<images/cars.png, id=271, 1252.68pt x 1256.695pt>
+File: images/cars.png Graphic file (type png)
+<use images/cars.png>
+Package pdftex.def Info: images/cars.png  used on input line 1238.
+(pdftex.def)             Requested size: 256.07741pt x 256.89546pt.
+ [18 <./images/breast-cancer.png> <./images/cpu.png>]
+Overfull \hbox (4.15897pt too wide) in paragraph at lines 1272--1278
+[]\T1/cmr/m/n/10 Dans le but de com-prendre pour-quoi les me-sures de dis-cri-m
+i-na-tion d'ordre pré-sentent de meilleures
+ []
+
+[19 <./images/cars.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1352--1362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1363--1368
+
+ []
+
+[20] [21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1374.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1374.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1107.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1107.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1374.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1374.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B13B1995E81BDA170564CBD5362C4244;1033.
+(rerunfilecheck)             Checksum: A05A3112081D35AE2C421DEFFD953C32;1282.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1107.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1374.
  ) 
 Here is how much of TeX's memory you used:
- 25842 strings out of 492645
- 472204 string characters out of 6131957
- 918829 words of memory out of 5000000
- 29253 multiletter control sequences out of 15000+600000
- 18680 words of font info for 54 fonts, out of 8000000 for 9000
+ 25948 strings out of 492645
+ 474484 string characters out of 6131957
+ 926263 words of memory out of 5000000
+ 29337 multiletter control sequences out of 15000+600000
+ 16850 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,56p,936b,1731s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,56p,940b,1731s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist
@@ -1288,14 +1350,16 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/font
 s/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-su
 per/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></u
-sr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts
-/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on main.pdf (17 pages, 912165 bytes).
+sr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></us
+r/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/
+type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on main.pdf (22 pages, 1314661 bytes).
 PDF statistics:
- 318 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 402 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 200 words of extra memory for PDF output out of 10000 (max. 10000000)
 
