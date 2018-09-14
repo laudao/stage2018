@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1536857526 "main.bcf" "main.bbl" "main" 1536858122
-  "main.bcf" 1536858122 92641 b0943ff9ebcf9032f16fcab215fa9fad ""
+["biber main"] 1536935330 "main.bcf" "main.bbl" "main" 1536942548
+  "main.bcf" 1536942549 92641 b0943ff9ebcf9032f16fcab215fa9fad ""
   "references.bib" 1536766419 8135 701cdc11aee79b861a0d37f4816179bf ""
   (generated)
-  "main.blg"
   "main.bbl"
-["pdflatex"] 1536858119 "main.tex" "main.pdf" "main" 1536858122
+  "main.blg"
+["pdflatex"] 1536942545 "main.tex" "main.pdf" "main" 1536942548
   "/etc/texmf/web2c/texmf.cnf" 1519332616 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1480098696 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -202,6 +202,7 @@
   "images/H_2.png" 1535381908 224971 0661d38594fb7d18d02ebce179608b2a ""
   "images/H_3.png" 1532961078 115753 2193f77b17c5ee9492e454b83398684f ""
   "images/H_5.png" 1532961092 145261 dd3010fb78c63643bdaf91f335e77a1b ""
+  "images/airfoil.png" 1536937593 175169 4727d5f2c29bce67b8d37e6d2d219c7a ""
   "images/artificial-dataset.png" 1531819420 3118 9bf2ad6d80329ccb0908996896038731 ""
   "images/breast-cancer.png" 1536828584 87444 9ef4c7749e1a4ec573bb29d39492a58b ""
   "images/cars.png" 1536849298 46206 2ad02c05f7c6cb8109300cb3043f7041 ""
@@ -214,15 +215,15 @@
   "images/sorbonne.png" 1536224260 667393 caae98a1104853dc4787e59900e0a3a1 ""
   "images/threshold_rsdm.png" 1533032699 3191 384bcc684b3df6acccada96bf4d6422b ""
   "images/threshold_sdm.png" 1533032697 3115 846c921f396e7f2070798a84e5662ce0 ""
-  "main.aux" 1536858122 13048 3f57a6cc9bec64a3e485136ac6b28e16 ""
-  "main.bbl" 1536857527 44350 cd3a909f7005cb43b9df9d7e3b2b283d "biber main"
-  "main.out" 1536858122 1282 a05a3112081d35ae2c421deffd953c32 ""
-  "main.run.xml" 1536858122 2304 ab7649870403f7bb1b561253173e380c ""
-  "main.tex" 1536858117 68190 424d3113a2f98f65ebd5b3482ecf0411 ""
+  "main.aux" 1536942549 13403 bbc03f43249d60ec9833aa93554b1829 ""
+  "main.bbl" 1536935331 44350 cd3a909f7005cb43b9df9d7e3b2b283d "biber main"
+  "main.out" 1536942549 1282 a05a3112081d35ae2c421deffd953c32 ""
+  "main.run.xml" 1536942549 2304 ab7649870403f7bb1b561253173e380c ""
+  "main.tex" 1536942546 71978 151a1751e456996e0a2ed16e41c5126a ""
   (generated)
-  "main.out"
   "main.log"
-  "main.run.xml"
   "main.aux"
   "main.bcf"
+  "main.out"
+  "main.run.xml"
   "main.pdf"

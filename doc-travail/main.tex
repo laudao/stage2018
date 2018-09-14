@@ -188,7 +188,7 @@ De même, l'ensemble dominant de $\omega_i$ généré par $\lambda$ s'écrit :
 $$[\omega_i]^{\leq}_{\lambda} = \{w_h \in \Omega : \lambda(\omega_i) \leq
 \lambda(\omega_h)\}$$ 
 
-Les notions de \textit{dominance rough sets} sont également utilisées. On
+Les notions de \emph{dominance rough sets} sont également utilisées. On
 cherche à approximer l'ensemble $c^{\geq}_q$, i.e. l'ensemble des éléments de
 $\Omega$ dont la valeur de classe est inférieure à $c_q$.
 
@@ -212,14 +212,14 @@ classification monotone.
 
 Pour cela, ils définissent une mesure de degré de monotonie entre deux
 attributs, qu'ils nomment information mutuelle d'ordre, ou
-\textit{rank mutual information} (RMI): \\
+\emph{rank mutual information} (RMI): \\
 $$ RMI^{\leq}(a_j, a_{j'}) = -\frac{1}{n} \sum_{i=1}^{n} \log
 \frac{|[\omega_i]^{\leq}_{a_j}]| \times |[\omega_i]^{\leq}_{a_{j'}}]|}{n \times
 |[\omega_i]^{\leq}_{a_j}]\cap [\omega_i]^{\leq}_{a_{j'}}]|}$$
 
 RMI, sensible à la monotonie et robuste face aux données bruitées, est utilisé
 comme mesure de sélection d'attribut dans leur algorithme de construction
-d'arbres de décision monotones, REMT (\textit{Rank Entropy Based Decision
+d'arbres de décision monotones, REMT (\emph{Rank Entropy Based Decision
 Tree}).
 
 Dans cet article, on considère seulement les arbres binaires dans lesquels
@@ -258,7 +258,7 @@ si la base de données utilisée lors de la construction de l'arbre est
 monotone-consistente, alors les règles générées par REMT sont monotones. \\
 
 Afin d'évaluer la performance de leur algorithme, Hu et al. utilisent l'erreur absolue moyenne, ou
-\textit{Mean Absolute Error} (MAE) :
+\emph{Mean Absolute Error} (MAE) :
 $$ MAE = \frac{1}{n} \sum_{i=1}^{n}|f(\omega_i) - \lambda(\omega_i)| $$
 où $f(\omega_i)$ est la classe prédite par REMT. \\
 
@@ -307,7 +307,7 @@ est une transformation strictement décroissante de $f^*$, et $h^*$ agrège les
 mesures $g^*$. \\
 
 Marsala et Petturiti proposent un algorithme de construction d'arbre de décision
-nommé RDMT (\textit{Rank Discrimination Measure Tree}) essentiellement basé sur
+nommé RDMT (\emph{Rank Discrimination Measure Tree}) essentiellement basé sur
 REMT mais qui utilise, à la place de RMI, une mesure de discrimination passée en paramètre.
 
 \noindent Comme précédemment, seuls les arbres binaires à un attribut par noeud
@@ -386,15 +386,15 @@ monotonie globale.
 \subsection{Fusion d'arbres de décision monotones} 
 Afin d'améliorer la capacité de généralisation du modèle de classification, Qian
 et al. dans \cite{qian-fusing} proposent une méthode d'ensemble par fusion
-d'arbres de décision monotones, notée FREMT (\textit{Fusing rank entropy based
+d'arbres de décision monotones, notée FREMT (\emph{Fusing rank entropy based
 monotonic decision trees}).
 
 Les auteurs couplent une méthode de réduction d'attributs préservant l'ordre
 avec REMT, utilisé pour générer les classifieurs de base.
 
-Pour réduire l'ensemble des attributs, ils se basent sur les \textit{dominant
+Pour réduire l'ensemble des attributs, ils se basent sur les \emph{dominant
 rough sets} et mettent à jour leur définition. Ils introduisent un paramètre
-$\beta$ qui permet de paramétrer la sensibilité du \textit{rough set} au bruit
+$\beta$ qui permet de paramétrer la sensibilité du \emph{rough set} au bruit
 non-monotone. L'ensemble à approximer est : 
 $$c^{\geq}_q = \bigcup_{u \leq q} C_u$$
 où $C_u \in \Omega / \lambda = \{C_1, C_2,...,C_r\}$ tel que, pour tout $q, u \leq r$, si $q
@@ -438,7 +438,7 @@ $$ Sig^{\beta}_{outer}(a, B, \lambda) = \gamma^{\beta}_{B \cup \{a\}}(\lambda) -
 
 À l'aide de ces mesures de pertinence d'attributs, Qian et al. proposent un
 algorithme de réduction d'attributs, paramétré par $\beta$, qui, étant donné
-$\Omega$,~$A$ et $\lambda$, génère une réduction (\textit{reduct}) d'attributs
+$\Omega$,~$A$ et $\lambda$, génère une réduction (\emph{reduct}) d'attributs
 monotones. Le principe est le suivant :
 
 \begin{itemize}
@@ -496,7 +496,7 @@ Soit $F = \{T_1,T_2,...,T_N\}$ une forêt d'arbres de décision générés par $
 \{RED_1,RED_2,...,RED_N\}$. Étant donnés $\Omega$, $A$, $\lambda$,
 $\beta = \{\beta_1,\beta_2,\}$, et $\omega$ un objet dont la classe est à
 déterminer, l'algorithme final de fusion d'arbres de décision
-monotones, \textit{Fusing rank entropy based monotonic decision trees (FREMT)},
+monotones, \emph{Fusing rank entropy based monotonic decision trees (FREMT)},
 est le suivant :
 \begin{itemize}
     \item Pour $i=1,...,M$, trouver $RED_i = \{RED_0,RED_1,...,RED_{N_i}\}$ avec
@@ -505,7 +505,7 @@ est le suivant :
     \item Pour chaque $RED_j \in RED$, générer un arbre $T_j$ avec REMT.
     \item Construire F la forêt d'arbres $\{T_1,T_2,...,T_N\}$.
     \item Déterminer la classe de $\omega$ avec F selon le principe de fusion
-        basé sur la probabilité maximale (\textit{Fusing principle based on
+        basé sur la probabilité maximale (\emph{Fusing principle based on
         maximal probability}). \\
 \end{itemize}
 
@@ -551,18 +551,18 @@ d'arbres partiellement monotones permettant de gérer les deux types d'attributs
 à la fois. 
 
 
-Pour cela, ils proposent une mesure d'inconsistence d'ordre, \textit{rank
+Pour cela, ils proposent une mesure d'inconsistence d'ordre, \emph{rank
 inconsistency rate} (RIR), qui permet de distinguer les attributs ordinaires des
 critères et de déterminer les sens des relations graduelles entre les critères
 et la classe. Étant donnés $a_j \in A$ et $\lambda$, on définit :
 
 \begin{itemize}
-    \item URIR (\textit{upward rank inconstency rate}), le RIR ascendant selon~$a_j$ :
+    \item URIR (\emph{upward rank inconstency rate}), le RIR ascendant selon~$a_j$ :
         $$ URIR^{\leq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
         \frac{|[\omega_i]^{\leq}_{a_j}| \times
         |[\omega_i]^{\geq}_{\lambda}|}{|\Omega| \times |[\omega_i]^{\leq}_{a_j}
         \cap [\omega_i]^{\geq}_{\lambda}|}$$ 
-    \item DRIR (\textit{downward rank inconstency rate}), le RIR
+    \item DRIR (\emph{downward rank inconstency rate}), le RIR
         descendant selon~$a_j$ : 
         $$ DRIR^{\geq}(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n}\log_{2}
         \frac{|[\omega_i]^{\geq}_{a_j}| \times
@@ -593,7 +593,7 @@ existe une relation graduelle entre chaque attribut et la classe ainsi que son
 Afin de partitionner au mieux les données à chaque étape de construction de
 l'arbre, les mesures de sélection d'attributs RMI et MI sont utilisées. 
 
-\noindent L'information mutuelle MI (\textit{Mutual Information}) correspond au degré de
+\noindent L'information mutuelle MI (\emph{Mutual Information}) correspond au degré de
 consistence entre un attribut et les valeurs de la classe. L'information
 mutuelle entre l'attribut $a_j$ et la classe $\lambda$ est défini par :
 
@@ -603,14 +603,14 @@ $$ MI(a_j, \lambda) = -\frac{1}{|\Omega|} \sum_{i=1}^{n} \log_{2}
 [\omega_i]_{\lambda}|}$$
 
 \noindent De plus, Pei et Hu utilisent le coefficient d'information maximale MIC
-(\textit{Maximal Information Coefficient}) pour enlever les attributs
+(\emph{Maximal Information Coefficient}) pour enlever les attributs
 impertinents. Soient $X$ et $Y$ deux variables aléatoires, $|X|$ et $|Y|$
 représentent le nombre d'intervalles sur les axes $X$ et $Y$. Le nombre total
 d'intervalles n'excède pas une valeur $T$ spécifiée. MIC est défini par :
 
 $$ MIC(X, Y) = \max_{|X||Y| < T} \frac{MI(X,Y)}{\log_{2}(\min(|X|,|Y|))}$$
 
-À l'aide de ces mesures, les auteurs développent PMDT (\textit{Partially
+À l'aide de ces mesures, les auteurs développent PMDT (\emph{Partially
 Monotonic Decision Trees}), un algorithme de construction d'arbres partiellement
 monotones. Comme les autres méthodes, celle-ci ne considère que les arbres
 binaires où à chaque noeud interne correspond un attribut. Elle ne gère que les
@@ -645,7 +645,7 @@ L'évaluation des modèles est effectuée avec le taux de bonne classification e
 MAE.
 
 Pei et Hu comparent PMDT à des méthodes basées sur la structure formelle DRSA
-(\textit{dominance-based rough set approach}) DIR-DOMLEM, VC-DomLEM
+(\emph{dominance-based rough set approach}) DIR-DOMLEM, VC-DomLEM
 (\cite{blaszczynski-sequential}, \cite{blaszczynski-induction},
 \cite{wang-induction}), ainsi que des algorithmes de construction d'arbres de
 décisions tels REMT, RGMT, OLM et OSDL. Ils récupèrent 12 bases réelles dans
@@ -964,7 +964,7 @@ classifieur paramétré par une mesure de discrimination H (d'ordre ou non) et p
 globalement monotone. Néanmoins, si les données sont monotone-consistentes et si
 H tient compte de la relation graduelle entre les valeurs d'attributs et les
 valeurs de classe, alors cette méthode garantit une forme plus faible de
-monotonie (appelée \textit{rule monotonicity}). 
+monotonie (appelée \emph{rule monotonicity}). 
 
 RDMT et notre algorithme diffèrent sur plusieurs points :
 \begin{itemize}
@@ -982,7 +982,7 @@ l'attribut $a^*$ qui respecte le plus la contrainte de monotonie, i.e. celui
 dont la valeur $x^*_{j_s}$ minimise $H(\lambda|a^{x_{j_s}}_j)$, pour $j=1,...,m,
 s=1,...t_j-1$. 
 
-Etant donné une mesure de discrimination $H^*$, \textit{DISCRETIZE}
+Etant donné une mesure de discrimination $H^*$, \emph{DISCRETIZE}
 (~\algoref{alg:discretize}) permet de récupérer, pour chaque $a_j \in
 \mathcal{A}$, le seuil de coupure minimisant la valeur de H ainsi que cette
 dernière. On parcourt tous les seuils de coupure $x_{j_s}$ de $a_j$
@@ -1220,7 +1220,7 @@ discrimination testées produisent des résultats significativement différents.
 \begin{figure}[H]
 	\center 
 	\includegraphics[width=0.6\textwidth]{images/breast-cancer.png}
-    \caption{Corrélations entre les attributs de la base \textit{Breast Cancer}
+    \caption{Corrélations entre les attributs de la base \emph{Breast Cancer}
     et la classe}
     \label{img:breast-cancer}
 \end{figure}
@@ -1228,7 +1228,7 @@ discrimination testées produisent des résultats significativement différents.
 \begin{figure}[H]
 	\center 
 	\includegraphics[width=0.6\textwidth]{images/cpu.png}
-    \caption{Corrélations entre les attributs de la base \textit{CPU}
+    \caption{Corrélations entre les attributs de la base \emph{CPU}
     et la classe}
     \label{img:cpu}
 \end{figure}
@@ -1236,32 +1236,34 @@ discrimination testées produisent des résultats significativement différents.
 \begin{figure}[H]
 	\center 
 	\includegraphics[width=0.6\textwidth]{images/cars.png}
-    \caption{Corrélations entre les attributs de la base \textit{Cars Evaluation}
+    \caption{Corrélations entre les attributs de la base \emph{Cars Evaluation}
     et la classe}
     \label{img:cars}
 \end{figure}
 
-Le \tabref{tab:resultats-classification} contient les résultats de tests menés
+Le \tabref*{tab:resultats-classification} contient les résultats de tests menés
 sur les tâches de classification collectées.
 
 De manière générale, on peut observer que les arbres construits à partir des
-mesures de discrimination à rang sont plus profonds, contiennent plus de
+mesures de discrimination d'ordre sont plus profonds, contiennent plus de
 feuilles et de paires de feuilles que ceux générés par les mesures d'entropie
 classiques. 
 
-Sur la base \textit{Breast Cancer}, les mesures d'entropie classique produisent
+La base \emph{Breast Cancer} comporte 286 éléments à 9 attributs : \emph{age} (6
+valeurs différentes), \emph{menopause} (3 valeurs différentes), \emph{tumor
+size} (11 valeurs différentes), \emph{inv nodes} (7 valeurs différentes), \emph. Sur cette base, les mesures d'entropie classique produisent
 de meilleurs résultats en termes de taux de bonne classification et de monotonie
 que les mesures de discrimination d'ordre. La prise en compte de la monotonie
 des données dans le critère de partitionnement n'offre donc pas d'avantage.
 Néanmoins, cette base ne contient que deux valeurs pour la classe, et plusieurs
 attributs ne comprennent que peu de valeurs. Il n'y a donc pas de réelle
-relation graduelle entre les attributs et la classe. La \figref{img:breast-cancer}
+relation graduelle entre les attributs et la classe. La \figref*{img:breast-cancer}
 confirme l'absence de corrélation entre les valeurs d'attributs et de classe :
 il n'existe pas de contrainte de monotonie dans cette base.
 
 En revanche, $H^*_S$, $H^*_G$, et $H^*_Q$ produisent de meilleurs taux de bonne
-classification que les mesures d'entropie classiques sur la base \textit{CPU}.
-De plus, sur les données de \textit{Cars Evaluation}, $H^*_S$, $H^*_G$, $H^*_P$
+classification que les mesures d'entropie classiques sur la base \emph{CPU}.
+De plus, sur les données de \emph{Cars Evaluation}, $H^*_S$, $H^*_G$, $H^*_P$
 et $H^*_M$ génèrent de meilleures prédictions que les mesures classiques. Sur
 ces deux bases, tous les ratio produits par les mesures de discrimination
 d'ordre sont plus faibles que ceux produits par les mesures classiques : cela
@@ -1271,14 +1273,15 @@ que les autres.
 
 Dans le but de comprendre pourquoi les mesures de discrimination d'ordre
 présentent de meilleures performances, on examine les corrélations entre chaque
-paire d'attributs, classe incluse. La \figref{img:cpu} montre que, dans la base
-\textit{CPU}, les valeurs des attributs sont très étalées et un certain nombre
+paire d'attributs, classe incluse. La \figref*{img:cpu} montre que, dans la base
+\emph{CPU}, les valeurs des attributs sont très étalées et un certain nombre
 d'attributs apparaissent corrélés (positivement comme ERP et PRP, ou
 négativement comme PRP et MYCT).
 
-Cependant, on peut voir sur la \figref{img:cars} que les attributs de la base
-\textit{Cars Evaluation} comprennent peu de valeurs différentes et sont peu
-corrélées à la classe : on manque encore d'une explication générale.
+Cependant, on peut voir sur la \figref*{img:cars} que les attributs de la base
+\emph{Cars Evaluation} comprennent peu de valeurs différentes et sont peu
+corrélées à la classe : on manque encore d'une explication générale. \\
+
 
 \begin{table}
 \resizebox{\textwidth}{!}{
@@ -1323,6 +1326,21 @@ corrélées à la classe : on manque encore d'une explication générale.
 
      & nombre de paires de feuilles & 47.0 $\pm$ 2.23 & 48.25 $\pm$ 1.92 & 47.0 $\pm$ 1.87& 51.25 $\pm$ 3.34\\
 
+    & & & & & \\
+
+     9 classes & accuracy  & 25.60 \%$\pm$ 0.05 \%  & 23.93 \%$\pm$ 0.08\%  & 24.53 \%$\pm$ 0.06 \% & 22.07\% \%$\pm$ 0.05 \% \\
+
+     & profondeur  & 19.5 $\pm$ 1.5 & 14.75 $\pm$ 0.43 & 20.0 $\pm$ 1.22 & 14.0
+     $\pm$ 1.00  \\
+
+     & nombre de feuilles  & 171.75 $\pm$ 5.89 & 158.5 $\pm$ 0.87 & 176.0 $\pm$
+     3.94 & 160.0 $\pm$ 2.55 \\
+
+     & ratio paires non-monotones  & 53.07 \%$\pm$ 0.04 \%& 55.45 \%$\pm$ 0.03
+     \%& 51.86\% \%$\pm$ 0.02 \%& 53.41\% \%$\pm$ 0.01 \% \\
+
+     & nombre de paires de feuilles  & 46.0 $\pm$ 4.53 & 52.25 $\pm$ 3.69& 48.0
+     $\pm$ 1.87 & 54.0 $\pm$ 2.12 \\
     \hline
 
 \end{tabular}}
@@ -1330,7 +1348,57 @@ corrélées à la classe : on manque encore d'une explication générale.
 \label{tab:resultats-regression}
 \end{table}
 
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/airfoil.png}
+    \caption{Corrélations entre les attributs de la base \emph{Airfoil
+    Self-Noise}
+    et la classe}
+    \label{img:airfoil}
+\end{figure}
 
+D'autre part, la base de régression \emph{Airfoil Self-Noise} est utilisée afin
+d'étudier l'impact du nombre de classes sur les performances du classifieur.
+Cette base est constituée de 1503 éléments à 5 attributs : \emph{frequency} (21
+valeurs différentes), \emph{angle of attack} (27 valeurs différentes),
+\emph{chord length} (6 valeurs différentes), \emph{velocity} (4 valeurs
+différentes), et \emph{thickness} (105 valeurs différentes). La classe à
+prédire, \emph{scaled sound pressure level}, comporte 1456 valeurs différentes.
+En fonction des quantiles, on discrétise les valeurs de classe en 2, 3, 7, et 9
+classes afin d'obtenir des tâches de classification. On
+étudie les performances du classifieur en fonction de la mesure de
+discrimination utilisée pour chaque discrétisation de classe, puis l'impact du
+nombre de classes sur les résultats.
+
+Comme précédemment, les arbres générés par des mesures de discrimination d'ordre
+sont plus profonds et contiennent plus de feuilles que les autres, pour toute
+discrétisation. De plus, ils permettent d'obtenir de meilleurs résultats en
+termes de taux de bonne classification et de monotonie. En revanche, lorsque la
+base contient plus de 2 classes, les arbres construits par des mesures
+d'entropie classiques comprennent plus de paires de feuilles que ceux tenant
+compte de la monotonie. 
+
+On remarque également, pour chaque mesure étudiée, une nette diminution du ratio
+de paires non-monotones lorsque l'on augmente le nombre de classes. Plus il est
+élevé, plus la relation graduelle existant entre les attributs et la classe est
+renforcée. Couplée par des mesures de discrimination prenant en compte la
+monotonie, on obtient des classifieurs plus performants que ceux générés par des
+mesures d'entropie classiques.
+
+Néanmoins, la \figref*{img:airfoil} montre le peu de corrélation entre les
+attributs et la classe (représentée par la dernière ligne en partant du haut, et
+la dernière colonne en partant de la gauche). Il est encore difficile
+d'expliquer cette différence de performance entre les classifieurs monotones et
+non-monotones.
+
+Les expériences menées sur les bases précédentes mettent en valeur les avantages
+des arbres générés par des mesures tenant compte de la contrainte de monotonie
+par rapport aux arbres construits avec des mesures classiques. Cependant, on
+manque d'une explication générale à ce phénomène : l'absence de relation
+monotone entre les attributs et la classe n'implique pas de moins bonnes
+performances de la part des arbres monotones par rapport aux arbres classiques.
+De plus, comme pour les expériences menées sur des données artificielles, il est
+toujours difficile d'évaluer le taux de monotonie d'un arbre.
 
 \section{Conclusion du stage et perspectives} 
 

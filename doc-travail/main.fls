@@ -327,6 +327,9 @@ INPUT ./images/cpu.png
 INPUT images/cars.png
 INPUT ./images/cars.png
 INPUT ./images/cars.png
+INPUT images/airfoil.png
+INPUT ./images/airfoil.png
+INPUT ./images/airfoil.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
