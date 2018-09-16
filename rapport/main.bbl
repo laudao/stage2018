@@ -1,0 +1,1107 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ben-monotonicity}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f43dd2f7e44fc16aabab61154a50b767}{%
+           family={Ben-David},
+           familyi={B\bibinithyphendelim D\bibinitperiod},
+           given={Arie},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f43dd2f7e44fc16aabab61154a50b767}
+      \strng{fullhash}{f43dd2f7e44fc16aabab61154a50b767}
+      \strng{bibnamehash}{f43dd2f7e44fc16aabab61154a50b767}
+      \strng{authorbibnamehash}{f43dd2f7e44fc16aabab61154a50b767}
+      \strng{authornamehash}{f43dd2f7e44fc16aabab61154a50b767}
+      \strng{authorfullhash}{f43dd2f7e44fc16aabab61154a50b767}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{1}
+      \field{title}{Monotonicity maintenance in information-theoretic machine learning algorithms}
+      \field{volume}{19}
+      \field{year}{1995}
+      \field{pages}{29\bibrangedash 43}
+      \range{pages}{15}
+    \endentry
+    \entry{ben-learning}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=f43dd2f7e44fc16aabab61154a50b767}{%
+           family={Ben-David},
+           familyi={B\bibinithyphendelim D\bibinitperiod},
+           given={Arie},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d689c61e0d88507e31ab2ab05bcaddf8}{%
+           family={Sterling},
+           familyi={S\bibinitperiod},
+           given={Leon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e8e2834df20115f3b8738ed5b3e697bd}{%
+           family={Pao},
+           familyi={P\bibinitperiod},
+           given={Yoh-Han},
+           giveni={Y\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{dbd1eb9a82eb2ca4ca5039998db50465}
+      \strng{fullhash}{563be2185ac15879694ec29defac8c6b}
+      \strng{bibnamehash}{563be2185ac15879694ec29defac8c6b}
+      \strng{authorbibnamehash}{563be2185ac15879694ec29defac8c6b}
+      \strng{authornamehash}{dbd1eb9a82eb2ca4ca5039998db50465}
+      \strng{authorfullhash}{563be2185ac15879694ec29defac8c6b}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Intelligence}
+      \field{number}{1}
+      \field{title}{Learning and classification of monotonic ordinal concepts}
+      \field{volume}{5}
+      \field{year}{1989}
+      \field{pages}{45\bibrangedash 49}
+      \range{pages}{5}
+    \endentry
+    \entry{ben-adding}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=f43dd2f7e44fc16aabab61154a50b767}{%
+           family={Ben-David},
+           familyi={B\bibinithyphendelim D\bibinitperiod},
+           given={Arie},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=d689c61e0d88507e31ab2ab05bcaddf8}{%
+           family={Sterling},
+           familyi={S\bibinitperiod},
+           given={Leon},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8fe7fe6c27622e21d7c3bdb7d32edb66}{%
+           family={Tran},
+           familyi={T\bibinitperiod},
+           given={TriDat},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{dbd1eb9a82eb2ca4ca5039998db50465}
+      \strng{fullhash}{3f6ff1c430f8d3d4c3099716aefcfba3}
+      \strng{bibnamehash}{3f6ff1c430f8d3d4c3099716aefcfba3}
+      \strng{authorbibnamehash}{3f6ff1c430f8d3d4c3099716aefcfba3}
+      \strng{authornamehash}{dbd1eb9a82eb2ca4ca5039998db50465}
+      \strng{authorfullhash}{3f6ff1c430f8d3d4c3099716aefcfba3}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Expert Systems with Applications}
+      \field{number}{3}
+      \field{title}{Adding monotonicity to learning algorithms may impair their accuracy}
+      \field{volume}{36}
+      \field{year}{2009}
+      \field{pages}{6627\bibrangedash 6634}
+      \range{pages}{8}
+    \endentry
+    \entry{blaszczynski-induction}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5772c99341d8c8dc069d6b41e316246d}{%
+           family={B{ł}aszczy{ń}ski},
+           familyi={B\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce945402f764017b42c4e79ebfc5fa97}{%
+           family={S{ł}owi{ń}ski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8b0243b24e28381ede9cdb420d7663fa}{%
+           family={Szel{ą}g},
+           familyi={S\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{fullhash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{bibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authorbibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authornamehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{authorfullhash}{b385031a40e8ee397fd713fdf686e412}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International Conference on Rough Sets and Current Trends in Computing}
+      \field{title}{Induction of ordinal classification rules from incomplete data}
+      \field{year}{2012}
+      \field{pages}{56\bibrangedash 65}
+      \range{pages}{10}
+    \endentry
+    \entry{blaszczynski-sequential}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=5772c99341d8c8dc069d6b41e316246d}{%
+           family={B{ł}aszczy{ń}ski},
+           familyi={B\bibinitperiod},
+           given={Jerzy},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce945402f764017b42c4e79ebfc5fa97}{%
+           family={S{ł}owi{ń}ski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8b0243b24e28381ede9cdb420d7663fa}{%
+           family={Szel{ą}g},
+           familyi={S\bibinitperiod},
+           given={Marcin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{fullhash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{bibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authorbibnamehash}{b385031a40e8ee397fd713fdf686e412}
+      \strng{authornamehash}{a3483898dda2e330b5248ebdf036e676}
+      \strng{authorfullhash}{b385031a40e8ee397fd713fdf686e412}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{number}{5}
+      \field{title}{Sequential covering rule induction algorithm for variable consistency rough set approaches}
+      \field{volume}{181}
+      \field{year}{2011}
+      \field{pages}{987\bibrangedash 1002}
+      \range{pages}{16}
+    \endentry
+    \entry{cao-supervised}{thesis}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=f05038cd32f3d8ac10a9e73ac445c2b3}{%
+           family={Cao-Van},
+           familyi={C\bibinithyphendelim V\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {Ghent University}%
+      }
+      \strng{namehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{fullhash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{bibnamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authorbibnamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authornamehash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \strng{authorfullhash}{f05038cd32f3d8ac10a9e73ac445c2b3}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Supervised ranking: from semantics to algorithms}
+      \field{type}{phdthesis}
+      \field{year}{2003}
+    \endentry
+    \entry{cao-consistent}{incollection}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=f05038cd32f3d8ac10a9e73ac445c2b3}{%
+           family={Cao-Van},
+           familyi={C\bibinithyphendelim V\bibinitperiod},
+           given={Kim},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=2b6ee1d731e52a6c8536b1bf9f9fcdb1}{%
+           family={De\bibnamedelima Baets},
+           familyi={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \strng{fullhash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \strng{bibnamehash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \strng{authorbibnamehash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \strng{authornamehash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \strng{authorfullhash}{e67ca99b05244d7a8e1f9b71469dc30a}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Theory and Applications of Relational Structures as Knowledge Instruments}
+      \field{title}{Consistent representation of rankings}
+      \field{year}{2003}
+      \field{pages}{107\bibrangedash 123}
+      \range{pages}{17}
+    \endentry
+    \entry{uci}{misc}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=d89d00bcac5f60080acb9ef87efe4811}{%
+           family={Dheeru},
+           familyi={D\bibinitperiod},
+           given={Dua},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=befdc70303b9f13724e03c251467ebf4}{%
+           family={Karra\bibnamedelima Taniskidou},
+           familyi={K\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Efi},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{2}{%
+        {University of California, Irvine, School of Information}%
+        {Computer Sciences}%
+      }
+      \strng{namehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{fullhash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{bibnamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authorbibnamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authornamehash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \strng{authorfullhash}{e56ce0dd9582210ba14da776a2fe74f8}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{UCI} Machine Learning Repository}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+      \verb{url}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+    \endentry
+    \entry{greco-new-bankruptcy}{incollection}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Operational tools in the management of financial risks}
+      \field{title}{A new rough set approach to evaluation of bankruptcy risk}
+      \field{year}{1998}
+      \field{pages}{121\bibrangedash 136}
+      \range{pages}{16}
+    \endentry
+    \entry{greco-customer}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Zeitschrift f{ü}r Betriebswirtschaft}
+      \field{number}{3}
+      \field{title}{Customer satisfaction analysis based on rough set approach}
+      \field{volume}{77}
+      \field{year}{2007}
+      \field{pages}{325\bibrangedash 339}
+      \range{pages}{15}
+    \endentry
+    \entry{greco-roughappr}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of intelligent systems}
+      \field{number}{2}
+      \field{title}{Rough approximation by dominance relations}
+      \field{volume}{17}
+      \field{year}{2002}
+      \field{pages}{153\bibrangedash 171}
+      \range{pages}{19}
+    \endentry
+    \entry{greco-roughsets}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e894237f4558028070b82653db8f3561}{%
+           family={Greco},
+           familyi={G\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=58186a1d253c0224efb45bab1ef522ca}{%
+           family={Matarazzo},
+           familyi={M\bibinitperiod},
+           given={Benedetto},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f353efc4ffe09d3aa95b0472a8ebb379}{%
+           family={Slowinski},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{fullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{bibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authorbibnamehash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \strng{authornamehash}{f31b0cc0d8c83f9a6a424645efd49e66}
+      \strng{authorfullhash}{bd4b1cf91e48ca6b7c31eb2620d05277}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European journal of operational research}
+      \field{number}{2}
+      \field{title}{Rough sets methodology for sorting problems in presence of multiple attributes and criteria}
+      \field{volume}{138}
+      \field{year}{2002}
+      \field{pages}{247\bibrangedash 259}
+      \range{pages}{13}
+    \endentry
+    \entry{hu-rank}{article}{}
+      \name{author}{6}{}{%
+        {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Qinghua},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=210d1702d5d9312184976208db28897b}{%
+           family={Che},
+           familyi={C\bibinitperiod},
+           given={Xunjian},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f4a4cbf770add19c206827116c68732e}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=94d314d7b645e07423926dfb8d939dc0}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e6c38a8e52ab483adb814ed2555f1eca}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Maozu},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3225b4c384602bfd669d6323ac07bc99}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Daren},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{fullhash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{bibnamehash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{authorbibnamehash}{a73a94d833fb825e0e51a3c97fec2395}
+      \strng{authornamehash}{8f6f2ab24cca3f9bef6238160be9959e}
+      \strng{authorfullhash}{a73a94d833fb825e0e51a3c97fec2395}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Knowledge and Data Engineering}
+      \field{number}{11}
+      \field{title}{Rank entropy-based decision trees for monotonic classification}
+      \field{volume}{24}
+      \field{year}{2012}
+      \field{pages}{2052\bibrangedash 2064}
+      \range{pages}{13}
+    \endentry
+    \entry{hunter-matplotlib}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=515b7a67462b8750a0711541001538cb}{%
+           family={Hunter},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE COMPUTER SOC}%
+      }
+      \strng{namehash}{515b7a67462b8750a0711541001538cb}
+      \strng{fullhash}{515b7a67462b8750a0711541001538cb}
+      \strng{bibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorbibnamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authornamehash}{515b7a67462b8750a0711541001538cb}
+      \strng{authorfullhash}{515b7a67462b8750a0711541001538cb}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Matplotlib is a 2D graphics package used for Python for application development, interactive scripting, and publication-quality image generation across user interfaces and operating systems.}
+      \field{journaltitle}{Computing In Science \& Engineering}
+      \field{number}{3}
+      \field{title}{Matplotlib: A 2D graphics environment}
+      \field{volume}{9}
+      \field{year}{2007}
+      \field{pages}{90\bibrangedash 95}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/MCSE.2007.55
+      \endverb
+    \endentry
+    \entry{leo-classification}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=0dae8cbabf9d817b067fe4176f3d1b73}{%
+           family={Leo},
+           familyi={L\bibinitperiod},
+           given={Breiman},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=35b9098abeddd115c394c7b2e7ea0264}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Jerome\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=53d3254c4b990000c0e91258bb290a81}{%
+           family={Olshen},
+           familyi={O\bibinitperiod},
+           given={Richard\bibnamedelima A},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=39266e6355e15a8ddcf66c3ef9d3f0d6}{%
+           family={Stone},
+           familyi={S\bibinitperiod},
+           given={Charles\bibnamedelima J},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6aad3370ea0051ba802a6fda86190d74}
+      \strng{fullhash}{b30c09c29f6f676eb3d4989d932a7d60}
+      \strng{bibnamehash}{b30c09c29f6f676eb3d4989d932a7d60}
+      \strng{authorbibnamehash}{b30c09c29f6f676eb3d4989d932a7d60}
+      \strng{authornamehash}{6aad3370ea0051ba802a6fda86190d74}
+      \strng{authorfullhash}{b30c09c29f6f676eb3d4989d932a7d60}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wadsworth International Group}
+      \field{title}{Classification and regression trees}
+      \field{year}{1984}
+    \endentry
+    \entry{marsala-gradual}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2d935afed279c0266264bada38f3e720}{%
+           family={Marsala},
+           familyi={M\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{2d935afed279c0266264bada38f3e720}
+      \strng{fullhash}{2d935afed279c0266264bada38f3e720}
+      \strng{bibnamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authorbibnamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authornamehash}{2d935afed279c0266264bada38f3e720}
+      \strng{authorfullhash}{2d935afed279c0266264bada38f3e720}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Fuzzy Systems (FUZZ-IEEE), 2012 IEEE International Conference on}
+      \field{title}{Gradual fuzzy decision trees to help medical diagnosis}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+    \endentry
+    \entry{marsala-rank}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=2d935afed279c0266264bada38f3e720}{%
+           family={Marsala},
+           familyi={M\bibinitperiod},
+           given={Christophe},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f9e6b1d48b78e7b6c3d6206b653d97db}{%
+           family={Petturiti},
+           familyi={P\bibinitperiod},
+           given={Davide},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{fullhash}{419eda1a03d75159d3e23bc395307706}
+      \strng{bibnamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authorbibnamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authornamehash}{419eda1a03d75159d3e23bc395307706}
+      \strng{authorfullhash}{419eda1a03d75159d3e23bc395307706}
+      \field{sortinit}{M}
+      \field{sortinithash}{cfd219b90152c06204fab207bc6c7cab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Rank discrimination measures for enforcing monotonicity in decision tree induction}
+      \field{volume}{291}
+      \field{year}{2015}
+      \field{pages}{143\bibrangedash 171}
+      \range{pages}{29}
+    \endentry
+    \entry{pazzani-acceptance}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=e43fc7d262dbe171020fddef5b86862d}{%
+           family={Pazzani},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima J},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e8de3266bb9c62ce6a88cbe2b71bce37}{%
+           family={Mani},
+           familyi={M\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=643585a65a62416b4719005f4371d7de}{%
+           family={Shankle},
+           familyi={S\bibinitperiod},
+           given={William\bibnamedelima R},
+           giveni={W\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Schattauer GmbH}%
+      }
+      \strng{namehash}{386870c4d4acfb82c1f50491b26c3b98}
+      \strng{fullhash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{bibnamehash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{authorbibnamehash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \strng{authornamehash}{386870c4d4acfb82c1f50491b26c3b98}
+      \strng{authorfullhash}{6e7fb14564637fcae8c7c2adbb449f10}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Methods of information in medicine}
+      \field{number}{05}
+      \field{title}{Acceptance of rules generated by machine learning among medical experts}
+      \field{volume}{40}
+      \field{year}{2001}
+      \field{pages}{380\bibrangedash 385}
+      \range{pages}{6}
+    \endentry
+    \entry{scikit-learn}{article}{}
+      \name{author}{16}{}{%
+        {{uniquename=0,uniquepart=base,hash=22e2e571cc6356b3cb21d40e212ca6ac}{%
+           family={Pedregosa},
+           familyi={P\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=90a0a2720bfe73efd4029f8a456cdcc3}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=386dd6e7464b390d92ce58cf04ba101c}{%
+           family={Gramfort},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ce3bf798cb091d3910827d51160fe0f8}{%
+           family={Michel},
+           familyi={M\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b8fa2de348731073d50b89e07267e159}{%
+           family={Thirion},
+           familyi={T\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=1c2f66c39a6e2b2ca4d545348028a677}{%
+           family={Grisel},
+           familyi={G\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f5652799b846fbd40ce19b83c70ef1d3}{%
+           family={Blondel},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8d2ca4be32fef4d9e848709878fcb757}{%
+           family={Prettenhofer},
+           familyi={P\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=56ac3785f81550a29a28d3abd746ecff}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=cb070bdb80f3a6add15c62ca13a4a419}{%
+           family={Dubourg},
+           familyi={D\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=f1aa9e81c02f406a26762c8c85fdc1fb}{%
+           family={Vanderplas},
+           familyi={V\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=35a7037441ee9fd7ca45c2216a9cb080}{%
+           family={Passos},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=39b253ebe84b96f6acd07b762d251ca1}{%
+           family={Cournapeau},
+           familyi={C\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=3c836162a7c1b02a3454bb2df2c57303}{%
+           family={Brucher},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=980c432be67e1ca5879a0aee315ff2a9}{%
+           family={Perrot},
+           familyi={P\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=ad11ee93370bf63bb64684cfdff0836f}{%
+           family={Duchesnay},
+           familyi={D\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7f03c9665977d16cca3f7d744a8a06df}
+      \strng{fullhash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{bibnamehash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{authorbibnamehash}{81371d66ce2cfb28d217f955948ace55}
+      \strng{authornamehash}{7f03c9665977d16cca3f7d744a8a06df}
+      \strng{authorfullhash}{81371d66ce2cfb28d217f955948ace55}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{Scikit-learn: Machine Learning in {P}ython}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2825\bibrangedash 2830}
+      \range{pages}{6}
+    \endentry
+    \entry{pei-partially}{article}{}
+      \name{author}{2}{}{%
+        {{uniquename=0,uniquepart=base,hash=c179d743bac88c6177a6c87f558a831e}{%
+           family={Pei},
+           familyi={P\bibinitperiod},
+           given={Shenglei},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=b8a0fb91ee1e348c1963577d64c2b566}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Qinghua},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{fullhash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{bibnamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authorbibnamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authornamehash}{e005828081e4d38395bb37ed2ec2e987}
+      \strng{authorfullhash}{e005828081e4d38395bb37ed2ec2e987}
+      \field{sortinit}{P}
+      \field{sortinithash}{8d51b3d5b78d75b54308d706b9bbe285}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information Sciences}
+      \field{title}{Partially monotonic decision trees}
+      \field{volume}{424}
+      \field{year}{2018}
+      \field{pages}{104\bibrangedash 117}
+      \range{pages}{14}
+    \endentry
+    \entry{qian-fusing}{article}{}
+      \name{author}{5}{}{%
+        {{uniquename=0,uniquepart=base,hash=dc416cc91c20a989cd36b6bd1d8cad51}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Yuhua},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=00913dcfab784527b5492487e1556e57}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Hang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e9a481fed54cf323419c98934f1383a4}{%
+           family={Liang},
+           familyi={L\bibinitperiod},
+           given={Jiye},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=9c6fb2af2964f3126cfd4e505a38daca}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Bing},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=c3cbfd3e6dad6aa2faf4f6c54dff82d1}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jieting},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3a28d51329377e7e5940be8cf4eecc39}
+      \strng{fullhash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{bibnamehash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{authorbibnamehash}{1e10597005ff70c40dfe9eeede27fce9}
+      \strng{authornamehash}{3a28d51329377e7e5940be8cf4eecc39}
+      \strng{authorfullhash}{1e10597005ff70c40dfe9eeede27fce9}
+      \field{sortinit}{Q}
+      \field{sortinithash}{d257e420984a3a5c57a3330114cd646a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Knowledge and Data Engineering}
+      \field{number}{10}
+      \field{title}{Fusing monotonic decision trees}
+      \field{volume}{27}
+      \field{year}{2015}
+      \field{pages}{2717\bibrangedash 2728}
+      \range{pages}{12}
+    \endentry
+    \entry{quinlan-induction}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=047cc039275c7e0ff59113a594a8db4d}{%
+           family={Quinlan},
+           familyi={Q\bibinitperiod},
+           given={J.\bibnamedelimi Ross},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{047cc039275c7e0ff59113a594a8db4d}
+      \strng{fullhash}{047cc039275c7e0ff59113a594a8db4d}
+      \strng{bibnamehash}{047cc039275c7e0ff59113a594a8db4d}
+      \strng{authorbibnamehash}{047cc039275c7e0ff59113a594a8db4d}
+      \strng{authornamehash}{047cc039275c7e0ff59113a594a8db4d}
+      \strng{authorfullhash}{047cc039275c7e0ff59113a594a8db4d}
+      \field{sortinit}{Q}
+      \field{sortinithash}{d257e420984a3a5c57a3330114cd646a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Machine learning}
+      \field{number}{1}
+      \field{title}{Induction of decision trees}
+      \field{volume}{1}
+      \field{year}{1986}
+      \field{pages}{81\bibrangedash 106}
+      \range{pages}{26}
+    \endentry
+    \entry{walt-numpy}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=9b315a4944db8176f1340262654cc9ce}{%
+           family={Walt},
+           familyi={W\bibinitperiod},
+           given={Stefan\bibnamedelimb van\bibnamedelima der},
+           giveni={S\bibinitperiod\bibinitdelim v\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e4a47779c44b3cd7474c52c4875d4d39}{%
+           family={Colbert},
+           familyi={C\bibinitperiod},
+           given={S.\bibnamedelimi Chris},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=8dfd6b3615de2946b6e0c1772b3b5827}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={Gael},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Piscataway, NJ, USA}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Educational Activities Department}%
+      }
+      \strng{namehash}{01025d82f5f6e0c5492d7ff322f7f079}
+      \strng{fullhash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{bibnamehash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{authorbibnamehash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \strng{authornamehash}{01025d82f5f6e0c5492d7ff322f7f079}
+      \strng{authorfullhash}{b1c9067cab45aa1bd9f7232cb78c1fc6}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1521-9615}
+      \field{journaltitle}{Computing in Science and Engg.}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{The NumPy Array: A Structure for Efficient Numerical Computation}
+      \field{volume}{13}
+      \field{year}{2011}
+      \field{pages}{22\bibrangedash 30}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1109/MCSE.2011.37
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1109/MCSE.2011.37
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1109/MCSE.2011.37
+      \endverb
+      \keyw{NumPy,Python,Python,NumPy,scientific programming,numerical computations,programming libraries,numerical computations,programming libraries,scientific programming}
+    \endentry
+    \entry{wang-induction}{article}{}
+      \name{author}{3}{}{%
+        {{uniquename=0,uniquepart=base,hash=0be8093bbced970054b03ccb042e1d09}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hailiang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=a0983737c1e3b331f2f05fa3aaae9315}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Mingtian},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=e4151f690a31f37fbe0950c3ad4db9c0}{%
+           family={She},
+           familyi={S\bibinitperiod},
+           given={Kun},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{c467cf3b4dd23d1e52eed995307fcdd2}
+      \strng{fullhash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{bibnamehash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{authorbibnamehash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \strng{authornamehash}{c467cf3b4dd23d1e52eed995307fcdd2}
+      \strng{authorfullhash}{53f5ea1bf06041a2a19b1ae87bf72c5f}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{European Journal of Operational Research}
+      \field{number}{1}
+      \field{title}{Induction of ordinal classification rules from decision tables with unknown monotonicity}
+      \field{volume}{242}
+      \field{year}{2015}
+      \field{pages}{172\bibrangedash 181}
+      \range{pages}{10}
+    \endentry
+    \entry{xia-ranking}{article}{}
+      \name{author}{4}{}{%
+        {{uniquename=0,uniquepart=base,hash=3ccfc5de175d248e82e2a1ad84fb6d0a}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Fen},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=6ff9a910039660c1ee31f65c2d671509}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Wensheng},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=7be2e9c4693c87c67e142d20b53f3b29}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Fuxin},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{uniquename=0,uniquepart=base,hash=57658d6dc718ecf1e8ae58ce0a588e72}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yanwu},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{bbb3f0d2d80fef522571839e9b9d956c}
+      \strng{fullhash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{bibnamehash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{authorbibnamehash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \strng{authornamehash}{bbb3f0d2d80fef522571839e9b9d956c}
+      \strng{authorfullhash}{b22bcf26d439e3c8bbc9ece64026c200}
+      \field{sortinit}{X}
+      \field{sortinithash}{b0b62a29ee4a21a0e618fed53a0313cc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Knowledge and information systems}
+      \field{number}{3}
+      \field{title}{Ranking with decision tree}
+      \field{volume}{17}
+      \field{year}{2008}
+      \field{pages}{381\bibrangedash 395}
+      \range{pages}{15}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

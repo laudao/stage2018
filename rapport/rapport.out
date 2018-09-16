@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Etat de l'art}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Notations}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Arbre de d\351cision bas\351 sur l'entropie d'ordre}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Construction du mod\350le}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{\311valuation du mod\350le}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Validation du mod\350le}{subsection.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Arbre de d\351cision param\351tr\351 par une mesure de discrimination d'ordre}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Construction du mod\350le}{subsection.2.3}% 9
+\BOOKMARK [3][-]{subsubsection.2.3.2}{\311valuation du mod\350le}{subsection.2.3}% 10
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Validation du mod\350le}{subsection.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.4}{Fusion d'arbres de d\351cision monotones}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.4.1}{\311valuation et validation du mod\350le}{subsection.2.4}% 13
+\BOOKMARK [2][-]{subsection.2.5}{Arbres de d\351cision partiellement monotones}{section.2}% 14
+\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 15
+\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Analyse exp\351rimentale}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Exp\351rimentation sur des bases r\351elles}{subsection.4.3}% 20
+\BOOKMARK [1][-]{section.5}{Conclusion du stage et perspectives}{}% 21
