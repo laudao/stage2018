@@ -12,10 +12,19 @@
 \BOOKMARK [2][-]{subsection.2.4}{Fusion d'arbres de d\351cision monotones}{section.2}% 12
 \BOOKMARK [3][-]{subsubsection.2.4.1}{\311valuation et validation du mod\350le}{subsection.2.4}% 13
 \BOOKMARK [2][-]{subsection.2.5}{Arbres de d\351cision partiellement monotones}{section.2}% 14
-\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 15
-\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 16
-\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.3}{Analyse exp\351rimentale}{section.4}% 19
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Exp\351rimentation sur des bases r\351elles}{subsection.4.3}% 20
-\BOOKMARK [1][-]{section.5}{Conclusion du stage et perspectives}{}% 21
+\BOOKMARK [3][-]{subsubsection.2.5.1}{\311valuation et validation du mod\350le}{subsection.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.6}{Comparaison des approches}{section.2}% 16
+\BOOKMARK [1][-]{section.3}{Etude th\351orique des propri\351t\351s des mesures de discrimination d'ordre}{}% 17
+\BOOKMARK [1][-]{section.4}{Impl\351mentation et exp\351rimentation de l'algorithme de construction d'arbres monotones}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Mesures de discrimination d'ordre}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Aspects calculatoires}{subsection.4.1}% 20
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Exp\351riences}{subsection.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.2}{Algorithme de construction d'arbres de d\351cision param\351tr\351 par une mesure de discrimination}{section.4}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Construction du mod\350le}{subsection.4.2}% 23
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Exemple sur une base de donn\351es jouets}{subsection.4.2}% 24
+\BOOKMARK [2][-]{subsection.4.3}{Analyse exp\351rimentale}{section.4}% 25
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Exp\351rimentation sur des bases artificielles}{subsection.4.3}% 26
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Exp\351rimentation sur des bases r\351elles}{subsection.4.3}% 27
+\BOOKMARK [1][-]{section.5}{Conclusion du stage et perspectives}{}% 28
+\BOOKMARK [1][-]{appendix.A}{Algorithme de discr\351tisation}{}% 29
+\BOOKMARK [1][-]{appendix.B}{Algorithme de construction de l'arbre}{}% 30

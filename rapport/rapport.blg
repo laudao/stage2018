@@ -1,15 +1,15 @@
-[0] Config.pm:354> INFO - This is Biber 2.7
-[0] Config.pm:357> INFO - Logfile is 'rapport.blg'
-[71] biber-darwin:303> INFO - === Sun Sep 16, 2018, 19:59:21
-[135] Biber.pm:359> INFO - Reading 'rapport.bcf'
-[255] Biber.pm:835> INFO - Found 26 citekeys in bib section 0
-[273] Biber.pm:3670> INFO - Processing section 0
-[308] Biber.pm:3840> INFO - Looking for bibtex format file 'references.bib' for section 0
-[315] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
-[331] bibtex.pm:1292> INFO - Found BibTeX data source 'references.bib'
-[491] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[491] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[491] Biber.pm:3499> INFO - Sorting list 'nty/global/' of type 'entry' with scheme 'nty' and locale 'fr-FR'
-[491] Biber.pm:3505> INFO - No sort tailoring available for locale 'fr-FR'
-[522] bbl.pm:608> INFO - Writing 'rapport.bbl' with encoding 'UTF-8'
-[528] bbl.pm:712> INFO - Output to rapport.bbl
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'rapport.blg'
+[27] biber:313> INFO - === lun. sept. 17, 2018, 18:18:53
+[63] Biber.pm:371> INFO - Reading 'rapport.bcf'
+[133] Biber.pm:857> INFO - Found 26 citekeys in bib section 0
+[149] Biber.pm:3976> INFO - Processing section 0
+[158] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[160] bibtex.pm:1489> INFO - LaTeX decoding ...
+[198] bibtex.pm:1305> INFO - Found BibTeX data source 'references.bib'
+[410] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[410] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[410] Biber.pm:3804> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[410] Biber.pm:3810> INFO - No sort tailoring available for locale 'fr-FR'
+[443] bbl.pm:617> INFO - Writing 'rapport.bbl' with encoding 'UTF-8'
+[464] bbl.pm:720> INFO - Output to rapport.bbl

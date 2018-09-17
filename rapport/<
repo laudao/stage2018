@@ -29,7 +29,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{subcaption}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{graphicx}
@@ -939,14 +938,21 @@ a_j(\omega_i) \leq a_j(\omega_h)\} |$.
 \noindent Les courbes des autres *-dsr sont données en annexe.\\
 
 On étudie, pour chaque couple de mesures de discrimination (H, H') données dans
-\cite{marsala-rank}, l'évolution de H' en fonction de H pour 3 et 5 classes.
+\cite{marsala-rank}, l'évolution de H' en fonction de H pour 2, 3 et 5 classes.
 \\ Pour cela, on génère aléatoirement, pour chaque nombre de classes, 100 bases
 de 100 exemples à un attribut monotone par rapport à la classe. Pour chaque
 base, on récupère les seuils de coupure engendrés par la discrétisation de
 l'attribut (étape décrite dans la section suivante) et, pour
 chaque mesure, on enregistre les valeurs obtenues pour chaque seuil.\\ Les
-figures \ref{img:H_3} et \ref{img:H_5} tracent les corrélations
+figures \ref{img:H_2}, \ref{img:H_3}, \ref{img:H_5} tracent les corrélations
 entre chaque mesure de discrimination. \\
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=1\textwidth]{images/H_2.png}
+    \caption{H' en fonction de H (2 classes)}
+    \label{img:H_2}
+\end{figure}
 
 \begin{figure}[H]
 	\center 
@@ -1026,28 +1032,26 @@ représentée par les points bleus, la 2 par les points oranges, et la 3 par les
 points verts. 
 
 \begin{figure}[H]
-	\centering
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-	    \includegraphics[width=0.8\textwidth]{images/artificial-dataset.png}
-        \caption{Base de données jouet}
-        \label{img:artificial-dataset}
-    \end{subfigure}
-    \vfill
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-	    \includegraphics[width=0.8\textwidth]{images/threshold_rsdm.png}
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/artificial-dataset.png}
+    \caption{Base de données jouet}
+    \label{img:artificial-dataset}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/threshold_rsdm.png}
     $$H^*_S(\lambda | \mathbf{x}) =  0.19 \leq H^*_S(\lambda | \mathbf{y}) =  0.53$$
-        \caption{Seuil de coupure généré par $H^*_S$}
-        \label{img:threshold_rsdm}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-	    \includegraphics[width=0.8\textwidth]{images/threshold_sdm.png}
-        $$H_S(\lambda | \mathbf{x}) = H_S(\lambda | \mathbf{y}) =  0.67$$
-        \caption{Seuil de coupure généré par $H_S$}
-        \label{img:threshold_sdm}
-    \end{subfigure}
+    \caption{Seuil de coupure généré par $H^*_S$}
+    \label{img:threshold_rsdm}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.6\textwidth]{images/threshold_sdm.png}
+    $$H_S(\lambda | \mathbf{x}) = H_S(\lambda | \mathbf{y}) =  0.67$$
+    \caption{Seuil de coupure généré par $H_S$}
+    \label{img:threshold_sdm}
 \end{figure}
 
 On observe sur les figures \ref{img:threshold_rsdm} et \ref{img:threshold_sdm}
@@ -1070,178 +1074,57 @@ taux de bruit non-monotone.
 
 Dans les expériences menées, les arbres sont construits avec
 l'\algoref{appendix:build-tree}, en faisant varier la mesure de discrimination.
-Ils sont testés sur des bases artificielles et réelles. 
-
-\subsubsection{Expérimentation sur des bases artificielles}
-
-On compare, dans cette section, les mesures $H^*_S$ et $H_S$. On souhaite
-déterminer si les arbres produits par ces deux mesures offrent des résultats
-significativement différents l'un de l'autre concernant :
+Ils sont testés sur des bases artificielles et réelles, et évalués selon les
+critères suivantes :
 
 \begin{itemize}
-    \item les indices suivants de performance : 
-    \begin{itemize}
-        \item le taux de bonne classification (\eqref*{eq:cci}), appelée accuracy
+    \item Le taux de bonne classification (\eqref*{eq:cci}), appelée accuracy
         par la suite,
-       
-        \item le ratio moyen entre le nombre d'exemples non-monotones dans les
-            paires de feuilles et le nombre de paires d'exemples dans les paires
-            de feuilles (appelée ratio de paires de feuilles non-monotones par
-            la suite), défini par :
-
+    \item La profondeur,
+    \item Le nombre de feuilles,
+    \item Le nombre total d'exemples contenus dans les paires de feuilles,
+    \item Le ratio moyen entre le nombre d'exemples non-monotones dans les
+        paires de feuilles et le nombre de paires d'exemples dans les paires de
+        feuilles, défini par :
         \begin{equation}
             r = \frac{1}{\sum_{i=1}^{p} n_i} \sum{n_i}{r_i}
         \label{eq:ratio}
         \end{equation}
 
         où $r_i$ correspond au ratio entre le nombre de paires d'exemples
-            non-monotones et le nombre de paires d'exemples dans une paire de
-            feuilles $i$:
+        non-monotones et le nombre de paires d'exemples dans une paire de
+        feuilles $i$:
 
             $$r_i = \frac{m_i}{n_{i1} \times n_{i2}}$$
 
         avec $m_i$ le nombre de paires d'exemples non-monotones, $n_{i1}$ le
-    nombre d'exemples dans la feuille gauche, et $n_{i2}$ le nombre d'exemples
-    dans la feuille droite. \\ non-monotones. 
-        \end{itemize}
-    \item leur structure :
-    \begin{itemize}
-        \item La profondeur,
-        \item Le nombre de feuilles,
-        \item Le nombre de paires de feuilles,
-        \item Le nombre moyen d'exemples dans une paire de feuilles.
-    \end{itemize}
-    
+        nombre d'exemples dans la feuille gauche, et $n_{i2}$ le nombre
+        d'exemples dans la feuille droite. \\
+        Dans la suite, cette mesure sera appelée ratio de paires de feuilles
+        non-monotones.
 \end{itemize}
 
-On étudie également l'impact du bruit non-monotone, puis du nombre de classes, sur
+Ces indices sont moyennés à travers une validation croisée. \\
+
+\subsubsection{Expérimentation sur des bases artificielles}
+
+On compare, dans cette section, les mesures $H^*_S$ et $H_S$. On souhaite
+déterminer si les arbres produits par ces deux mesures offrent des résultats
+significativement différents l'un de l'autre, pour les indices susmentionnés. On
+étudie également l'impact du bruit non-monotone, puis du nombre de classes, sur
 les performances des classifieurs. \\
 
-Pour $k=2,3,5$, on génère une base monotone-consistente de 1000 exemples à 2
+Pour $k=2,3,5,7$, on génère une base monotone-consistente de 1000 exemples à 2
 attributs et $k$ classes. On fait varier le taux de bruit, i.e., le pourcentage
-d'exemples de chaque classe dont le label doit être modifié, de 0 à 50\% avec un pas de
+d'exemples de chaque classe à faire changer de label, de 0 à 50\% avec un pas de
 2.5\%. Pour chaque taux de bruit, on évalue les performances des classifieurs
 à l'aide des indices précédents et d'une validation croisée en 10 échantillons.
 
 \begin{figure}[H]
-    \centering
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/cci_2.png}
-        \caption{Pourcentage d'accuracy en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/ratio_2.png}
-        \caption{Ratio de paires de feuilles non-monotones en fonction du pourcentage de bruit}
-    \end{subfigure}
-    
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/depth_2.png}
-        \caption{Profondeur en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/leaves_2.png}
-        \caption{Nombre de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbpairs_2.png}
-        \caption{Nombre de paires de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbexamples_2.png}
-        \caption{Nombre d'exemples dans une paire de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \caption{Résultats lorsque $k=2$}
-    \label{results:artificial2}
-\end{figure}
-
-On remarque que les arbres produits par $H^*_S$ sont plus profonds, contiennent
-plus de feuilles, de paires de feuilles, et d'exemples par paire de feuilles que
-ceux construits avec $H_S$. De plus, plus la base est bruitée, plus les 
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/cci_3.png}
-        \caption{Pourcentage d'accuracy en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/ratio_3.png}
-        \caption{Ratio de paires de feuilles non-monotones en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/depth_3.png}
-        \caption{Profondeur en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/leaves_3.png}
-        \caption{Nombre de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbpairs_3.png}
-        \caption{Nombre de paires de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbexamples_3.png}
-        \caption{Nombre d'exemples dans une paire de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \caption{Résultats lorsque $k=3$}
-    \label{results:artificial3}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/cci_5.png}
-        \caption{Pourcentage d'accuracy en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/ratio_5.png}
-        \caption{Ratio de paires de feuilles non-monotones en fonction du pourcentage de bruit}
-    \end{subfigure}
-    
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/depth_5.png}
-        \caption{Profondeur en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/leaves_5.png}
-        \caption{Nombre de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbpairs_5.png}
-        \caption{Nombre de paires de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/nbexamples_5.png}
-        \caption{Nombre d'exemples dans une paire de feuilles en fonction du pourcentage de bruit}
-    \end{subfigure}
-
-    \caption{Résultats lorsque $k=5$}
-    \label{results:artificial5}
+	\center 
+	\includegraphics[width=1\textwidth]{images/cci_2.png}
+    \caption{Accuracy en fonction du pourcentage de bruit (2 classes)}
+    \label{img:cci_2}
 \end{figure}
 
 \subsubsection{Expérimentation sur des bases réelles}
