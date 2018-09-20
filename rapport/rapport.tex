@@ -1163,23 +1163,23 @@ d'exemples de chaque classe dont le label doit être modifié, de 0 à 50\% avec
 \end{figure}
 
 Pour $k=2$, on remarque sur la \figref{results:artificial2} que, pour tout taux
-de bruit non-monotone, les arbres
-produits par $H^*_S$ sont plus profonds, contiennent plus de feuilles, de paires
-de feuilles, et d'exemples par paire de feuilles que ceux construits avec $H_S$.
-De plus, plus la base est bruitée, plus la profondeur, le nombre de feuilles et de
-paires de feuilles augmente, tandis que le nombre moyen d'exemples dans une
-paire de feuilles diminue.
+de bruit non-monotone, $H^*_S$ et $H_S$ produisent des arbres similaires en
+termes de nombre de feuilles, de paires de feuilles, et d'exemples contenus dans
+une paire de feuilles. Cependant, les arbres générés par $H^*_S$ semblent plus
+profonds que ceux produits par $H_S$. De plus, plus la base est bruitée, plus la
+profondeur, le nombre de feuilles et de paires de feuilles augmentent, tandis que
+le nombre moyen d'exemples dans une paire de feuilles diminue. 
 
-Concernant les performances, $H^*_S$ et $H_S$ génèrent des taux d'accuracy très
-similaires lorsque le bruit non-monotone dans la base est compris entre 0\% et
-10\%. En revanche, à partir 10\% de bruit, on observe une nette différence en
-entre $H^*_S$ et $H_S$ : les arbres construits avec $H^*_S$ semblent être plus
-robustes au bruit non-monotone que ceux générés par $H_S$. De même, pour un taux
-de bruit compris entre 0\% et 10\%, on ne peut rien induire sur la monotonie des
-arbres. Cependant, lorsque le taux de bruit dépasse 10\%, on peut voir que le
-ratio de paires non-monotones généré par $H^*_S$ est inférieur à celui produit
-par $H_S$ : cela indique que $H^*_S$ permet de construire des arbres plus
-monotones (localement) que $H_S$.
+Concernant les performances, $H^*_S$ et $H_S$ génèrent les mêmes taux d'accuracy
+lorsque le bruit non-monotone dans la base est compris entre 0\% et 10\%. À
+partir de 10\% de bruit, l'écart entre les taux générés par les deux mesures se
+creuse mais cette différence ne semble pas significative : $H^*_S$ produit des
+classifieurs au moins aussi performants en termes d'accuracy que $H_S$. De même,
+on ne remarque pas de différence significative entre les deux mesures en termes
+de ratio de paires non-monotones : elles génèrent des arbres de même degré de
+monotonie. Enfin, plus le taux de bruit augmente, plus l'accuracy diminue et le
+ratio augmente : les arbres perdent en performance de prédiction et deviennent
+moins monotones lorsque la base se bruite.
 
 \begin{figure}[H]
     \centering
@@ -1220,6 +1220,18 @@ monotones (localement) que $H_S$.
     \label{results:artificial3}
 \end{figure}
 
+Lorsque $k=3$, on peut voir sur la figure \figref{results:artificial3} que
+$H^*_S$ produit des arbres plus profonds et contenant plus de feuilles, de
+paires de feuilles et d'exemples par paire de feuilles que $H_S$. Ces mesures
+évoluent de la même façon, en fonction du taux de bruit, que précédemment.
+
+Par rapport au cas où $k=2$, on observe une plus grande différence entre les
+deux mesures en ce qui concerne l'accuracy : $H^*_S$ semble être légèrement
+meilleur que $H_S$ mais cet écart n'est pas significatif. De plus, les ratio de
+paires non-monotones produits par ces deux mesures sont similaires, pour tout
+taux de bruit. Ces deux indicateurs évoluent de la même manière, en fonction du
+taux de bruit, que pour $k=2$.
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}[c]{0.46\textwidth}
@@ -1258,6 +1270,24 @@ monotones (localement) que $H_S$.
     \caption{Résultats lorsque $k=5$}
     \label{results:artificial5}
 \end{figure}
+
+Pour $k=5$, la figure \figref{results:artificial5} montre qu'il n'existe pas de
+différence significative entre les arbres générés par $H^*_S$ et ceux produits
+par $H_S$ en terme de structure. Pour chaque indicateur, l'écart entre ces deux
+mesures a diminué entre $k=3$ et $k=5$.
+
+De même, la différence entre les deux mesures en termes d'accuracy se resserre.
+Entre 0\% et 10\% de taux de bruit non-monotone, le ratio de paires de feuilles
+non-monotones produit par $H^*_S$ est nettement supérieur à celui généré par
+$H_S$. À partir de 10\% de bruit, l'écart entre les ratio produits n'est plus
+significatif. \\
+
+Les tests menés sur ces données artificielles montrent que les mesures $H^*_S$
+et $H_S$ ne sont pas significativement différentes en ce qui concerne l'accuracy
+: les arbres monotones générés par $H^*_S$ sont robustes au bruit non-monotone,
+ce qui indique que l'ajout de la contrainte de monotonie dans le classifieur ne
+diminue pas les performances de classification du modèle. Pour $k=2,5$, la
+structure de l'arbre ne varie pas en fonction de la mesure de discrimination, 
 
 \subsubsection{Expérimentation sur des bases réelles}
 
