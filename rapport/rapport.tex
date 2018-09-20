@@ -397,7 +397,7 @@ feuilles). \\
 Les expériences menées dans l'article visent à comparer les arbres obtenus
 par différentes mesures ($H^*_S, H_S, H^*_G, H_G, H^*_P, H^{10}_{MID}, H_{ICT}$).
 
-11 bases artificielles sont générées, dont le taux de NMI augmente de 0 à 10\%
+11 bases artificielles sont générées, dont le taux de NMI augmente de 0\% à 10\%
 avec un pas de 1\%. Chaque base contient 500 exemples à 5 attributs et 5
 classes. \\ 
 \noindent Les tests menés sur ces bases montrent qu'il n'existe
@@ -1061,8 +1061,8 @@ celle faite sur l'axe y.
 
 \subsection{Analyse expérimentale} 
 
-Dans cette section, on cherche à comparer entre eux les arbres obtenus en
-utilisant $H^*_S$, $H_S$, $H^*_G$, et $H_G$ comme mesure de partitionnement.
+Dans cette section, on cherche à comparer entre eux les arbres obtenus par
+différentes mesure de discrimination.
 L'objectif est d'évaluer l'impact du critère de partitionnement sur les
 performances des classifieurs en termes de taux de bonne classification et de
 monotonie. On étudie également l'évolution de ces performances en fonction du
@@ -1162,9 +1162,24 @@ d'exemples de chaque classe dont le label doit être modifié, de 0 à 50\% avec
     \label{results:artificial2}
 \end{figure}
 
-On remarque que les arbres produits par $H^*_S$ sont plus profonds, contiennent
-plus de feuilles, de paires de feuilles, et d'exemples par paire de feuilles que
-ceux construits avec $H_S$. De plus, plus la base est bruitée, plus les 
+Pour $k=2$, on remarque sur la \figref{results:artificial2} que, pour tout taux
+de bruit non-monotone, les arbres
+produits par $H^*_S$ sont plus profonds, contiennent plus de feuilles, de paires
+de feuilles, et d'exemples par paire de feuilles que ceux construits avec $H_S$.
+De plus, plus la base est bruitée, plus la profondeur, le nombre de feuilles et de
+paires de feuilles augmente, tandis que le nombre moyen d'exemples dans une
+paire de feuilles diminue.
+
+Concernant les performances, $H^*_S$ et $H_S$ génèrent des taux d'accuracy très
+similaires lorsque le bruit non-monotone dans la base est compris entre 0\% et
+10\%. En revanche, à partir 10\% de bruit, on observe une nette différence en
+entre $H^*_S$ et $H_S$ : les arbres construits avec $H^*_S$ semblent être plus
+robustes au bruit non-monotone que ceux générés par $H_S$. De même, pour un taux
+de bruit compris entre 0\% et 10\%, on ne peut rien induire sur la monotonie des
+arbres. Cependant, lorsque le taux de bruit dépasse 10\%, on peut voir que le
+ratio de paires non-monotones généré par $H^*_S$ est inférieur à celui produit
+par $H_S$ : cela indique que $H^*_S$ permet de construire des arbres plus
+monotones (localement) que $H_S$.
 
 \begin{figure}[H]
     \centering
