@@ -45,6 +45,9 @@
 \newtheorem{prop}{Proposition}
 \newtheorem*{prop*}{Proposition}
 
+%% change the enumerate list format to use letters
+\renewcommand{\theenumi}{\Alph{enumi}}
+
 %% references shortcuts (Arthur) 
 \usepackage{suffix}
 \renewcommand{\eqref}[1]{équation~\ref{#1}}
@@ -85,7 +88,6 @@
         \includegraphics[width=0.33\textwidth]{images/sorbonne.png}%
     }%
 
-    \vspace{4cm}
     % Title
     \HRule \\[0.4cm]
     { \huge \bfseries Apprentissage et classification monotone\\[0.4cm] }
@@ -803,7 +805,7 @@ fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
     \end{itemize}
 \end{itemize}
 
-La proposition suivante est également démontrée en annexe \ref{appendix:prop1}: 
+La proposition suivante est également démontrée en annexe \ref{}: 
 
 \begin{prop}
     \begin{enumerate}
@@ -888,9 +890,7 @@ $[\omega_i]^{\leq}_{a_j}$, pour $\omega_i \in \Omega$. \\
     \item Si $f^* = mindsr, maxdsr, avgdsr$ : 
     \begin{enumerate}
         \item Soit $\omega_l \in [\omega_i]^{\leq}_{a_j}$ et $\omega_l \not\in
-            [\omega_i]_{a_j}$.
-
-        Notons $a_j': \Omega \to X_j'$ tel que
+            [\omega_i]_{a_j}$. Notons $a_j': \Omega \to X_j'$ tel que
             $a_j'(\omega_l) < a_j(\omega_l)$ et, pour tout $\omega_h' \neq
             \omega_l$, $a_j'(\omega_h') = a_j(\omega_h')$.
 
@@ -913,64 +913,51 @@ $[\omega_i]^{\leq}_{a_j}$, pour $\omega_i \in \Omega$. \\
 
         Le même raisonnement est appliqué pour $maxdsr$ et $avgdsr$.
 
-        \item Soit $\omega_l \in [\omega_i]_{a_j}$. 
-            
-        \begin{enumerate}[label=\alph*)]
-            
-            \item 
-                Notons $a_j': \Omega \to
-                X_j'$ tel que $a_j'(\omega_l) > a_j(\omega_l)$ et, pour tout
-                $\omega_h' \neq \omega_l$, $a_j'(\omega_h') = a_j(\omega_h')$. On
-                obtient $|[\omega_i]^{\leq}_{a_j'}| = |[\omega_i]^{\leq}_{a_j}|$.
+        \item Soit $\omega_l \in [\omega_i]_{a_j}$. Notons $a_j': \Omega \to
+            X_j'$ tel que $a_j'(\omega_l) > a_j(\omega_l)$ et, pour tout
+            $\omega_h' \neq \omega_l$, $a_j'(\omega_h') = a_j(\omega_h')$. On
+            obtient $|[\omega_i]^{\leq}_{a_j'}| = |[\omega_i]^{\leq}_{a_j}|$.
 
-            \begin{itemize}
-                \item Si $|[\omega_l]_{a_j}| = min_{\omega_h \in
-                [\omega_i]_{a_j}} |[\omega_h]^{\leq}_{\lambda} \cap
-                [\omega_h]^{\leq}_{a_j}|$,
+        \begin{itemize}[label=\alph*]
+            \item Si $|[\omega_l]_{a_j}| = min_{\omega_h \in
+            [\omega_i]_{a_j}} |[\omega_h]^{\leq}_{\lambda} \cap
+            [\omega_h]^{\leq}_{a_j}|$,
 
-                \begin{IEEEeqnarray*}{rCl"s}
-                    \textrm{alors } min_{\omega_h \in [\omega_i]_{a_j'}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j'}|&\geq&
-                    min_{\omega_h \in [\omega_i]_{a_j}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}| \\
-                    \frac{min_{\omega_h \in [\omega_i]_{a_j'}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap
-                    [\omega_h]^{\leq}_{a_j'}|}{|[\omega_i]^{\leq}_{a_j'}|}&\geq&
-                    \frac{min_{\omega_h \in [\omega_i]_{a_j}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap
-                    [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} \\
-                    \textrm{et donc } H^*(\lambda|a_j') &\leq& H^*(\lambda|a_j)\\
-                \end{IEEEeqnarray*}
+            \begin{IEEEeqnarray*}{rCl"s}
+                \textrm{alors } min_{\omega_h \in [\omega_i]_{a_j'}}
+                |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j'}|&\geq&
+                min_{\omega_h \in [\omega_i]_{a_j}}
+                |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}| \\
+                \frac{min_{\omega_h \in [\omega_i]_{a_j'}}
+                |[\omega_h]^{\leq}_{\lambda} \cap
+                [\omega_h]^{\leq}_{a_j'}|}{|[\omega_i]^{\leq}_{a_j'}|}&\geq&
+                \frac{min_{\omega_h \in [\omega_i]_{a_j}}
+                |[\omega_h]^{\leq}_{\lambda} \cap
+                [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} \\
+                \textrm{et donc } H^*(\lambda|a_j') &\leq& H^*(\lambda|a_j)\\
+            \end{IEEEeqnarray*}
         
-                \item Sinon,
+            \item Sinon,
 
-                \begin{IEEEeqnarray*}{rCl"s}
-                    min_{\omega_h \in [\omega_i]_{a_j'}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j'}| &=&
-                    min_{\omega_h \in [\omega_i]_{a_j}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}| \\
-                    \frac{min_{\omega_h \in [\omega_i]_{a_j'}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap
-                    [\omega_h]^{\leq}_{a_j'}|}{|[\omega_i]^{\leq}_{a_j'}|} &=&
-                    \frac{min_{\omega_h \in [\omega_i]_{a_j}}
-                    |[\omega_h]^{\leq}_{\lambda} \cap
-                    [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} \\
-                    \textrm{et donc } H^*(\lambda|a_j') &=& H^*(\lambda|a_j)\\
-                \end{IEEEeqnarray*}
+            \begin{IEEEeqnarray*}{rCl"s}
+                min_{\omega_h \in [\omega_i]_{a_j'}}
+                |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j'}| &=&
+                min_{\omega_h \in [\omega_i]_{a_j}}
+                |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}| \\
+                \frac{min_{\omega_h \in [\omega_i]_{a_j'}}
+                |[\omega_h]^{\leq}_{\lambda} \cap
+                [\omega_h]^{\leq}_{a_j'}|}{|[\omega_i]^{\leq}_{a_j'}|} &=&
+                \frac{min_{\omega_h \in [\omega_i]_{a_j}}
+                |[\omega_h]^{\leq}_{\lambda} \cap
+                [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} \\
+                \textrm{et donc } H^*(\lambda|a_j') &=& H^*(\lambda|a_j)\\
+            \end{IEEEeqnarray*}
 
-            \end{itemize}
             On applique le même raisonnement pour $maxdsr$.
 
             \textcolor{red}{À compléter pour $avgdsr$} % À COMPLÉTER
+        \end{itemize}
 
-    \item Posons $a_j': \Omega \to X_j'$ tel que $a_j'(\omega_l) <
-        a_j(\omega_i)$ et $a_j'(\omega_h') = a_j(\omega_h')$ pour tout $\omega_h
-                \neq \omega_l$. On obtient $|[\omega_i]^{\leq}_{a_j'}| <
-                |[\omega_i]^{\leq}_{a_j}|$.
-
-            \textcolor{red}{À compléter} % À COMPLÉTER
-
-    \end{enumerate}
     \end{enumerate}
 \end{itemize}
 
@@ -1017,10 +1004,7 @@ g^*(f^*(\omega_i))$ \\
 Sa version tenant compte la monotonie, l'entropie de Shannon d'ordre, est
 définie de la façon suivante :
 
-\begin{equation}
-    H^*_S(\lambda | a_j) = \sum_{i=1}^{n} \frac{1}{n} (-\log_{2} (dsr(\omega_i))
-\label{eq:rank-shannon}
-\end{equation}
+$$ H^*_S(\lambda | a_j) = \sum_{i=1}^{n} \frac{1}{n} (-\log_{2} (dsr(\omega_i))$$
 
 où $f^*(\omega_i) = dsr(\omega_i) = \frac{|[\omega_i]^{\leq}_{\lambda} \cap
 [\omega_i]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|}$, et $g^*$ et $h^*$ sont
@@ -1102,38 +1086,37 @@ et bruite la même base de sorte à obtenir des bases bruitées à 0\%, 25\%, 50
 chaque base. \\
 
 \begin{figure}[H]
-	\centering
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-        \includegraphics[width=\textwidth]{images/dsr_0.png}
-        \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
-        non-bruitée}
-        \label{img:dsr0}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-	    \includegraphics[width=\textwidth]{images/dsr_25.png}
-        \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
-        bruitée à 25\%}
-        \label{img:dsr25}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering 
-	    \includegraphics[width=\textwidth]{images/dsr_50.png}
-        \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
-        bruitée à 50\%}
-        \label{img:dsr50}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{images/dsr_75.png}
-        \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
-        bruitée à 75\%}
-        \label{img:dsr75}
-    \end{subfigure}
-\caption{Courbes de $dsr$ en fonction du taux de bruit non-monotone}
+	\center 
+	\includegraphics[width=0.5\textwidth]{images/dsr_0.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    non-bruitée}
+    \label{img:dsr0}
 \end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.5\textwidth]{images/dsr_25.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 25\%}
+    \label{img:dsr25}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.5\textwidth]{images/dsr_50.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 50\%}
+    \label{img:dsr50}
+\end{figure}
+
+\begin{figure}[H]
+	\center 
+	\includegraphics[width=0.5\textwidth]{images/dsr_75.png}
+    \caption{Valeur de dsr en fonction de l'indice de l'objet pour une base
+    bruitée à 75\%}
+    \label{img:dsr75}
+\end{figure}
+
 
 Dans la base non bruitée, dsr($\omega_i$) = 1 pour chaque $\omega_i \in \Omega$.
 En effet, on a $a_j(\omega_i) \leq a_j(\omega_h) \Rightarrow \lambda(\omega_i)
@@ -1150,18 +1133,16 @@ et seulement si $\frac{| [\omega_i]^{\leq}_{\lambda} \cap
 a_j(\omega_i) \leq a_j(\omega_h)\} | \leq | \{\omega_h \in \Omega :
 a_j(\omega_i) \leq a_j(\omega_h)\} |$.
 
-\noindent Les courbes des autres *-dsr sont données en annexe \ref{appendix:dsr}.\\
+\noindent Les courbes des autres *-dsr sont données en annexe.\\
 
-On s'intéresse maintenant à une partie des mesures $H^*$ définies dans
-\cite{marsala-rank} : $H^*_S$ (\eqref{eq:rank-shannon}), $H_S$
-(\eqref{eq:shannon}), $H^*_G$, $H_G$, $H^*_P$, $H^*_M$, et $H_Q$. On étudie,
-pour chaque couple de mesures de discrimination (H, H'), l'évolution de H' en
-fonction de H pour 3 et 5 classes.  \\ Pour cela, on génère aléatoirement, pour
-chaque nombre de classes, 100 bases de 100 exemples à un attribut monotone par
-rapport à la classe. Pour chaque base, on récupère les seuils de coupure
-engendrés par la discrétisation de l'attribut (étape décrite dans la section
-suivante) et, pour chaque mesure, on enregistre les valeurs obtenues pour chaque
-seuil.\\ Les figures \ref{img:H_3} et \ref{img:H_5} tracent les corrélations
+On étudie, pour chaque couple de mesures de discrimination (H, H') données dans
+\cite{marsala-rank}, l'évolution de H' en fonction de H pour 3 et 5 classes.
+\\ Pour cela, on génère aléatoirement, pour chaque nombre de classes, 100 bases
+de 100 exemples à un attribut monotone par rapport à la classe. Pour chaque
+base, on récupère les seuils de coupure engendrés par la discrétisation de
+l'attribut (étape décrite dans la section suivante) et, pour
+chaque mesure, on enregistre les valeurs obtenues pour chaque seuil.\\ Les
+figures \ref{img:H_3} et \ref{img:H_5} tracent les corrélations
 entre chaque mesure de discrimination. \\
 
 \begin{figure}[H]
@@ -1856,111 +1837,6 @@ stage.
 \appendix
 \newpage
 
-\section{Courbes des *-dsr}
-\label{appendix:dsr}
-
-\begin{figure}[H]
-	\centering
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-        \includegraphics[width=\textwidth]{images/mindsr_0.png}
-        \caption{Valeur de mindsr en fonction de l'indice de l'objet pour une base
-        non-bruitée}
-        \label{img:mindsr0}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-	    \includegraphics[width=\textwidth]{images/mindsr_25.png}
-        \caption{Valeur de mindsr en fonction de l'indice de l'objet pour une base
-        bruitée à 25\%}
-        \label{img:mindsr25}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering 
-	    \includegraphics[width=\textwidth]{images/mindsr_50.png}
-        \caption{Valeur de mindsr en fonction de l'indice de l'objet pour une base
-        bruitée à 50\%}
-        \label{img:mindsr50}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{images/mindsr_75.png}
-        \caption{Valeur de mindsr en fonction de l'indice de l'objet pour une base
-        bruitée à 75\%}
-        \label{img:mindsr75}
-    \end{subfigure}
-\caption{Courbes de $mindsr$ en fonction du taux de bruit non-monotone}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-        \includegraphics[width=\textwidth]{images/maxdsr_0.png}
-        \caption{Valeur de maxdsr en fonction de l'indice de l'objet pour une base
-        non-bruitée}
-        \label{img:maxdsr0}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-	    \includegraphics[width=\textwidth]{images/maxdsr_25.png}
-        \caption{Valeur de maxdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 25\%}
-        \label{img:maxdsr25}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering 
-	    \includegraphics[width=\textwidth]{images/maxdsr_50.png}
-        \caption{Valeur de maxdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 50\%}
-        \label{img:maxdsr50}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{images/maxdsr_75.png}
-        \caption{Valeur de maxdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 75\%}
-        \label{img:maxdsr75}
-    \end{subfigure}
-\caption{Courbes de $maxdsr$ en fonction du taux de bruit non-monotone}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-        \includegraphics[width=\textwidth]{images/avgdsr_0.png}
-        \caption{Valeur de avgdsr en fonction de l'indice de l'objet pour une base
-        non-bruitée}
-        \label{img:avgdsr0}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering
-	    \includegraphics[width=\textwidth]{images/avgdsr_25.png}
-        \caption{Valeur de avgdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 25\%}
-        \label{img:avgdsr25}
-    \end{subfigure}
-
-    \begin{subfigure}[c]{0.46\textwidth}
-	    \centering 
-	    \includegraphics[width=\textwidth]{images/avgdsr_50.png}
-        \caption{Valeur de avgdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 50\%}
-        \label{img:avgdsr50}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.46\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{images/avgdsr_75.png}
-        \caption{Valeur de avgdsr en fonction de l'indice de l'objet pour une base
-        bruitée à 75\%}
-        \label{img:avgdsr75}
-    \end{subfigure}
-\caption{Courbes de $avgdsr$ en fonction du taux de bruit non-monotone}
-\end{figure}
-
 \section{Algorithme de discrétisation}
 \label{appendix:discretize}
 
@@ -2083,7 +1959,6 @@ stage.
 \end{algorithm}
 
 \section{Démonstration des propriétés de $f^*$}
-\label{appendix:demo-f}
 
 \textbf{(F1)} Soit $\omega_i \in \Omega$. Montrons que $mindsr(\omega_i) \leq
 f^*(\omega_i) \leq maxdsr(\omega_i)$.
@@ -2313,9 +2188,9 @@ Si $[\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j} \subseteq
 \end{itemize}
 \end{proof}
 
+\label{appendix:demo-f}
 
 \section{Démonstration des propriétés de $g^*$}
-\label{appendix:demo-g}
 
 Soit $\omega_i \in \Omega$. Notons $f_i = f^*(\omega_i) \in ]0,1]$. \\
 
@@ -2396,7 +2271,6 @@ Soit $\omega_i \in \Omega$. Notons $f_i = f^*(\omega_i) \in ]0,1]$. \\
 \end{proof}
 
 \section{Démonstration des propriétés de $h^*$}
-\label{appendix:demo-h}
 
 Notons $g_i = g^*(f^*(\omega_i))$. Soit $f^*$ une fonction respectant
 \textbf{(F1)}, \textbf{(F2)}, \textbf{(F3)}, et $g^*$ une fonction vérifiant
@@ -2487,7 +2361,6 @@ Notons $g_i = g^*(f^*(\omega_i))$. Soit $f^*$ une fonction respectant
 \end{proof}
 
 \section{Démonstration de la \propref{prop:prop1}}
-\label{appendix:prop1}
 
 \printbibliography 
 \end{document}
