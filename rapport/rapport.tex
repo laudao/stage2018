@@ -41,9 +41,12 @@
 \usepackage{amsthm}
 \usepackage[retainorgcmds]{IEEEtrantools}
 
-%% propositions
+%% theorem and proposition
 \newtheorem{prop}{Proposition}
 \newtheorem*{prop*}{Proposition}
+\newtheorem{thm}{Théorème}
+
+\newenvironment{myproof}[1][\proofname]{\proof[#1]\mbox{}\\*}{\endproof}
 
 %% references shortcuts (Arthur) 
 \usepackage{suffix}
@@ -746,7 +749,7 @@ classification traitées.
 
 \subsection{Comparaison des approches}
 
-\textcolor{red}{A compléter} % à compléter
+\textcolor{red}{À compléter} % à compléter
 
 
 \section{Etude théorique des propriétés des mesures de discrimination d'ordre}
@@ -767,9 +770,11 @@ de non-monotonie de l'objet, et $h^*$ une agrégation des mesures $g^*$.
 Pour que $H^*$ soit une mesure de discrimination d'ordre, chaque couche doit
 satisfaire certaines conditions.
 
-Soient $f^*, g^*, h^*$ les trois couches de $H^*$. Les propriétés suivantes des
-fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
-\ref{appendix:demo-f}, \ref{appendix:demo-g}, \ref{appendix:demo-h}:
+Soient $f^*, g^*, h^*$ les trois couches de $H^*$. 
+%Les propriétés suivantes des
+%fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
+%\ref{appendix:demo-f}, \ref{appendix:demo-g}, \ref{appendix:demo-h}:
+$f^*$, $g^*$, et $h^*$ doivent, respectivement, satisfaire les conditions suivantes :
 
 \begin{itemize}
     \item Pour tout $\omega_i \in \Omega$,
@@ -783,6 +788,13 @@ fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
         $[\omega_i]_{a_j} = [\omega_h]_{a_j}$, alors $f^*(\omega_i) \leq
         f^*(\omega_h)$. 
     \end{itemize}
+    
+    De ces propriétés, on déduit : 
+    \begin{equation}
+        \frac{1}{n} \leq f^*_P(\omega_i) \leq f^*_G(\omega_i) \leq f^*_S(\omega_i)
+        \leq 1 
+    \label{eq:eq-f}
+    \end{equation}
 
     \item Soit $f_i = f^*(\omega_i)$,
     \begin{itemize}
@@ -790,6 +802,14 @@ fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
         \item \textbf{(G2)} $g^*$ est une fonction strictement décroissante,
         \item \textbf{(G3)} $g^*(1) = 0$.
     \end{itemize}
+
+    D'après l'~\eqref{eq:eq-f}, on obtient :
+
+    \begin{equation}
+        g^*_G(f^*_G(\omega_i)) \leq g^*_S(f^*_S(\omega_i)) \leq
+        g^*_P(f^*_P(\omega_i))
+    \label{eq:eq-g}
+    \end{equation}
 
     \item Soit $g_i = g^*(f^*(\omega_i))$,
     \begin{itemize}
@@ -799,9 +819,14 @@ fonctions $f^*$, $g^*$, et $h^*$ sont respectivement démontrées en annexe
         \item \textbf{(H3)} si $g_i \leq g_i'$, alors $h^*(g_1,...,g_i,...,g_n)
             \leq h^*(g_1,...,g_i',...,g_n)$, 
         \item \textbf{(H4)} $h^*(g_1,...,g_n) = 0$ si et seulement si $g_i = 0$
-            pour $i=1,...,n$.
+            pour $i=1,...,n$.\\
     \end{itemize}
 \end{itemize}
+
+\textbf{(F1)-(F3)}, \textbf{(G1)-(G3)}, \textbf{(H1)-(H4)}, l'\eqref{eq:eq-f}, et
+l'\eqref{eq:eq-g} sont, respectivement, démontrées en annexes
+\ref{appendix:demo-f}, \ref{appendix:demo-g}, \ref{appendix:demo-h},
+\ref{appendix:demo-eqf}, et \ref{appendix:demo-eqg}.\\
 
 La proposition suivante est également démontrée en annexe \ref{appendix:prop1}: 
 
@@ -816,7 +841,21 @@ La proposition suivante est également démontrée en annexe \ref{appendix:prop1
 \label{prop:prop1}
 \end{prop}
 
-\textcolor{red}{A compléter} % à compléter
+Le théorème suivant prouvant qu'une mesure de discrimination $H^*$ atteint son
+minimum si et seulement si $\lambda$ est monotone par rapport à $a_j$ est
+démontré en annexe \ref{appendix:thm}.
+
+\begin{thm}
+
+Soient $f^*$, $g^*$, et $h^*$ des fonctions satisfaisant respectivement les
+    conditions \textbf{(F1)-(F3)}, \textbf{(G1)-(G3)}, \textbf{(H1)-(H4)}.
+    $H^*(\lambda|a_j) = 0$ si et seulement si $\lambda$ est monotone par rapport
+    à $a_j$, c'est-à-dire, pour tout $\omega_i, \omega_h \Omega$,
+
+    $$ a_j(\omega_i) \leq a_j(\omega_j) \Rightarrow \lambda(\omega_i) \leq
+    \lambda(\omega_h) $$
+\label{thm:thm-H}
+\end{thm}
 
 Soit $H^*$ une mesure de discrimination construite à l'aide de fonctions $f^*$,
 $g^*$, $h^*$ respectant les propriétés susmentionnées. On souhaite étudier le
@@ -2486,8 +2525,222 @@ Notons $g_i = g^*(f^*(\omega_i))$. Soit $f^*$ une fonction respectant
     \end{itemize}
 \end{proof}
 
+\section{Démonstration de l'\eqref{eq:eq-f}}
+\label{appendix:demo-eqf}
+Soit $\omega_i \in \Omega$.  On rappelle que $f^*_P(\omega_i) =
+mindsr(\omega_i)$, et $f^*_S(\omega_i) = dsr(\omega_i) = f^*_G(\omega_i)$.
+
+Montrons que $\frac{1}{n} \leq f^*_P(\omega_i) \leq
+f^*_G(\omega_i) \leq f^*_S(\omega_i) \leq 1$.
+
+\begin{proof}
+
+\begin{itemize}
+    \item Montrons que $\frac{1}{n} \leq f^*_P(\omega_i)$.
+
+        Si $a_j(\omega_i) = min_{\omega_h \in \Omega} \{a_j(\omega_h)\}$, alors
+        $[\omega_i]^{\leq}_{a_j} = \Omega$. On a donc $|[\omega_i]^{\leq}_{a_j}| =
+        |\Omega| = n$. \\ Sinon, $|[\omega_i]^{\leq}_{a_j}| < n$.
+
+        De plus, pour tout $\omega_h \in \Omega$,
+        $1 \leq [\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}$ car $\omega_h
+        \in [\omega_h]^{\leq}_{\lambda}$ et $\omega_h \in
+        [\omega_h]^{\leq}_{a_j}$.
+
+        D'où $1 \leq |[\omega_h]^{\leq}_{\lambda} \cap
+        [\omega_h]^{\leq}_{a_j}|$, et $1 \leq min_{\omega_h \in [\omega_i]_{a_j}}
+        |[\omega_h]^{\leq}_{\lambda} \cap [\omega_h]^{\leq}_{a_j}|$. \\ Ainsi,
+        $\frac{1}{n} \leq \frac{min_{\omega_h \in [\omega_i]_{a_j}}
+        |[\omega_h]^{\leq}_{\lambda} \cap
+        [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} = f^*_P(\omega_i)$.
+    
+    \item Montrons que $f^*S(\omega_i) \leq 1$.
+
+        \begin{IEEEeqnarray*}{rCl"s}
+            [\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j} &\subseteq&
+            [\omega_i]^{\leq}_{a_j} \\
+            \textrm{d'où } |[\omega_i]^{\leq}_{\lambda} \cap
+            [\omega_i]^{\leq}_{a_j}| &\leq& |[\omega_i]^{\leq}_{a_j}| \\
+            \textrm{donc } f^*_S(\omega_i) = \frac{|[\omega_i]^{\leq}_{\lambda}
+            \cap [\omega_i]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} &\leq& 1
+            \\
+        \end{IEEEeqnarray*}
+
+    \item Montrons que $f^*_P(\omega_i) \leq f^*_G(\omega_i) = f^*_S(\omega_i)$.
+
+        \begin{IEEEeqnarray*}{rCl"s}
+            min_{\omega_h \in [\omega_i]_{a_j}} |[\omega_h]^{\leq}_{\lambda}
+            \cap [\omega_h]^{\leq}_{a_j}| &=& min(|[\omega_i]^{\leq}_{\lambda}
+            \cap [\omega_i]^{\leq}_{a_j}|, min_{\omega_h \in [\omega_i]_{a_j},
+            \omega_h \neq \omega_i } |[\omega_h]^{\leq}_{\lambda}
+            \cap [\omega_h]^{\leq}_{a_j}|)  \\
+            &\leq & |[\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j}|
+            \\
+            \textrm{donc } \frac{min_{\omega_h \in [\omega_i]_{a_j}}
+            |[\omega_h]^{\leq}_{\lambda} \cap
+            [\omega_h]^{\leq}_{a_j}|}{|[\omega_i]^{\leq}_{a_j}|} &\leq&
+            \frac{|[\omega_i]^{\leq}_{\lambda} \cap [\omega_i]^{\leq}_{a_j}|
+            }{|[\omega_i]^{\leq}_{a_j}|} = dsr(\omega_i) = f^*_G(\omega_i) =
+            f^*_S(\omega_i) \\
+        \end{IEEEeqnarray*}
+
+\end{itemize}
+
+\end{proof}
+
+\section{Démonstration de l'\eqref{eq:eq-g}}
+\label{appendix:demo-eqg}
+
+Soit $\omega_i \in \Omega$.  On rappelle que $g^*_S(f^*_S(\omega_i)) = -\log_{2}
+dsr(\omega_i)$, et $g^*_P(f^*_P(\omega_i)) =
+-\frac{\log_{2}mindsr(\omega_i)}{mindsr(\omega_i)}$. \\
+
+Montrons que $g^*_G(f^*_G(\omega_i)) \leq g^*_S(f^*_S(\omega_i)) \leq
+g^*_P(f^*_P(\omega_i))$.
+
+\begin{myproof}
+    Montrons que $g^*_G(f^*_G(\omega_i)) \leq g^*_S(f^*_S(\omega_i))$.
+
+    $$g^*_G(f^*_G(\omega_i)) = 1 - f^*_G(\omega_i)$$ et $$g^*_S(f^*_S(\omega_i))
+    = -\log_{2}(f^*_S(\omega_i))$$
+
+    Considérons, pour tout $x \in ]0,1]$, la fonction $g$ telle que $$g(x) =
+    -\log_{2}(x) - 1 + x = x - \log_{2}(x) - 1$$ 
+
+    On a $$g'(x) = 1 - \frac{1}{x}$$
+
+    $g'$ est strictement négatif sur $]0,1]$, donc g est strictement décroissant
+    sur $]0,1]$. De plus, $g(1) = 0$, donc $g(x) \geq 0$ pour tout $x \in
+    ]0,1]$.
+
+    Donc $$g^*_G(f^*_G(\omega_i)) \leq g^*_S(f^*_S(\omega_i))$$
+
+    Montrons que $g^*_S(f^*_S(\omega_i)) \leq g^*_P(f^*_P(\omega_i))$.
+
+    On sait, d'après l'\eqref{eq:eq-f}, que 
+    $$f^*_P(\omega_i) \leq f^*_G(\omega_i)$$
+
+    On sait que $x \longmapsto -\frac{\log_{2}(x)}{x}$ et $x \longmapsto
+    -\log_{2}(x)$ sont des fonctions sitrctement décroissantes sur $]0,1]$. Pour
+    tout $x, x' \in ]0,1]$ tels que $x \leq x'$,
+
+    $$ -\frac{\log_{2}(x)}{x} \geq -\frac{log_2(x')}{x'}$$
+
+    Et $$-\log_{2}(x) \geq -\log_{2}(x')$$
+
+    Pour tout $z \in ]0,1]$, on a 
+    $$ -\frac{\log_2{z}}{z} \geq -\log_{2}(z)$$
+
+    On a alors $$-\frac{\log_2(x)}{x} \geq -\log_2(x')$$
+
+    D'où $$g^*_S(f^*_S(\omega_i)) \leq g^*_P(f^*_P(\omega_i))$$
+
+\end{myproof}
+
 \section{Démonstration de la \propref{prop:prop1}}
 \label{appendix:prop1}
+
+\begin{myproof}
+    \begin{enumerate}
+        \item Montrons que $H^*_G(\lambda|a_j) \leq H^*_S(\lambda|a_j) \leq
+                H^*_P(\lambda|a_j)$.
+    
+            \begin{IEEEeqnarray*}{lllll}
+                g^*_G(f^*_G(\omega_i)) &\leq& g^*_S(f^*_S(\omega_i)) &\leq&
+                g^*_P(f^*_P(\omega_i))\\
+                \sum_{i=1}^{n} \frac{1}{n} g^*_G(f^*_G(\omega_i)) &\leq&
+                \sum_{i=1}^{n} \frac{1}{n} g^*_S(f^*_S(\omega_i)) &\leq&
+                \sum_{i=1}^{n} \frac{1}{n} g^*_P(f^*_P(\omega_i)) \\
+                H^*_G(\lambda|a_j) &\leq& H^*_S(\lambda|a_j) &\leq&
+                H^*_P(\lambda|a_j) \\
+            \end{IEEEeqnarray*}
+               
+        \item Montrons que $0 \leq H^*_G(\lambda|a_j) < \frac{n-1}{n}$.
+
+            On sait que, pour tout $\omega_i \in \Omega$,
+            $$ \frac{1}{n} \leq f^*_G(\omega_i) \leq 1 \textrm{ (\eqref{eq:eq-f})}$$
+
+            $g^*_G(\omega_i) = 1 - f^*(\omega_i)$ et $g^*_G$ est strictement
+            décroissant.
+
+            \begin{IEEEeqnarray*}{rrrCl"s}
+                \textrm{Donc } 1-\frac{1}{n} &\geq& g^*_G(\omega_i) &\geq& 0\\
+                \sum_{i=1}^{n}\frac{1}{n}(1-\frac{1}{n}) &\geq& \sum_{i=1}^{n}
+                \frac{1}{n} g^*_G(\omega_i) &\geq&  0\\
+                \textrm{ainsi, }\frac{n-1}{n} &\geq& H^*_G(\lambda|a_j) &\geq& 0 \\
+                \text{et } H^*_G(\lambda|a_j) &\leq& \frac{n-1}{n} &&\textrm{car
+                on ne peut pas avoir } dsr(\omega_h) = 1, \forall \omega_h \in
+                \Omega \\
+            \end{IEEEeqnarray*}
+
+        \item $0 \leq H^*_S(\lambda|a_j) < \log_{2}(n)$.\\
+            Pour tout $\omega_i \in \Omega$,
+
+            \begin{IEEEeqnarray*}{rrrCl"s}
+                \frac{1}{n} &\leq& f^*_S(\omega_i) &\leq& 1\\
+                -\log_{2} (\frac{1}{n}) &\geq& &-\log_{2} (f^*_S(\omega_i)) \geq&
+                -\log_{2}(1) \\
+                \sum_{i=1}^{n} \frac{1}{n}(-\log_{2} (\frac{1}{n})) &\geq&
+                \sum_{i=1}^{n} \frac{1}{n} g^*_S(f^*_S(\omega_i)) &\geq& 0 \\
+                \sum_{i=1}^{n} \frac{1}{n} \log_{2}(n) = \frac{n\log_{2}(n)}{n}
+                = \log_2(n) &\geq& \sum_{i=1}^{n} \frac{1}{n}
+                g^*_S(f^*_S(\omega_i)) &\geq& 0  \\
+                0 &\leq& H^*_S(\lambda|a_j) &\leq& \log_2(n)\\
+                0 &\leq& H^*_S(\lambda|a_j) &<& \log_2(n) \\
+            \end{IEEEeqnarray*}
+
+        \item Montrons que $0 \leq H^*_P(\lambda|a_j) < n \log_{2}(n)$.\\
+            Pour tout $\omega_i \in \Omega$,
+
+            \begin{IEEEeqnarray*}{rrrCl"s}
+                \frac{1}{n} &\leq& f^*_P(\omega_i) &<& 1 \\
+                -\log_{2}(\frac{1}{n}) &\geq& -\log_{2}(f^*_P(\omega_i)) &\geq&
+                0 \\
+                \frac{-\log_{2}(\frac{1}{n})}{f^*_P(\omega_i)} &\geq&
+                -\frac{\log_{2}(f^*_P(\omega_i))}{f^*_P(\omega_i)} &\geq&
+                0 \\
+            \end{IEEEeqnarray*}
+
+            Comme $f^*_P(\omega_i) \geq \frac{1}{n}$, on a
+
+            \begin{IEEEeqnarray*}{rrrCl"s}
+                \frac{-\log_{2}(\frac{1}{n})}{\frac{1}{n}} &\geq&
+                -\frac{\log_{2}(f^*_P(\omega_i))}{f^*_P(\omega_i)} &\geq&
+                0 \\
+                -n \log_{2}(\frac{1}{n}) &\geq& g^*_P(f^*_P(\omega_i)) &\geq& 0
+                \\
+                \sum_{i=1}^{n} \frac{1}{n} (-n \log_{2}(\frac{1}{n})) &\geq&
+                H^*_P(\lambda|a_j) &\geq& 0 \\
+                0 &\leq& H^*_P(\lambda|a_j) &\leq&n\log_{2}(n) \\
+            \end{IEEEeqnarray*}
+
+    \end{enumerate}
+\end{myproof}
+
+\section{Démonstration du théorème \ref{thm:thm-H}}
+\label{appendix:demothm-H}
+
+Soient $f^*$, $g^*$, et $h^*$ des fonctions satisfaisant respectivement les
+conditions \textbf{(F1)-(F3)}, \textbf{(G1)-(G3)}, \textbf{(H1)-(H4)}.
+$H^*(\lambda|a_j) = 0$ si et seulement si $\lambda$ est monotone par rapport à
+$a_j$, c'est-à-dire, pour tout $\omega_i, \omega_h \Omega$,
+
+    $$ a_j(\omega_i) \leq a_j(\omega_j) \Rightarrow \lambda(\omega_i) \leq
+    \lambda(\omega_h) $$
+
+\begin{myproof}
+
+    Supposons $H^*(\lambda|a_j)$. Alors,
+
+    \begin{IEEEeqnarray*}{rrCl"s}
+        & h^*(g^*(f^*(\omega_1)),...,g^*(f^*(\omega_n))) &=& 0\\        
+        \textrm{$\Leftrightarrow$}& g^*(f^*(\omega_i)) &=& 0 & \textrm{ pour tout $\omega_i \in \Omega$}
+        \textbf{(H4)} \\
+        \textrm{$\Leftrightarrow$}&f^*(\omega_i) &=& 1 &\textbf{(G3)}\\
+        \textrm{$\Leftrightarrow$}&a_j(\omega_i) \leq a_j(\omega_h) &\Rightarrow& \lambda(\omega_i) \leq
+        \lambda(\omega_h) & \textrm{ pour tout $\omega_i,\omega_h \in \Omega$}\\
+    \end{IEEEeqnarray*}
+\end{myproof}
 
 \printbibliography 
 \end{document}

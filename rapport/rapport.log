@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.2.24)  23 SEP 2018 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.2.24)  23 SEP 2018 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1059,6 +1059,7 @@ Package: IEEEtrantools 2015/08/26 V1.5 by Michael Shell
 \IEEEPARstartletwidth=\dimen256
 )
 \c@prop=\count165
+\c@thm=\count166
  (/usr/local/texlive/2017/texmf-dist/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
 )
@@ -1067,11 +1068,11 @@ Package: biblatex 2016/12/05 v3.7 programmable bibliographies (PK/JW/AB)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count166
+\etb@tempcnta=\count167
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count167
+\lrq@indent=\count168
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -1079,49 +1080,49 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 (/usr/local/texlive/2017/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/local/texlive/2017/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write4
-\integerpart=\count168
-\decimalpart=\count169
+\integerpart=\count169
+\decimalpart=\count170
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-\c@tabx@nest=\count170
-\c@listtotal=\count171
-\c@listcount=\count172
-\c@liststart=\count173
-\c@liststop=\count174
-\c@citecount=\count175
-\c@citetotal=\count176
-\c@multicitecount=\count177
-\c@multicitetotal=\count178
-\c@instcount=\count179
-\c@maxnames=\count180
-\c@minnames=\count181
-\c@maxitems=\count182
-\c@minitems=\count183
-\c@citecounter=\count184
-\c@savedcitecounter=\count185
-\c@uniquelist=\count186
-\c@uniquename=\count187
-\c@refsection=\count188
-\c@refsegment=\count189
-\c@maxextratitle=\count190
-\c@maxextratitleyear=\count191
-\c@maxextrayear=\count192
-\c@maxextraalpha=\count193
-\c@abbrvpenalty=\count194
-\c@highnamepenalty=\count195
-\c@lownamepenalty=\count196
-\c@maxparens=\count197
-\c@parenlevel=\count198
-\blx@tempcnta=\count199
-\blx@tempcntb=\count266
-\blx@tempcntc=\count267
-\blx@maxsection=\count268
-\blx@maxsegment@0=\count269
-\blx@notetype=\count270
-\blx@parenlevel@text=\count271
-\blx@parenlevel@foot=\count272
-\blx@sectionciteorder@0=\count273
+\c@tabx@nest=\count171
+\c@listtotal=\count172
+\c@listcount=\count173
+\c@liststart=\count174
+\c@liststop=\count175
+\c@citecount=\count176
+\c@citetotal=\count177
+\c@multicitecount=\count178
+\c@multicitetotal=\count179
+\c@instcount=\count180
+\c@maxnames=\count181
+\c@minnames=\count182
+\c@maxitems=\count183
+\c@minitems=\count184
+\c@citecounter=\count185
+\c@savedcitecounter=\count186
+\c@uniquelist=\count187
+\c@uniquename=\count188
+\c@refsection=\count189
+\c@refsegment=\count190
+\c@maxextratitle=\count191
+\c@maxextratitleyear=\count192
+\c@maxextrayear=\count193
+\c@maxextraalpha=\count194
+\c@abbrvpenalty=\count195
+\c@highnamepenalty=\count196
+\c@lownamepenalty=\count197
+\c@maxparens=\count198
+\c@parenlevel=\count199
+\blx@tempcnta=\count266
+\blx@tempcntb=\count267
+\blx@tempcntc=\count268
+\blx@maxsection=\count269
+\blx@maxsegment@0=\count270
+\blx@notetype=\count271
+\blx@parenlevel@text=\count272
+\blx@parenlevel@foot=\count273
+\blx@sectionciteorder@0=\count274
 \labelnumberwidth=\skip63
 \labelalphawidth=\skip64
 \biblabelsep=\skip65
@@ -1132,9 +1133,9 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \bibhang=\skip70
 \blx@bcfin=\read2
 \blx@bcfout=\write5
-\c@mincomprange=\count274
-\c@maxcomprange=\count275
-\c@mincompwidth=\count276
+\c@mincomprange=\count275
+\c@maxcomprange=\count276
+\c@mincompwidth=\count277
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -1143,72 +1144,72 @@ Package biblatex Info: Trying to load biblatex bibstyle data model...
 Package biblatex Info: ... file 'numeric.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count277
-\c@savedafterword=\count278
-\c@annotator=\count279
-\c@savedannotator=\count280
-\c@author=\count281
-\c@savedauthor=\count282
-\c@bookauthor=\count283
-\c@savedbookauthor=\count284
-\c@commentator=\count285
-\c@savedcommentator=\count286
-\c@editor=\count287
-\c@savededitor=\count288
-\c@editora=\count289
-\c@savededitora=\count290
-\c@editorb=\count291
-\c@savededitorb=\count292
-\c@editorc=\count293
-\c@savededitorc=\count294
-\c@foreword=\count295
-\c@savedforeword=\count296
-\c@holder=\count297
-\c@savedholder=\count298
-\c@introduction=\count299
-\c@savedintroduction=\count300
-\c@namea=\count301
-\c@savednamea=\count302
-\c@nameb=\count303
-\c@savednameb=\count304
-\c@namec=\count305
-\c@savednamec=\count306
-\c@translator=\count307
-\c@savedtranslator=\count308
-\c@shortauthor=\count309
-\c@savedshortauthor=\count310
-\c@shorteditor=\count311
-\c@savedshorteditor=\count312
-\c@labelname=\count313
-\c@savedlabelname=\count314
-\c@institution=\count315
-\c@savedinstitution=\count316
-\c@lista=\count317
-\c@savedlista=\count318
-\c@listb=\count319
-\c@savedlistb=\count320
-\c@listc=\count321
-\c@savedlistc=\count322
-\c@listd=\count323
-\c@savedlistd=\count324
-\c@liste=\count325
-\c@savedliste=\count326
-\c@listf=\count327
-\c@savedlistf=\count328
-\c@location=\count329
-\c@savedlocation=\count330
-\c@organization=\count331
-\c@savedorganization=\count332
-\c@origlocation=\count333
-\c@savedoriglocation=\count334
-\c@origpublisher=\count335
-\c@savedorigpublisher=\count336
-\c@publisher=\count337
-\c@savedpublisher=\count338
-\c@language=\count339
-\c@savedlanguage=\count340
-\c@pageref=\count341
-\c@savedpageref=\count342
+\c@afterword=\count278
+\c@savedafterword=\count279
+\c@annotator=\count280
+\c@savedannotator=\count281
+\c@author=\count282
+\c@savedauthor=\count283
+\c@bookauthor=\count284
+\c@savedbookauthor=\count285
+\c@commentator=\count286
+\c@savedcommentator=\count287
+\c@editor=\count288
+\c@savededitor=\count289
+\c@editora=\count290
+\c@savededitora=\count291
+\c@editorb=\count292
+\c@savededitorb=\count293
+\c@editorc=\count294
+\c@savededitorc=\count295
+\c@foreword=\count296
+\c@savedforeword=\count297
+\c@holder=\count298
+\c@savedholder=\count299
+\c@introduction=\count300
+\c@savedintroduction=\count301
+\c@namea=\count302
+\c@savednamea=\count303
+\c@nameb=\count304
+\c@savednameb=\count305
+\c@namec=\count306
+\c@savednamec=\count307
+\c@translator=\count308
+\c@savedtranslator=\count309
+\c@shortauthor=\count310
+\c@savedshortauthor=\count311
+\c@shorteditor=\count312
+\c@savedshorteditor=\count313
+\c@labelname=\count314
+\c@savedlabelname=\count315
+\c@institution=\count316
+\c@savedinstitution=\count317
+\c@lista=\count318
+\c@savedlista=\count319
+\c@listb=\count320
+\c@savedlistb=\count321
+\c@listc=\count322
+\c@savedlistc=\count323
+\c@listd=\count324
+\c@savedlistd=\count325
+\c@liste=\count326
+\c@savedliste=\count327
+\c@listf=\count328
+\c@savedlistf=\count329
+\c@location=\count330
+\c@savedlocation=\count331
+\c@organization=\count332
+\c@savedorganization=\count333
+\c@origlocation=\count334
+\c@savedoriglocation=\count335
+\c@origpublisher=\count336
+\c@savedorigpublisher=\count337
+\c@publisher=\count338
+\c@savedpublisher=\count339
+\c@language=\count340
+\c@savedlanguage=\count341
+\c@pageref=\count342
+\c@savedpageref=\count343
 \shorthandwidth=\skip71
 \shortjournalwidth=\skip72
 \shortserieswidth=\skip73
@@ -1226,13 +1227,13 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2016/12/05 v3.7 biblatex compatibility (PK/JW/AB)
-\c@textcitecount=\count343
-\c@textcitetotal=\count344
-\c@textcitemaxnames=\count345
-\c@biburlnumpenalty=\count346
-\c@biburlucpenalty=\count347
-\c@biburllcpenalty=\count348
-\c@smartand=\count349
+\c@textcitecount=\count344
+\c@textcitetotal=\count345
+\c@textcitemaxnames=\count346
+\c@biburlnumpenalty=\count347
+\c@biburlucpenalty=\count348
+\c@biburllcpenalty=\count349
+\c@smartand=\count350
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -1244,8 +1245,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2016/12/05 v3.7 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count350
-\c@bbx:relatedtotal=\count351
+\c@bbx:relatedcount=\count351
+\c@bbx:relatedtotal=\count352
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -1280,34 +1281,34 @@ File: french.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count352
-\@quotereset=\count353
+\@quotelevel=\count353
+\@quotereset=\count354
 (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Info: Redefining \degres on input line 76.
-LaTeX Info: Redefining \dots on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Info: Redefining \degres on input line 79.
+LaTeX Info: Redefining \dots on input line 79.
 Package frenchb.ldf Info: Setting StandardItemizeEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 76.
+(frenchb.ldf)             reported on input line 79.
 Package frenchb.ldf Info: Setting StandardEnumerateEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 76.
-LaTeX Info: Redefining \up on input line 76.
+(frenchb.ldf)             reported on input line 79.
+LaTeX Info: Redefining \up on input line 79.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1345,16 +1346,16 @@ LaTeX Info: Redefining \up on input line 76.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count354
+\scratchcounter=\count355
 \scratchdimen=\dimen257
 \scratchbox=\box42
-\nofMPsegments=\count355
-\nofMParguments=\count356
+\nofMPsegments=\count356
+\nofMParguments=\count357
 \everyMPshowfont=\toks52
-\MPscratchCnt=\count357
+\MPscratchCnt=\count358
 \MPscratchDim=\dimen258
-\MPnumerator=\count358
-\makeMPintoPDFobject=\count359
+\MPnumerator=\count359
+\makeMPintoPDFobject=\count360
 \everyMPtoPDFconversion=\toks53
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1379,7 +1380,7 @@ Package caption Info: End \AtBeginDocument code.
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring ON on input line 76.
+Package hyperref Info: Link coloring ON on input line 79.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1387,11 +1388,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count360
+\c@section@level=\count361
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \nameref on input line 79.
 
 (./rapport.out) (./rapport.out)
 \@outlinefile=\write6
@@ -1405,27 +1406,27 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'rapport.bbl' found.
  (./rapport.bbl)
-Package biblatex Info: Reference section=0 on input line 76.
-Package biblatex Info: Reference segment=0 on input line 76.
+Package biblatex Info: Reference section=0 on input line 79.
+Package biblatex Info: Reference segment=0 on input line 79.
 
-<images/lip6.png, id=147, 156.585pt x 146.949pt>
+<images/lip6.png, id=159, 156.585pt x 146.949pt>
 File: images/lip6.png Graphic file (type png)
  <use images/lip6.png>
-Package pdftex.def Info: images/lip6.png used on input line 83.
+Package pdftex.def Info: images/lip6.png used on input line 86.
 (pdftex.def)             Requested size: 85.35696pt x 80.10692pt.
 
-<images/sorbonne.png, id=149, 390.9807pt x 157.0668pt>
+<images/sorbonne.png, id=161, 390.9807pt x 157.0668pt>
 File: images/sorbonne.png Graphic file (type png)
 
 <use images/sorbonne.png>
-Package pdftex.def Info: images/sorbonne.png used on input line 86.
+Package pdftex.def Info: images/sorbonne.png used on input line 89.
 (pdftex.def)             Requested size: 140.84192pt x 56.57994pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 107.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 107.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1433,23 +1434,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./image
 s/lip6.png> <./images/sorbonne.png>]
-Overfull \hbox (0.58759pt too wide) in paragraph at lines 126--160
+Overfull \hbox (0.58759pt too wide) in paragraph at lines 129--163
 \T1/cmr/m/n/10 naux. De plus, il peut exis-ter une contrainte de mo-no-to-nie :
  la classe d'un ob-jet doit croître/décroître
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--160
+Underfull \hbox (badness 10000) in paragraph at lines 129--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--169
+Underfull \hbox (badness 10000) in paragraph at lines 164--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--174
+Underfull \hbox (badness 10000) in paragraph at lines 173--177
 
  []
 
@@ -1457,87 +1458,87 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.204 
+l.207 
        [1]
-Underfull \hbox (badness 10000) in paragraph at lines 224--227
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 246.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 249.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 249.
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--267
+Underfull \hbox (badness 10000) in paragraph at lines 264--270
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--274
+Underfull \hbox (badness 10000) in paragraph at lines 271--277
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 284--287
+Underfull \hbox (badness 10000) in paragraph at lines 287--290
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--301
+Underfull \hbox (badness 10000) in paragraph at lines 298--304
 
  []
 
 
-Overfull \hbox (9.74342pt too wide) in paragraph at lines 315--315
+Overfull \hbox (9.74342pt too wide) in paragraph at lines 318--318
 []\T1/cmr/bx/n/12 Arbre de dé-ci-sion pa-ra-mé-tré par une me-sure de dis-cri-m
 i-na-tion d'ordre 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--331
+Underfull \hbox (badness 10000) in paragraph at lines 331--334
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--340
+Underfull \hbox (badness 10000) in paragraph at lines 340--343
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--347
+Underfull \hbox (badness 10000) in paragraph at lines 346--350
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
+Underfull \hbox (badness 10000) in paragraph at lines 363--365
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--366
+Underfull \hbox (badness 10000) in paragraph at lines 367--369
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--402
+Underfull \hbox (badness 10000) in paragraph at lines 402--405
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 419--424
+Underfull \hbox (badness 10000) in paragraph at lines 422--427
 
  []
 
 [4] [5]
-Overfull \hbox (29.22408pt too wide) in paragraph at lines 557--564
+Overfull \hbox (29.22408pt too wide) in paragraph at lines 560--567
 []\T1/cmr/m/n/10 Soit $\OML/cmm/m/it/10 F \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\
 OML/cmm/m/it/10 T[]; T[]; :::; T[]\OMS/cmsy/m/n/10 g$ \T1/cmr/m/n/10 une fo-rêt
  d'arbres de dé-ci-sion gé-né-rés par $\OML/cmm/m/it/10 RED \OT1/cmr/m/n/10 = \
@@ -1546,455 +1547,467 @@ OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 RED[]; RED[]; :::; RED[]\OMS/cmsy/m/n/10 g$\T
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--572
+Underfull \hbox (badness 10000) in paragraph at lines 572--575
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--578
+Underfull \hbox (badness 10000) in paragraph at lines 579--581
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 688--693
+Underfull \hbox (badness 10000) in paragraph at lines 691--696
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 718--720
+Underfull \hbox (badness 10000) in paragraph at lines 721--723
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 724--726
+Underfull \hbox (badness 10000) in paragraph at lines 727--729
 
  []
 
 
-Overfull \hbox (9.07774pt too wide) in paragraph at lines 727--736
+Overfull \hbox (9.07774pt too wide) in paragraph at lines 730--739
 []\T1/cmr/m/n/10 Pei et Hu [[][]21[][]] com-parent PMDT à des mé-thodes ba-sées
  sur la struc-ture for-melle DRSA (\T1/cmr/m/it/10 dominance-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--757
+Underfull \hbox (badness 10000) in paragraph at lines 756--760
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 821--825
+Underfull \hbox (badness 10000) in paragraph at lines 821--823
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 826--830
+
+ []
+
+
+LaTeX Warning: Reference `appendix:thm' on page 9 undefined on input line 846.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 860--864
 
  []
 
 [9] [10]
-Overfull \hbox (32.72603pt too wide) in paragraph at lines 978--978
+Overfull \hbox (32.72603pt too wide) in paragraph at lines 1017--1017
 []\T1/cmr/bx/n/14.4 Implémentation et ex-pé-ri-men-ta-tion de l'al-go-rithme de
  construc-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 997--1001
+Underfull \hbox (badness 10000) in paragraph at lines 1036--1040
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1012--1016
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1025--1028
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1055
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1065--1068
+Underfull \hbox (badness 10000) in paragraph at lines 1064--1067
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1080
+Underfull \hbox (badness 10000) in paragraph at lines 1104--1107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1108--1119
 
  []
 
-<images/dsr_0.png, id=346, 466.74374pt x 297.11pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1134--1142
+
+ []
+
+[12] <images/dsr_0.png, id=372, 466.74374pt x 297.11pt>
 File: images/dsr_0.png Graphic file (type png)
  <use images/dsr_0.png>
-Package pdftex.def Info: images/dsr_0.png used on input line 1108.
+Package pdftex.def Info: images/dsr_0.png used on input line 1147.
 (pdftex.def)             Requested size: 196.32687pt x 124.97575pt.
 
-<images/dsr_25.png, id=347, 448.67625pt x 299.1175pt>
+<images/dsr_25.png, id=373, 448.67625pt x 299.1175pt>
 File: images/dsr_25.png Graphic file (type png)
  <use images/dsr_25.png>
-Package pdftex.def Info: images/dsr_25.png used on input line 1115.
+Package pdftex.def Info: images/dsr_25.png used on input line 1154.
 (pdftex.def)             Requested size: 196.32687pt x 130.88184pt.
 
-<images/dsr_50.png, id=348, 445.665pt x 297.11pt>
+<images/dsr_50.png, id=374, 445.665pt x 297.11pt>
 File: images/dsr_50.png Graphic file (type png)
  <use images/dsr_50.png>
-Package pdftex.def Info: images/dsr_50.png used on input line 1123.
+Package pdftex.def Info: images/dsr_50.png used on input line 1162.
 (pdftex.def)             Requested size: 196.32687pt x 130.88293pt.
 
-<images/dsr_75.png, id=349, 448.67625pt x 299.1175pt>
+<images/dsr_75.png, id=375, 448.67625pt x 299.1175pt>
 File: images/dsr_75.png Graphic file (type png)
  <use images/dsr_75.png>
-Package pdftex.def Info: images/dsr_75.png used on input line 1130.
+Package pdftex.def Info: images/dsr_75.png used on input line 1169.
 (pdftex.def)             Requested size: 196.32687pt x 130.88184pt.
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
+Underfull \hbox (badness 10000) in paragraph at lines 1192--1193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1155--1166
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1205
 
  []
 
-<images/H_3.png, id=362, 1258.7025pt x 1256.695pt>
+<images/H_3.png, id=382, 1258.7025pt x 1256.695pt>
 File: images/H_3.png Graphic file (type png)
  <use images/H_3.png>
-Package pdftex.def Info: images/H_3.png used on input line 1169.
+Package pdftex.def Info: images/H_3.png used on input line 1208.
 (pdftex.def)             Requested size: 426.79135pt x 426.10094pt.
 
 [13 <./images/dsr_0.png> <./images/dsr_25.png> <./images/dsr_50.png> <./images/
-dsr_75.png>] <images/H_5.png, id=372, 1258.7025pt x 1256.695pt>
+dsr_75.png>] <images/H_5.png, id=393, 1258.7025pt x 1256.695pt>
 File: images/H_5.png Graphic file (type png)
 
 <use images/H_5.png>
-Package pdftex.def Info: images/H_5.png used on input line 1176.
+Package pdftex.def Info: images/H_5.png used on input line 1215.
 (pdftex.def)             Requested size: 426.79135pt x 426.10094pt.
  [14 <./images/H_3.png>] [15 <./images/H_5.png>]
-<images/artificial-dataset.png, id=390, 406.51875pt x 275.0275pt>
+<images/artificial-dataset.png, id=411, 406.51875pt x 275.0275pt>
 File: images/artificial-dataset.png Graphic file (type png)
 
 <use images/artificial-dataset.png>
-Package pdftex.def Info: images/artificial-dataset.png used on input line 1248.
+Package pdftex.def Info: images/artificial-dataset.png used on input line 1287.
 
 (pdftex.def)             Requested size: 157.06209pt x 106.25731pt.
 
-<images/threshold_rsdm.png, id=391, 408.52625pt x 270.00874pt>
+<images/threshold_rsdm.png, id=412, 408.52625pt x 270.00874pt>
 File: images/threshold_rsdm.png Graphic file (type png)
 
 <use images/threshold_rsdm.png>
-Package pdftex.def Info: images/threshold_rsdm.png used on input line 1255.
+Package pdftex.def Info: images/threshold_rsdm.png used on input line 1294.
 (pdftex.def)             Requested size: 157.06209pt x 103.80742pt.
 
-<images/threshold_sdm.png, id=392, 403.5075pt x 265.99374pt>
+<images/threshold_sdm.png, id=413, 403.5075pt x 265.99374pt>
 File: images/threshold_sdm.png Graphic file (type png)
 
 <use images/threshold_sdm.png>
-Package pdftex.def Info: images/threshold_sdm.png used on input line 1262.
+Package pdftex.def Info: images/threshold_sdm.png used on input line 1301.
 (pdftex.def)             Requested size: 157.06209pt x 103.5342pt.
  [16 <./images/artificial-dataset.png> <./images/threshold_rsdm.png> <./images/
 threshold_sdm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1320--1324
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1337--1339
+Underfull \hbox (badness 10000) in paragraph at lines 1376--1378
 
  []
 
-<images/cci_2.png, id=410, 425.59pt x 281.05pt>
+<images/cci_2.png, id=431, 425.59pt x 281.05pt>
 File: images/cci_2.png Graphic file (type png)
  <use images/cci_2.png>
-Package pdftex.def Info: images/cci_2.png used on input line 1351.
+Package pdftex.def Info: images/cci_2.png used on input line 1390.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/ratio_2.png, id=411, 425.59pt x 281.05pt>
+<images/ratio_2.png, id=432, 425.59pt x 281.05pt>
 File: images/ratio_2.png Graphic file (type png)
  <use images/ratio_2.png>
-Package pdftex.def Info: images/ratio_2.png used on input line 1357.
+Package pdftex.def Info: images/ratio_2.png used on input line 1396.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/depth_2.png, id=412, 425.59pt x 281.05pt>
+<images/depth_2.png, id=433, 425.59pt x 281.05pt>
 File: images/depth_2.png Graphic file (type png)
  <use images/depth_2.png>
-Package pdftex.def Info: images/depth_2.png used on input line 1364.
+Package pdftex.def Info: images/depth_2.png used on input line 1403.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/leaves_2.png, id=413, 425.59pt x 281.05pt>
+<images/leaves_2.png, id=434, 425.59pt x 281.05pt>
 File: images/leaves_2.png Graphic file (type png)
  <use images/leaves_2.png>
-Package pdftex.def Info: images/leaves_2.png used on input line 1370.
+Package pdftex.def Info: images/leaves_2.png used on input line 1409.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/nbpairs_2.png, id=414, 373.395pt x 252.945pt>
+<images/nbpairs_2.png, id=435, 373.395pt x 252.945pt>
 File: images/nbpairs_2.png Graphic file (type png)
 
 <use images/nbpairs_2.png>
-Package pdftex.def Info: images/nbpairs_2.png used on input line 1377.
+Package pdftex.def Info: images/nbpairs_2.png used on input line 1416.
 (pdftex.def)             Requested size: 196.32687pt x 132.99495pt.
 
-<images/nbexamples_2.png, id=415, 379.4175pt x 252.945pt>
+<images/nbexamples_2.png, id=436, 379.4175pt x 252.945pt>
 File: images/nbexamples_2.png Graphic file (type png)
 
 <use images/nbexamples_2.png>
-Package pdftex.def Info: images/nbexamples_2.png used on input line 1383.
+Package pdftex.def Info: images/nbexamples_2.png used on input line 1422.
 (pdftex.def)             Requested size: 196.32687pt x 130.88759pt.
  [17]
-<images/cci_3.png, id=427, 425.59pt x 281.05pt>
+<images/cci_3.png, id=448, 425.59pt x 281.05pt>
 File: images/cci_3.png Graphic file (type png)
  <use images/cci_3.png>
-Package pdftex.def Info: images/cci_3.png used on input line 1418.
+Package pdftex.def Info: images/cci_3.png used on input line 1457.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/ratio_3.png, id=428, 425.59pt x 281.05pt>
+<images/ratio_3.png, id=449, 425.59pt x 281.05pt>
 File: images/ratio_3.png Graphic file (type png)
  <use images/ratio_3.png>
-Package pdftex.def Info: images/ratio_3.png used on input line 1424.
+Package pdftex.def Info: images/ratio_3.png used on input line 1463.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/depth_3.png, id=429, 425.59pt x 281.05pt>
+<images/depth_3.png, id=450, 425.59pt x 281.05pt>
 File: images/depth_3.png Graphic file (type png)
  <use images/depth_3.png>
-Package pdftex.def Info: images/depth_3.png used on input line 1431.
+Package pdftex.def Info: images/depth_3.png used on input line 1470.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/leaves_3.png, id=430, 425.59pt x 281.05pt>
+<images/leaves_3.png, id=451, 425.59pt x 281.05pt>
 File: images/leaves_3.png Graphic file (type png)
  <use images/leaves_3.png>
-Package pdftex.def Info: images/leaves_3.png used on input line 1437.
+Package pdftex.def Info: images/leaves_3.png used on input line 1476.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/nbpairs_3.png, id=431, 373.395pt x 252.945pt>
+<images/nbpairs_3.png, id=452, 373.395pt x 252.945pt>
 File: images/nbpairs_3.png Graphic file (type png)
 
 <use images/nbpairs_3.png>
-Package pdftex.def Info: images/nbpairs_3.png used on input line 1444.
+Package pdftex.def Info: images/nbpairs_3.png used on input line 1483.
 (pdftex.def)             Requested size: 196.32687pt x 132.99495pt.
 
-<images/nbexamples_3.png, id=432, 379.4175pt x 252.945pt>
+<images/nbexamples_3.png, id=453, 379.4175pt x 252.945pt>
 File: images/nbexamples_3.png Graphic file (type png)
 
 <use images/nbexamples_3.png>
-Package pdftex.def Info: images/nbexamples_3.png used on input line 1450.
+Package pdftex.def Info: images/nbexamples_3.png used on input line 1489.
 (pdftex.def)             Requested size: 196.32687pt x 130.88759pt.
  [18 <./images/cci_2.png> <./images/ratio_2.png> <./images/depth_2.png> <./imag
 es/leaves_2.png> <./images/nbpairs_2.png> <./images/nbexamples_2.png>] <images/
-cci_5.png, id=451, 425.59pt x 281.05pt>
+cci_5.png, id=472, 425.59pt x 281.05pt>
 File: images/cci_5.png Graphic file (type png)
 
 <use images/cci_5.png>
-Package pdftex.def Info: images/cci_5.png used on input line 1479.
+Package pdftex.def Info: images/cci_5.png used on input line 1518.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
- <images/ratio_5.png, id=452, 425.59pt x 281.05pt>
+ <images/ratio_5.png, id=473, 425.59pt x 281.05pt>
 File: images/ratio_5.png Graphic file (type png)
 
 <use images/ratio_5.png>
-Package pdftex.def Info: images/ratio_5.png used on input line 1485.
+Package pdftex.def Info: images/ratio_5.png used on input line 1524.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
- <images/depth_5.png, id=453, 425.59pt x 281.05pt>
+ <images/depth_5.png, id=474, 425.59pt x 281.05pt>
 File: images/depth_5.png Graphic file (type png)
 
 <use images/depth_5.png>
-Package pdftex.def Info: images/depth_5.png used on input line 1492.
+Package pdftex.def Info: images/depth_5.png used on input line 1531.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
- <images/leaves_5.png, id=454, 425.59pt x 281.05pt>
+ <images/leaves_5.png, id=475, 425.59pt x 281.05pt>
 File: images/leaves_5.png Graphic file (type png)
 
 <use images/leaves_5.png>
-Package pdftex.def Info: images/leaves_5.png used on input line 1498.
+Package pdftex.def Info: images/leaves_5.png used on input line 1537.
 (pdftex.def)             Requested size: 196.32687pt x 129.64908pt.
 
-<images/nbpairs_5.png, id=455, 383.4325pt x 252.945pt>
+<images/nbpairs_5.png, id=476, 383.4325pt x 252.945pt>
 File: images/nbpairs_5.png Graphic file (type png)
 
 <use images/nbpairs_5.png>
-Package pdftex.def Info: images/nbpairs_5.png used on input line 1505.
+Package pdftex.def Info: images/nbpairs_5.png used on input line 1544.
 (pdftex.def)             Requested size: 196.32687pt x 129.51357pt.
 
-<images/nbexamples_5.png, id=456, 373.395pt x 252.945pt>
+<images/nbexamples_5.png, id=477, 373.395pt x 252.945pt>
 File: images/nbexamples_5.png Graphic file (type png)
 
 <use images/nbexamples_5.png>
-Package pdftex.def Info: images/nbexamples_5.png used on input line 1511.
+Package pdftex.def Info: images/nbexamples_5.png used on input line 1550.
 (pdftex.def)             Requested size: 196.32687pt x 132.99495pt.
  [19 <./images/cci_3.png> <./images/ratio_3.png> <./images/depth_3.png> <./imag
 es/leaves_3.png> <./images/nbpairs_3.png> <./images/nbexamples_3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1526--1532
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1571
 
  []
 
 [20 <./images/cci_5.png> <./images/ratio_5.png> <./images/depth_5.png> <./image
 s/leaves_5.png> <./images/nbpairs_5.png> <./images/nbexamples_5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1567--1569
+Underfull \hbox (badness 10000) in paragraph at lines 1606--1608
 
  []
 
-<images/breast-cancer.png, id=487, 1794.705pt x 1798.72pt>
+<images/breast-cancer.png, id=508, 1794.705pt x 1798.72pt>
 File: images/breast-cancer.png Graphic file (type png)
 
 <use images/breast-cancer.png>
-Package pdftex.def Info: images/breast-cancer.png used on input line 1632.
+Package pdftex.def Info: images/breast-cancer.png used on input line 1671.
 (pdftex.def)             Requested size: 256.07741pt x 256.64961pt.
  [21]
-<images/cpu.png, id=495, 1448.41125pt x 1437.37pt>
+<images/cpu.png, id=516, 1448.41125pt x 1437.37pt>
 File: images/cpu.png Graphic file (type png)
  <use images/cpu.png>
-Package pdftex.def Info: images/cpu.png used on input line 1640.
+Package pdftex.def Info: images/cpu.png used on input line 1679.
 (pdftex.def)             Requested size: 256.07741pt x 254.10962pt.
 
-<images/cars.png, id=496, 1252.68pt x 1256.695pt>
+<images/cars.png, id=517, 1252.68pt x 1256.695pt>
 File: images/cars.png Graphic file (type png)
  <use images/cars.png>
-Package pdftex.def Info: images/cars.png used on input line 1648.
+Package pdftex.def Info: images/cars.png used on input line 1687.
 (pdftex.def)             Requested size: 256.07741pt x 256.89546pt.
 
 [22 <./images/breast-cancer.png> <./images/cpu.png>]
-Overfull \hbox (4.15897pt too wide) in paragraph at lines 1685--1692
+Overfull \hbox (4.15897pt too wide) in paragraph at lines 1724--1731
 []\T1/cmr/m/n/10 Dans le but de com-prendre pour-quoi les me-sures de dis-cri-m
 i-na-tion d'ordre pré-sentent de meilleures
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1693--1697
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1736
 
  []
 
-<images/airfoil.png, id=515, 1085.05376pt x 1076.02pt>
+<images/airfoil.png, id=536, 1085.05376pt x 1076.02pt>
 File: images/airfoil.png Graphic file (type png)
 
 <use images/airfoil.png>
-Package pdftex.def Info: images/airfoil.png used on input line 1766.
+Package pdftex.def Info: images/airfoil.png used on input line 1805.
 (pdftex.def)             Requested size: 256.07741pt x 253.94838pt.
  [23 <./images/cars.png>] [24 <./images/airfoil.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1801--1806
+Underfull \hbox (badness 10000) in paragraph at lines 1840--1845
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1833--1843
+Underfull \hbox (badness 10000) in paragraph at lines 1872--1882
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1844--1849
+Underfull \hbox (badness 10000) in paragraph at lines 1883--1888
 
  []
 
-[25] <images/mindsr_0.png, id=539, 396.48125pt x 279.0425pt>
+[25] <images/mindsr_0.png, id=560, 396.48125pt x 279.0425pt>
 File: images/mindsr_0.png Graphic file (type png)
 
 <use images/mindsr_0.png>
-Package pdftex.def Info: images/mindsr_0.png used on input line 1866.
+Package pdftex.def Info: images/mindsr_0.png used on input line 1905.
 (pdftex.def)             Requested size: 196.32687pt x 138.17542pt.
 
-<images/mindsr_25.png, id=540, 390.45876pt x 279.0425pt>
+<images/mindsr_25.png, id=561, 390.45876pt x 279.0425pt>
 File: images/mindsr_25.png Graphic file (type png)
 
 <use images/mindsr_25.png>
-Package pdftex.def Info: images/mindsr_25.png used on input line 1873.
+Package pdftex.def Info: images/mindsr_25.png used on input line 1912.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/mindsr_50.png, id=541, 390.45876pt x 279.0425pt>
+<images/mindsr_50.png, id=562, 390.45876pt x 279.0425pt>
 File: images/mindsr_50.png Graphic file (type png)
 
 <use images/mindsr_50.png>
-Package pdftex.def Info: images/mindsr_50.png used on input line 1881.
+Package pdftex.def Info: images/mindsr_50.png used on input line 1920.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/mindsr_75.png, id=542, 390.45876pt x 279.0425pt>
+<images/mindsr_75.png, id=563, 390.45876pt x 279.0425pt>
 File: images/mindsr_75.png Graphic file (type png)
 
 <use images/mindsr_75.png>
-Package pdftex.def Info: images/mindsr_75.png used on input line 1888.
+Package pdftex.def Info: images/mindsr_75.png used on input line 1927.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/maxdsr_0.png, id=543, 396.48125pt x 279.0425pt>
+<images/maxdsr_0.png, id=564, 396.48125pt x 279.0425pt>
 File: images/maxdsr_0.png Graphic file (type png)
 
 <use images/maxdsr_0.png>
-Package pdftex.def Info: images/maxdsr_0.png used on input line 1900.
+Package pdftex.def Info: images/maxdsr_0.png used on input line 1939.
 (pdftex.def)             Requested size: 196.32687pt x 138.17542pt.
 
-<images/maxdsr_25.png, id=544, 390.45876pt x 279.0425pt>
+<images/maxdsr_25.png, id=565, 390.45876pt x 279.0425pt>
 File: images/maxdsr_25.png Graphic file (type png)
 
 <use images/maxdsr_25.png>
-Package pdftex.def Info: images/maxdsr_25.png used on input line 1907.
+Package pdftex.def Info: images/maxdsr_25.png used on input line 1946.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/maxdsr_50.png, id=545, 390.45876pt x 279.0425pt>
+<images/maxdsr_50.png, id=566, 390.45876pt x 279.0425pt>
 File: images/maxdsr_50.png Graphic file (type png)
 
 <use images/maxdsr_50.png>
-Package pdftex.def Info: images/maxdsr_50.png used on input line 1915.
+Package pdftex.def Info: images/maxdsr_50.png used on input line 1954.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/maxdsr_75.png, id=546, 390.45876pt x 279.0425pt>
+<images/maxdsr_75.png, id=567, 390.45876pt x 279.0425pt>
 File: images/maxdsr_75.png Graphic file (type png)
 
 <use images/maxdsr_75.png>
-Package pdftex.def Info: images/maxdsr_75.png used on input line 1922.
+Package pdftex.def Info: images/maxdsr_75.png used on input line 1961.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
  [26 <./images/mindsr_0.png> <./images/mindsr_25.png> <./images/mindsr_50.png> 
 <./images/mindsr_75.png>]
-<images/avgdsr_0.png, id=556, 396.48125pt x 279.0425pt>
+<images/avgdsr_0.png, id=577, 396.48125pt x 279.0425pt>
 File: images/avgdsr_0.png Graphic file (type png)
 
 <use images/avgdsr_0.png>
-Package pdftex.def Info: images/avgdsr_0.png used on input line 1934.
+Package pdftex.def Info: images/avgdsr_0.png used on input line 1973.
 (pdftex.def)             Requested size: 196.32687pt x 138.17542pt.
 
-<images/avgdsr_25.png, id=557, 390.45876pt x 279.0425pt>
+<images/avgdsr_25.png, id=578, 390.45876pt x 279.0425pt>
 File: images/avgdsr_25.png Graphic file (type png)
 
 <use images/avgdsr_25.png>
-Package pdftex.def Info: images/avgdsr_25.png used on input line 1941.
+Package pdftex.def Info: images/avgdsr_25.png used on input line 1980.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/avgdsr_50.png, id=558, 390.45876pt x 279.0425pt>
+<images/avgdsr_50.png, id=579, 390.45876pt x 279.0425pt>
 File: images/avgdsr_50.png Graphic file (type png)
 
 <use images/avgdsr_50.png>
-Package pdftex.def Info: images/avgdsr_50.png used on input line 1949.
+Package pdftex.def Info: images/avgdsr_50.png used on input line 1988.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
 
-<images/avgdsr_75.png, id=559, 390.45876pt x 279.0425pt>
+<images/avgdsr_75.png, id=580, 390.45876pt x 279.0425pt>
 File: images/avgdsr_75.png Graphic file (type png)
 
 <use images/avgdsr_75.png>
-Package pdftex.def Info: images/avgdsr_75.png used on input line 1956.
+Package pdftex.def Info: images/avgdsr_75.png used on input line 1995.
 (pdftex.def)             Requested size: 196.32687pt x 140.30434pt.
  [27 <./images/maxdsr_0.png> <./images/maxdsr_25.png> <./images/maxdsr_50.png> 
 <./images/maxdsr_75.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 1968.
+put line 2007.
  [28 <./images/avgdsr_0.png> <./images/avgdsr_25.png> <./images/avgdsr_50.png> 
 <./images/avgdsr_75.png>]
 [29]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2085.
+(hyperref)                removing `math shift' on input line 2124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 2085.
+(hyperref)                removing `superscript' on input line 2124.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2085.
+(hyperref)                removing `math shift' on input line 2124.
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 2141--2142
+Underfull \hbox (badness 10000) in paragraph at lines 2180--2181
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2153--2155
+Underfull \hbox (badness 10000) in paragraph at lines 2192--2194
 
  []
 
 
-Overfull \hbox (18.79034pt too wide) detected at line 2188
+Overfull \hbox (18.79034pt too wide) detected at line 2227
 [] \OML/cmm/m/it/10 min[]\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ![
 ]\OT1/cmr/m/n/10 ][] \OMS/cmsy/m/n/10 \ \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ![]\O
 T1/cmr/m/n/10 ][]\OMS/cmsy/m/n/10 j \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 j\OT1/cm
@@ -2007,22 +2020,22 @@ n/10 ][]\OMS/cmsy/m/n/10 j
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 2237--2243
+Underfull \hbox (badness 10000) in paragraph at lines 2276--2282
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2246--2259
+Underfull \hbox (badness 10000) in paragraph at lines 2285--2298
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2260--2261
+Underfull \hbox (badness 10000) in paragraph at lines 2299--2300
 
  []
 
 
-Overfull \hbox (6.03067pt too wide) in paragraph at lines 2286--2292
+Overfull \hbox (6.03067pt too wide) in paragraph at lines 2325--2331
 []\T1/cmr/m/n/10 Comme $\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ![]\OT1/cmr/m/n/10 ][
 ] = [\OML/cmm/m/it/10 ![]\OT1/cmr/m/n/10 ][]$\T1/cmr/m/n/10 , on a $\OML/cmm/m/
 it/10 ![] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 ![]\OT1/cmr/m/n/
@@ -2034,78 +2047,111 @@ Ainsi, $\OML/cmm/m/it/10 min[]\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 [\OML/cmm/m/it/
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2317.
+(hyperref)                removing `math shift' on input line 2356.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 2317.
+(hyperref)                removing `superscript' on input line 2356.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2317.
+(hyperref)                removing `math shift' on input line 2356.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2320--2321
+Underfull \hbox (badness 10000) in paragraph at lines 2359--2360
 
  []
 
 [32]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2398.
+(hyperref)                removing `math shift' on input line 2437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 2398.
+(hyperref)                removing `superscript' on input line 2437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2398.
+(hyperref)                removing `math shift' on input line 2437.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2401--2404
+Underfull \hbox (badness 10000) in paragraph at lines 2440--2443
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2431
+Underfull \hbox (badness 10000) in paragraph at lines 2468--2470
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 2434--2436
+Underfull \hbox (badness 10000) in paragraph at lines 2473--2475
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2438--2440
+Underfull \hbox (badness 10000) in paragraph at lines 2477--2479
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\propref' on input line 2489.
+(hyperref)                removing `\eqref' on input line 2528.
 
-[34] [35]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2493.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2493.
+
+Overfull \hbox (17.97339pt too wide) in alignment at lines 2571--2585
+ [] [] [] [] [][]
+ []
+
+[34]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\eqref' on input line 2591.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2594--2597
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\propref' on input line 2640.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2644--2645
+
+ []
+
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 2732--2732
+
+ []
+
+[37] [38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2746.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2746.
  (./rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2493.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2493.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2746.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2746.
 
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 7FF59F74CBAF6BE6BA58E39440C632B4;3015.
+(rerunfilecheck)             Checksum: 5EC69A679A41C1F370BB0697BE2253B1;3220.
+
+
+LaTeX Warning: There were undefined references.
+
 Package logreq Info: Writing requests to 'rapport.run.xml'.
 \openout1 = `rapport.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2493.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2746.
  ) 
 Here is how much of TeX's memory you used:
- 27846 strings out of 492995
- 506183 string characters out of 6132704
- 964116 words of memory out of 5000000
- 30761 multiletter control sequences out of 15000+600000
- 23703 words of font info for 62 fonts, out of 8000000 for 9000
+ 27880 strings out of 492995
+ 506509 string characters out of 6132704
+ 964570 words of memory out of 5000000
+ 30781 multiletter control sequences out of 15000+600000
+ 24404 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,11n,77p,943b,1597s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -2126,22 +2172,23 @@ ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/
-texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2017/texm
-f-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2017/texmf-
-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2017/texmf-dist/f
-onts/type1/public/cm-super/sfcc1728.pfb></usr/local/texlive/2017/texmf-dist/fon
-ts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/texmf-dist/fonts
-/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/public/cm-super/sfti1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
-/public/cm-super/sfti1200.pfb>
-Output written on rapport.pdf (36 pages, 2003140 bytes).
+texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2017/texmf-
+dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2017/texmf-di
+st/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2017/texmf-dist
+/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2017/texmf-dist/f
+onts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/cm-super/sfcc1728.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
+/public/cm-super/sfti1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/cm-super/sfti1200.pfb>
+Output written on rapport.pdf (39 pages, 2034393 bytes).
 PDF statistics:
- 738 PDF objects out of 1000 (max. 8388607)
- 578 compressed objects within 6 object streams
- 147 named destinations out of 1000 (max. 500000)
- 518 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 792 PDF objects out of 1000 (max. 8388607)
+ 624 compressed objects within 7 object streams
+ 160 named destinations out of 1000 (max. 500000)
+ 542 words of extra memory for PDF output out of 10000 (max. 10000000)
 

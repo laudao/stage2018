@@ -1,13 +1,14 @@
 # Fdb version 3
-["biber rapport"] 1537654704 "rapport.bcf" "rapport.bbl" "rapport" 1537655839
-  "rapport.bcf" 1537655838 98565 0b39537acefcb9fdb5441e38a5823bc9 ""
+["biber rapport"] 1537716970 "rapport.bcf" "rapport.bbl" "rapport" 1537717156
+  "rapport.bcf" 1537717155 98565 0b39537acefcb9fdb5441e38a5823bc9 ""
   "references.bib" 1537113738 8434 634d5e6c6f409fc870d5009ef300b196 ""
   (generated)
   "rapport.bbl"
   "rapport.blg"
-["pdflatex"] 1537655828 "rapport.tex" "rapport.pdf" "rapport" 1537655839
+["pdflatex"] 1537717146 "rapport.tex" "rapport.pdf" "rapport" 1537717156
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1480098666 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecbi1000.tfm" 1480098696 3072 e6fe53b666f9cbd66cb135c6fdea66d3 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1480098696 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1480098696 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1480098696 3584 13049b61b922a28b158a38aeff75ee9b ""
@@ -65,6 +66,7 @@
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1480098733 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1480098733 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1480098734 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb" 1480098737 193571 dce9a978093738902238b3e227edef6c ""
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb" 1480098737 145408 43d44302ca7d82d487f511f83e309505 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1480098737 140176 d4962f948b4cc0adf4d3dde77a128c95 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1480098737 135942 859a90cad7494a1e79c94baf546d7de5 ""
@@ -272,15 +274,15 @@
   "images/sorbonne.png" 1537106654 667393 caae98a1104853dc4787e59900e0a3a1 ""
   "images/threshold_rsdm.png" 1535724687 3191 384bcc684b3df6acccada96bf4d6422b ""
   "images/threshold_sdm.png" 1535724687 3115 846c921f396e7f2070798a84e5662ce0 ""
-  "rapport.aux" 1537655838 29104 e2e97119640087269a5063e1ed546b33 ""
-  "rapport.bbl" 1537654707 39145 06ec8a079e21f9cd03227d36aec5a272 "biber rapport"
-  "rapport.out" 1537655838 3015 7ff59f74cbaf6be6ba58e39440c632b4 ""
-  "rapport.run.xml" 1537655838 2325 37bbb7a79f3b12c43f8a11c3c7ec0688 ""
-  "rapport.tex" 1537655827 113856 dec6dcc510c9bc526948dd7364466583 ""
+  "rapport.aux" 1537717155 30199 10e2c37369fe73858b49981a5af4e551 ""
+  "rapport.bbl" 1537716971 39145 06ec8a079e21f9cd03227d36aec5a272 "biber rapport"
+  "rapport.out" 1537717155 3220 5ec69a679a41c1f370bb0697be2253b1 ""
+  "rapport.run.xml" 1537717155 2325 37bbb7a79f3b12c43f8a11c3c7ec0688 ""
+  "rapport.tex" 1537717143 124401 d8d3f0a7f6dcbbdf979e5238e0c736d5 ""
   (generated)
-  "rapport.aux"
   "rapport.run.xml"
-  "rapport.bcf"
-  "rapport.pdf"
   "rapport.out"
+  "rapport.aux"
+  "rapport.pdf"
   "rapport.log"
+  "rapport.bcf"
